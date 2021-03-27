@@ -62,7 +62,7 @@ object TMDb {
                 .withUnknownFallback(EpisodeGroupType.UNDEFINED))
             .add(TmdbDateJsonAdapter())
             .add(
-                PolymorphicJsonAdapterFactory.of(SearchMediaItem::class.java, "media_type")
+                PolymorphicJsonAdapterFactory.of(MediaTypeItem::class.java, "media_type")
                     .withSubtype(TmdbShowListObject::class.java, "tv")
                     .withSubtype(TmdbMovieListObject::class.java, "movie")
                     .withSubtype(TmdbPersonListObject::class.java, "person")

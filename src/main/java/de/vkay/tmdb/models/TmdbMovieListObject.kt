@@ -3,7 +3,6 @@ package de.vkay.tmdb.models
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.tmdb.enumerations.MediaType
-import de.vkay.tmdb.enumerations.SearchMedia
 
 @JsonClass(generateAdapter = true)
 data class TmdbMovieListObject(
@@ -29,8 +28,7 @@ data class TmdbMovieListObject(
     @Json(name = "vote_count")
     val voteCount: Int,
     val video: Boolean
-) : SearchMediaItem(SearchMedia.MOVIE), MediaItem {
-    override val mediaType: MediaType = MediaType.MOVIE
+) : MediaTypeItem(MediaType.MOVIE) {
 
     val background: TmdbImage?
         get() = if (!_backgroundPath.isNullOrBlank())

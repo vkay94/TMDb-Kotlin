@@ -24,14 +24,14 @@ interface TvService {
         @Path("tv_id") tvShowId: Int,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPageShows, TmdbErrorResponse>
+    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbErrorResponse>
 
     @GET("tv/{tv_id}/similar")
     suspend fun similar(
         @Path("tv_id") tvShowId: Int,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPageShows, TmdbErrorResponse>
+    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbErrorResponse>
 
     @GET("tv/{tv_id}/images")
     suspend fun images(

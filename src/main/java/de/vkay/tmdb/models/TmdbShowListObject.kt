@@ -3,7 +3,6 @@ package de.vkay.tmdb.models
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.tmdb.enumerations.MediaType
-import de.vkay.tmdb.enumerations.SearchMedia
 
 @JsonClass(generateAdapter = true)
 data class TmdbShowListObject(
@@ -24,9 +23,7 @@ data class TmdbShowListObject(
     @Json(name = "vote_average")
     val voteAverage: Double
 
-) : SearchMediaItem(SearchMedia.TV), MediaItem {
-
-    override val mediaType: MediaType = MediaType.TV
+) : MediaTypeItem(MediaType.TV) {
 
     val background: TmdbImage?
         get() = if (!_backgroundPath.isNullOrBlank())

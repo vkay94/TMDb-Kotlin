@@ -4,7 +4,6 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.tmdb.enumerations.MediaType
 import de.vkay.tmdb.enumerations.PersonGender
-import de.vkay.tmdb.enumerations.SearchMedia
 
 @JsonClass(generateAdapter = true)
 data class TmdbPersonListObject(
@@ -13,9 +12,7 @@ data class TmdbPersonListObject(
     val gender: PersonGender,
     @Json(name = "profile_path")
     internal val _profilePath: String?
-) : SearchMediaItem(SearchMedia.PERSON), MediaItem {
-
-    override val mediaType: MediaType = MediaType.PERSON
+) : MediaTypeItem(MediaType.PERSON) {
 
     val profile: TmdbImage?
         get() = if (!_profilePath.isNullOrBlank())

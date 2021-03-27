@@ -2,10 +2,10 @@ package de.vkay.tmdb.models
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import de.vkay.tmdb.enumerations.SearchMedia
+import de.vkay.tmdb.enumerations.MediaType
 
 @JsonClass(generateAdapter = true)
-open class SearchMediaItem(
+open class MediaTypeItem(
     @Json(name = "media_type")
-    val searchType: SearchMedia
+    val mediaType: MediaType
 )

@@ -61,9 +61,9 @@ data class TmdbShow(
     @Json(name = "images")
     internal val _images: Images?,
     @Json(name = "recommendations")
-    internal val _recommendations: TmdbPageShows?,
+    internal val _recommendations: TmdbPage<TmdbShowListObject>?,
     @Json(name = "similar")
-    internal val _similar: TmdbPageShows?,
+    internal val _similar: TmdbPage<TmdbShowListObject>?,
     @Json(name = "external_ids")
     val externalIds: TmdbExternalIds?,
     @Json(name = "videos")
