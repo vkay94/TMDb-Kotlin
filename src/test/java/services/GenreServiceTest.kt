@@ -1,24 +1,13 @@
 package services
 
-import API_KEY
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.tmdb.TMDb
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.BeforeClass
 import org.junit.Test
 
-class GenreServiceTest {
-    companion object {
-        @BeforeClass
-        @JvmStatic
-        fun initTMDb() { TMDb.init(API_KEY) }
-    }
-
-    @Before
-    fun setup() {  }
+class GenreServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get all TV genres`() = runBlocking {

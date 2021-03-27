@@ -1,26 +1,15 @@
 package services
 
-import API_KEY
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.tmdb.TMDb
 import de.vkay.tmdb.enumerations.PersonGender
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
-import org.junit.Before
-import org.junit.BeforeClass
 import org.junit.Test
 import org.threeten.bp.LocalDate
 
-class PersonServiceTest {
-    companion object {
-        @BeforeClass
-        @JvmStatic
-        fun initTMDb() { TMDb.init(API_KEY) }
-    }
-
-    @Before
-    fun setup() {  }
+class PersonServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get primary data`() = runBlocking {

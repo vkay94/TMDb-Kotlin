@@ -1,6 +1,5 @@
 package services
 
-import API_KEY
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.tmdb.TMDb
 import de.vkay.tmdb.enumerations.MediaType
@@ -9,19 +8,9 @@ import de.vkay.tmdb.models.TmdbPersonListObject
 import de.vkay.tmdb.models.TmdbShowListObject
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
-import org.junit.Before
-import org.junit.BeforeClass
 import org.junit.Test
 
-class SearchServiceTest {
-    companion object {
-        @BeforeClass
-        @JvmStatic
-        fun initTMDb() { TMDb.init(API_KEY) }
-    }
-
-    @Before
-    fun setup() {  }
+class SearchServiceTest : BaseServiceTest() {
 
     @Test
     fun `Search for TV Shows without specifications`() = runBlocking {

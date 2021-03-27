@@ -1,26 +1,15 @@
 package services
 
-import API_KEY
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.tmdb.AppendToResponse
 import de.vkay.tmdb.TMDb
 import de.vkay.tmdb.models.TmdbTranslationData
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
-import org.junit.Before
-import org.junit.BeforeClass
 import org.junit.Test
 import org.threeten.bp.LocalDate
 
-class TvEpisodeServiceTest {
-    companion object {
-        @BeforeClass
-        @JvmStatic
-        fun initTMDb() { TMDb.init(API_KEY) }
-    }
-
-    @Before
-    fun setup() {  }
+class TvEpisodeServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get primary data`() = runBlocking {
