@@ -10,7 +10,7 @@ open class TmdbPage<T> {
     @Json(name = "total_results")
     internal var _totalResults: Int = -1
     @Json(name = "total_pages")
-    internal var _totalPages: Int = 0
+    internal var _totalPages: Int = -1
     @Json(name = "results")
     internal var _results: List<T> = listOf()
 
