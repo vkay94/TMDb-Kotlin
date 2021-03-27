@@ -19,8 +19,7 @@ data class TmdbSeasonListObject(
     internal val _posterPath: String?,
     @Json(name = "season_number")
     val seasonNumber: Int
-) : MediaItem {
-    override val mediaType: MediaType = MediaType.SEASON
+) : MediaTypeItem(MediaType.SEASON) {
 
     val poster: TmdbImage?
         get() = if (!_posterPath.isNullOrBlank())

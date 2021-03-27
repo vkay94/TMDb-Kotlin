@@ -28,8 +28,7 @@ data class TmdbEpisode(
     @ListMapParser
     internal val _videos: List<TmdbVideo>?
 
-) : MediaItem {
-    override val mediaType: MediaType = MediaType.EPISODE
+) : MediaTypeItem(MediaType.EPISODE) {
 
     val background: TmdbImage?
         get() = if (!_backgroundPath.isNullOrBlank())

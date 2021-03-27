@@ -80,6 +80,8 @@ class TvServiceTest : BaseServiceTest() {
     fun `Get recommendations`(): Unit = runBlocking {
         val recommendations = TMDb.showService.recommendations(SHOW_ID_MHA).invoke()!!
         assertTrue(recommendations.results.isNotEmpty())
+
+        assertEquals(MediaType.TV, recommendations.results.first().mediaType)
     }
 
     @Test

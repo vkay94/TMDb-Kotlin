@@ -18,8 +18,7 @@ data class TmdbEpisodeListObject(
     internal val _backgroundPath: String?,
     @Json(name = "season_number")
     val seasonNumber: Int
-) : MediaItem {
-    override val mediaType: MediaType = MediaType.EPISODE
+) : MediaTypeItem(MediaType.EPISODE) {
 
     val background: TmdbImage?
         get() = if (!_backgroundPath.isNullOrBlank())

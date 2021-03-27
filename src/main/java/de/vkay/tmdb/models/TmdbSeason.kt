@@ -31,8 +31,7 @@ data class TmdbSeason(
     @Json(name = "credits")
     internal val _credits: Credits?
 
-) : MediaItem {
-    override val mediaType: MediaType = MediaType.SEASON
+) : MediaTypeItem(MediaType.SEASON) {
 
     val poster: TmdbImage?
         get() = if (!_posterPath.isNullOrBlank())

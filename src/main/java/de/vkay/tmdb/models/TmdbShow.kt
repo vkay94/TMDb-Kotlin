@@ -75,8 +75,7 @@ data class TmdbShow(
     @ListMapParser
     internal val _keywords: List<TmdbKeyword>?
 
-) : MediaItem {
-    override val mediaType: MediaType = MediaType.TV
+) : MediaTypeItem(MediaType.TV) {
 
     val videos: List<TmdbVideo> = _videos ?: emptyList()
     val backgrounds: List<TmdbImage> = _images?.backdrops ?: emptyList()

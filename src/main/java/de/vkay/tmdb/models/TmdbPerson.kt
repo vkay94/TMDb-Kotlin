@@ -25,9 +25,8 @@ data class TmdbPerson(
     @Json(name = "images")
     internal val _images: Images?
 
-) : MediaItem {
+) : MediaTypeItem(MediaType.PERSON) {
 
-    override val mediaType: MediaType = MediaType.PERSON
     val profiles: List<TmdbImage> = _images?.profiles ?: emptyList()
 
     val profile: TmdbImage?
