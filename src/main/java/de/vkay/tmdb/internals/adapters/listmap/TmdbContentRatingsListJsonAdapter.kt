@@ -10,12 +10,12 @@ internal class TmdbContentRatingsListJsonAdapter {
 
     @ListMapParser
     @FromJson
-    fun listFromRatings(ratings: TmdbContentRatings?): List<TmdbContentRating> {
+    fun listFromResults(ratings: TmdbContentRatings?): List<TmdbContentRating> {
         return ratings?.results ?: emptyList()
     }
 
     @ToJson
-    fun listToRatings(@ListMapParser list: List<TmdbContentRating>): TmdbContentRatings {
+    fun listToResult(@ListMapParser list: List<TmdbContentRating>): TmdbContentRatings {
         return TmdbContentRatings(list)
     }
 }

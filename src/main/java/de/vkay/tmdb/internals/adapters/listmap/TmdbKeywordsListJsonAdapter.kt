@@ -10,12 +10,12 @@ internal class TmdbKeywordsListJsonAdapter {
 
     @ListMapParser
     @FromJson
-    fun listFromKeywords(keywords: TmdbKeywords?): List<TmdbKeyword> {
+    fun listFromResults(keywords: TmdbKeywords?): List<TmdbKeyword> {
         return keywords?.results ?: emptyList()
     }
 
     @ToJson
-    fun listToKeywords(@ListMapParser list: List<TmdbKeyword>): TmdbKeywords {
+    fun listToResult(@ListMapParser list: List<TmdbKeyword>): TmdbKeywords {
         return TmdbKeywords(list)
     }
 }

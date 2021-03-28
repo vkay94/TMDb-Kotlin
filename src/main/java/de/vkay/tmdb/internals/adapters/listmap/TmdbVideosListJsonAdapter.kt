@@ -10,12 +10,12 @@ internal class TmdbVideosListJsonAdapter {
 
     @ListMapParser
     @FromJson
-    fun listFromVideos(videos: TmdbVideos?): List<TmdbVideo> {
+    fun listFromResults(videos: TmdbVideos?): List<TmdbVideo> {
         return videos?.results ?: emptyList()
     }
 
     @ToJson
-    fun listToVideos(@ListMapParser list: List<TmdbVideo>?): TmdbVideos? {
+    fun listToResult(@ListMapParser list: List<TmdbVideo>?): TmdbVideos? {
         throw Exception("Not implemented")
     }
 }

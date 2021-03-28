@@ -9,12 +9,12 @@ internal class TmdbErrorJsonAdapter {
 
     @ListMapParser
     @FromJson
-    fun listFromVideos(str: String?): TmdbErrorResponse? {
+    fun fromString(str: String?): TmdbErrorResponse? {
         return null
     }
 
     @ToJson
-    fun listToVideos(@ListMapParser list: TmdbErrorResponse): String {
+    fun listToString(@ListMapParser list: TmdbErrorResponse): String {
         throw UnsupportedOperationException()
     }
 }

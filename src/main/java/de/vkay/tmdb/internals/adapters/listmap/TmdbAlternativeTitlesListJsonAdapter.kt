@@ -7,6 +7,7 @@ import de.vkay.tmdb.internals.models.TmdbAlternativeTitles
 import de.vkay.tmdb.models.TmdbAlternativeTitle
 
 internal class TmdbAlternativeTitlesListJsonAdapter {
+
     @ListMapParser
     @FromJson
     fun listFromResults(list: TmdbAlternativeTitles?): List<TmdbAlternativeTitle> {

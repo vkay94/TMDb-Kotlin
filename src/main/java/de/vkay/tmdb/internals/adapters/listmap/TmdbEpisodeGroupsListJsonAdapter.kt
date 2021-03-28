@@ -10,12 +10,12 @@ internal class TmdbEpisodeGroupsListJsonAdapter {
 
     @ListMapParser
     @FromJson
-    fun listFromGroups(list: TmdbEpisodeGroups?): List<TmdbEpisodeGroupListObject> {
+    fun listFromResults(list: TmdbEpisodeGroups?): List<TmdbEpisodeGroupListObject> {
         return list?.results ?: emptyList()
     }
 
     @ToJson
-    fun listToGroups(@ListMapParser list: List<TmdbEpisodeGroupListObject>): TmdbEpisodeGroups {
+    fun listToResult(@ListMapParser list: List<TmdbEpisodeGroupListObject>): TmdbEpisodeGroups {
         return TmdbEpisodeGroups(list)
     }
 }

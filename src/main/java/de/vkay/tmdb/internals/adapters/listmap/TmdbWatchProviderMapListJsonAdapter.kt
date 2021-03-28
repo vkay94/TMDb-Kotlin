@@ -15,7 +15,7 @@ internal class TmdbWatchProviderMapListJsonAdapter {
     }
 
     @ToJson
-    fun listToVideos(@ListMapParser list: Map<String, TmdbWatchProviderList>?): TmdbWatchProviderListObject? {
+    fun mapToObj(@ListMapParser list: Map<String, TmdbWatchProviderList>?): TmdbWatchProviderListObject? {
         throw Exception("Not implemented")
     }
 }
