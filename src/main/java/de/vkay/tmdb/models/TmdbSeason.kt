@@ -6,7 +6,7 @@ import de.vkay.tmdb.enumerations.MediaType
 import de.vkay.tmdb.internals.ListMapParser
 
 @JsonClass(generateAdapter = true)
-data class TmdbSeason(
+data class TmdbSeason internal constructor(
     @Json(name = "_id")
     val idTag: String,
     @Json(name = "id")

@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 import de.vkay.tmdb.enumerations.EpisodeGroupType
 
 @JsonClass(generateAdapter = true)
-data class TmdbEpisodeGroupListObject(
+data class TmdbEpisodeGroupListObject internal constructor(
     val id: String,
     val type: EpisodeGroupType,
     val name: String,

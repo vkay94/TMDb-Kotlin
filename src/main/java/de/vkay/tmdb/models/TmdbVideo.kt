@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TmdbVideo(
+data class TmdbVideo internal constructor(
     val key: String,
     val site: Site, // YouTube
     val type: Type, // Trailer

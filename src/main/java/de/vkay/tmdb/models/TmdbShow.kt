@@ -8,9 +8,7 @@ import de.vkay.tmdb.enumerations.ShowType
 import de.vkay.tmdb.internals.ListMapParser
 
 @JsonClass(generateAdapter = true)
-data class TmdbShow(
-    @Json(name = "backdrop_path")
-    internal val _backgroundPath: String?,
+class TmdbShow internal constructor(
     val id: Int,
     @Json(name = "name")
     val title: String,
@@ -18,7 +16,6 @@ data class TmdbShow(
     internal val _posterPath: String?,
     @Json(name = "first_air_date")
     val releaseDate: TmdbDate?,
-
     @Json(name = "episode_run_time")
     val episodeRuntimes: List<Int>,
     val genres: List<TmdbGenre>,
@@ -45,7 +42,6 @@ data class TmdbShow(
     @Json(name = "origin_country")
     val originalCountries: List<String>,
     val overview: String,
-
     @Json(name = "vote_average")
     val voteAverage: Double,
     @Json(name = "vote_count")
@@ -53,11 +49,8 @@ data class TmdbShow(
     val seasons: List<TmdbSeasonListObject>,
     val tagline: String,
     val type: ShowType,
-
     @Json(name = "spoken_languages")
     val spokenLanguages: List<TmdbLanguage>,
-
-    // Append
     @Json(name = "images")
     internal val _images: Images?,
     @Json(name = "recommendations")
@@ -73,8 +66,9 @@ data class TmdbShow(
     internal val _credits: Credits?,
     @Json(name = "keywords")
     @ListMapParser
-    internal val _keywords: List<TmdbKeyword>?
-
+    internal val _keywords: List<TmdbKeyword>?,
+    @Json(name = "backdrop_path")
+    internal val _backgroundPath: String?
 ) : MediaTypeItem(MediaType.TV) {
 
     val videos: List<TmdbVideo> = _videos ?: emptyList()

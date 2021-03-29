@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TmdbExternalIds(
+data class TmdbExternalIds internal constructor(
     @Json(name = "imdb_id")
     val imdb: String?,
     @Json(name = "tvdb_id")

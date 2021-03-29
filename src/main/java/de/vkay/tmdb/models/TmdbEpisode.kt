@@ -6,7 +6,7 @@ import de.vkay.tmdb.enumerations.MediaType
 import de.vkay.tmdb.internals.ListMapParser
 
 @JsonClass(generateAdapter = true)
-data class TmdbEpisode(
+data class TmdbEpisode internal constructor(
     @Json(name = "air_date")
     val releaseDate: TmdbDate?,
     @Json(name = "episode_number")

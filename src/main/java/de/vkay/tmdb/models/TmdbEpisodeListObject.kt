@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 import de.vkay.tmdb.enumerations.MediaType
 
 @JsonClass(generateAdapter = true)
-data class TmdbEpisodeListObject(
+data class TmdbEpisodeListObject internal constructor(
     @Json(name = "air_date")
     val releaseDate: TmdbDate?,
     @Json(name = "episode_number")

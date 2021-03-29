@@ -3,7 +3,7 @@ package de.vkay.tmdb.models
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TmdbEpisodeGroup(
+data class TmdbEpisodeGroup internal constructor(
     val id: String,
     val name: String,
     val order: Int,

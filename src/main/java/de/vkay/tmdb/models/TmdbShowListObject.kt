@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 import de.vkay.tmdb.enumerations.MediaType
 
 @JsonClass(generateAdapter = true)
-data class TmdbShowListObject(
+data class TmdbShowListObject internal constructor(
     val id: Int,
     @Json(name = "name")
     val title: String,

@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TmdbImage(
+data class TmdbImage internal constructor(
     @Json(name = "file_path")
     val filePath: String,
     val height: Int,
@@ -12,7 +12,7 @@ data class TmdbImage(
     @Json(name = "iso_639_1")
     val languageCode: String?
 ) {
-    constructor(path: String) : this(path, 0, 0, null)
+    internal constructor(path: String) : this(path, 0, 0, null)
 
     /**
      * Returns the full image url of an [TmdbImage] with optional [Quality]

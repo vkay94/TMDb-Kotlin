@@ -22,7 +22,7 @@ sealed class TmdbCredit {
         else null
 
     @JsonClass(generateAdapter = true)
-    data class Cast(
+    data class Cast internal constructor(
         @Json(name = "id")
         override val personId: Int,
         @Json(name = "credit_id")
@@ -41,7 +41,7 @@ sealed class TmdbCredit {
     ) : TmdbCredit()
 
     @JsonClass(generateAdapter = true)
-    data class Crew(
+    data class Crew internal constructor(
         @Json(name = "id")
         override val personId: Int,
         @Json(name = "credit_id")
@@ -60,7 +60,7 @@ sealed class TmdbCredit {
     ) : TmdbCredit()
 
     @JsonClass(generateAdapter = true)
-    data class Guest(
+    data class Guest internal constructor(
         @Json(name = "id")
         override val personId: Int,
         @Json(name = "credit_id")

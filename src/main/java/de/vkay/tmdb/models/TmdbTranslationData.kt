@@ -2,12 +2,12 @@ package de.vkay.tmdb.models
 
 sealed class TmdbTranslationData {
 
-    data class Overview(
+    data class Overview internal constructor(
         val title: String,
         val overview: String
     ) : TmdbTranslationData()
 
-    data class Biography(
+    data class Biography internal constructor(
         val biography: String,
     ) : TmdbTranslationData()
 }

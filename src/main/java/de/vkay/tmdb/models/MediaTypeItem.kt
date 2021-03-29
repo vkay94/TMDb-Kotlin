@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 import de.vkay.tmdb.enumerations.MediaType
 
 @JsonClass(generateAdapter = true)
-open class MediaTypeItem(
+open class MediaTypeItem internal constructor(
     @Json(name = "media_type")
     val mediaType: MediaType
 )

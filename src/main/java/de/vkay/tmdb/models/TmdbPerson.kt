@@ -6,7 +6,7 @@ import de.vkay.tmdb.enumerations.MediaType
 import de.vkay.tmdb.enumerations.PersonGender
 
 @JsonClass(generateAdapter = true)
-data class TmdbPerson(
+data class TmdbPerson internal constructor(
     val name: String,
     val id: Int,
     val gender: PersonGender,

@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 import de.vkay.tmdb.enumerations.MediaType
 
 @JsonClass(generateAdapter = true)
-data class TmdbMovieListObject(
+data class TmdbMovieListObject internal constructor(
     val id: Int,
     val title: String,
     @Json(name = "poster_path")

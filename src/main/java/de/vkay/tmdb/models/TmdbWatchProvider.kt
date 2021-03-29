@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TmdbWatchProvider(
+data class TmdbWatchProvider internal constructor(
     @Json(name = "logo_path")
     internal val _logoPath: String?,
     @Json(name = "provider_name")
