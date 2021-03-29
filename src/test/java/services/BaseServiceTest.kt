@@ -1,7 +1,7 @@
 package services
 
 import API_KEY
-import de.vkay.tmdb.TMDb
+import de.vkay.api.tmdb.TMDb
 import org.junit.BeforeClass
 
 open class BaseServiceTest {

@@ -1,4 +1,4 @@
-import de.vkay.tmdb.models.TmdbVideo
+import de.vkay.api.tmdb.models.TmdbVideo
 import org.junit.Assert.*
 import org.junit.Test
 

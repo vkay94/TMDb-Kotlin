@@ -1,8 +1,8 @@
 package services
 
 import com.haroldadmin.cnradapter.invoke
-import de.vkay.tmdb.TMDb
-import de.vkay.tmdb.enumerations.PersonGender
+import de.vkay.api.tmdb.TMDb
+import de.vkay.api.tmdb.enumerations.PersonGender
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue

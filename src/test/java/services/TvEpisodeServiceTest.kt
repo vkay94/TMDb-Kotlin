@@ -1,9 +1,9 @@
 package services
 
 import com.haroldadmin.cnradapter.invoke
-import de.vkay.tmdb.AppendToResponse
-import de.vkay.tmdb.TMDb
-import de.vkay.tmdb.models.TmdbTranslationData
+import de.vkay.api.tmdb.AppendToResponse
+import de.vkay.api.tmdb.TMDb
+import de.vkay.api.tmdb.models.TmdbTranslationData
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test

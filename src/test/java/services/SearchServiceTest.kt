@@ -1,11 +1,11 @@
 package services
 
 import com.haroldadmin.cnradapter.invoke
-import de.vkay.tmdb.TMDb
-import de.vkay.tmdb.enumerations.MediaType
-import de.vkay.tmdb.models.TmdbMovieListObject
-import de.vkay.tmdb.models.TmdbPersonListObject
-import de.vkay.tmdb.models.TmdbShowListObject
+import de.vkay.api.tmdb.TMDb
+import de.vkay.api.tmdb.enumerations.MediaType
+import de.vkay.api.tmdb.models.TmdbMovieListObject
+import de.vkay.api.tmdb.models.TmdbPersonListObject
+import de.vkay.api.tmdb.models.TmdbShowListObject
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test

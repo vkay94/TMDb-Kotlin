@@ -1,5 +1,5 @@
-import de.vkay.tmdb.ImageLanguages
-import de.vkay.tmdb.models.TmdbImage
+import de.vkay.api.tmdb.ImageLanguages
+import de.vkay.api.tmdb.models.TmdbImage
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

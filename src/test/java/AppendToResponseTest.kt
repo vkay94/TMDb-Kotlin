@@ -1,4 +1,4 @@
-import de.vkay.tmdb.AppendToResponse
+import de.vkay.api.tmdb.AppendToResponse
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

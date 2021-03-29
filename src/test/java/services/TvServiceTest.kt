@@ -2,12 +2,12 @@ package services
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.haroldadmin.cnradapter.invoke
-import de.vkay.tmdb.AppendToResponse
-import de.vkay.tmdb.TMDb
-import de.vkay.tmdb.enumerations.EpisodeGroupType
-import de.vkay.tmdb.enumerations.MediaType
-import de.vkay.tmdb.enumerations.ProductionStatus
-import de.vkay.tmdb.models.TmdbImage
+import de.vkay.api.tmdb.AppendToResponse
+import de.vkay.api.tmdb.TMDb
+import de.vkay.api.tmdb.enumerations.EpisodeGroupType
+import de.vkay.api.tmdb.enumerations.MediaType
+import de.vkay.api.tmdb.enumerations.ProductionStatus
+import de.vkay.api.tmdb.models.TmdbImage
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test

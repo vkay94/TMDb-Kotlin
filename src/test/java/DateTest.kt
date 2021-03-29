@@ -1,4 +1,4 @@
-import de.vkay.tmdb.models.TmdbDate
+import de.vkay.api.tmdb.models.TmdbDate
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.threeten.bp.LocalDate
