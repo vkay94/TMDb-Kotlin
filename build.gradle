@@ -60,6 +60,14 @@ dependencies {
     implementation 'com.beust:klaxon:5.5'
 }
 
+sourceSets {
+    main {
+        resources {
+            srcDirs "src/main/resources", "src/main/configs"
+        }
+    }
+}
+
 test {
     useJUnitPlatform()
 }

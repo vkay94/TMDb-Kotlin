@@ -19,8 +19,6 @@ import de.vkay.api.tmdb.services.*
 import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.io.File
-import java.nio.file.Paths
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -131,11 +129,8 @@ object TMDb {
         val start = System.currentTimeMillis()
 
         val hashMap = HashMap<Int, String>()
-        val lines = Paths.get(
-            File("").absolutePath,
-            "src/main/resources",
-            "tv_network_ids.json"
-        ).normalize().toFile().bufferedReader().readLines()
+        val file = this.javaClass.getResourceAsStream("tv_network_ids.json")
+        val lines = file.bufferedReader().readLines()
 
         lines.forEach { Klaxon().parse<NetworkPair>(it)?.let { pair -> hashMap[pair.id] = pair.name } }
 
