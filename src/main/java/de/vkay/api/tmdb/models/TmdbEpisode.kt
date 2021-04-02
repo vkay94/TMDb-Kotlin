@@ -19,6 +19,10 @@ data class TmdbEpisode internal constructor(
     internal val _backgroundPath: String?,
     @Json(name = "season_number")
     val seasonNumber: Int,
+    @Json(name = "vote_average")
+    val voteAverage: Double,
+    @Json(name = "vote_count")
+    val voteCount: Int,
 
     @Json(name = "images")
     internal val _images: Images?,

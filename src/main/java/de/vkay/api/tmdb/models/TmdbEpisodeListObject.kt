@@ -17,7 +17,11 @@ data class TmdbEpisodeListObject internal constructor(
     @Json(name = "still_path")
     internal val _backgroundPath: String?,
     @Json(name = "season_number")
-    val seasonNumber: Int
+    val seasonNumber: Int,
+    @Json(name = "vote_average")
+    val voteAverage: Double,
+    @Json(name = "vote_count")
+    val voteCount: Int
 ) : MediaTypeItem(MediaType.EPISODE) {
 
     val background: TmdbImage?

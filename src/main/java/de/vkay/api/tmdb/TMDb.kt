@@ -48,6 +48,7 @@ object TMDb {
     val personService: PersonService by lazy { retrofit3.create(PersonService::class.java) }
     val genreService: GenreService by lazy { retrofit3.create(GenreService::class.java) }
     val keywordService: KeywordService by lazy { retrofit3.create(KeywordService::class.java) }
+    val findService: FindService by lazy { retrofit3.create(FindService::class.java) }
 
     private val mapWatchType = Types.newParameterizedType(Map::class.java, String::class.java, TmdbWatchProviderList::class.java)
     private val mapAdapter: JsonAdapter<Map<String, TmdbWatchProviderList>> =
@@ -60,7 +61,6 @@ object TMDb {
                 .withUnknownFallback(PersonGender.OTHER))
             .add(EpisodeGroupType::class.java, EnumValueJsonAdapter.create(EpisodeGroupType::class.java)
                 .withUnknownFallback(EpisodeGroupType.UNDEFINED))
-            .add(TmdbDateJsonAdapter())
             .add(
                 PolymorphicJsonAdapterFactory.of(MediaTypeItem::class.java, "media_type")
                     .withSubtype(TmdbShowListObject::class.java, "tv")
@@ -88,6 +88,8 @@ object TMDb {
             /* Custom writer adapters */
             .add(TmdbTranslationData::class.java, TmdbTranslationDataJsonAdapter())
             .add(TmdbCredit::class.java, TmdbCreditJsonAdapter())
+            .add(TmdbFindJsonAdapter())
+            .add(TmdbDateJsonAdapter())
 
             /* Objects to lists such as videos, genres and keywords which have a single field */
             .add(TmdbVideosListJsonAdapter())
