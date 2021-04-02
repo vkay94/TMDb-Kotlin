@@ -125,17 +125,14 @@ object TMDb {
     }
 
     private val networks: Map<Int, String> by lazy {
-        println("ACCESS")
-        val start = System.currentTimeMillis()
-
         val hashMap = HashMap<Int, String>()
-        val file = this.javaClass.getResourceAsStream("tv_network_ids.json")
-        val lines = file.bufferedReader().readLines()
+        val file = Thread.currentThread().contextClassLoader.getResourceAsStream("tv_network_ids.json")
 
-        lines.forEach { Klaxon().parse<NetworkPair>(it)?.let { pair -> hashMap[pair.id] = pair.name } }
-
-        val end = System.currentTimeMillis()
-        println("Time = ${end - start}")
+        file?.let { f ->
+            f.bufferedReader().readLines().forEach {
+                Klaxon().parse<NetworkPair>(it)?.let { pair -> hashMap[pair.id] = pair.name }
+            }
+        }
 
         return@lazy hashMap
     }
