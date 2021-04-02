@@ -10,9 +10,9 @@ import java.util.*
 /**
  * Reference: [Stackoverflow](https://stackoverflow.com/a/40920186/5199098)
  */
-class TmdbDate internal constructor(val date: LocalDate?) : Comparable<TmdbDate> {
-    internal constructor(str: String?) : this(validate(str))
-    internal constructor(localDateTime: LocalDateTime?) : this(localDateTime?.toLocalDate())
+class TmdbDate constructor(val date: LocalDate?) : Comparable<TmdbDate> {
+    constructor(str: String?) : this(validate(str))
+    constructor(localDateTime: LocalDateTime?) : this(localDateTime?.toLocalDate())
 
     /**
      * Returns a human string depending on device location in form of [FormatStyle.LONG]
