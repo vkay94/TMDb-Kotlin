@@ -48,6 +48,7 @@ object TMDb {
     val personService: PersonService by lazy { retrofit3.create(PersonService::class.java) }
     val genreService: GenreService by lazy { retrofit3.create(GenreService::class.java) }
     val keywordService: KeywordService by lazy { retrofit3.create(KeywordService::class.java) }
+    val networkService: NetworkService by lazy { retrofit3.create(NetworkService::class.java) }
     val findService: FindService by lazy { retrofit3.create(FindService::class.java) }
     val discoverService: DiscoverService by lazy { retrofit3.create(DiscoverService::class.java) }
 
@@ -101,6 +102,7 @@ object TMDb {
             .add(TmdbAlternativeTitlesListJsonAdapter())
             .add(TmdbTranslationsListJsonAdapter())
             .add(TmdbWatchProviderMapListJsonAdapter())
+            .add(TmdbNetworkImagesListJsonAdapter())
             .add(TmdbErrorJsonAdapter())
             .build()
     }
