@@ -49,6 +49,7 @@ object TMDb {
     val genreService: GenreService by lazy { retrofit3.create(GenreService::class.java) }
     val keywordService: KeywordService by lazy { retrofit3.create(KeywordService::class.java) }
     val findService: FindService by lazy { retrofit3.create(FindService::class.java) }
+    val discoverService: DiscoverService by lazy { retrofit3.create(DiscoverService::class.java) }
 
     private val mapWatchType = Types.newParameterizedType(Map::class.java, String::class.java, TmdbWatchProviderList::class.java)
     private val mapAdapter: JsonAdapter<Map<String, TmdbWatchProviderList>> =

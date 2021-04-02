@@ -21,7 +21,8 @@ data class TmdbShowListObject internal constructor(
     @Json(name = "genre_ids")
     val genreIds: List<Int>,
     @Json(name = "vote_average")
-    val voteAverage: Double
+    val voteAverage: Double,
+    val popularity: Double
 
 ) : MediaTypeItem(MediaType.TV) {
 
