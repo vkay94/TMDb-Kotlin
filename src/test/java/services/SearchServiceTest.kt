@@ -65,4 +65,12 @@ class SearchServiceTest : BaseServiceTest() {
         assertEquals(4, searchResult.totalResults)
         assertFalse(searchResult.hasNextPage)
     }
+
+    @Test
+    fun `Search for networks (locally)`() = runBlocking {
+        val searchResult = TMDb.searchNetworks("Netflix")
+        val searchResult2 = TMDb.searchNetworks("crun")
+        println(searchResult)
+        println(searchResult2)
+    }
 }

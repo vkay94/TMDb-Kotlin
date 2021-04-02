@@ -1,5 +1,6 @@
 package de.vkay.api.tmdb
 
+import com.beust.klaxon.Klaxon
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.JsonAdapter
@@ -18,7 +19,10 @@ import de.vkay.api.tmdb.services.*
 import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.io.File
+import java.nio.file.Paths
 import java.util.*
+import kotlin.collections.HashMap
 
 
 object TMDb {
@@ -120,6 +124,31 @@ object TMDb {
 
     private fun defaultOkHttpClient(apiKey: String): OkHttpClient {
         return OkHttpClient.Builder().addInterceptor(TMDbInterceptor(apiKey)).build()
+    }
+
+    private val networks: Map<Int, String> by lazy {
+        println("ACCESS")
+        val start = System.currentTimeMillis()
+
+        val hashMap = HashMap<Int, String>()
+        val lines = Paths.get(
+            File("").absolutePath,
+            "src/main/resources",
+            "tv_network_ids.json"
+        ).normalize().toFile().bufferedReader().readLines()
+
+        lines.forEach { Klaxon().parse<NetworkPair>(it)?.let { pair -> hashMap[pair.id] = pair.name } }
+
+        val end = System.currentTimeMillis()
+        println("Time = ${end - start}")
+
+        return@lazy hashMap
+    }
+
+    private data class NetworkPair(val id: Int, val name: String)
+
+    fun searchNetworks(query: String): Map<Int, String> {
+        return networks.filter { it.value.contains(query, true) }
     }
 
     // Links
