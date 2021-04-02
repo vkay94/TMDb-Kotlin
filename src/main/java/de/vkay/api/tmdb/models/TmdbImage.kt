@@ -12,7 +12,7 @@ data class TmdbImage internal constructor(
     @Json(name = "iso_639_1")
     val languageCode: String?
 ) {
-    internal constructor(path: String) : this(path, 0, 0, null)
+    constructor(path: String) : this(path, 0, 0, null)
 
     /**
      * Returns the full image url of an [TmdbImage] with optional [Quality]
