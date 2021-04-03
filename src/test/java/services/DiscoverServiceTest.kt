@@ -45,7 +45,6 @@ class DiscoverServiceTest : BaseServiceTest() {
             .withNetworks(listOf(networkIdCrunchyroll))
 
         val resultSingle = TMDb.discoverService.tv(builderSingle).invoke()!!
-        println(resultSingle.totalResults)
         assertEquals(17, resultSingle.totalResults)
 
         val builderMultiple = Discover.ShowBuilder()
