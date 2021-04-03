@@ -124,13 +124,13 @@ object TMDb {
         return OkHttpClient.Builder().addInterceptor(TMDbInterceptor(apiKey)).build()
     }
 
-    private val networks: Map<Int, String> by lazy {
-        val hashMap = HashMap<Int, String>()
+    private val networks: Map<String, Int> by lazy {
+        val hashMap = HashMap<String, Int>()
         val file = Thread.currentThread().contextClassLoader.getResourceAsStream("tv_network_ids.json")
 
         file?.let { f ->
             f.bufferedReader().readLines().forEach {
-                Klaxon().parse<NetworkPair>(it)?.let { pair -> hashMap[pair.id] = pair.name }
+                Klaxon().parse<NetworkPair>(it)?.let { pair -> hashMap[pair.name] = pair.id }
             }
         }
 
@@ -139,8 +139,8 @@ object TMDb {
 
     private data class NetworkPair(val id: Int, val name: String)
 
-    fun searchNetworks(query: String): Map<Int, String> {
-        return networks.filter { it.value.contains(query, true) }
+    fun searchNetworks(query: String): Map<String, Int> {
+        return networks.filter { it.key.contains(query, true) }
     }
 
     // Links

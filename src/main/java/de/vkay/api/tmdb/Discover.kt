@@ -43,13 +43,6 @@ class Discover {
         FIRST_AIR_DATE_DESC("first_air_date.desc"),
         FIRST_AIR_DATE_ASC("first_air_date.asc");
 
-        /*
-        Choose from one of the many available sort options.
-
- popularity.desc, popularity.asc
-
-                */
-
         override fun toString(): String = queryValue
     }
 }

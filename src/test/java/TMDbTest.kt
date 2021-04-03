@@ -1,5 +1,6 @@
 import de.vkay.api.tmdb.TMDb
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class TMDbTest {
@@ -20,5 +21,18 @@ class TMDbTest {
 
         assertEquals("https://www.themoviedb.org/person/123?language=en-US", TMDb.personLink(123))
         assertEquals("https://www.themoviedb.org/person/123?language=fr-FR", TMDb.personLink(123, "fr-FR"))
+    }
+
+    @Test
+    fun `Test networks search (locally)`() {
+        val results1 = TMDb.searchNetworks("Netflix")
+        assertEquals(1, results1.size)
+        assertTrue(results1.keys.contains("Netflix"))
+        assertEquals(213, results1["Netflix"])
+
+        val results2 = TMDb.searchNetworks("CRU")
+        assertEquals(2, results2.size)
+        assertTrue(results2.containsKey("Crunchyroll"))
+        assertEquals(1112, results2["Crunchyroll"])
     }
 }
