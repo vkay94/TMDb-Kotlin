@@ -51,6 +51,7 @@ object TMDb {
     val genreService: GenreService by lazy { retrofit3.create(GenreService::class.java) }
     val keywordService: KeywordService by lazy { retrofit3.create(KeywordService::class.java) }
     val networkService: NetworkService by lazy { retrofit3.create(NetworkService::class.java) }
+    val companyService: CompanyService by lazy { retrofit3.create(CompanyService::class.java) }
     val findService: FindService by lazy { retrofit3.create(FindService::class.java) }
     val discoverService: DiscoverService by lazy { retrofit3.create(DiscoverService::class.java) }
 
