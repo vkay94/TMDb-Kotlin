@@ -15,18 +15,18 @@ class Discover {
         fun timeZone(timeZone: String?) = apply { clearPut("timezone", timeZone) }
         fun voteAverageGreaterEqual(voteAverage: Double?) = apply { clearPut("vote_average.gte", voteAverage.toString()) }
         fun voteCountGreaterEqual(voteCount: Int?) = apply { clearPut("vote_count.gte", voteCount.toString()) }
-        fun withGenres(vararg genreIds: Int?) = apply { clearPut("with_genres", genreIds.joinToString { "," }) }
-        fun withoutGenres(vararg genreIds: Int?) = apply { clearPut("without_genres", genreIds.joinToString { "," }) }
-        fun withNetworks(vararg networkIds: Int?) = apply { clearPut("with_networks", networkIds.joinToString { "," }) }
+        fun withGenres(genreIds: List<Int>?) = apply { clearPut("with_genres", genreIds?.joinToString(separator = ",")) }
+        fun withoutGenres(genreIds: List<Int>?) = apply { clearPut("without_genres", genreIds?.joinToString(separator = ",")) }
+        fun withNetworks(networkIds: List<Int>?) = apply { clearPut("with_networks", networkIds?.joinToString(separator = ",")) }
         fun withRuntimeGreaterEqual(runtime: Int?) = apply { clearPut("with_runtime.gte", runtime.toString()) }
         fun withRuntimeLessEqual(runtime: Int?) = apply { clearPut("with_runtime.lte", runtime.toString()) }
         fun includeNullFirstAirDates(include: Boolean?) = apply { clearPut("include_null_first_air_dates", include.toString()) }
         fun withOriginalLanguage(langCode: String?) = apply { clearPut("with_original_language", langCode) }
-        fun withoutKeywords(vararg keywordIds: Int?) = apply { clearPut("without_keywords", keywordIds.joinToString { "," }) }
+        fun withoutKeywords(keywordIds: List<Int>?) = apply { clearPut("without_keywords", keywordIds?.joinToString(separator = ",")) }
         fun screenedTheatrically(include: Boolean?) = apply { clearPut("screened_theatrically", include.toString()) }
-        fun withCompanies(vararg companyIds: Int?) = apply { clearPut("with_companies", companyIds.joinToString { "," }) }
-        fun withKeywords(vararg keywordIds: Int?) = apply { clearPut("with_keywords", keywordIds.joinToString { "," }) }
-        fun withWatchProviders(vararg watchProviderIds: Int?) = apply { clearPut("with_watch_providers", watchProviderIds.joinToString { "," }) }
+        fun withCompanies(companyIds: List<Int>?) = apply { clearPut("with_companies", companyIds?.joinToString(separator = ",")) }
+        fun withKeywords(keywordIds: List<Int>?) = apply { clearPut("with_keywords", keywordIds?.joinToString(separator = ",")) }
+        fun withWatchProviders(watchProviderIds: List<Int>?) = apply { clearPut("with_watch_providers", watchProviderIds?.joinToString(separator = ",")) }
         fun watchRegion(region: String?) = apply { clearPut("watch_region", region) }
 
         private fun clearPut(key: String, value: String?) {
