@@ -67,6 +67,17 @@ class SearchServiceTest : BaseServiceTest() {
     }
 
     @Test
+    fun `Search for companies`() = runBlocking {
+        val searchResult = TMDb.searchService.company(QUERY_COMPANY_DISNEY, 1).invoke()!!
+
+        assertEquals(1, searchResult.page)
+        assertEquals(3, searchResult.totalPages)
+        assertEquals(41, searchResult.totalResults)
+        assertEquals(20, searchResult.results.size)
+        assertTrue(searchResult.hasNextPage)
+    }
+
+    @Test
     fun `Search for networks (locally)`() = runBlocking {
         val searchResult = TMDb.searchNetworks("Netflix")
         val searchResult2 = TMDb.searchNetworks("crun")

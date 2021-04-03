@@ -42,4 +42,10 @@ interface SearchService {
         @Query("query") query: String,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbKeyword>, TmdbErrorResponse>
+
+    @GET("search/company")
+    suspend fun company(
+        @Query("query") query: String,
+        @Query("page") page: Int? = null
+    ): NetworkResponse<TmdbPage<TmdbCompany>, TmdbErrorResponse>
 }

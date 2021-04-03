@@ -5,6 +5,7 @@ const val QUERY_MHA = "Boku No Hero Academia"
 const val QUERY_AVENGERS = "Avengers"
 const val QUERY_WILL_SMITH = "Will Smith"
 const val QUERY_KEY_ANIME = "anime"
+const val QUERY_COMPANY_DISNEY = "disney"
 
 const val SHOW_ID_MHA = 65930
 const val SHOW_ID_TBBT = 1418
