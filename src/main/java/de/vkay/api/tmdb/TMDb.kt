@@ -40,6 +40,12 @@ object TMDb {
         this.client = client ?: defaultOkHttpClient(apiKey, bearerToken)
     }
 
+    var accessToken: String? = null
+        set(value) {
+            tmdbInterceptor.setAccessToken(value)
+            field = value
+        }
+
     val configurationService: ConfigurationService by lazy { retrofit3.create(ConfigurationService::class.java) }
     val searchService: SearchService by lazy { retrofit3.create(SearchService::class.java) }
     val showService: TvService by lazy { retrofit3.create(TvService::class.java) }
@@ -135,6 +141,10 @@ object TMDb {
             .build()
     }
 
+    private val tmdbInterceptor: TMDbInterceptor by lazy {
+        return@lazy TMDbInterceptor(apiKey, bearerToken)
+    }
+
     private fun defaultOkHttpClient(apiKey: String, bearerToken: String): OkHttpClient {
         return OkHttpClient.Builder().addInterceptor(TMDbInterceptor(apiKey, bearerToken)).build()
     }
@@ -174,4 +184,7 @@ object TMDb {
 
     fun personLink(tmdbId: Int, langTag: String = DEFAULT_LANGUAGE) =
         "https://www.themoviedb.org/person/$tmdbId?language=$langTag"
+
+    fun authLink(requestToken: String) =
+        "https://www.themoviedb.org/auth/access?request_token=$requestToken"
 }

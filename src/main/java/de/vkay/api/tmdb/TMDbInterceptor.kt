@@ -10,6 +10,12 @@ class TMDbInterceptor(
     private val modRequest: ((builder: Request.Builder) -> Unit)? = null
 ) : Interceptor {
 
+    private var accessToken: String = ""
+
+    fun setAccessToken(token: String?) {
+        this.accessToken = token ?: ""
+    }
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val httpUrl = request.url.newBuilder()
@@ -20,7 +26,9 @@ class TMDbInterceptor(
 
         modRequest?.invoke(newRequestBuilder)
 
-        if (bearerToken.isNotBlank()) {
+        if (accessToken.isNotBlank()) {
+            newRequestBuilder.addHeader("Authorization", "Bearer $accessToken")
+        } else if (bearerToken.isNotBlank()) {
             newRequestBuilder.addHeader("Authorization", "Bearer $bearerToken")
         }
 
