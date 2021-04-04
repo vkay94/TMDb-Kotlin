@@ -9,10 +9,10 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.threeten.bp.LocalDate
 
-class DiscoverServiceTest : BaseServiceTest() {
+class DiscoverServiceShowTest : BaseServiceTest() {
 
     @Test
-    fun `Test show sortBy`() = runBlocking {
+    fun `Test sortBy`() = runBlocking {
         val builder = Discover.ShowBuilder()
             .sortBy(Discover.SortBy.POPULARITY_DESC)
 
@@ -21,7 +21,7 @@ class DiscoverServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Test show first air date`() = runBlocking {
+    fun `Test first air date`() = runBlocking {
         val upper = LocalDate.of(2021, 3, 20)
         val lower = LocalDate.of(2021, 2, 20)
 
@@ -37,7 +37,7 @@ class DiscoverServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Test show with networks`() = runBlocking {
+    fun `Test with networks`() = runBlocking {
         val networkIdTokyoMx = 614
         val networkIdCrunchyroll = 1112
 
