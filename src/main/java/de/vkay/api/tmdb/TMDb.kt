@@ -14,6 +14,7 @@ import de.vkay.api.tmdb.enumerations.ShowType
 import de.vkay.api.tmdb.internals.*
 import de.vkay.api.tmdb.internals.adapters.*
 import de.vkay.api.tmdb.internals.adapters.listmap.*
+import de.vkay.api.tmdb.internals.auth.TmdbRequestTokenResponseJsonAdapterHelper
 import de.vkay.api.tmdb.models.*
 import de.vkay.api.tmdb.services.*
 import okhttp3.*
@@ -31,15 +32,12 @@ object TMDb {
 
     private lateinit var client: OkHttpClient
     private lateinit var apiKey: String
-    private var accessToken: String? = null
+    private lateinit var bearerToken: String
 
-    init {
-        // println("TMDb: Init block")
-    }
-
-    fun init(apiKey: String, client: OkHttpClient? = null) = apply {
+    fun init(apiKey: String, bearerToken: String = "", client: OkHttpClient? = null) = apply {
         this.apiKey = apiKey
-        this.client = client ?: defaultOkHttpClient(apiKey)
+        this.bearerToken = bearerToken
+        this.client = client ?: defaultOkHttpClient(apiKey, bearerToken)
     }
 
     val configurationService: ConfigurationService by lazy { retrofit3.create(ConfigurationService::class.java) }
@@ -54,6 +52,10 @@ object TMDb {
     val companyService: CompanyService by lazy { retrofit3.create(CompanyService::class.java) }
     val findService: FindService by lazy { retrofit3.create(FindService::class.java) }
     val discoverService: DiscoverService by lazy { retrofit3.create(DiscoverService::class.java) }
+
+    //val listsService: DiscoverService by lazy { retrofit3.create(DiscoverService::class.java) }
+
+    val authService: AuthService by lazy { retrofit4.create(AuthService::class.java) }
 
     private val mapWatchType = Types.newParameterizedType(Map::class.java, String::class.java, TmdbWatchProviderList::class.java)
     private val mapAdapter: JsonAdapter<Map<String, TmdbWatchProviderList>> =
@@ -106,6 +108,7 @@ object TMDb {
             .add(TmdbTranslationsListJsonAdapter())
             .add(TmdbWatchProviderMapListJsonAdapter())
             .add(TmdbNetworkImagesListJsonAdapter())
+            .add(TmdbRequestTokenResponseJsonAdapterHelper())
             .add(TmdbErrorJsonAdapter())
             .build()
     }
@@ -121,8 +124,19 @@ object TMDb {
             .build()
     }
 
-    private fun defaultOkHttpClient(apiKey: String): OkHttpClient {
-        return OkHttpClient.Builder().addInterceptor(TMDbInterceptor(apiKey)).build()
+    private val retrofit4: Retrofit by lazy {
+        // println("TMDb: Create Retrofit")
+        return@lazy Retrofit.Builder()
+            .baseUrl(BASE_URL_4)
+            .addConverterFactory(MoshiConverterFactory.create(moshiWithAdapters))
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .addCallAdapterFactory(NetworkResponseAdapterFactory())
+            .client(client)
+            .build()
+    }
+
+    private fun defaultOkHttpClient(apiKey: String, bearerToken: String): OkHttpClient {
+        return OkHttpClient.Builder().addInterceptor(TMDbInterceptor(apiKey, bearerToken)).build()
     }
 
     private val networks: Map<String, Int> by lazy {

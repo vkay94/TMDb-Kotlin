@@ -6,6 +6,7 @@ import okhttp3.Response
 
 class TMDbInterceptor(
     private val apiKey: String,
+    private val bearerToken: String,
     private val modRequest: ((builder: Request.Builder) -> Unit)? = null
 ) : Interceptor {
 
@@ -18,6 +19,11 @@ class TMDbInterceptor(
             .url(httpUrl.build())
 
         modRequest?.invoke(newRequestBuilder)
+
+        if (bearerToken.isNotBlank()) {
+            newRequestBuilder.addHeader("Authorization", "Bearer $bearerToken")
+        }
+
         return chain.proceed(newRequestBuilder.build())
     }
 }
