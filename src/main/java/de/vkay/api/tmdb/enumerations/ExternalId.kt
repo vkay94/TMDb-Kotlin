@@ -8,12 +8,12 @@ enum class ExternalId {
     TWITTER;
 
     override fun toString(): String {
-        return when (name) {
-            "IMDB" -> "imdb_id"
-            "TVDB" -> "tvdb_id"
-            "FACEBOOK" -> "facebook_id"
-            "INSTAGRAM" -> "instagram_id"
-            "TWITTER" -> "twitter_id"
+        return when (ordinal) {
+            0 -> "imdb_id"
+            1 -> "tvdb_id"
+            2 -> "facebook_id"
+            3 -> "instagram_id"
+            4 -> "twitter_id"
             else -> "UNKNOWN"
         }
     }

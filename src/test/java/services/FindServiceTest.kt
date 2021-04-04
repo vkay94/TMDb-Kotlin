@@ -15,7 +15,7 @@ import org.junit.Test
 class FindServiceTest : BaseServiceTest() {
 
     @Test
-    fun `Find show (Black Clover)`() = runBlocking {
+    fun `Find show (Black Clover, IMDB)`() = runBlocking {
         val mediaTypeItem = TMDb.findService.find(IMDB_SHOW_BLACK_CLOVER, ExternalId.IMDB).invoke()!!
         assertEquals(MediaType.TV, mediaTypeItem.mediaType)
 
@@ -28,7 +28,20 @@ class FindServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Find episode (Black Clover)`() = runBlocking {
+    fun `Find show (Black Clover, TVDB)`() = runBlocking {
+        val mediaTypeItem = TMDb.findService.find(IMDB_SHOW_BLACK_CLOVER, ExternalId.IMDB).invoke()!!
+        assertEquals(MediaType.TV, mediaTypeItem.mediaType)
+
+        if (mediaTypeItem is TmdbShowListObject) {
+            assertEquals(SHOW_ID_BLACK_CLOVER, mediaTypeItem.id)
+            assertEquals("Black Clover", mediaTypeItem.title)
+        } else {
+            throw Exception("MediaTypeItem is not an instance of TmdbShowListObject")
+        }
+    }
+
+    @Test
+    fun `Find episode (Black Clover, IMDB)`() = runBlocking {
         val mediaTypeItem = TMDb.findService.find(IMDB_SHOW_BLACK_CLOVER_EPISODE_167, ExternalId.IMDB).invoke()!!
         assertEquals(MediaType.EPISODE, mediaTypeItem.mediaType)
 
@@ -41,32 +54,38 @@ class FindServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Find person (Will Smith)`() = runBlocking {
+    fun `Find person (Will Smith, IMDB)`() = runBlocking {
         val mediaTypeItem = TMDb.findService.find(IMDB_PERSON_WILL_SMITH, ExternalId.IMDB).invoke()!!
         assertEquals(MediaType.PERSON, mediaTypeItem.mediaType)
-
-        val mediaTypeItemFacebook = TMDb.findService.find(FACEBOOK_PERSON_WILL_SMITH, ExternalId.FACEBOOK).invoke()!!
-        assertEquals(MediaType.PERSON, mediaTypeItemFacebook.mediaType)
-
-        val mediaTypeItemInstagram = TMDb.findService.find(INSTAGRAM_WILL_SMITH, ExternalId.INSTAGRAM).invoke()!!
-        assertEquals(MediaType.PERSON, mediaTypeItemInstagram.mediaType)
 
         if (mediaTypeItem is TmdbPersonListObject) {
             assertEquals("Will Smith", mediaTypeItem.name)
         } else {
             throw Exception("mediaTypeItem is not an instance of TmdbPersonListObject")
         }
+    }
 
-        if (mediaTypeItemInstagram is TmdbPersonListObject) {
-            assertEquals("Will Smith", mediaTypeItemInstagram.name)
+    @Test
+    fun `Find person (Will Smith, Instagram)`() = runBlocking {
+        val mediaTypeItem = TMDb.findService.find(INSTAGRAM_WILL_SMITH, ExternalId.INSTAGRAM).invoke()!!
+        assertEquals(MediaType.PERSON, mediaTypeItem.mediaType)
+
+        if (mediaTypeItem is TmdbPersonListObject) {
+            assertEquals("Will Smith", mediaTypeItem.name)
         } else {
-            throw Exception("mediaTypeItemInstagram is not an instance of TmdbPersonListObject")
+            throw Exception("mediaTypeItem is not an instance of TmdbPersonListObject")
         }
+    }
 
-        if (mediaTypeItemFacebook is TmdbPersonListObject) {
-            assertEquals("Will Smith", mediaTypeItemFacebook.name)
+    @Test
+    fun `Find person (Will Smith, Facebook)`() = runBlocking {
+        val mediaTypeItem = TMDb.findService.find(FACEBOOK_PERSON_WILL_SMITH, ExternalId.FACEBOOK).invoke()!!
+        assertEquals(MediaType.PERSON, mediaTypeItem.mediaType)
+
+        if (mediaTypeItem is TmdbPersonListObject) {
+            assertEquals("Will Smith", mediaTypeItem.name)
         } else {
-            throw Exception("mediaTypeItemFacebook is not an instance of TmdbPersonListObject")
+            throw Exception("mediaTypeItem is not an instance of TmdbPersonListObject")
         }
     }
 
