@@ -59,8 +59,7 @@ object TMDb {
     val findService: FindService by lazy { retrofit3.create(FindService::class.java) }
     val discoverService: DiscoverService by lazy { retrofit3.create(DiscoverService::class.java) }
 
-    //val listsService: DiscoverService by lazy { retrofit3.create(DiscoverService::class.java) }
-
+    val listService: ListService by lazy { retrofit4.create(ListService::class.java) }
     val authService: AuthService by lazy { retrofit4.create(AuthService::class.java) }
 
     private val mapWatchType = Types.newParameterizedType(Map::class.java, String::class.java, TmdbWatchProviderList::class.java)
