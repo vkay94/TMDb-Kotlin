@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.Moshi
 import de.vkay.api.tmdb.enumerations.PersonGender
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
-import de.vkay.api.tmdb.internals.hasNotKeys
+import de.vkay.api.tmdb.internals.hasKeys
 import de.vkay.api.tmdb.models.TmdbCredit
 import de.vkay.api.tmdb.models.TmdbCredit_CastJsonAdapter
 import de.vkay.api.tmdb.models.TmdbCredit_CrewJsonAdapter
@@ -27,9 +27,9 @@ internal class TmdbCreditJsonAdapter : JsonAdapter<TmdbCredit>() {
         // Cast:
         // Guest: has character_name
 
-        return if (!reader.hasNotKeys(true, "job")) {
+        return if (reader.hasKeys(true, "job")) {
             crewJsonAdapter.fromJson(reader)
-        } else if (!reader.hasNotKeys(true, "character_name")) {
+        } else if (reader.hasKeys(true, "character_name")) {
             guestJsonAdapter.fromJson(reader)
         } else {
             castJsonAdapter.fromJson(reader)

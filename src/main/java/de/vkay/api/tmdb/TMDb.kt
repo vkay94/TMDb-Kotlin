@@ -116,7 +116,6 @@ object TMDb {
             .add(TmdbWatchProviderMapListJsonAdapter())
             .add(TmdbNetworkImagesListJsonAdapter())
             .add(TmdbRequestTokenResponseJsonAdapterHelper())
-            .add(TmdbErrorJsonAdapter())
             .build()
     }
 
