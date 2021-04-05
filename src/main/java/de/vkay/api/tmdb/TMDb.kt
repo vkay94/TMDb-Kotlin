@@ -31,13 +31,14 @@ object TMDb {
     private const val DEFAULT_LANGUAGE = "en-US"
 
     private lateinit var client: OkHttpClient
+    lateinit var tmdbInterceptor: TMDbInterceptor
     private lateinit var apiKey: String
     private lateinit var bearerToken: String
 
     fun init(apiKey: String, bearerToken: String = "", client: OkHttpClient? = null) = apply {
         this.apiKey = apiKey
         this.bearerToken = bearerToken
-        this.client = client ?: defaultOkHttpClient(apiKey, bearerToken)
+        this.client = client ?: defaultOkHttpClient()
     }
 
     var accessToken: String? = null
@@ -140,12 +141,9 @@ object TMDb {
             .build()
     }
 
-    private val tmdbInterceptor: TMDbInterceptor by lazy {
-        return@lazy TMDbInterceptor(apiKey, bearerToken)
-    }
-
-    private fun defaultOkHttpClient(apiKey: String, bearerToken: String): OkHttpClient {
-        return OkHttpClient.Builder().addInterceptor(TMDbInterceptor(apiKey, bearerToken)).build()
+    private fun defaultOkHttpClient(): OkHttpClient {
+        tmdbInterceptor = TMDbInterceptor(apiKey, bearerToken)
+        return OkHttpClient.Builder().addInterceptor(tmdbInterceptor).build()
     }
 
     private val networks: Map<String, Int> by lazy {
