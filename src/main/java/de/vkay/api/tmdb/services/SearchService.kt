@@ -13,7 +13,7 @@ interface SearchService {
         @Query("language") language: String? = null,
         @Query("first_air_date_year") firstAirDateYear: Int? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbErrorResponse>
+    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
 
     @GET("search/movie")
     suspend fun movie(
@@ -21,31 +21,31 @@ interface SearchService {
         @Query("language") language: String? = null,
         @Query("year") year: Int? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbMovieListObject>, TmdbErrorResponse>
+    ): NetworkResponse<TmdbPage<TmdbMovieListObject>, TmdbError.DefaultError>
 
     @GET("search/person")
     suspend fun person(
         @Query("query") query: String,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbPersonListObject>, TmdbErrorResponse>
+    ): NetworkResponse<TmdbPage<TmdbPersonListObject>, TmdbError.DefaultError>
 
     @GET("search/multi")
     suspend fun multi(
         @Query("query") query: String,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<MediaTypeItem>, TmdbErrorResponse>
+    ): NetworkResponse<TmdbPage<MediaTypeItem>, TmdbError.DefaultError>
 
     @GET("search/keyword")
     suspend fun keyword(
         @Query("query") query: String,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbKeyword>, TmdbErrorResponse>
+    ): NetworkResponse<TmdbPage<TmdbKeyword>, TmdbError.DefaultError>
 
     @GET("search/company")
     suspend fun company(
         @Query("query") query: String,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbCompany>, TmdbErrorResponse>
+    ): NetworkResponse<TmdbPage<TmdbCompany>, TmdbError.DefaultError>
 }

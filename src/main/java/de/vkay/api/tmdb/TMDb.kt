@@ -101,6 +101,7 @@ object TMDb {
             /* Custom writer adapters */
             .add(TmdbTranslationData::class.java, TmdbTranslationDataJsonAdapter())
             .add(TmdbCredit::class.java, TmdbCreditJsonAdapter())
+            .add(TmdbError::class.java, TmdbErrorJsonAdapter())
             .add(TmdbFindJsonAdapter())
             .add(TmdbDateJsonAdapter())
 

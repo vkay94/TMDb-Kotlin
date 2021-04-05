@@ -7,6 +7,7 @@ import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.EpisodeGroupType
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
+import de.vkay.api.tmdb.models.TmdbCredit
 import de.vkay.api.tmdb.models.TmdbImage
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*

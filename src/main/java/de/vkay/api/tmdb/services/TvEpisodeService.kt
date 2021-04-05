@@ -19,21 +19,21 @@ interface TvEpisodeService {
         @Query("language") language: String? = null,
         @Query("append_to_response") appendToResponse: AppendToResponse? = null,
         @Query("include_image_language") imageLanguages: ImageLanguages? = null
-    ): NetworkResponse<TmdbEpisode, TmdbErrorResponse>
+    ): NetworkResponse<TmdbEpisode, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/credits")
     suspend fun credits(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int
-    ): NetworkResponse<TmdbEpisode.Credits, TmdbErrorResponse>
+    ): NetworkResponse<TmdbEpisode.Credits, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/images")
     suspend fun images(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int
-    ): NetworkResponse<TmdbEpisode.Images, TmdbErrorResponse>
+    ): NetworkResponse<TmdbEpisode.Images, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/translations")
     @ListMapParser
@@ -41,19 +41,19 @@ interface TvEpisodeService {
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int
-    ): NetworkResponse<List<TmdbTranslation>, TmdbErrorResponse>
+    ): NetworkResponse<List<TmdbTranslation>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/external_ids")
     suspend fun externalIds(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int
-    ): NetworkResponse<TmdbExternalIds, TmdbErrorResponse>
+    ): NetworkResponse<TmdbExternalIds, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/videos")
     suspend fun videos(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int
-    ): NetworkResponse<List<TmdbVideo>, TmdbErrorResponse>
+    ): NetworkResponse<List<TmdbVideo>, TmdbError.DefaultError>
 }

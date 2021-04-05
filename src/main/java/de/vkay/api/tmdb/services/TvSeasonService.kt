@@ -16,37 +16,37 @@ interface TvSeasonService {
         @Path("season_number") tvShowSeasonNumber: Int,
         @Query("language") language: String? = null,
         @Query("append_to_response") append: AppendToResponse? = null
-    ): NetworkResponse<TmdbSeason, TmdbErrorResponse>
+    ): NetworkResponse<TmdbSeason, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/external_ids")
     suspend fun externalIds(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<TmdbExternalIds, TmdbErrorResponse>
+    ): NetworkResponse<TmdbExternalIds, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/images")
     suspend fun images(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<TmdbSeason.Images, TmdbErrorResponse>
+    ): NetworkResponse<TmdbSeason.Images, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/credits")
     suspend fun credits(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<TmdbSeason.Credits, TmdbErrorResponse>
+    ): NetworkResponse<TmdbSeason.Credits, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/translations")
     @ListMapParser
     suspend fun translations(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<List<TmdbTranslation>, TmdbErrorResponse>
+    ): NetworkResponse<List<TmdbTranslation>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/videos")
     @ListMapParser
     suspend fun videos(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<List<TmdbVideo>, TmdbErrorResponse>
+    ): NetworkResponse<List<TmdbVideo>, TmdbError.DefaultError>
 }

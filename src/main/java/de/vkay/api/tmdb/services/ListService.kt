@@ -1,15 +1,26 @@
 package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
-import de.vkay.api.tmdb.models.TmdbErrorResponse
+import de.vkay.api.tmdb.internals.auth.TmdbListCreateResponse
+import de.vkay.api.tmdb.models.TmdbError
 import de.vkay.api.tmdb.models.TmdbList
-import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ListService {
 
     @GET("list/{list_id}")
     suspend fun details(
         @Path("list_id") id: Int
-    ): NetworkResponse<TmdbList, TmdbErrorResponse>
+    ): NetworkResponse<TmdbList, TmdbError.DefaultError>
+
+    @Headers("Content-Type: application/json;charset=utf-8")
+    @FormUrlEncoded
+    @POST("list")
+    suspend fun create(
+        @Field("name") name: String,
+        @Field("iso_639_1") languageCode: String,
+        @Field("description") description: String = "",
+        @Field("public") public: Boolean = true,
+        @Field("iso_3166_1") countryCode: String = ""
+    ): NetworkResponse<TmdbListCreateResponse, TmdbError>
 }
