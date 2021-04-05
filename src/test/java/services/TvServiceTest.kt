@@ -134,6 +134,9 @@ class TvServiceTest : BaseServiceTest() {
 
         assertNotNull(credits.cast.firstOrNull()?.profile)
         assertNotNull(credits.cast.firstOrNull()?.profile?.get(TmdbImage.Quality.W_500))
+
+        assertTrue(credits.cast.firstOrNull() is TmdbCredit.Cast)
+        assertTrue(credits.crew.firstOrNull() is TmdbCredit.Crew)
     }
 
     @Test
