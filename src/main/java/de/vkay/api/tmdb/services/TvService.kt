@@ -86,6 +86,35 @@ interface TvService {
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<Map<String, TmdbWatchProviderList>, TmdbError.DefaultError>
 
+    @GET("tv/latest")
+    suspend fun latest(
+        @Query("language") language: String? = null,
+    ): NetworkResponse<TmdbShow, TmdbError.DefaultError>
+
+    @GET("tv/airing_today")
+    suspend fun airingToday(
+        @Query("language") language: String? = null,
+        @Query("page") page: Int? = null
+    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+
+    @GET("tv/on_the_air")
+    suspend fun onTheAir(
+        @Query("language") language: String? = null,
+        @Query("page") page: Int? = null
+    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+
+    @GET("tv/popular")
+    suspend fun popular(
+        @Query("language") language: String? = null,
+        @Query("page") page: Int? = null
+    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+
+    @GET("tv/top_rated")
+    suspend fun topRated(
+        @Query("language") language: String? = null,
+        @Query("page") page: Int? = null
+    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+
     @GET("tv/{tv_id}/episode_groups")
     @ListMapParser
     suspend fun episodeGroups(

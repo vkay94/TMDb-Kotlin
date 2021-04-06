@@ -9,6 +9,7 @@ import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
 import de.vkay.api.tmdb.models.TmdbCredit
 import de.vkay.api.tmdb.models.TmdbImage
+import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
@@ -154,6 +155,36 @@ class TvServiceTest : BaseServiceTest() {
         assertEquals("Anime On Demand", german.rent!!.first().name)
         assertEquals(327, german.rent!!.first().id)
         assertNotNull(german.rent!!.first().logo)
+    }
+
+    @Test
+    fun `Get latest`(): Unit = runBlocking {
+        val latest = TMDb.showService.latest().invoke()!!
+        assertTrue(latest is TmdbShow)
+    }
+
+    @Test
+    fun `Get airing today`(): Unit = runBlocking {
+        val airing = TMDb.showService.airingToday().invoke()!!
+        assertTrue(airing.results.isNotEmpty())
+    }
+
+    @Test
+    fun `Get on the air`(): Unit = runBlocking {
+        val onTheAir = TMDb.showService.onTheAir().invoke()!!
+        assertTrue(onTheAir.results.isNotEmpty())
+    }
+
+    @Test
+    fun `Get popular`(): Unit = runBlocking {
+        val popular = TMDb.showService.popular().invoke()!!
+        assertTrue(popular.results.isNotEmpty())
+    }
+
+    @Test
+    fun `Get top rated`(): Unit = runBlocking {
+        val top = TMDb.showService.topRated().invoke()!!
+        assertTrue(top.results.isNotEmpty())
     }
 
     @Test
