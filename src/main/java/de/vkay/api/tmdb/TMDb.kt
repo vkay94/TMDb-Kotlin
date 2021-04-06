@@ -60,6 +60,7 @@ object TMDb {
     val findService: FindService by lazy { retrofit3.create(FindService::class.java) }
     val discoverService: DiscoverService by lazy { retrofit3.create(DiscoverService::class.java) }
     val trendingService: TrendingService by lazy { retrofit3.create(TrendingService::class.java) }
+    val collectionService: CollectionService by lazy { retrofit3.create(CollectionService::class.java) }
 
     val listService: ListService by lazy { retrofit4.create(ListService::class.java) }
     val authService: AuthService by lazy { retrofit4.create(AuthService::class.java) }
