@@ -101,7 +101,6 @@ object TMDb {
             /* Custom writer adapters */
             .add(TmdbTranslationData::class.java, TmdbTranslationDataJsonAdapter())
             .add(TmdbCredit::class.java, TmdbCreditJsonAdapter())
-            .add(TmdbError::class.java, TmdbErrorJsonAdapter())
             .add(TmdbFindJsonAdapter())
             .add(TmdbDateJsonAdapter())
 
@@ -116,6 +115,10 @@ object TMDb {
             .add(TmdbWatchProviderMapListJsonAdapter())
             .add(TmdbNetworkImagesListJsonAdapter())
             .add(TmdbRequestTokenResponseJsonAdapterHelper())
+
+            /* Error handling: for sealed class and those with annotations */
+            .add(TmdbError::class.java, TmdbErrorJsonAdapter())
+            .add(TmdbErrorListMapJsonAdapter())
             .build()
     }
 

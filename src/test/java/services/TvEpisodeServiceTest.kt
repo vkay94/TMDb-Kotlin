@@ -75,7 +75,8 @@ class TvEpisodeServiceTest : BaseServiceTest() {
         val episode = 1
         val externalIds = TMDb.episodeService.externalIds(SHOW_ID_MHA, season, episode).invoke()!!
 
-        assertNull(externalIds.tvdb)
+        assertEquals("tt5632458", externalIds.imdb)
+        assertEquals(5465180, externalIds.tvdb)
         assertNull(externalIds.twitter)
         assertNull(externalIds.facebook)
         assertNull(externalIds.instagram)
