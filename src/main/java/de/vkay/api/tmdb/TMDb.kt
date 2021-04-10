@@ -3,25 +3,21 @@ package de.vkay.api.tmdb
 import com.beust.klaxon.Klaxon
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
 import com.squareup.moshi.adapters.EnumJsonAdapter
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
 import de.vkay.api.tmdb.enumerations.EpisodeGroupType
 import de.vkay.api.tmdb.enumerations.PersonGender
 import de.vkay.api.tmdb.enumerations.ShowType
-import de.vkay.api.tmdb.internals.*
+import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.*
 import de.vkay.api.tmdb.internals.adapters.listmap.*
 import de.vkay.api.tmdb.internals.auth.TmdbRequestTokenResponseJsonAdapterHelper
 import de.vkay.api.tmdb.models.*
 import de.vkay.api.tmdb.services.*
-import okhttp3.*
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.*
-import kotlin.collections.HashMap
 
 
 object TMDb {
@@ -61,13 +57,10 @@ object TMDb {
     val discoverService: DiscoverService by lazy { retrofit3.create(DiscoverService::class.java) }
     val trendingService: TrendingService by lazy { retrofit3.create(TrendingService::class.java) }
     val collectionService: CollectionService by lazy { retrofit3.create(CollectionService::class.java) }
+    val certificationService: CertificationService by lazy { retrofit3.create(CertificationService::class.java) }
 
     val listService: ListService by lazy { retrofit4.create(ListService::class.java) }
     val authService: AuthService by lazy { retrofit4.create(AuthService::class.java) }
-
-    private val mapWatchType = Types.newParameterizedType(Map::class.java, String::class.java, TmdbWatchProviderList::class.java)
-    private val mapAdapter: JsonAdapter<Map<String, TmdbWatchProviderList>> =
-        Moshi.Builder().build().adapter(mapWatchType)
 
     private val moshiWithAdapters: Moshi by lazy {
         // println("TMDb: Create Moshi Builder")
@@ -98,7 +91,6 @@ object TMDb {
             )
 
             /* Helpers: Types / Maps */
-            .add(mapWatchType, mapAdapter)
 
             /* Custom writer adapters */
             .add(TmdbTranslationData::class.java, TmdbTranslationDataJsonAdapter())
