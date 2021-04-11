@@ -1,5 +1,6 @@
 package services
 
+import ACCESS_TOKEN
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.ListSortBy
@@ -8,6 +9,7 @@ import de.vkay.api.tmdb.models.TmdbShowListObject
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
+
 
 class ListServiceTest : BaseServiceTest() {
 
@@ -37,5 +39,19 @@ class ListServiceTest : BaseServiceTest() {
         val second = releaseDates[1]!!.date!!
 
         assertTrue(first.isBefore(second))
+    }
+
+    @Test
+    fun `Create and delete list`() = runBlocking {
+        TMDb.accessToken = ACCESS_TOKEN
+
+        val createdListId = TMDb.listService.create("My List", "de", "Desc").invoke()!!.id
+        val details = TMDb.listService.details(createdListId).invoke()!!
+
+        assertEquals("My List", details.name)
+        assertEquals("Desc", details.description)
+        assertEquals("de", details.languageCode)
+
+        assertTrue(TMDb.listService.delete(createdListId).invoke()!!)
     }
 }

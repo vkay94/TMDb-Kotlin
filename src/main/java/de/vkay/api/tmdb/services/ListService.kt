@@ -17,14 +17,20 @@ interface ListService {
         @Query("sort_by") sortBy: ListSortBy? = null
     ): NetworkResponse<TmdbList, TmdbError.DefaultError>
 
-    @Headers("Content-Type: application/json;charset=utf-8")
+    @Headers("Content-Type: application/x-www-form-urlencoded")
     @FormUrlEncoded
     @POST("list")
     suspend fun create(
         @Field("name") name: String,
         @Field("iso_639_1") languageCode: String,
-        @Field("description") description: String = "",
-        @Field("public") public: Boolean = true,
-        @Field("iso_3166_1") countryCode: String = ""
+        @Field("description") description: String? = null,
+        @Field("public") public: Boolean? = null,
+        @Field("iso_3166_1") countryCode: String? = null
     ): NetworkResponse<TmdbListCreateResponse, TmdbError>
+
+    @Headers("Content-Type: application/json;charset=utf-8")
+    @DELETE("list/{list_id}")
+    suspend fun delete(
+        @Path("list_id") id: Int
+    ): NetworkResponse<Boolean, TmdbError.DefaultError>
 }

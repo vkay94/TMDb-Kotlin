@@ -14,6 +14,7 @@ import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.*
 import de.vkay.api.tmdb.internals.adapters.listmap.*
 import de.vkay.api.tmdb.internals.auth.TmdbRequestTokenResponseJsonAdapterHelper
+import de.vkay.api.tmdb.internals.auth.TmdbStatusSuccessJsonAdapter
 import de.vkay.api.tmdb.models.*
 import de.vkay.api.tmdb.services.*
 import okhttp3.OkHttpClient
@@ -111,7 +112,8 @@ object TMDb {
             .add(TmdbNetworkImagesListJsonAdapter())
             .add(TmdbRequestTokenResponseJsonAdapterHelper())
 
-            /* Error handling: for sealed class and those with annotations */
+            /* Message + error handling: for sealed class and those with annotations */
+            .add(TmdbStatusSuccessJsonAdapter())
             .add(TmdbError::class.java, TmdbErrorJsonAdapter())
             .add(TmdbErrorListMapJsonAdapter())
             .build()
