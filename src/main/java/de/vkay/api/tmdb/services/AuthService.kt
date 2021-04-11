@@ -2,6 +2,7 @@ package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.internals.ListMapParser
+import de.vkay.api.tmdb.models.TmdbAccessTokenResponse
 import de.vkay.api.tmdb.models.TmdbError
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -19,8 +20,7 @@ interface AuthService {
     @Headers("Content-Type: application/json;charset=utf-8")
     @FormUrlEncoded
     @POST("auth/access_token")
-    @ListMapParser
     suspend fun accessToken(
         @Field("request_token") requestToken: String
-    ): NetworkResponse<String, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbAccessTokenResponse, TmdbError.DefaultError>
 }

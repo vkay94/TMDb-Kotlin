@@ -8,7 +8,9 @@ sealed class TmdbError {
     @JsonClass(generateAdapter = true)
     class PostError internal constructor(
         val errors: List<String>
-    ) : TmdbError()
+    ) : TmdbError() {
+        override fun toString(): String = errors.toString()
+    }
 
     @JsonClass(generateAdapter = true)
     class DefaultError internal constructor(
