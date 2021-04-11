@@ -1,7 +1,7 @@
 package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
-import de.vkay.api.tmdb.internals.ListMapParser
+import de.vkay.api.tmdb.internals.annotations.ListMap
 import de.vkay.api.tmdb.models.TmdbCollection
 import de.vkay.api.tmdb.models.TmdbError
 import de.vkay.api.tmdb.models.TmdbTranslation
@@ -24,7 +24,7 @@ interface CollectionService {
     ): NetworkResponse<TmdbCollection.Images, TmdbError.DefaultError>
 
     @GET("collection/{collection_id}/translations")
-    @ListMapParser
+    @ListMap
     suspend fun translations(
         @Path("collection_id") id: Int
     ): NetworkResponse<List<TmdbTranslation>, TmdbError.DefaultError>

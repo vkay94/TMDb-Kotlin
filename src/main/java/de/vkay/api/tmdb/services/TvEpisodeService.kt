@@ -3,7 +3,7 @@ package de.vkay.api.tmdb.services
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.ImageLanguages
-import de.vkay.api.tmdb.internals.ListMapParser
+import de.vkay.api.tmdb.internals.annotations.ListMap
 import de.vkay.api.tmdb.models.*
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -36,7 +36,7 @@ interface TvEpisodeService {
     ): NetworkResponse<TmdbEpisode.Images, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/translations")
-    @ListMapParser
+    @ListMap
     suspend fun translations(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,

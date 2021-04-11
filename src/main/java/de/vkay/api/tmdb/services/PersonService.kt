@@ -2,7 +2,7 @@ package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
-import de.vkay.api.tmdb.internals.ListMapParser
+import de.vkay.api.tmdb.internals.annotations.ListMap
 import de.vkay.api.tmdb.models.TmdbError
 import de.vkay.api.tmdb.models.TmdbExternalIds
 import de.vkay.api.tmdb.models.TmdbPerson
@@ -21,7 +21,7 @@ interface PersonService {
     ): NetworkResponse<TmdbPerson, TmdbError.DefaultError>
 
     @GET("person/{person_id}/translations")
-    @ListMapParser
+    @ListMap
     suspend fun translations(
         @Path("person_id") personId: Int
     ): NetworkResponse<List<TmdbTranslation>, TmdbError.DefaultError>

@@ -18,9 +18,4 @@ data class TmdbNetwork internal constructor(
         get() = if (!_logoPath.isNullOrBlank())
             TmdbImage(_logoPath, 0, 0, null)
         else null
-
-    @JsonClass(generateAdapter = true)
-    internal data class Images(
-        val logos: List<TmdbImage>
-    )
 }

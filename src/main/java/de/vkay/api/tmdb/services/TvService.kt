@@ -3,7 +3,7 @@ package de.vkay.api.tmdb.services
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.ImageLanguages
-import de.vkay.api.tmdb.internals.ListMapParser
+import de.vkay.api.tmdb.internals.annotations.ListMap
 import de.vkay.api.tmdb.models.*
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -40,7 +40,7 @@ interface TvService {
     ): NetworkResponse<TmdbShow.Images, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/videos")
-    @ListMapParser
+    @ListMap
     suspend fun videos(
         @Path("tv_id") tvShowId: Int,
         @Query("language") language: String? = null
@@ -52,25 +52,25 @@ interface TvService {
     ): NetworkResponse<TmdbExternalIds, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/keywords")
-    @ListMapParser
+    @ListMap
     suspend fun keywords(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<TmdbKeyword>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/content_ratings")
-    @ListMapParser
+    @ListMap
     suspend fun contentRatings(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<TmdbContentRating>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/alternative_titles")
-    @ListMapParser
+    @ListMap
     suspend fun alternativeTitles(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<TmdbAlternativeTitle>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/translations")
-    @ListMapParser
+    @ListMap
     suspend fun translations(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<TmdbTranslation>, TmdbError.DefaultError>
@@ -81,7 +81,7 @@ interface TvService {
     ): NetworkResponse<TmdbShow.Credits, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/watch/providers")
-    @ListMapParser
+    @ListMap
     suspend fun watchProviders(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<Map<String, TmdbWatchProviderList>, TmdbError.DefaultError>
@@ -116,7 +116,7 @@ interface TvService {
     ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/episode_groups")
-    @ListMapParser
+    @ListMap
     suspend fun episodeGroups(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<TmdbEpisodeGroupListObject>, TmdbError.DefaultError>

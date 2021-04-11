@@ -11,10 +11,12 @@ import de.vkay.api.tmdb.enumerations.ListSortBy
 import de.vkay.api.tmdb.enumerations.PersonGender
 import de.vkay.api.tmdb.enumerations.ShowType
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
-import de.vkay.api.tmdb.internals.adapters.*
-import de.vkay.api.tmdb.internals.adapters.listmap.*
-import de.vkay.api.tmdb.internals.auth.TmdbRequestTokenResponseJsonAdapterHelper
-import de.vkay.api.tmdb.internals.auth.TmdbStatusSuccessJsonAdapter
+import de.vkay.api.tmdb.internals.adapters.TmdbCreditJsonAdapter
+import de.vkay.api.tmdb.internals.adapters.TmdbDateJsonAdapter
+import de.vkay.api.tmdb.internals.adapters.TmdbErrorJsonAdapter
+import de.vkay.api.tmdb.internals.adapters.TmdbTranslationDataJsonAdapter
+import de.vkay.api.tmdb.internals.annotations.ErrorAnnotationAdapter
+import de.vkay.api.tmdb.internals.models.*
 import de.vkay.api.tmdb.models.*
 import de.vkay.api.tmdb.services.*
 import okhttp3.OkHttpClient
@@ -97,25 +99,23 @@ object TMDb {
             /* Custom writer adapters */
             .add(TmdbTranslationData::class.java, TmdbTranslationDataJsonAdapter())
             .add(TmdbCredit::class.java, TmdbCreditJsonAdapter())
-            .add(TmdbFindJsonAdapter())
+            .add(TmdbFindResult.ADAPTER)
             .add(TmdbDateJsonAdapter())
 
             /* Objects to lists such as videos, genres and keywords which have a single field */
-            .add(TmdbVideosListJsonAdapter())
-            .add(TmdbGenresListJsonAdapter())
-            .add(TmdbKeywordsListJsonAdapter())
-            .add(TmdbContentRatingsListJsonAdapter())
-            .add(TmdbEpisodeGroupsListJsonAdapter())
-            .add(TmdbAlternativeTitlesListJsonAdapter())
-            .add(TmdbTranslationsListJsonAdapter())
-            .add(TmdbWatchProviderMapListJsonAdapter())
-            .add(TmdbNetworkImagesListJsonAdapter())
-            .add(TmdbRequestTokenResponseJsonAdapterHelper())
+            .add(TmdbVideos.ADAPTER)
+            .add(TmdbGenres.ADAPTER)
+            .add(TmdbKeywords.ADAPTER)
+            .add(TmdbContentRatings.ADAPTER)
+            .add(TmdbEpisodeGroups.ADAPTER)
+            .add(TmdbAlternativeTitles.ADAPTER)
+            .add(TmdbTranslations.ADAPTER)
+            .add(TmdbWatchProviderListObject.ADAPTER)
+            .add(TmdbNetworkImages.ADAPTER)
 
             /* Message + error handling: for sealed class and those with annotations */
-            .add(TmdbStatusSuccessJsonAdapter())
             .add(TmdbError::class.java, TmdbErrorJsonAdapter())
-            .add(TmdbErrorListMapJsonAdapter())
+            .add(ErrorAnnotationAdapter())
             .build()
     }
 

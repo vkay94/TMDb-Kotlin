@@ -12,7 +12,7 @@ class AuthServiceTest : BaseServiceTest() {
         when (val response = TMDb.authService.requestToken()) {
             is NetworkResponse.Success -> {
                 println("Success")
-                println("Body: ${response.body}")
+                println("Body: ${response.body.requestToken}")
             }
             is NetworkResponse.NetworkError -> {
                 println("NetworkError")

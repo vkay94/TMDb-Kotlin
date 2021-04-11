@@ -2,9 +2,9 @@ package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.enumerations.ListSortBy
-import de.vkay.api.tmdb.internals.auth.TmdbListCreateResponse
 import de.vkay.api.tmdb.models.TmdbError
 import de.vkay.api.tmdb.models.TmdbList
+import de.vkay.api.tmdb.models.TmdbMessage
 import retrofit2.http.*
 
 interface ListService {
@@ -26,11 +26,11 @@ interface ListService {
         @Field("description") description: String? = null,
         @Field("public") public: Boolean? = null,
         @Field("iso_3166_1") countryCode: String? = null
-    ): NetworkResponse<TmdbListCreateResponse, TmdbError>
+    ): NetworkResponse<TmdbMessage.CreateList, TmdbError>
 
     @Headers("Content-Type: application/json;charset=utf-8")
     @DELETE("list/{list_id}")
     suspend fun delete(
         @Path("list_id") id: Int
-    ): NetworkResponse<Boolean, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbMessage, TmdbError.DefaultError>
 }

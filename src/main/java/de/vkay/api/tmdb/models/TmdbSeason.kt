@@ -3,7 +3,7 @@ package de.vkay.api.tmdb.models
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
-import de.vkay.api.tmdb.internals.ListMapParser
+import de.vkay.api.tmdb.internals.annotations.ListMap
 
 @JsonClass(generateAdapter = true)
 data class TmdbSeason internal constructor(
@@ -26,7 +26,7 @@ data class TmdbSeason internal constructor(
     @Json(name = "images")
     internal val _images: Images?,
     @Json(name = "videos")
-    @ListMapParser
+    @ListMap
     internal val _videos: List<TmdbVideo>?,
     @Json(name = "credits")
     internal val _credits: Credits?

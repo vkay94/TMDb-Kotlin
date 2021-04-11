@@ -45,13 +45,13 @@ class ListServiceTest : BaseServiceTest() {
     fun `Create and delete list`() = runBlocking {
         TMDb.accessToken = ACCESS_TOKEN
 
-        val createdListId = TMDb.listService.create("My List", "de", "Desc").invoke()!!.id
+        val createdListId = TMDb.listService.create("My List", "de", "Desc").invoke()!!.listId
         val details = TMDb.listService.details(createdListId).invoke()!!
 
         assertEquals("My List", details.name)
         assertEquals("Desc", details.description)
         assertEquals("de", details.languageCode)
 
-        assertTrue(TMDb.listService.delete(createdListId).invoke()!!)
+        assertTrue(TMDb.listService.delete(createdListId).invoke()!!.success)
     }
 }
