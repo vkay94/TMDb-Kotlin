@@ -2,6 +2,7 @@ package de.vkay.api.tmdb.models
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import de.vkay.api.tmdb.enumerations.ListSortBy
 
 @JsonClass(generateAdapter = true)
 data class TmdbList internal constructor(
@@ -23,8 +24,8 @@ data class TmdbList internal constructor(
     val results: List<MediaTypeItem>,
     val revenue: Int,
     val runtime: Int,
-//    @Json(name = "sort_by")
-//    val sortBy: Discover.SortBy,
+    @Json(name = "sort_by")
+    val sortBy: ListSortBy,
     @Json(name = "total_pages")
     val totalPages: Int,
     @Json(name = "total_results")

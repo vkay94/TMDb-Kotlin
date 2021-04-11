@@ -1,6 +1,7 @@
 package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
+import de.vkay.api.tmdb.enumerations.ListSortBy
 import de.vkay.api.tmdb.internals.auth.TmdbListCreateResponse
 import de.vkay.api.tmdb.models.TmdbError
 import de.vkay.api.tmdb.models.TmdbList
@@ -10,7 +11,10 @@ interface ListService {
 
     @GET("list/{list_id}")
     suspend fun details(
-        @Path("list_id") id: Int
+        @Path("list_id") id: Int,
+        @Query("language") language: String? = null,
+        @Query("page") page: Int? = null,
+        @Query("sort_by") sortBy: ListSortBy? = null
     ): NetworkResponse<TmdbList, TmdbError.DefaultError>
 
     @Headers("Content-Type: application/json;charset=utf-8")

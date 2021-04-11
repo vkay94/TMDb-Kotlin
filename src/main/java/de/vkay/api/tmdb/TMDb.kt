@@ -7,6 +7,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.EnumJsonAdapter
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
 import de.vkay.api.tmdb.enumerations.EpisodeGroupType
+import de.vkay.api.tmdb.enumerations.ListSortBy
 import de.vkay.api.tmdb.enumerations.PersonGender
 import de.vkay.api.tmdb.enumerations.ShowType
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
@@ -65,10 +66,6 @@ object TMDb {
     private val moshiWithAdapters: Moshi by lazy {
         // println("TMDb: Create Moshi Builder")
         return@lazy Moshi.Builder()
-            .add(PersonGender::class.java, EnumValueJsonAdapter.create(PersonGender::class.java)
-                .withUnknownFallback(PersonGender.OTHER))
-            .add(EpisodeGroupType::class.java, EnumValueJsonAdapter.create(EpisodeGroupType::class.java)
-                .withUnknownFallback(EpisodeGroupType.UNDEFINED))
             .add(
                 PolymorphicJsonAdapterFactory.of(MediaTypeItem::class.java, "media_type")
                     .withSubtype(TmdbShowListObject::class.java, "tv")
@@ -77,18 +74,22 @@ object TMDb {
             )
 
             /* Enums with fallbacks */
+            .add(PersonGender::class.java, EnumValueJsonAdapter.create(PersonGender::class.java)
+                .withUnknownFallback(PersonGender.OTHER))
+            .add(EpisodeGroupType::class.java, EnumValueJsonAdapter.create(EpisodeGroupType::class.java)
+                .withUnknownFallback(EpisodeGroupType.UNDEFINED))
             .add(
                 TmdbVideo.Site::class.java, EnumJsonAdapter.create(TmdbVideo.Site::class.java)
-                    .withUnknownFallback(TmdbVideo.Site.UNDEFINED)
-            )
+                    .withUnknownFallback(TmdbVideo.Site.UNDEFINED))
             .add(
                 TmdbVideo.Type::class.java, EnumJsonAdapter.create(TmdbVideo.Type::class.java)
-                    .withUnknownFallback(TmdbVideo.Type.UNDEFINED)
-            )
+                    .withUnknownFallback(TmdbVideo.Type.UNDEFINED))
             .add(
                 ShowType::class.java, EnumJsonAdapter.create(ShowType::class.java)
-                    .withUnknownFallback(ShowType.UNKNOWN)
-            )
+                    .withUnknownFallback(ShowType.UNKNOWN))
+            .add(
+                ListSortBy::class.java, EnumJsonAdapter.create(ListSortBy::class.java)
+                    .withUnknownFallback(ListSortBy.UNKNOWN))
 
             /* Helpers: Types / Maps */
 
