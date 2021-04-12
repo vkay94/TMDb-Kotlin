@@ -23,6 +23,19 @@ data class TmdbMessage internal constructor(
     )
 
     @JsonClass(generateAdapter = true)
+    data class AccessToken(
+        @Json(name = "access_token")
+        val accessToken: String,
+        @Json(name = "account_id")
+        val accountId: String,
+        @Json(name = "status_message")
+        val message: String,
+        val success: Boolean
+
+
+    )
+
+    @JsonClass(generateAdapter = true)
     data class CreateList internal constructor(
         @Json(name = "id")
         val listId: Int,

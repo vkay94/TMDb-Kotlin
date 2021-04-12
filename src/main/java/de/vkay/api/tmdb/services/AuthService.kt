@@ -1,13 +1,9 @@
 package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
-import de.vkay.api.tmdb.models.TmdbAccessTokenResponse
 import de.vkay.api.tmdb.models.TmdbError
 import de.vkay.api.tmdb.models.TmdbMessage
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 
 interface AuthService {
@@ -21,5 +17,12 @@ interface AuthService {
     @POST("auth/access_token")
     suspend fun accessToken(
         @Field("request_token") requestToken: String
-    ): NetworkResponse<TmdbAccessTokenResponse, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbMessage.AccessToken, TmdbError.DefaultError>
+
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @FormUrlEncoded
+    @DELETE("auth/access_token")
+    suspend fun deleteAccessToken(
+        @Field("access_token") accessToken: String
+    ): NetworkResponse<TmdbMessage, TmdbError.DefaultError>
 }
