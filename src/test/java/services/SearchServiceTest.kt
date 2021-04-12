@@ -81,7 +81,7 @@ class SearchServiceTest : BaseServiceTest() {
     fun `Search for networks (locally)`() = runBlocking {
         val searchResult = TMDb.searchNetworks("Netflix")
         val searchResult2 = TMDb.searchNetworks("crun")
-        println(searchResult)
-        println(searchResult2)
+        assertEquals(213, searchResult["Netflix"])
+        assertEquals(1112, searchResult2["Crunchyroll"])
     }
 }

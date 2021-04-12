@@ -30,7 +30,7 @@ class ListServiceTest : BaseServiceTest() {
         val votes = TMDb.listService.details(LIST_ID_ANIME, sortBy = ListSortBy.VOTE_AVERAGE_DESC).invoke()!!
             .results.map { if (it is TmdbShowListObject) it.voteAverage else 0.0 }
 
-        assertTrue(votes[0] > votes[1])
+        assertTrue(votes[0] >= votes[1])
 
         val releaseDates = TMDb.listService.details(LIST_ID_ANIME_MOVIES, sortBy = ListSortBy.RELEASE_DATE_ASC).invoke()!!
             .results.map { if (it is TmdbMovieListObject) it.releaseDate else null }

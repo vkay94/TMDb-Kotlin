@@ -21,6 +21,8 @@ class TMDbTest {
 
         assertEquals("https://www.themoviedb.org/person/123?language=en-US", TMDb.personLink(123))
         assertEquals("https://www.themoviedb.org/person/123?language=fr-FR", TMDb.personLink(123, "fr-FR"))
+
+        assertEquals("https://www.themoviedb.org/auth/access?request_token=requestToken", TMDb.authLink("requestToken"))
     }
 
     @Test
