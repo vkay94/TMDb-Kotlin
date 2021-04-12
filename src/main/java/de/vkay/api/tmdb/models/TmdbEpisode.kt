@@ -3,7 +3,7 @@ package de.vkay.api.tmdb.models
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
-import de.vkay.api.tmdb.internals.annotations.ListMap
+import de.vkay.api.tmdb.internals.annotations.ResultsList
 
 @JsonClass(generateAdapter = true)
 data class TmdbEpisode internal constructor(
@@ -29,7 +29,7 @@ data class TmdbEpisode internal constructor(
     @Json(name = "credits")
     internal val _credits: Credits?,
     @Json(name = "videos")
-    @ListMap
+    @ResultsList
     internal val _videos: List<TmdbVideo>?
 
 ) : MediaTypeItem(MediaType.EPISODE) {

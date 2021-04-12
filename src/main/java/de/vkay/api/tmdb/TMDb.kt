@@ -16,7 +16,9 @@ import de.vkay.api.tmdb.internals.adapters.TmdbDateJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.TmdbErrorJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.TmdbTranslationDataJsonAdapter
 import de.vkay.api.tmdb.internals.annotations.ErrorAnnotationAdapter
-import de.vkay.api.tmdb.internals.models.*
+import de.vkay.api.tmdb.internals.annotations.ResultsListAdapter
+import de.vkay.api.tmdb.internals.models.TmdbFindResult
+import de.vkay.api.tmdb.internals.models.TmdbWatchProviderListObject
 import de.vkay.api.tmdb.models.*
 import de.vkay.api.tmdb.services.*
 import okhttp3.OkHttpClient
@@ -103,30 +105,22 @@ object TMDb {
             .add(TmdbFindResult.ADAPTER)
             .add(TmdbDateJsonAdapter())
 
-            /* Objects to lists such as videos, genres and keywords which have a single field */
-            .add(TmdbVideos.ADAPTER)
-            .add(TmdbGenres.ADAPTER)
-            .add(TmdbKeywords.ADAPTER)
-            .add(TmdbContentRatings.ADAPTER)
-            .add(TmdbEpisodeGroups.ADAPTER)
-            .add(TmdbAlternativeTitles.ADAPTER)
-            .add(TmdbTranslations.ADAPTER)
+            /* Objects to lists such as watch providers */
             .add(TmdbWatchProviderListObject.ADAPTER)
-            .add(TmdbNetworkImages.ADAPTER)
 
             /* Message + error handling: for sealed class and those with annotations */
             .add(TmdbError::class.java, TmdbErrorJsonAdapter())
             .add(ErrorAnnotationAdapter())
+            .add(ResultsListAdapter.INSTANCE)
             .build()
     }
 
     private val retrofit3: Retrofit by lazy {
-        // println("TMDb: Create Retrofit")
         return@lazy Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create(moshiWithAdapters))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addCallAdapterFactory(NetworkResponseAdapterFactory())
+            .addConverterFactory(MoshiConverterFactory.create(moshiWithAdapters))
             .client(client)
             .build()
     }

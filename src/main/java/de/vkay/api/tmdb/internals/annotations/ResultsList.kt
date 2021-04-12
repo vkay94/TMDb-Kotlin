@@ -2,9 +2,7 @@ package de.vkay.api.tmdb.internals.annotations
 
 import com.squareup.moshi.JsonQualifier
 
-/**
- * Used for List and Map transformations
- */
 @Retention(AnnotationRetention.RUNTIME)
+@Target(AnnotationTarget.FUNCTION, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD)
 @JsonQualifier
-internal annotation class ListMap
+annotation class ResultsList

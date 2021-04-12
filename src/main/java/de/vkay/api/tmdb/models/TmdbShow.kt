@@ -5,7 +5,7 @@ import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
 import de.vkay.api.tmdb.enumerations.ShowType
-import de.vkay.api.tmdb.internals.annotations.ListMap
+import de.vkay.api.tmdb.internals.annotations.ResultsList
 
 @JsonClass(generateAdapter = true)
 class TmdbShow internal constructor(
@@ -59,13 +59,13 @@ class TmdbShow internal constructor(
     internal val _similar: TmdbPage<TmdbShowListObject>?,
     @Json(name = "external_ids")
     val externalIds: TmdbExternalIds?,
+    @ResultsList
     @Json(name = "videos")
-    @ListMap
     internal val _videos: List<TmdbVideo>?,
     @Json(name = "credits")
     internal val _credits: Credits?,
     @Json(name = "keywords")
-    @ListMap
+    @ResultsList
     internal val _keywords: List<TmdbKeyword>?,
     @Json(name = "backdrop_path")
     internal val _backgroundPath: String?

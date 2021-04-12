@@ -9,43 +9,6 @@ import de.vkay.api.tmdb.models.TmdbError
  */
 internal class ErrorAnnotationAdapter {
 
-    //region ListMap
-
-    @ListMap
-    @FromJson
-    fun normal(input: String?): TmdbError? {
-        return null
-    }
-
-    @ToJson
-    fun normal(@ListMap input: TmdbError): String {
-        throw UnsupportedOperationException()
-    }
-
-    @ListMap
-    @FromJson
-    fun default(input: String?): TmdbError.DefaultError? {
-        return null
-    }
-
-    @ToJson
-    fun default(@ListMap input: TmdbError.DefaultError): String {
-        throw UnsupportedOperationException()
-    }
-
-    @ListMap
-    @FromJson
-    fun post(input: String?): TmdbError.PostError? {
-        return null
-    }
-
-    @ToJson
-    fun post(@ListMap input: TmdbError.PostError): String {
-        throw UnsupportedOperationException()
-    }
-
-    //endregion
-
     //region StatusMessage
 
     @StatusMessage
@@ -115,6 +78,43 @@ internal class ErrorAnnotationAdapter {
 
     @ToJson
     fun postOther(@OtherCases input: TmdbError.PostError): String {
+        throw UnsupportedOperationException()
+    }
+
+    //endregion
+
+    //region ResultsList
+
+    @ResultsList
+    @FromJson
+    fun normalR(input: String?): TmdbError? {
+        return null
+    }
+
+    @ToJson
+    fun normalR(@ResultsList input: TmdbError): String {
+        throw UnsupportedOperationException()
+    }
+
+    @ResultsList
+    @FromJson
+    fun defaultR(input: String?): TmdbError.DefaultError? {
+        return null
+    }
+
+    @ToJson
+    fun defaultR(@ResultsList input: TmdbError.DefaultError): String {
+        throw UnsupportedOperationException()
+    }
+
+    @ResultsList
+    @FromJson
+    fun postR(input: String?): TmdbError.PostError? {
+        return null
+    }
+
+    @ToJson
+    fun postR(@ResultsList input: TmdbError.PostError): String {
         throw UnsupportedOperationException()
     }
 
