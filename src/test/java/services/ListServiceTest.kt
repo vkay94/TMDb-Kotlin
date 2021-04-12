@@ -54,4 +54,25 @@ class ListServiceTest : BaseServiceTest() {
 
         assertTrue(TMDb.listService.delete(createdListId).invoke()!!.success)
     }
+
+    @Test
+    fun `Create, update and delete list`() = runBlocking {
+        TMDb.accessToken = ACCESS_TOKEN
+
+        val listId = TMDb.listService.create("My List", "de").invoke()!!.listId
+        val updateResponse = TMDb.listService.update(
+            listId,"My New Name", "New Desc", false
+        ).invoke()!!
+
+        assertTrue(updateResponse.success)
+
+        val details = TMDb.listService.details(listId).invoke()!!
+
+        assertEquals(listId, details.id)
+        assertEquals("My New Name", details.name)
+        assertEquals("New Desc", details.description)
+        assertEquals(false, details.public)
+
+        assertTrue(TMDb.listService.delete(listId).invoke()!!.success)
+    }
 }

@@ -28,6 +28,17 @@ interface ListService {
         @Field("iso_3166_1") countryCode: String? = null
     ): NetworkResponse<TmdbMessage.CreateList, TmdbError>
 
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @FormUrlEncoded
+    @PUT("list/{list_id}")
+    suspend fun update(
+        @Path("list_id") id: Int,
+        @Field("name") name: String,
+        @Field("description") description: String? = null,
+        @Field("public") public: Boolean? = null,
+        @Field("sort_by") sortBy: ListSortBy? = null
+    ): NetworkResponse<TmdbMessage, TmdbError>
+
     @Headers("Content-Type: application/json;charset=utf-8")
     @DELETE("list/{list_id}")
     suspend fun delete(
