@@ -33,4 +33,25 @@ data class TmdbCollection internal constructor(
         val backdrops: List<TmdbImage>,
         val posters: List<TmdbImage>
     )
+
+    @JsonClass(generateAdapter = true)
+    data class BelongsTo(
+        @Json(name = "id")
+        val collectionId: Int,
+        val name: String,
+        @Json(name = "poster_path")
+        internal val _posterPath: String?,
+        @Json(name = "backdrop_path")
+        internal val _backgroundPath: String?
+    ) {
+        val poster: TmdbImage?
+            get() = if (!_posterPath.isNullOrBlank())
+                TmdbImage(_posterPath, 0, 0, null)
+            else null
+
+        val background: TmdbImage?
+            get() = if (!_backgroundPath.isNullOrBlank())
+                TmdbImage(_backgroundPath, 0, 0, null)
+            else null
+    }
 }

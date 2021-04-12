@@ -52,6 +52,7 @@ object TMDb {
     val showService: TvService by lazy { retrofit3.create(TvService::class.java) }
     val seasonService: TvSeasonService by lazy { retrofit3.create(TvSeasonService::class.java) }
     val episodeService: TvEpisodeService by lazy { retrofit3.create(TvEpisodeService::class.java) }
+    val movieService: MovieService by lazy { retrofit3.create(MovieService::class.java) }
     val personService: PersonService by lazy { retrofit3.create(PersonService::class.java) }
     val genreService: GenreService by lazy { retrofit3.create(GenreService::class.java) }
     val keywordService: KeywordService by lazy { retrofit3.create(KeywordService::class.java) }
