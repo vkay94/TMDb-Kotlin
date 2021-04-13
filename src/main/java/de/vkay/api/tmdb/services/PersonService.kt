@@ -18,7 +18,7 @@ interface PersonService {
     ): NetworkResponse<TmdbPerson, TmdbError.DefaultError>
 
     @GET("person/{person_id}/translations")
-    @ResultsList
+    @ResultsList("translations")
     suspend fun translations(
         @Path("person_id") personId: Int
     ): NetworkResponse<List<TmdbTranslation>, TmdbError.DefaultError>

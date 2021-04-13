@@ -16,7 +16,7 @@ interface CompanyService {
     ) : NetworkResponse<TmdbCompany, TmdbError.DefaultError>
 
     @GET("company/{company_id}/images")
-    @ResultsList
+    @ResultsList("logos")
     suspend fun logos(
         @Path("company_id") id: Int
     ) : NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>

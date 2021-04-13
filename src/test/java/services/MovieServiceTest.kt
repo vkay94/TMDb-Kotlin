@@ -25,7 +25,6 @@ class MovieServiceTest : BaseServiceTest() {
         assertEquals("en", details.originalLanguage)
         assertEquals("Avengers: Endgame", details.originalTitle)
         assertTrue(details.overview.contains("After the devastating events of Avengers: Infinity War, "))
-        assertEquals(349f, details.popularity)
         assertNotNull(details.poster)
         assertEquals("US", details.productionCountries.first().countryCode)
         assertEquals(420, details.productionCompanies.first().id)

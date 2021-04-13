@@ -71,7 +71,7 @@ interface TvService {
     ): NetworkResponse<List<TmdbAlternativeTitle>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/translations")
-    @ResultsList
+    @ResultsList("translations")
     suspend fun translations(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<TmdbTranslation>, TmdbError.DefaultError>

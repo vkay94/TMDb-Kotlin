@@ -5,6 +5,14 @@ import com.squareup.moshi.JsonClass
 
 sealed class TmdbError {
 
+    companion object {
+        fun isAnyError(clazz: Class<*>): Boolean {
+            return clazz == TmdbError::class.java
+                    || clazz == DefaultError::class.java
+                    || clazz == PostError::class.java
+        }
+    }
+
     @JsonClass(generateAdapter = true)
     class PostError internal constructor(
         val errors: List<String>

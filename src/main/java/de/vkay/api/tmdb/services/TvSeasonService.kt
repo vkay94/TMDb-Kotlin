@@ -37,7 +37,7 @@ interface TvSeasonService {
     ): NetworkResponse<TmdbSeason.Credits, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/translations")
-    @ResultsList
+    @ResultsList("translations")
     suspend fun translations(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,

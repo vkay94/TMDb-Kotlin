@@ -16,7 +16,7 @@ interface NetworkService {
     ) : NetworkResponse<TmdbNetwork, TmdbError.DefaultError>
 
     @GET("network/{network_id}/images")
-    @ResultsList
+    @ResultsList("logos")
     suspend fun logos(
         @Path("network_id") id: Int
     ) : NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>

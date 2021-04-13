@@ -10,13 +10,13 @@ import retrofit2.http.Query
 interface GenreService {
 
     @GET("genre/tv/list")
-    @ResultsList
+    @ResultsList("genres")
     suspend fun tv(
         @Query("language") language: String? = null
     ): NetworkResponse<List<TmdbGenre>, TmdbError.DefaultError>
 
     @GET("genre/movie/list")
-    @ResultsList
+    @ResultsList("genres")
     suspend fun movie(
         @Query("language") language: String? = null
     ): NetworkResponse<List<TmdbGenre>, TmdbError.DefaultError>

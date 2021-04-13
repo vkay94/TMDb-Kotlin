@@ -24,7 +24,7 @@ interface CollectionService {
     ): NetworkResponse<TmdbCollection.Images, TmdbError.DefaultError>
 
     @GET("collection/{collection_id}/translations")
-    @ResultsList
+    @ResultsList("translations")
     suspend fun translations(
         @Path("collection_id") id: Int
     ): NetworkResponse<List<TmdbTranslation>, TmdbError.DefaultError>

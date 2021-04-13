@@ -1,18 +1,19 @@
 package de.vkay.api.tmdb.internals.annotations
 
 import com.squareup.moshi.*
+import de.vkay.api.tmdb.models.TmdbError
 import java.lang.reflect.Type
+import kotlin.streams.toList
 
 /**
  * Reference: [Stackoverflow](https://stackoverflow.com/questions/53344033/moshi-parse-single-object-or-list-of-objects-kotlin)
  */
 class ResultsListAdapter(
     private val delegateAdapter: JsonAdapter<List<Any>>,
+    private val fieldName: String
 ) : JsonAdapter<Any>() {
 
-    private val options: JsonReader.Options = JsonReader.Options.of(
-        "results", "translations", "genres", "logos", "profiles"
-    )
+    private val options: JsonReader.Options = JsonReader.Options.of(fieldName)
 
     companion object {
         val INSTANCE = ResultsListFactory()
@@ -42,11 +43,20 @@ class ResultsListAdapter(
         override fun create(type: Type, annotations: Set<Annotation>, moshi: Moshi): JsonAdapter<Any>? {
             val delegateAnnotations = Types.nextAnnotations(annotations, ResultsList::class.java) ?: return null
 
-            if (Types.getRawType(type) != List::class.java)
-                throw IllegalArgumentException("Only lists may be annotated with @ResultsList. Found: $type")
+            val rawType = Types.getRawType(type)
+
+            if (!TmdbError.isAnyError(rawType)) {
+                if (Types.getRawType(type) != List::class.java )
+                    throw IllegalArgumentException("Only lists may be annotated with @ResultsList. Found: $type")
+            }
+
+            val resListAnno = annotations.stream().filter { it is ResultsList }.toList().firstOrNull()
+                ?: throw IllegalArgumentException("List has no valid fieldName: $type")
+
+            val fieldName = (resListAnno as ResultsList).fieldName
 
             val delegateAdapter: JsonAdapter<List<Any>> = moshi.adapter(type, delegateAnnotations)
-            return ResultsListAdapter(delegateAdapter)
+            return ResultsListAdapter(delegateAdapter, fieldName)
         }
     }
 }
