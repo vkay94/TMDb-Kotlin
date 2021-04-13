@@ -41,14 +41,14 @@ class TvEpisodeServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Get images`() = runBlocking {
+    fun `Get previews`() = runBlocking {
         val season = 1
         val episode = 1
 
-        val images = TMDb.episodeService.images(SHOW_ID_MHA, season, episode).invoke()!!
-        assertFalse(images.stills.isEmpty())
+        val previews = TMDb.episodeService.previews(SHOW_ID_MHA, season, episode).invoke()!!
+        assertFalse(previews.isEmpty())
 
-        val firstImage = images.stills.firstOrNull()
+        val firstImage = previews.firstOrNull()
         assertNotNull(firstImage)
         assertNotEquals(0, firstImage?.height)
         assertNotEquals(0, firstImage?.width)
@@ -83,12 +83,29 @@ class TvEpisodeServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Get credits`() = runBlocking {
+    fun `Get crew`() = runBlocking {
         val season = 1
         val episode = 1
-        val credits = TMDb.episodeService.credits(SHOW_ID_MHA, season, episode).invoke()!!
 
-        assertTrue(credits.cast.isNotEmpty())
-        assertTrue(credits.crew.isEmpty())
+        val crew = TMDb.episodeService.crew(SHOW_ID_MHA, season, episode).invoke()!!
+        assertTrue(crew.isEmpty())
+    }
+
+    @Test
+    fun `Get cast`() = runBlocking {
+        val season = 1
+        val episode = 1
+
+        val cast = TMDb.episodeService.cast(SHOW_ID_MHA, season, episode).invoke()!!
+        assertTrue(cast.isNotEmpty())
+    }
+
+    @Test
+    fun `Get guest stars`() = runBlocking {
+        val season = 1
+        val episode = 1
+
+        val guests = TMDb.episodeService.guestStars(SHOW_ID_MHA, season, episode).invoke()!!
+        assertFalse(guests.isEmpty())
     }
 }

@@ -21,11 +21,15 @@ class CollectionServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Get images`() = runBlocking {
-        val images = TMDb.collectionService.images(COLLECTION_ID_AVENGERS).invoke()!!
+    fun `Get posters`() = runBlocking {
+        val posters = TMDb.collectionService.posters(COLLECTION_ID_AVENGERS).invoke()!!
+        assertTrue(posters.isNotEmpty())
+    }
 
-        assertTrue(images.posters.isNotEmpty())
-        assertTrue(images.backdrops.isNotEmpty())
+    @Test
+    fun `Get backgrounds`() = runBlocking {
+        val backgrounds = TMDb.collectionService.backgrounds(COLLECTION_ID_AVENGERS).invoke()!!
+        assertTrue(backgrounds.isNotEmpty())
     }
 
     @Test

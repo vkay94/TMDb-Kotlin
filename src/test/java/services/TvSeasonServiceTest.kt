@@ -37,7 +37,7 @@ class TvSeasonServiceTest : BaseServiceTest() {
     @Test
     fun `Get posters`() = runBlocking {
         val season = 1
-        val posters = TMDb.seasonService.images(SHOW_ID_TBBT, season).invoke()!!.posters
+        val posters = TMDb.seasonService.posters(SHOW_ID_TBBT, season).invoke()!!
         assertTrue(posters.isNotEmpty())
     }
 

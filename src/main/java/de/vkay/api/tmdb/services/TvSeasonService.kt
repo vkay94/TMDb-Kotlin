@@ -25,16 +25,25 @@ interface TvSeasonService {
     ): NetworkResponse<TmdbExternalIds, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/images")
-    suspend fun images(
+    @ResultsList("posters")
+    suspend fun posters(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<TmdbSeason.Images, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/credits")
-    suspend fun credits(
+    @ResultsList("crew")
+    suspend fun crew(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<TmdbSeason.Credits, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbCredit.Crew>, TmdbError.DefaultError>
+
+    @GET("tv/{tv_id}/season/{season_number}/credits")
+    @ResultsList("cast")
+    suspend fun cast(
+        @Path("tv_id") tvShowId: Int,
+        @Path("season_number") tvShowSeasonNumber: Int,
+    ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/translations")
     @ResultsList("translations")

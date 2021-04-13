@@ -8,7 +8,7 @@ import kotlin.streams.toList
 /**
  * Reference: [Stackoverflow](https://stackoverflow.com/questions/53344033/moshi-parse-single-object-or-list-of-objects-kotlin)
  */
-class ResultsListAdapter(
+internal class ResultsListAdapter(
     private val delegateAdapter: JsonAdapter<List<Any>>,
     private val fieldName: String
 ) : JsonAdapter<Any>() {
@@ -20,7 +20,7 @@ class ResultsListAdapter(
     }
 
     override fun fromJson(reader: JsonReader): Any? {
-        var results: List<Any>? = null
+        var results: List<Any> = emptyList()
         reader.beginObject()
         while (reader.hasNext()) {
             when (reader.selectName(options)) {
@@ -29,7 +29,7 @@ class ResultsListAdapter(
                     reader.skipName()
                     reader.skipValue()
                 }
-                else -> results = delegateAdapter.fromJson(reader)
+                else -> results = delegateAdapter.fromJson(reader) ?: emptyList()
             }
         }
         reader.endObject()

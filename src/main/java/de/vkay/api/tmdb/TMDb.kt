@@ -11,7 +11,6 @@ import de.vkay.api.tmdb.enumerations.ListSortBy
 import de.vkay.api.tmdb.enumerations.PersonGender
 import de.vkay.api.tmdb.enumerations.ShowType
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
-import de.vkay.api.tmdb.internals.adapters.TmdbCreditJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.TmdbDateJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.TmdbErrorJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.TmdbTranslationDataJsonAdapter
@@ -50,7 +49,7 @@ object TMDb {
             field = value
         }
 
-    fun onlineCondition(condition: () -> Boolean) {
+    fun onlineCondition(condition: () -> Boolean) = apply {
         tmdbInterceptor.onlineCondition(condition)
     }
 
@@ -114,7 +113,7 @@ object TMDb {
 
             /* Custom writer adapters */
             .add(TmdbTranslationData::class.java, TmdbTranslationDataJsonAdapter())
-            .add(TmdbCredit::class.java, TmdbCreditJsonAdapter())
+            // .add(TmdbCredit::class.java, TmdbCreditJsonAdapter())
             .add(TmdbFindResult.ADAPTER)
             .add(TmdbDateJsonAdapter())
 

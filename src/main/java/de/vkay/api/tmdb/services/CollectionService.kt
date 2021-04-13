@@ -4,6 +4,7 @@ import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.models.TmdbCollection
 import de.vkay.api.tmdb.models.TmdbError
+import de.vkay.api.tmdb.models.TmdbImage
 import de.vkay.api.tmdb.models.TmdbTranslation
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,10 +19,18 @@ interface CollectionService {
     ): NetworkResponse<TmdbCollection, TmdbError.DefaultError>
 
     @GET("collection/{collection_id}/images")
-    suspend fun images(
+    @ResultsList("posters")
+    suspend fun posters(
         @Path("collection_id") id: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<TmdbCollection.Images, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
+
+    @GET("collection/{collection_id}/images")
+    @ResultsList("backdrops")
+    suspend fun backgrounds(
+        @Path("collection_id") id: Int,
+        @Query("language") language: String? = null
+    ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     @GET("collection/{collection_id}/translations")
     @ResultsList("translations")

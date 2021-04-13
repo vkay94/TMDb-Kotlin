@@ -29,7 +29,7 @@ data class TmdbCollection internal constructor(
         else null
 
     @JsonClass(generateAdapter = true)
-    data class Images(
+    internal data class Images(
         val backdrops: List<TmdbImage>,
         val posters: List<TmdbImage>
     )

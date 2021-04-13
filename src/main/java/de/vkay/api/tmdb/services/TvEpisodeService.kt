@@ -22,18 +22,36 @@ interface TvEpisodeService {
     ): NetworkResponse<TmdbEpisode, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/credits")
-    suspend fun credits(
+    @ResultsList("cast")
+    suspend fun cast(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int
-    ): NetworkResponse<TmdbEpisode.Credits, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
+
+    @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/credits")
+    @ResultsList("crew")
+    suspend fun crew(
+        @Path("tv_id") tvShowId: Int,
+        @Path("season_number") tvShowSeasonNumber: Int,
+        @Path("episode_number") tvShowEpisodeNumber: Int
+    ): NetworkResponse<List<TmdbCredit.Crew>, TmdbError.DefaultError>
+
+    @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/credits")
+    @ResultsList("guest_stars")
+    suspend fun guestStars(
+        @Path("tv_id") tvShowId: Int,
+        @Path("season_number") tvShowSeasonNumber: Int,
+        @Path("episode_number") tvShowEpisodeNumber: Int
+    ): NetworkResponse<List<TmdbCredit.Guest>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/images")
-    suspend fun images(
+    @ResultsList("stills")
+    suspend fun previews(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int
-    ): NetworkResponse<TmdbEpisode.Images, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/translations")
     @ResultsList("translations")

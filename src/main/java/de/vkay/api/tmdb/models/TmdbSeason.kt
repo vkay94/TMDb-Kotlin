@@ -45,12 +45,12 @@ data class TmdbSeason internal constructor(
     val crew: List<TmdbCredit.Crew> = _credits?.crew ?: emptyList()
 
     @JsonClass(generateAdapter = true)
-    data class Images(
+    internal data class Images(
         val posters: List<TmdbImage>
     )
 
     @JsonClass(generateAdapter = true)
-    data class Credits(
+    internal data class Credits(
         val cast: List<TmdbCredit.Cast>,
         val crew: List<TmdbCredit.Crew>
     )

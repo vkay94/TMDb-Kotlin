@@ -109,13 +109,13 @@ class TmdbShow internal constructor(
 
 
     @JsonClass(generateAdapter = true)
-    data class Images(
+    internal data class Images(
         val backdrops: List<TmdbImage>,
         val posters: List<TmdbImage>
     )
 
     @JsonClass(generateAdapter = true)
-    data class Credits(
+    internal data class Credits(
         val cast: List<TmdbCredit.Cast>,
         val crew: List<TmdbCredit.Crew>,
     )

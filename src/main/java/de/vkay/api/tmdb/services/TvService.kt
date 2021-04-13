@@ -35,10 +35,18 @@ interface TvService {
     ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/images")
-    suspend fun images(
+    @ResultsList("posters")
+    suspend fun posters(
         @Path("tv_id") tvShowId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<TmdbShow.Images, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
+
+    @GET("tv/{tv_id}/images")
+    @ResultsList("backdrops")
+    suspend fun backgrounds(
+        @Path("tv_id") tvShowId: Int,
+        @Query("language") language: String? = null
+    ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/videos")
     @ResultsList
@@ -77,9 +85,16 @@ interface TvService {
     ): NetworkResponse<List<TmdbTranslation>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/credits")
-    suspend fun credits(
+    @ResultsList("cast")
+    suspend fun cast(
         @Path("tv_id") tvShowId: Int
-    ): NetworkResponse<TmdbShow.Credits, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
+
+    @GET("tv/{tv_id}/credits")
+    @ResultsList("crew")
+    suspend fun crew(
+        @Path("tv_id") tvShowId: Int
+    ): NetworkResponse<List<TmdbCredit.Crew>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/watch/providers")
     @OtherCases

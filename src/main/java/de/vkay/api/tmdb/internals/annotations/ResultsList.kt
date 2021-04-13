@@ -5,4 +5,4 @@ import com.squareup.moshi.JsonQualifier
 @Retention(AnnotationRetention.RUNTIME)
 @Target(AnnotationTarget.FUNCTION, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD)
 @JsonQualifier
-annotation class ResultsList(val fieldName: String = "results")
+internal annotation class ResultsList(val fieldName: String = "results")

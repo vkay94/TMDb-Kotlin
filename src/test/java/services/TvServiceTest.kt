@@ -8,7 +8,6 @@ import de.vkay.api.tmdb.enumerations.EpisodeGroupType
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
 import de.vkay.api.tmdb.models.TmdbCredit
-import de.vkay.api.tmdb.models.TmdbImage
 import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
@@ -72,10 +71,15 @@ class TvServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Get images`(): Unit = runBlocking {
-        val images = TMDb.showService.images(SHOW_ID_MHA).invoke()!!
-        assertTrue(images.backdrops.isNotEmpty())
-        assertTrue(images.posters.isNotEmpty())
+    fun `Get posters`(): Unit = runBlocking {
+        val posters = TMDb.showService.posters(SHOW_ID_MHA).invoke()!!
+        assertTrue(posters.isNotEmpty())
+    }
+
+    @Test
+    fun `Get backgrounds`(): Unit = runBlocking {
+        val backgrounds = TMDb.showService.backgrounds(SHOW_ID_MHA).invoke()!!
+        assertTrue(backgrounds.isNotEmpty())
     }
 
     @Test
@@ -87,7 +91,7 @@ class TvServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Get similars`(): Unit = runBlocking {
+    fun `Get similar`(): Unit = runBlocking {
         val similar = TMDb.showService.similar(SHOW_ID_MHA).invoke()!!
         assertTrue(similar.results.isNotEmpty())
     }
@@ -129,16 +133,19 @@ class TvServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Get credits`(): Unit = runBlocking {
-        val credits = TMDb.showService.credits(SHOW_ID_BLACK_CLOVER).invoke()!!
-        assertTrue(credits.cast.isNotEmpty())
-        assertTrue(credits.crew.isNotEmpty())
+    fun `Get cast`(): Unit = runBlocking {
+        val cast = TMDb.showService.cast(SHOW_ID_BLACK_CLOVER).invoke()!!
+        assertTrue(cast.isNotEmpty())
+        assertNotNull(cast.firstOrNull()?.profile)
+        assertTrue(cast.firstOrNull() is TmdbCredit.Cast)
+    }
 
-        assertNotNull(credits.cast.firstOrNull()?.profile)
-        assertNotNull(credits.cast.firstOrNull()?.profile?.get(TmdbImage.Quality.W_500))
-
-        assertTrue(credits.cast.firstOrNull() is TmdbCredit.Cast)
-        assertTrue(credits.crew.firstOrNull() is TmdbCredit.Crew)
+    @Test
+    fun `Get crew`(): Unit = runBlocking {
+        val crew = TMDb.showService.crew(SHOW_ID_BLACK_CLOVER).invoke()!!
+        assertTrue(crew.isNotEmpty())
+        assertNull(crew.firstOrNull()?.profile)
+        assertTrue(crew.firstOrNull() is TmdbCredit.Crew)
     }
 
     @Test

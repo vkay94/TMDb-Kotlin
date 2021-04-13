@@ -37,7 +37,7 @@ data class TmdbPerson internal constructor(
     val isDead: Boolean = deathDay != null
 
     @JsonClass(generateAdapter = true)
-    data class Images(
+    internal data class Images(
         val profiles: List<TmdbImage>
     )
 }

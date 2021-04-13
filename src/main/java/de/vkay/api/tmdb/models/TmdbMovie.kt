@@ -43,10 +43,7 @@ data class TmdbMovie internal constructor(
     @Json(name = "production_countries")
     val productionCountries: List<TmdbCountry>,
     @Json(name = "spoken_languages")
-    val spokenLanguages: List<TmdbLanguage>,
-
-
-    // TODO: production_country, spoken_languages
+    val spokenLanguages: List<TmdbLanguage>
 ) : MediaTypeItem(MediaType.MOVIE) {
 
     val background: TmdbImage?
