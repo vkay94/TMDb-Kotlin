@@ -24,6 +24,7 @@ import de.vkay.api.tmdb.services.*
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 
 object TMDb {
@@ -48,6 +49,18 @@ object TMDb {
             tmdbInterceptor.setAccessToken(value)
             field = value
         }
+
+    fun onlineCondition(condition: () -> Boolean) {
+        tmdbInterceptor.onlineCondition(condition)
+    }
+
+    fun onlineCache(duration: Long, unit: TimeUnit) = apply {
+        tmdbInterceptor.onlineCache(duration, unit)
+    }
+
+    fun offlineCache(duration: Long, unit: TimeUnit) = apply {
+        tmdbInterceptor.offlineCache(duration, unit)
+    }
 
     val configurationService: ConfigurationService by lazy { retrofit3.create(ConfigurationService::class.java) }
     val searchService: SearchService by lazy { retrofit3.create(SearchService::class.java) }
