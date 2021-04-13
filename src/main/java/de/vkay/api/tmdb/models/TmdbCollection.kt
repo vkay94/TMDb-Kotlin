@@ -9,7 +9,7 @@ data class TmdbCollection internal constructor(
     val name: String,
     val overview: String,
     @Json(name = "parts")
-    val movies: List<TmdbMovieListObject>,
+    val movies: List<TmdbMovie.Slim>,
     @Json(name = "poster_path")
     internal val _posterPath: String?,
     @Json(name = "backdrop_path")

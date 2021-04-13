@@ -46,7 +46,7 @@ class TmdbShow internal constructor(
     val voteAverage: Double,
     @Json(name = "vote_count")
     val voteCount: Int,
-    val seasons: List<TmdbSeasonListObject>,
+    val seasons: List<TmdbSeason.Slim>,
     val tagline: String,
     val type: ShowType,
     @Json(name = "spoken_languages")
@@ -54,9 +54,9 @@ class TmdbShow internal constructor(
     @Json(name = "images")
     internal val _images: Images?,
     @Json(name = "recommendations")
-    internal val _recommendations: TmdbPage<TmdbShowListObject>?,
+    internal val _recommendations: TmdbPage<Slim>?,
     @Json(name = "similar")
-    internal val _similar: TmdbPage<TmdbShowListObject>?,
+    internal val _similar: TmdbPage<Slim>?,
     @Json(name = "external_ids")
     val externalIds: TmdbExternalIds?,
     @ResultsList
@@ -75,8 +75,8 @@ class TmdbShow internal constructor(
     val backgrounds: List<TmdbImage> = _images?.backdrops ?: emptyList()
     val posters: List<TmdbImage> = _images?.posters ?: emptyList()
 
-    val recommendations: List<TmdbShowListObject> = _recommendations?.results ?: emptyList()
-    val similar: List<TmdbShowListObject> = _similar?.results ?: emptyList()
+    val recommendations: List<Slim> = _recommendations?.results ?: emptyList()
+    val similar: List<Slim> = _similar?.results ?: emptyList()
 
     val cast: List<TmdbCredit.Cast> = _credits?.cast ?: emptyList()
     val crew: List<TmdbCredit.Crew> = _credits?.crew ?: emptyList()
@@ -119,4 +119,37 @@ class TmdbShow internal constructor(
         val cast: List<TmdbCredit.Cast>,
         val crew: List<TmdbCredit.Crew>,
     )
+
+    @JsonClass(generateAdapter = true)
+    data class Slim internal constructor(
+        val id: Int,
+        @Json(name = "name")
+        val title: String,
+        @Json(name = "backdrop_path")
+        internal val _backgroundPath: String?,
+        @Json(name = "first_air_date")
+        val releaseDate: TmdbDate?,
+
+        @Json(name = "original_name")
+        val originalTitle: String,
+        @Json(name = "poster_path")
+        internal val _posterPath: String?,
+        @Json(name = "genre_ids")
+        val genreIds: List<Int>,
+        @Json(name = "vote_average")
+        val voteAverage: Double,
+        val popularity: Double
+
+    ) : MediaTypeItem(MediaType.TV) {
+
+        val background: TmdbImage?
+            get() = if (!_backgroundPath.isNullOrBlank())
+                TmdbImage(_backgroundPath)
+            else null
+
+        val poster: TmdbImage?
+            get() = if (!_posterPath.isNullOrBlank())
+                TmdbImage(_posterPath)
+            else null
+    }
 }

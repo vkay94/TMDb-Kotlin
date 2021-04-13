@@ -4,9 +4,9 @@ import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.ExternalId
 import de.vkay.api.tmdb.enumerations.MediaType
-import de.vkay.api.tmdb.models.TmdbEpisodeListObject
-import de.vkay.api.tmdb.models.TmdbPersonListObject
-import de.vkay.api.tmdb.models.TmdbShowListObject
+import de.vkay.api.tmdb.models.TmdbEpisode
+import de.vkay.api.tmdb.models.TmdbPerson
+import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -19,7 +19,7 @@ class FindServiceTest : BaseServiceTest() {
         val mediaTypeItem = TMDb.findService.find(IMDB_SHOW_BLACK_CLOVER, ExternalId.IMDB).invoke()!!
         assertEquals(MediaType.TV, mediaTypeItem.mediaType)
 
-        if (mediaTypeItem is TmdbShowListObject) {
+        if (mediaTypeItem is TmdbShow.Slim) {
             assertEquals(SHOW_ID_BLACK_CLOVER, mediaTypeItem.id)
             assertEquals("Black Clover", mediaTypeItem.title)
         } else {
@@ -32,7 +32,7 @@ class FindServiceTest : BaseServiceTest() {
         val mediaTypeItem = TMDb.findService.find(IMDB_SHOW_BLACK_CLOVER, ExternalId.IMDB).invoke()!!
         assertEquals(MediaType.TV, mediaTypeItem.mediaType)
 
-        if (mediaTypeItem is TmdbShowListObject) {
+        if (mediaTypeItem is TmdbShow.Slim) {
             assertEquals(SHOW_ID_BLACK_CLOVER, mediaTypeItem.id)
             assertEquals("Black Clover", mediaTypeItem.title)
         } else {
@@ -45,7 +45,7 @@ class FindServiceTest : BaseServiceTest() {
         val mediaTypeItem = TMDb.findService.find(IMDB_SHOW_BLACK_CLOVER_EPISODE_167, ExternalId.IMDB).invoke()!!
         assertEquals(MediaType.EPISODE, mediaTypeItem.mediaType)
 
-        if (mediaTypeItem is TmdbEpisodeListObject) {
+        if (mediaTypeItem is TmdbEpisode.Slim) {
             assertEquals(2701437, mediaTypeItem.id)
             assertEquals(167, mediaTypeItem.episodeNumber)
         } else {
@@ -58,7 +58,7 @@ class FindServiceTest : BaseServiceTest() {
         val mediaTypeItem = TMDb.findService.find(IMDB_PERSON_WILL_SMITH, ExternalId.IMDB).invoke()!!
         assertEquals(MediaType.PERSON, mediaTypeItem.mediaType)
 
-        if (mediaTypeItem is TmdbPersonListObject) {
+        if (mediaTypeItem is TmdbPerson.Slim) {
             assertEquals("Will Smith", mediaTypeItem.name)
         } else {
             throw Exception("mediaTypeItem is not an instance of TmdbPersonListObject")
@@ -70,7 +70,7 @@ class FindServiceTest : BaseServiceTest() {
         val mediaTypeItem = TMDb.findService.find(INSTAGRAM_WILL_SMITH, ExternalId.INSTAGRAM).invoke()!!
         assertEquals(MediaType.PERSON, mediaTypeItem.mediaType)
 
-        if (mediaTypeItem is TmdbPersonListObject) {
+        if (mediaTypeItem is TmdbPerson.Slim) {
             assertEquals("Will Smith", mediaTypeItem.name)
         } else {
             throw Exception("mediaTypeItem is not an instance of TmdbPersonListObject")
@@ -82,7 +82,7 @@ class FindServiceTest : BaseServiceTest() {
         val mediaTypeItem = TMDb.findService.find(FACEBOOK_PERSON_WILL_SMITH, ExternalId.FACEBOOK).invoke()!!
         assertEquals(MediaType.PERSON, mediaTypeItem.mediaType)
 
-        if (mediaTypeItem is TmdbPersonListObject) {
+        if (mediaTypeItem is TmdbPerson.Slim) {
             assertEquals("Will Smith", mediaTypeItem.name)
         } else {
             throw Exception("mediaTypeItem is not an instance of TmdbPersonListObject")

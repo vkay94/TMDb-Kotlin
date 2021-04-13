@@ -3,9 +3,9 @@ package services
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.MediaType
-import de.vkay.api.tmdb.models.TmdbMovieListObject
-import de.vkay.api.tmdb.models.TmdbPersonListObject
-import de.vkay.api.tmdb.models.TmdbShowListObject
+import de.vkay.api.tmdb.models.TmdbMovie
+import de.vkay.api.tmdb.models.TmdbPerson
+import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
@@ -47,9 +47,9 @@ class SearchServiceTest : BaseServiceTest() {
     @Test
     fun `Search multi`() = runBlocking {
         val searchPage = TMDb.searchService.multi(QUERY_WILL_SMITH).invoke()!!.results
-        val tvResults = searchPage.filterIsInstance<TmdbShowListObject>()
-        val movieResults = searchPage.filterIsInstance<TmdbMovieListObject>()
-        val personResults = searchPage.filterIsInstance<TmdbPersonListObject>()
+        val tvResults = searchPage.filterIsInstance<TmdbShow.Slim>()
+        val movieResults = searchPage.filterIsInstance<TmdbMovie.Slim>()
+        val personResults = searchPage.filterIsInstance<TmdbPerson.Slim>()
 
         assertEquals(2, tvResults.size)
         assertTrue(movieResults.isNotEmpty())

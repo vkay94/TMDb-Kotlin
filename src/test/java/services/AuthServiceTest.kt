@@ -9,10 +9,10 @@ class AuthServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get request token`() = runBlocking {
-        when (val response = TMDb.authService.requestToken()) {
+        when (val response = TMDb.seasonService.details(SHOW_ID_HORIMIYA, 1)) {
             is NetworkResponse.Success -> {
                 println("Success")
-                println("Body: ${response.body.requestToken}")
+                println("Body: ${response.body}")
             }
             is NetworkResponse.NetworkError -> {
                 println("NetworkError")

@@ -17,7 +17,7 @@ import de.vkay.api.tmdb.internals.adapters.TmdbTranslationDataJsonAdapter
 import de.vkay.api.tmdb.internals.annotations.ErrorAnnotationAdapter
 import de.vkay.api.tmdb.internals.annotations.ResultsListAdapter
 import de.vkay.api.tmdb.internals.models.TmdbFindResult
-import de.vkay.api.tmdb.internals.models.TmdbWatchProviderListObject
+import de.vkay.api.tmdb.internals.models.WatchProviderListObj
 import de.vkay.api.tmdb.models.*
 import de.vkay.api.tmdb.services.*
 import okhttp3.OkHttpClient
@@ -86,9 +86,9 @@ object TMDb {
         return@lazy Moshi.Builder()
             .add(
                 PolymorphicJsonAdapterFactory.of(MediaTypeItem::class.java, "media_type")
-                    .withSubtype(TmdbShowListObject::class.java, "tv")
-                    .withSubtype(TmdbMovieListObject::class.java, "movie")
-                    .withSubtype(TmdbPersonListObject::class.java, "person")
+                    .withSubtype(TmdbShow.Slim::class.java, "tv")
+                    .withSubtype(TmdbMovie.Slim::class.java, "movie")
+                    .withSubtype(TmdbPerson.Slim::class.java, "person")
             )
 
             /* Enums with fallbacks */
@@ -118,7 +118,7 @@ object TMDb {
             .add(TmdbDateJsonAdapter())
 
             /* Objects to lists such as watch providers */
-            .add(TmdbWatchProviderListObject.ADAPTER)
+            .add(WatchProviderListObj.ADAPTER)
 
             /* Message + error handling: for sealed class and those with annotations */
             .add(TmdbError::class.java, TmdbErrorJsonAdapter())

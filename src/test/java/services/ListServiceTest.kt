@@ -4,8 +4,8 @@ import ACCESS_TOKEN
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.ListSortBy
-import de.vkay.api.tmdb.models.TmdbMovieListObject
-import de.vkay.api.tmdb.models.TmdbShowListObject
+import de.vkay.api.tmdb.models.TmdbMovie
+import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
@@ -20,7 +20,7 @@ class ListServiceTest : BaseServiceTest() {
         assertEquals("Animes", details.name)
         assertEquals(0, details.revenue)
         assertNotNull(details.background)
-        assertNotNull(details.poster)
+        assertNull(details.poster)
         assertEquals(ListSortBy.ORIGINAL_ORDER_ASC, details.sortBy)
     }
 
@@ -28,12 +28,12 @@ class ListServiceTest : BaseServiceTest() {
     fun `Get list with sort_by (public)`() = runBlocking {
         // Release dates is not supported for TV shows
         val votes = TMDb.listService.details(LIST_ID_ANIME, sortBy = ListSortBy.VOTE_AVERAGE_DESC).invoke()!!
-            .results.map { if (it is TmdbShowListObject) it.voteAverage else 0.0 }
+            .results.map { if (it is TmdbShow.Slim) it.voteAverage else 0.0 }
 
         assertTrue(votes[0] >= votes[1])
 
         val releaseDates = TMDb.listService.details(LIST_ID_ANIME_MOVIES, sortBy = ListSortBy.RELEASE_DATE_ASC).invoke()!!
-            .results.map { if (it is TmdbMovieListObject) it.releaseDate else null }
+            .results.map { if (it is TmdbMovie.Slim) it.releaseDate else null }
 
         val first = releaseDates[0]!!.date!!
         val second = releaseDates[1]!!.date!!

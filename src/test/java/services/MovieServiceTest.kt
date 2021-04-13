@@ -1,8 +1,11 @@
 package services
 
+import com.haroldadmin.cnradapter.NetworkResponse
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
+import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
+import de.vkay.api.tmdb.models.TmdbCredit
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
@@ -38,5 +41,121 @@ class MovieServiceTest : BaseServiceTest() {
         assertFalse(details.video)
         assertTrue(details.voteAverage > 5)
         assertTrue(details.voteCount > 17_000)
+    }
+
+    // TODo
+
+    @Test
+    fun `Get external ids`() = runBlocking {
+        val externalIds = TMDb.movieService.externalIds(MOVIE_ID_AVENGERS_ENDGAME).invoke()
+        assertNotNull({externalIds?.imdb})
+        assertNotNull({externalIds?.tvdb})
+    }
+
+    @Test
+    fun `Get added fields data`() = runBlocking {
+        // TODO
+    }
+
+    @Test
+    fun `Get appended info`(): Unit = runBlocking {
+        // TODO
+    }
+
+    @Test
+    fun `Get posters`(): Unit = runBlocking {
+        val posters = TMDb.movieService.posters(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(posters.isNotEmpty())
+    }
+
+    @Test
+    fun `Get backgrounds`(): Unit = runBlocking {
+        val backgrounds = TMDb.movieService.backgrounds(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(backgrounds.isNotEmpty())
+    }
+
+    @Test
+    fun `Get recommendations`(): Unit = runBlocking {
+        val recommendations = TMDb.movieService.recommendations(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(recommendations.results.isNotEmpty())
+
+        assertEquals(MediaType.MOVIE, recommendations.results.first().mediaType)
+    }
+
+    @Test
+    fun `Get similar`(): Unit = runBlocking {
+        val similar = TMDb.movieService.similar(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(similar.results.isNotEmpty())
+    }
+
+    @Test
+    fun `Get videos`(): Unit = runBlocking {
+        val videos = TMDb.movieService.videos(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(videos.isNotEmpty())
+
+        val videosGerman = TMDb.movieService.videos(MOVIE_ID_AVENGERS_ENDGAME, "de-DE").invoke()!!
+        assertTrue(videosGerman.isNotEmpty())
+    }
+
+    @Test
+    fun `Get keywords`(): Unit = runBlocking {
+        val keywords = TMDb.movieService.keywords(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(keywords.isNotEmpty())
+    }
+
+    @Test
+    fun `Get alternative titles`(): Unit = runBlocking {
+        val alternativeTitles = TMDb.movieService.alternativeTitles(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(alternativeTitles.isNotEmpty())
+    }
+
+    @Test
+    fun `Get translations`(): Unit = runBlocking {
+        val translations = TMDb.movieService.translations(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(translations.isNotEmpty())
+    }
+
+    @Test
+    fun `Get cast`(): Unit = runBlocking {
+        val cast = TMDb.movieService.cast(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(cast.isNotEmpty())
+        assertNotNull(cast.firstOrNull()?.profile)
+        assertTrue(cast.firstOrNull() is TmdbCredit.Cast)
+    }
+
+    @Test
+    fun `Get crew`(): Unit = runBlocking {
+        val crew = TMDb.movieService.crew(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(crew.isNotEmpty())
+        assertNotNull(crew.firstOrNull()?.profile)
+        assertTrue(crew.firstOrNull() is TmdbCredit.Crew)
+    }
+
+    @Test
+    fun `Get JustWatch providers`(): Unit = runBlocking {
+        val countryMap = TMDb.movieService.watchProviders(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(countryMap.containsKey("DE"))
+
+        val german = countryMap.getValue("DE")
+        assertEquals("https://www.themoviedb.org/movie/299534-avengers-endgame/watch?locale=DE", german.link)
+        assertFalse(german.flatrate!!.isEmpty())
+        assertFalse(german.buy!!.isEmpty())
+        assertNull(german.rent)
+
+        assertEquals("Disney Plus", german.flatrate!!.first().name)
+        assertEquals(337, german.flatrate!!.first().id)
+        assertNotNull(german.flatrate!!.first().logo)
+    }
+
+    @Test
+    fun `Fail unavailable id`() = runBlocking {
+        val invResponse = TMDb.movieService.details(987654321)
+        assertTrue(invResponse is NetworkResponse.ServerError)
+
+        with(invResponse as NetworkResponse.ServerError) {
+            assertEquals(404, code)
+            assertEquals(34, body?.code)
+            assertEquals("The resource you requested could not be found.", body?.message)
+        }
     }
 }

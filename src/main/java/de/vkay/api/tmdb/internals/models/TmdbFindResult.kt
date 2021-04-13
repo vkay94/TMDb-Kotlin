@@ -10,19 +10,19 @@ import de.vkay.api.tmdb.models.*
 @JsonClass(generateAdapter = true)
 internal data class TmdbFindResult internal constructor(
     @Json(name = "movie_results")
-    val movies: List<TmdbMovieListObject>,
+    val movies: List<TmdbMovie.Slim>,
 
     @Json(name = "tv_results")
-    val shows: List<TmdbShowListObject>,
+    val shows: List<TmdbShow.Slim>,
 
     @Json(name = "person_results")
-    val persons: List<TmdbPersonListObject>,
+    val persons: List<TmdbPerson.Slim>,
 
     @Json(name = "tv_season_results")
-    val seasons: List<TmdbSeasonListObject>,
+    val seasons: List<TmdbSeason.Slim>,
 
     @Json(name = "tv_episode_results")
-    val episodes: List<TmdbEpisodeListObject>
+    val episodes: List<TmdbEpisode.Slim>
 ) {
     companion object {
         internal val ADAPTER = object : Any() {

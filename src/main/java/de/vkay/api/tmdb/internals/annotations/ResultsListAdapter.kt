@@ -10,7 +10,7 @@ import kotlin.streams.toList
  */
 internal class ResultsListAdapter(
     private val delegateAdapter: JsonAdapter<List<Any>>,
-    private val fieldName: String
+    fieldName: String
 ) : JsonAdapter<Any>() {
 
     private val options: JsonReader.Options = JsonReader.Options.of(fieldName)
@@ -19,7 +19,7 @@ internal class ResultsListAdapter(
         val INSTANCE = ResultsListFactory()
     }
 
-    override fun fromJson(reader: JsonReader): Any? {
+    override fun fromJson(reader: JsonReader): Any {
         var results: List<Any> = emptyList()
         reader.beginObject()
         while (reader.hasNext()) {

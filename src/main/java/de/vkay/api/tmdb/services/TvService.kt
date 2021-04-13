@@ -25,14 +25,14 @@ interface TvService {
         @Path("tv_id") tvShowId: Int,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/similar")
     suspend fun similar(
         @Path("tv_id") tvShowId: Int,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/images")
     @ResultsList("posters")
@@ -100,7 +100,7 @@ interface TvService {
     @OtherCases
     suspend fun watchProviders(
         @Path("tv_id") tvShowId: Int
-    ): NetworkResponse<Map<String, TmdbWatchProviderList>, TmdbError.DefaultError>
+    ): NetworkResponse<Map<String, TmdbWatchProviderListObject>, TmdbError.DefaultError>
 
     @GET("tv/latest")
     suspend fun latest(
@@ -111,25 +111,25 @@ interface TvService {
     suspend fun airingToday(
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
     @GET("tv/on_the_air")
     suspend fun onTheAir(
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
     @GET("tv/popular")
     suspend fun popular(
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
     @GET("tv/top_rated")
     suspend fun topRated(
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
     @GET("tv/{tv_id}/episode_groups")
     @ResultsList

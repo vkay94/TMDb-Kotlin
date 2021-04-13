@@ -13,7 +13,7 @@ interface SearchService {
         @Query("language") language: String? = null,
         @Query("first_air_date_year") firstAirDateYear: Int? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbShowListObject>, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
     @GET("search/movie")
     suspend fun movie(
@@ -21,14 +21,14 @@ interface SearchService {
         @Query("language") language: String? = null,
         @Query("year") year: Int? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbMovieListObject>, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
 
     @GET("search/person")
     suspend fun person(
         @Query("query") query: String,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
-    ): NetworkResponse<TmdbPage<TmdbPersonListObject>, TmdbError.DefaultError>
+    ): NetworkResponse<TmdbPage<TmdbPerson.Slim>, TmdbError.DefaultError>
 
     @GET("search/multi")
     suspend fun multi(
