@@ -1,0 +1,55 @@
+site_name: TMDb-Kotlin
+site_url: https://github.com/vkay94/TMDb-Kotlin
+repo_name: TMDb-Kotlin
+repo_url: https://github.com/vkay94/TMDb-Kotlin
+site_description: "Wrapper for TheM ovie Database API endpoints in Kotlin"
+site_author: Viktor Krez
+remote_branch: gh-pages
+edit_uri: ""
+
+copyright: 'Copyright &copy; 2021 Viktor Krez'
+
+theme:
+  name: material
+  palette:
+    primary: 'indigo'
+    accent: 'white'
+  features:
+    # - navigation.tabs
+    - navigation.expand
+
+extra_css:
+  - 'css/app.css'
+
+plugins:
+  - search
+
+markdown_extensions:
+  - smarty
+  - codehilite:
+      guess_lang: false
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tilde
+  - pymdownx.tabbed
+  - tables
+  - pymdownx.details
+
+# Page tree
+nav:
+  - Quick start: index.md
+  - Structure: 
+      - Overview: structure/index.md
+      - Core classes: structure-core-classes.md
+  - Services: services.md
+  - Recipes: recipes.md
+  - Future plans: future-plans.md
