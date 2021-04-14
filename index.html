@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Wrapper for TheM ovie Database API endpoints in Kotlin">
+        <meta name="description" content="Wrapper for The Movie Database API endpoints in Kotlin">
       
       
       
@@ -319,6 +319,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tmdb-attribution-requirements" class="md-nav__link">
+    TMDb Attribution Requirements
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -421,7 +428,7 @@
   
     <li class="md-nav__item">
       <a href="future-plans/" class="md-nav__link">
-        Future plans
+        Future plans / ToDo's
       </a>
     </li>
   
@@ -532,6 +539,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tmdb-attribution-requirements" class="md-nav__link">
+    TMDb Attribution Requirements
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -546,23 +560,24 @@
                 
                 
                 <h1 id="tmdb-kotlin">TMDb-Kotlin<a class="headerlink" href="#tmdb-kotlin" title="Permanent link">&para;</a></h1>
-<p>Hello folks, this is the documentation page for the TMDb wrapper <em>TMDb-Kotlin</em> is written in and for 
+<p>Hello folks, this is the <a href="https://www.themoviedb.org/documentation/api">TMDb API</a> documentation page for the TMDb wrapper <em>TMDb-Kotlin</em> written in and for
 Kotlin. I&rsquo;ve created the library for Android apps primarily but it can be also used in any
 Gradle project.</p>
-<p>Most of the functionality and callbacks are implemented (but not all). The library is therefore WIP, so there
-might be breaking changes in the future (but I hope not).</p>
-<p>If you&rsquo;ve got questions, suggestions or encounter any issues feel free to contact me via GitHub
-(link to the upper right). I&rsquo;d be happy to help ;)</p>
+<p>Most of the functionality and callbacks are implemented (but not all). The library is therefore WIP,
+so there might be breaking changes in the future (but I doubt it).</p>
+<p>If you&rsquo;ve got questions, suggestions or encounter any issues feel free to contact me via
+<a href="https://github.com/vkay94/TMDb-Kotlin/issues">GitHub issues</a>. I&rsquo;d be happy to help ;)</p>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <h3 id="import-into-your-project">Import into your project<a class="headerlink" href="#import-into-your-project" title="Permanent link">&para;</a></h3>
-<p>This library uses the <a href="abc">JitPack.io</a> so you&rsquo;ve to dd it to your projects gradle file:</p>
+<p>This library uses <a href="https://jitpack.io/#vkay94/TMDb-Kotlin">JitPack.io</a> so you&rsquo;ve to add the repo to your projects gradle file:</p>
 <div class="highlight"><pre><span></span><code>repositories {
     maven { url &quot;https://jitpack.io&quot; }
 }
 </code></pre></div>
-<p>Then, on app level add the library:</p>
+<p>Then, on app level add the library:
+<img style="float: right;" src="https://img.shields.io/badge/TMDb--Kotlin-0.1.0-blue"/></p>
 <div class="highlight"><pre><span></span><code>dependencies {
-    implementation &quot;com.github.vkay94:TMDb-Kotlin:xyz&quot;
+    implementation &quot;com.github.vkay94:TMDb-Kotlin:{latest_version}&quot;
 
     // This module uses the ThreetenABP library to ensure LocalDate support in 
     // Android versions below API 26 so you should use this as well for 
@@ -600,16 +615,16 @@ use of Kotlin&rsquo;s objects, so the instance can be used in the whole app dire
 </div>
 </div>
 <h2 id="making-requests">Making requests<a class="headerlink" href="#making-requests" title="Permanent link">&para;</a></h2>
-<p>In the moment all calls are suspended and require to be called in Kotlin Coroutines. An overview
+<p>At the moment all calls are suspended and require to be called in Kotlin Coroutines. An overview
 of how to use them can be found here:
-<a href="https://google.com">Composing suspending functions</a>.</p>
+<a href="https://kotlinlang.org/docs/composing-suspending-functions.html">Composing suspending functions</a>.</p>
 <p>They&rsquo;re also wrapped in <code>NetworkResponse</code>s so you can react for errors easily or access the
 data directly.</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <h4 id="searching-with-error-handling">Searching with error handling<a class="headerlink" href="#searching-with-error-handling" title="Permanent link">&para;</a></h4>
 <p>There are four cases which the response can take value of:
-<code>Success</code>, <code>ServerError</code>, <code>NetworkError</code> and <code>UnknownError</code>.
-You should take a look <a href="https://google.com">here</a> for more info.</p>
+<code>Success</code>, <code>ServerError</code>, <code>NetworkError</code> and <code>UnknownError</code>. For more info
+You should take a look <a href="https://haroldadmin.github.io/NetworkResponseAdapter/">here</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">=</span> <span class="n">runBlocking</span> <span class="p">{</span>
     <span class="n">TMDb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">&quot;YOUR_API_KEY&quot;</span><span class="p">)</span>
 
@@ -654,14 +669,28 @@ In this case the object might by <code>null</code>:</p>
 </code></pre></div>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>This introduction is pretty briefly. For some more practice scenarios you can either look into the
-Recipes page on the left or the tests folder on Github <a href="abc">here</a>.</p>
+Recipes page on the left or the tests folder on Github <a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/test/java">here</a>.</p>
 <h2 id="thanks">Thanks<a class="headerlink" href="#thanks" title="Permanent link">&para;</a></h2>
 <p>Thanks go to</p>
 <ul>
-<li><em>TMDb-Java</em> by xyz for the basic idea, especially the service accessing in the object instance</li>
-<li><em>NetworkResponse library</em> by xyz for the great error handling</li>
-<li><em>Moshi</em> by Square for custom JSON deserializing to make the useage more natural</li>
+<li><a href="https://www.themoviedb.org/">The Movie Database</a>
+    for the API</li>
+<li><a href="https://github.com/UweTrottmann/tmdb-java">tmdb-java</a>
+    by Uwe Trottmann for the basic idea and some structuring elements</li>
+<li><a href="https://haroldadmin.github.io/NetworkResponseAdapter/">NetworkResponseAdapter</a>
+    by Kshitij Chauhan for the great error handling</li>
+<li><a href="https://github.com/square/moshi">Moshi</a>
+    by Square for custom JSON deserializing to make the usage more natural</li>
 </ul>
+<h2 id="tmdb-attribution-requirements">TMDb Attribution Requirements<a class="headerlink" href="#tmdb-attribution-requirements" title="Permanent link">&para;</a></h2>
+<div>
+   <img style="float: right; padding-bottom: 20px; padding-left: 10px;" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" height="170px" width="170px">
+   This wrapper is for the The Movie Database API. Using the data requires to attribute the data source.
+   Same applies to JustWatch data if you're using their data.
+   <br><br>
+   For more info read here: <a href="https://www.themoviedb.org/documentation/api">Link</a>
+</div>
+
 <!-- Links -->
                 
               
