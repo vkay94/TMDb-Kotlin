@@ -313,15 +313,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#thanks" class="md-nav__link">
-    Thanks
+  <a href="#used-libraries-and-thanks" class="md-nav__link">
+    Used libraries and thanks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tmdb-attribution-requirements" class="md-nav__link">
-    TMDb Attribution Requirements
+  <a href="#attribution-requirements" class="md-nav__link">
+    Attribution Requirements
   </a>
   
 </li>
@@ -341,50 +341,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" data-md-state="indeterminate" type="checkbox" id="nav-2" checked>
-      
-      <label class="md-nav__link" for="nav-2">
-        Structure
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-      <nav class="md-nav" aria-label="Structure" data-md-level="1">
-        <label class="md-nav__title" for="nav-2">
-          <span class="md-nav__icon md-icon"></span>
-          Structure
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-          
-            
-  
-  
-  
     <li class="md-nav__item">
-      <a href="structure/" class="md-nav__link">
-        Overview
+      <a href="design/" class="md-nav__link">
+        Design
       </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="structure-core-classes.md" class="md-nav__link">
-        Core classes
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -533,15 +493,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#thanks" class="md-nav__link">
-    Thanks
+  <a href="#used-libraries-and-thanks" class="md-nav__link">
+    Used libraries and thanks
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#tmdb-attribution-requirements" class="md-nav__link">
-    TMDb Attribution Requirements
+  <a href="#attribution-requirements" class="md-nav__link">
+    Attribution Requirements
   </a>
   
 </li>
@@ -560,13 +520,15 @@
                 
                 
                 <h1 id="tmdb-kotlin">TMDb-Kotlin<a class="headerlink" href="#tmdb-kotlin" title="Permanent link">&para;</a></h1>
-<p>Hello folks, this is the <a href="https://www.themoviedb.org/documentation/api">TMDb API</a> documentation page for the TMDb wrapper <em>TMDb-Kotlin</em> written in and for
-Kotlin. I&rsquo;ve created the library for Android apps primarily but it can be also used in any
-Gradle project.</p>
-<p>Most of the functionality and callbacks are implemented (but not all). The library is therefore WIP,
-so there might be breaking changes in the future (but I doubt it).</p>
+<p>Hello folks, this is the <a href="https://www.themoviedb.org/documentation/api">TMDb API</a> documentation page for
+the TMDb wrapper <em>TMDb-Kotlin</em> written in and for Kotlin.
+I&rsquo;ve created the library for Android apps primarily but it can be also used in any Gradle project.</p>
+<p>Most of the functionality and callbacks are implemented (but not all).
+The library is therefore WIP, so there might be breaking changes in the future (but I doubt it).
+The library is built on top of Retrofit2 for networking.</p>
 <p>If you&rsquo;ve got questions, suggestions or encounter any issues feel free to contact me via
-<a href="https://github.com/vkay94/TMDb-Kotlin/issues">GitHub issues</a>. I&rsquo;d be happy to help ;)</p>
+<a href="https://github.com/vkay94/TMDb-Kotlin/issues">GitHub issues</a>. 
+I&rsquo;d be happy to help ;)</p>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <h3 id="import-into-your-project">Import into your project<a class="headerlink" href="#import-into-your-project" title="Permanent link">&para;</a></h3>
 <p>This library uses <a href="https://jitpack.io/#vkay94/TMDb-Kotlin">JitPack.io</a> so you&rsquo;ve to add the repo to your projects gradle file:</p>
@@ -615,16 +577,15 @@ use of Kotlin&rsquo;s objects, so the instance can be used in the whole app dire
 </div>
 </div>
 <h2 id="making-requests">Making requests<a class="headerlink" href="#making-requests" title="Permanent link">&para;</a></h2>
-<p>At the moment all calls are suspended and require to be called in Kotlin Coroutines. An overview
-of how to use them can be found here:
+<p>At the moment all calls are suspended and require to be called in Kotlin Coroutines.
+An overview of how to use them can be found here:
 <a href="https://kotlinlang.org/docs/composing-suspending-functions.html">Composing suspending functions</a>.</p>
-<p>They&rsquo;re also wrapped in <code>NetworkResponse</code>s so you can react for errors easily or access the
-data directly.</p>
+<p>They&rsquo;re also wrapped in <code>NetworkResponse</code>s so you can react for errors easily or access the data directly.</p>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <h4 id="searching-with-error-handling">Searching with error handling<a class="headerlink" href="#searching-with-error-handling" title="Permanent link">&para;</a></h4>
 <p>There are four cases which the response can take value of:
-<code>Success</code>, <code>ServerError</code>, <code>NetworkError</code> and <code>UnknownError</code>. For more info
-You should take a look <a href="https://haroldadmin.github.io/NetworkResponseAdapter/">here</a>.</p>
+<code>Success</code>, <code>ServerError</code>, <code>NetworkError</code> and <code>UnknownError</code>.  For more info you should take a look
+<a href="https://haroldadmin.github.io/NetworkResponseAdapter/">here</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">=</span> <span class="n">runBlocking</span> <span class="p">{</span>
     <span class="n">TMDb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">&quot;YOUR_API_KEY&quot;</span><span class="p">)</span>
 
@@ -652,7 +613,8 @@ You should take a look <a href="https://haroldadmin.github.io/NetworkResponseAda
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="searching-with-direct-access">Searching with direct access<a class="headerlink" href="#searching-with-direct-access" title="Permanent link">&para;</a></h4>
-<p>You can also access the response directly without checking for the NetworkResponse type by calling <code>invoke()</code>.
+<p>You can also access the response directly without checking for the NetworkResponse type by
+calling <code>invoke()</code>. 
 In this case the object might by <code>null</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">=</span> <span class="n">runBlocking</span> <span class="p">{</span>
     <span class="n">TMDb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">&quot;YOUR_API_KEY&quot;</span><span class="p">)</span>
@@ -668,18 +630,25 @@ In this case the object might by <code>null</code>:</p>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>This introduction is pretty briefly. For some more practice scenarios you can either look into the
-Recipes page on the left or the tests folder on Github <a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/test/java">here</a>.</p>
-<h2 id="thanks">Thanks<a class="headerlink" href="#thanks" title="Permanent link">&para;</a></h2>
+<p>This introduction is pretty briefly.
+For some more practice scenarios you can either look into the Recipes page on the left or into 
+the tests folder on Github <a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/test/java">here</a>.</p>
+<h2 id="used-libraries-and-thanks">Used libraries and thanks<a class="headerlink" href="#used-libraries-and-thanks" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Retrofit2 by Square</li>
+<li>Moshi by Square</li>
+<li>NetworkResponseAdapter by Kshitij Chauhan</li>
+<li>ThreetenABP by Jack Warton</li>
+</ul>
 <p>Thanks go to</p>
 <ul>
 <li><a href="https://www.themoviedb.org/">The Movie Database</a>
     for the API</li>
-<li>Uwe Trottmann and <a href="https://github.com/UweTrottmann/tmdb-java">tmdb-java</a> for the basic idea and some structuring elements</li>
-<li>Kshitij Chauhan and <a href="https://haroldadmin.github.io/NetworkResponseAdapter/">NetworkResponseAdapter</a> for the great error handling</li>
-<li>Square and <a href="https://github.com/square/moshi">Moshi</a> for custom JSON deserializing to make the usage more natural</li>
+<li>Uwe Trottmann&rsquo;s <a href="https://github.com/UweTrottmann/tmdb-java">tmdb-java</a> for the basic idea and some structuring elements</li>
+<li>Kshitij Chauhan&rsquo; <a href="https://haroldadmin.github.io/NetworkResponseAdapter/">NetworkResponseAdapter</a> for the great error handling</li>
+<li>Square&rsquo;s <a href="https://github.com/square/moshi">Moshi</a> for custom JSON deserializing to make the usage more natural</li>
 </ul>
-<h2 id="tmdb-attribution-requirements">TMDb Attribution Requirements<a class="headerlink" href="#tmdb-attribution-requirements" title="Permanent link">&para;</a></h2>
+<h2 id="attribution-requirements">Attribution Requirements<a class="headerlink" href="#attribution-requirements" title="Permanent link">&para;</a></h2>
 <div>
    <img style="float: right; padding-bottom: 20px; padding-left: 10px;" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" height="170px" width="170px">
    This wrapper is for the The Movie Database API. Using the data requires to attribute the data source.
@@ -708,13 +677,13 @@ Recipes page on the left or the tests folder on Github <a href="https://github.c
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
         
-          <a href="structure/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="design/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Overview
+                Design
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">
