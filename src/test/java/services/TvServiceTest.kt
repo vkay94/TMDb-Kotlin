@@ -134,7 +134,16 @@ class TvServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get cast`(): Unit = runBlocking {
-        val cast = TMDb.showService.cast(SHOW_ID_BLACK_CLOVER).invoke()!!
+        val cast = TMDb.showService.cast(SHOW_ID_TBBT).invoke()!!
+        assertEquals(8, cast.count())
+        assertNotNull(cast.firstOrNull()?.profile)
+        assertTrue(cast.firstOrNull() is TmdbCredit.Cast)
+    }
+
+    @Test
+    fun `Get aggregate cast`(): Unit = runBlocking {
+        val cast = TMDb.showService.aggregateCast(SHOW_ID_TBBT).invoke()!!
+        println(cast.size)
         assertTrue(cast.isNotEmpty())
         assertNotNull(cast.firstOrNull()?.profile)
         assertTrue(cast.firstOrNull() is TmdbCredit.Cast)
@@ -142,7 +151,7 @@ class TvServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get crew`(): Unit = runBlocking {
-        val crew = TMDb.showService.crew(SHOW_ID_BLACK_CLOVER).invoke()!!
+        val crew = TMDb.showService.crew(SHOW_ID_TBBT).invoke()!!
         assertTrue(crew.isNotEmpty())
         assertNull(crew.firstOrNull()?.profile)
         assertTrue(crew.firstOrNull() is TmdbCredit.Crew)

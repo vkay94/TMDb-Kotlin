@@ -11,9 +11,7 @@ import de.vkay.api.tmdb.enumerations.ListSortBy
 import de.vkay.api.tmdb.enumerations.PersonGender
 import de.vkay.api.tmdb.enumerations.ShowType
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
-import de.vkay.api.tmdb.internals.adapters.TmdbDateJsonAdapter
-import de.vkay.api.tmdb.internals.adapters.TmdbErrorJsonAdapter
-import de.vkay.api.tmdb.internals.adapters.TmdbTranslationDataJsonAdapter
+import de.vkay.api.tmdb.internals.adapters.*
 import de.vkay.api.tmdb.internals.annotations.ErrorAnnotationAdapter
 import de.vkay.api.tmdb.internals.annotations.ResultsListAdapter
 import de.vkay.api.tmdb.internals.models.TmdbFindResult
@@ -113,7 +111,9 @@ object TMDb {
 
             /* Custom writer adapters */
             .add(TmdbTranslationData::class.java, TmdbTranslationDataJsonAdapter())
-            // .add(TmdbCredit::class.java, TmdbCreditJsonAdapter())
+            .add(TmdbCredit.Cast::class.java, TmdbCreditCastJsonAdapter())
+            .add(TmdbCredit.Crew::class.java, TmdbCreditCrewJsonAdapter())
+            .add(TmdbCredit.RoleJob::class.java, TmdbCreditRoleJobJsonAdapter())
             .add(TmdbFindResult.ADAPTER)
             .add(TmdbDateJsonAdapter())
 

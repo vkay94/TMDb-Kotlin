@@ -14,14 +14,12 @@ sealed class TmdbError {
     }
 
     @JsonClass(generateAdapter = true)
-    class PostError internal constructor(
+    data class PostError internal constructor(
         val errors: List<String>
-    ) : TmdbError() {
-        override fun toString(): String = errors.toString()
-    }
+    ) : TmdbError()
 
     @JsonClass(generateAdapter = true)
-    class DefaultError internal constructor(
+    data class DefaultError internal constructor(
         @Json(name = "status_code")
         val code: Int,
         @Json(name = "status_message")

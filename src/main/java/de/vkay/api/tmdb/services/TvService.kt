@@ -90,6 +90,18 @@ interface TvService {
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
 
+    @GET("tv/{tv_id}/aggregate_credits")
+    @ResultsList("crew")
+    suspend fun aggregateCrew(
+        @Path("tv_id") tvShowId: Int
+    ): NetworkResponse<List<TmdbCredit.Crew>, TmdbError.DefaultError>
+
+    @GET("tv/{tv_id}/aggregate_credits")
+    @ResultsList("cast")
+    suspend fun aggregateCast(
+        @Path("tv_id") tvShowId: Int
+    ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
+
     @GET("tv/{tv_id}/credits")
     @ResultsList("crew")
     suspend fun crew(
