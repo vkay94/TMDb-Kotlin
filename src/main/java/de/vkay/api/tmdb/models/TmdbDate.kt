@@ -31,11 +31,13 @@ class TmdbDate constructor(val date: LocalDate?) : Comparable<TmdbDate> {
         return this.date.compareTo(other.date)
     }
 
+    override fun toString(): String = date.toString()
+
     companion object {
 
         private fun validate(str: String?): LocalDate? {
             return try {
-                LocalDate.parse(str)
+                LocalDate.parse(str?.split("T")?.first())
             } catch (e: DateTimeParseException) {
                 null
             }

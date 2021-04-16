@@ -6,13 +6,11 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.EnumJsonAdapter
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
-import de.vkay.api.tmdb.enumerations.EpisodeGroupType
-import de.vkay.api.tmdb.enumerations.ListSortBy
-import de.vkay.api.tmdb.enumerations.PersonGender
-import de.vkay.api.tmdb.enumerations.ShowType
+import de.vkay.api.tmdb.enumerations.*
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.*
 import de.vkay.api.tmdb.internals.annotations.ErrorAnnotationAdapter
+import de.vkay.api.tmdb.internals.annotations.MapListAdapter
 import de.vkay.api.tmdb.internals.annotations.ResultsListAdapter
 import de.vkay.api.tmdb.internals.models.TmdbFindResult
 import de.vkay.api.tmdb.internals.models.WatchProviderListObj
@@ -80,7 +78,6 @@ object TMDb {
     val authService: AuthService by lazy { retrofit4.create(AuthService::class.java) }
 
     private val moshiWithAdapters: Moshi by lazy {
-        // println("TMDb: Create Moshi Builder")
         return@lazy Moshi.Builder()
             .add(
                 PolymorphicJsonAdapterFactory.of(MediaTypeItem::class.java, "media_type")
@@ -106,6 +103,8 @@ object TMDb {
             .add(
                 ListSortBy::class.java, EnumJsonAdapter.create(ListSortBy::class.java)
                     .withUnknownFallback(ListSortBy.UNKNOWN))
+            .add(ReleaseDate::class.java, EnumValueJsonAdapter.create(ReleaseDate::class.java)
+                .withUnknownFallback(ReleaseDate.UNKNOWN))
 
             /* Helpers: Types / Maps */
 
@@ -124,6 +123,7 @@ object TMDb {
             .add(TmdbError::class.java, TmdbErrorJsonAdapter())
             .add(ErrorAnnotationAdapter())
             .add(ResultsListAdapter.INSTANCE)
+            .add(MapListAdapter.INSTANCE)
             .build()
     }
 

@@ -5,11 +5,13 @@ import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
+import de.vkay.api.tmdb.enumerations.ReleaseDate
 import de.vkay.api.tmdb.models.TmdbCredit
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
 import org.threeten.bp.LocalDate
+import java.util.*
 
 class MovieServiceTest : BaseServiceTest() {
 
@@ -143,6 +145,14 @@ class MovieServiceTest : BaseServiceTest() {
         assertEquals("Disney Plus", german.flatrate!!.first().name)
         assertEquals(337, german.flatrate!!.first().id)
         assertNotNull(german.flatrate!!.first().logo)
+    }
+
+    @Test
+    fun `Get release dates`(): Unit = runBlocking {
+        val releaseDatesMap = TMDb.movieService.releaseDates(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        val germany = releaseDatesMap[Locale.GERMANY.country]!!
+        val theater = germany.first { it.releaseType == ReleaseDate.THEATRICAL }
+        assertEquals(LocalDate.of(2019, 4, 24), theater.releaseDate.date)
     }
 
     @Test

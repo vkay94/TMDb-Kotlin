@@ -101,6 +101,11 @@ interface MovieService {
         @Path("movie_id") movieId: Int
     ): NetworkResponse<TmdbPage<TmdbList>, TmdbError.DefaultError>
 
+    @GET("movie/{movie_id}/release_dates")
+    suspend fun releaseDates(
+        @Path("movie_id") movieId: Int
+    ): NetworkResponse<Map<String, List<TmdbReleaseDate>>, TmdbError.DefaultError>
+
     @GET("movie/latest")
     suspend fun latest(): NetworkResponse<TmdbMovie, TmdbError.DefaultError>
 
