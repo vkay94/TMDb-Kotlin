@@ -104,7 +104,31 @@ interface MovieService {
     @GET("movie/latest")
     suspend fun latest(): NetworkResponse<TmdbMovie, TmdbError.DefaultError>
 
-    /*
-    lists, release dates
-     */
+    @GET("movie/now_playing")
+    suspend fun nowPlaying(
+        @Query("language") language: String? = null,
+        @Query("region") languageCode: String? = null,
+        @Query("page") page: Int? = null
+    ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
+
+    @GET("movie/popular")
+    suspend fun popular(
+        @Query("language") language: String? = null,
+        @Query("region") languageCode: String? = null,
+        @Query("page") page: Int? = null
+    ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
+
+    @GET("movie/top_rated")
+    suspend fun topRated(
+        @Query("language") language: String? = null,
+        @Query("region") languageCode: String?,
+        @Query("page") page: Int? = null
+    ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
+
+    @GET("movie/upcoming")
+    suspend fun upcoming(
+        @Query("language") language: String? = null,
+        @Query("region") languageCode: String? = null,
+        @Query("page") page: Int? = null
+    ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
 }

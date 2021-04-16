@@ -43,8 +43,6 @@ class MovieServiceTest : BaseServiceTest() {
         assertTrue(details.voteCount > 17_000)
     }
 
-    // TODo
-
     @Test
     fun `Get external ids`() = runBlocking {
         val externalIds = TMDb.movieService.externalIds(MOVIE_ID_AVENGERS_ENDGAME).invoke()
@@ -145,6 +143,35 @@ class MovieServiceTest : BaseServiceTest() {
         assertEquals("Disney Plus", german.flatrate!!.first().name)
         assertEquals(337, german.flatrate!!.first().id)
         assertNotNull(german.flatrate!!.first().logo)
+    }
+
+    @Test
+    fun `Get popular`(): Unit = runBlocking {
+        val popular = TMDb.movieService.popular(languageCode = "de").invoke()!!
+        assertTrue(popular.results.isNotEmpty())
+    }
+
+    @Test
+    fun `Get top rated`(): Unit = runBlocking {
+        val topRated = TMDb.movieService.topRated(languageCode = "de").invoke()!!
+        assertTrue(topRated.results.isNotEmpty())
+    }
+
+    @Test
+    fun `Get upcoming`(): Unit = runBlocking {
+        val upcoming = TMDb.movieService.upcoming(languageCode = "de").invoke()!!
+        assertTrue(upcoming.results.isNotEmpty())
+    }
+
+    @Test
+    fun `Get now playing`(): Unit = runBlocking {
+        val nowPlaying = TMDb.movieService.nowPlaying(languageCode = "de").invoke()!!
+        assertTrue(nowPlaying.results.isNotEmpty())
+    }
+
+    @Test
+    fun `Get latest`(): Unit = runBlocking {
+        // TODO
     }
 
     @Test
