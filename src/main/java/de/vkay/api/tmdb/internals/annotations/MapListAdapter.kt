@@ -56,7 +56,9 @@ internal class MapListAdapter: JsonAdapter<Map<String, List<TmdbReleaseDate>>>()
         throw UnsupportedOperationException("MapListAdapter is only used to deserialize objects")
 
     class MapListFactory : Factory {
-        override fun create(type: Type, annotations: Set<Annotation>, moshi: Moshi): JsonAdapter<Map<String, List<TmdbReleaseDate>>> {
+        override fun create(type: Type, annotations: Set<Annotation>, moshi: Moshi): JsonAdapter<Map<String, List<TmdbReleaseDate>>>? {
+            val delegateAnnotations = Types.nextAnnotations(annotations, MapList::class.java) ?: return null
+
             return MapListAdapter()
         }
     }

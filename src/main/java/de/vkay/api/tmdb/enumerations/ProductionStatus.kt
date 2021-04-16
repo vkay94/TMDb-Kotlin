@@ -10,8 +10,8 @@ enum class ProductionStatus {
     @Json(name = "Ended")
     ENDED,
 
-    @Json(name = "Cancelled")
-    CANCELLED,
+    @Json(name = "Canceled")
+    CANCELED,
 
     @Json(name = "In Production")
     IN_PRODUCTION,

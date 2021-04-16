@@ -3,6 +3,7 @@ package de.vkay.api.tmdb.services
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.ImageLanguages
+import de.vkay.api.tmdb.internals.annotations.MapList
 import de.vkay.api.tmdb.internals.annotations.OtherCases
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.models.*
@@ -102,6 +103,7 @@ interface MovieService {
     ): NetworkResponse<TmdbPage<TmdbList>, TmdbError.DefaultError>
 
     @GET("movie/{movie_id}/release_dates")
+    @MapList
     suspend fun releaseDates(
         @Path("movie_id") movieId: Int
     ): NetworkResponse<Map<String, List<TmdbReleaseDate>>, TmdbError.DefaultError>

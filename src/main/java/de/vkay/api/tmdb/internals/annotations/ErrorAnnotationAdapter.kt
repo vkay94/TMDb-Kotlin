@@ -120,40 +120,40 @@ internal class ErrorAnnotationAdapter {
 
     //endregion
 
-//    //region MapList
-//
-//    @MapList
-//    @FromJson
-//    fun normmalR(input: String?): TmdbError? {
-//        return null
-//    }
-//
-//    @ToJson
-//    fun normmalR(@MapList input: TmdbError): String {
-//        throw UnsupportedOperationException()
-//    }
-//
-//    @MapList
-//    @FromJson
-//    fun defaumltR(input: String?): TmdbError.DefaultError? {
-//        return null
-//    }
-//
-//    @ToJson
-//    fun defmaultR(@MapList input: TmdbError.DefaultError): String {
-//        throw UnsupportedOperationException()
-//    }
-//
-//    @MapList
-//    @FromJson
-//    fun postmR(input: String?): TmdbError.PostError? {
-//        return null
-//    }
-//
-//    @ToJson
-//    fun posmtR(@MapList input: TmdbError.PostError): String {
-//        throw UnsupportedOperationException()
-//    }
-//
-//    //endregion
+    //region MapList
+
+    @MapList
+    @FromJson
+    fun normmalR(input: String?): TmdbError? {
+        return null
+    }
+
+    @ToJson
+    fun normmalR(@MapList input: TmdbError): String {
+        throw UnsupportedOperationException()
+    }
+
+    @MapList
+    @FromJson
+    fun defaumltR(input: String?): TmdbError.DefaultError? {
+        return null
+    }
+
+    @ToJson
+    fun defmaultR(@MapList input: TmdbError.DefaultError): String {
+        throw UnsupportedOperationException()
+    }
+
+    @MapList
+    @FromJson
+    fun postmR(input: String?): TmdbError.PostError? {
+        return null
+    }
+
+    @ToJson
+    fun posmtR(@MapList input: TmdbError.PostError): String {
+        throw UnsupportedOperationException()
+    }
+
+    //endregion
 }
