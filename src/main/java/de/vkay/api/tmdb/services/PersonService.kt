@@ -33,4 +33,9 @@ interface PersonService {
     suspend fun externalIds(
         @Path("person_id") personId: Int
     ): NetworkResponse<TmdbExternalIds, TmdbError.DefaultError>
+
+    @GET("person/popular")
+    suspend fun popular(
+        @Query("language") language: String? = null,
+    ): NetworkResponse<TmdbPage<TmdbPerson.Slim>, TmdbError.DefaultError>
 }

@@ -20,7 +20,7 @@ class MovieServiceTest : BaseServiceTest() {
         val details = TMDb.movieService.details(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
 
         assertFalse(details.adult)
-        assertNotNull(details.background)
+        assertNotNull(details.backdrop)
         assertEquals(86311, details.belongsToCollection?.collectionId)
         assertEquals(356_000_000, details.budget)
         assertEquals(3, details.genres.count())
@@ -69,9 +69,9 @@ class MovieServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Get backgrounds`(): Unit = runBlocking {
-        val backgrounds = TMDb.movieService.backgrounds(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
-        assertTrue(backgrounds.isNotEmpty())
+    fun `Get backdrops`(): Unit = runBlocking {
+        val backdrops = TMDb.movieService.backdrops(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(backdrops.isNotEmpty())
     }
 
     @Test

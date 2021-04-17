@@ -13,7 +13,7 @@ data class TmdbCollection internal constructor(
     @Json(name = "poster_path")
     internal val _posterPath: String?,
     @Json(name = "backdrop_path")
-    internal val _backgroundPath: String?
+    internal val _backdropPath: String?
 ) {
     val movieCount: Int
         get() = movies.size
@@ -23,9 +23,9 @@ data class TmdbCollection internal constructor(
             TmdbImage(_posterPath, 0, 0, null)
         else null
 
-    val background: TmdbImage?
-        get() = if (!_backgroundPath.isNullOrBlank())
-            TmdbImage(_backgroundPath, 0, 0, null)
+    val backdrop: TmdbImage?
+        get() = if (!_backdropPath.isNullOrBlank())
+            TmdbImage(_backdropPath, 0, 0, null)
         else null
 
     @JsonClass(generateAdapter = true)
@@ -42,16 +42,16 @@ data class TmdbCollection internal constructor(
         @Json(name = "poster_path")
         internal val _posterPath: String?,
         @Json(name = "backdrop_path")
-        internal val _backgroundPath: String?
+        internal val _backdropPath: String?
     ) {
         val poster: TmdbImage?
             get() = if (!_posterPath.isNullOrBlank())
                 TmdbImage(_posterPath, 0, 0, null)
             else null
 
-        val background: TmdbImage?
-            get() = if (!_backgroundPath.isNullOrBlank())
-                TmdbImage(_backgroundPath, 0, 0, null)
+        val backdrop: TmdbImage?
+            get() = if (!_backdropPath.isNullOrBlank())
+                TmdbImage(_backdropPath, 0, 0, null)
             else null
     }
 }

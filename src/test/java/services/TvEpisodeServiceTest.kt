@@ -23,7 +23,7 @@ class TvEpisodeServiceTest : BaseServiceTest() {
         assertEquals(season, details.seasonNumber)
         assertEquals(episode, details.episodeNumber)
         assertTrue(details.overview.isNotBlank())
-        assertNotNull(details.background)
+        assertNotNull(details.still)
         assertEquals(LocalDate.of(2016, 4, 3), details.releaseDate?.date)
     }
 
@@ -35,20 +35,20 @@ class TvEpisodeServiceTest : BaseServiceTest() {
 
         val details = TMDb.episodeService.details(SHOW_ID_MHA, season, episode, appendToResponse = appendToResponse).invoke()!!
 
-        assertFalse(details.backgrounds.isEmpty())
+        assertFalse(details.stills.isEmpty())
         assertTrue(details.crew.isEmpty())
         assertTrue(details.cast.isNotEmpty())
     }
 
     @Test
-    fun `Get previews`() = runBlocking {
+    fun `Get stills`() = runBlocking {
         val season = 1
         val episode = 1
 
-        val previews = TMDb.episodeService.previews(SHOW_ID_MHA, season, episode).invoke()!!
-        assertFalse(previews.isEmpty())
+        val stills = TMDb.episodeService.stills(SHOW_ID_MHA, season, episode).invoke()!!
+        assertFalse(stills.isEmpty())
 
-        val firstImage = previews.firstOrNull()
+        val firstImage = stills.firstOrNull()
         assertNotNull(firstImage)
         assertNotEquals(0, firstImage?.height)
         assertNotEquals(0, firstImage?.width)

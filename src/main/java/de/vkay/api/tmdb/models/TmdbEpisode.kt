@@ -16,7 +16,7 @@ data class TmdbEpisode internal constructor(
     val title: String,
     val overview: String,
     @Json(name = "still_path")
-    internal val _backgroundPath: String?,
+    internal val _stillPath: String?,
     @Json(name = "season_number")
     val seasonNumber: Int,
     @Json(name = "vote_average")
@@ -34,12 +34,12 @@ data class TmdbEpisode internal constructor(
 
 ) : MediaTypeItem(MediaType.EPISODE) {
 
-    val background: TmdbImage?
-        get() = if (!_backgroundPath.isNullOrBlank())
-            TmdbImage(_backgroundPath)
+    val still: TmdbImage?
+        get() = if (!_stillPath.isNullOrBlank())
+            TmdbImage(_stillPath)
         else null
 
-    val backgrounds: List<TmdbImage> = _images?.stills ?: emptyList()
+    val stills: List<TmdbImage> = _images?.stills ?: emptyList()
     val videos: List<TmdbVideo> = _videos ?: emptyList()
     val crew: List<TmdbCredit.Crew> = _credits?.crew ?: emptyList()
     val cast: List<TmdbCredit.Cast> = _credits?.cast ?: emptyList()
@@ -68,7 +68,7 @@ data class TmdbEpisode internal constructor(
         val title: String,
         val overview: String,
         @Json(name = "still_path")
-        internal val _backgroundPath: String?,
+        internal val _stillPath: String?,
         @Json(name = "season_number")
         val seasonNumber: Int,
         @Json(name = "vote_average")
@@ -77,9 +77,9 @@ data class TmdbEpisode internal constructor(
         val voteCount: Int
     ) : MediaTypeItem(MediaType.EPISODE) {
 
-        val background: TmdbImage?
-            get() = if (!_backgroundPath.isNullOrBlank())
-                TmdbImage(_backgroundPath)
+        val still: TmdbImage?
+            get() = if (!_stillPath.isNullOrBlank())
+                TmdbImage(_stillPath)
             else null
     }
 }

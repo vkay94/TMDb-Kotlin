@@ -68,11 +68,11 @@ class TmdbShow internal constructor(
     @ResultsList
     internal val _keywords: List<TmdbKeyword>?,
     @Json(name = "backdrop_path")
-    internal val _backgroundPath: String?
+    internal val _backdropPath: String?
 ) : MediaTypeItem(MediaType.TV) {
 
     val videos: List<TmdbVideo> = _videos ?: emptyList()
-    val backgrounds: List<TmdbImage> = _images?.backdrops ?: emptyList()
+    val backdrops: List<TmdbImage> = _images?.backdrops ?: emptyList()
     val posters: List<TmdbImage> = _images?.posters ?: emptyList()
 
     val recommendations: List<Slim> = _recommendations?.results ?: emptyList()
@@ -82,9 +82,9 @@ class TmdbShow internal constructor(
     val crew: List<TmdbCredit.Crew> = _credits?.crew ?: emptyList()
     val keywords: List<TmdbKeyword> = _keywords ?: emptyList()
 
-    val background: TmdbImage?
-        get() = if (!_backgroundPath.isNullOrBlank())
-            TmdbImage(_backgroundPath)
+    val backdrop: TmdbImage?
+        get() = if (!_backdropPath.isNullOrBlank())
+            TmdbImage(_backdropPath)
         else null
 
     val poster: TmdbImage?
@@ -126,7 +126,7 @@ class TmdbShow internal constructor(
         @Json(name = "name")
         val title: String,
         @Json(name = "backdrop_path")
-        internal val _backgroundPath: String?,
+        internal val _backdropPath: String?,
         @Json(name = "first_air_date")
         val releaseDate: TmdbDate?,
 
@@ -142,9 +142,9 @@ class TmdbShow internal constructor(
 
     ) : MediaTypeItem(MediaType.TV) {
 
-        val background: TmdbImage?
-            get() = if (!_backgroundPath.isNullOrBlank())
-                TmdbImage(_backgroundPath)
+        val backdrop: TmdbImage?
+            get() = if (!_backdropPath.isNullOrBlank())
+                TmdbImage(_backdropPath)
             else null
 
         val poster: TmdbImage?

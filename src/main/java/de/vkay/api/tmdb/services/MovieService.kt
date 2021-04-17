@@ -53,7 +53,7 @@ interface MovieService {
 
     @GET("movie/{movie_id}/images")
     @ResultsList("backdrops")
-    suspend fun backgrounds(
+    suspend fun backdrops(
         @Path("movie_id") movieId: Int,
         @Query("language") language: String? = null
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>

@@ -44,11 +44,11 @@ class TvServiceTest : BaseServiceTest() {
 
         assertEquals(24, details.runtime)
         assertNotNull(details.poster)
-        assertNotNull(details.background)
+        assertNotNull(details.backdrop)
         assertTrue(details.hasSpecials)
         assertTrue(details.videos.isEmpty())
         assertTrue(details.posters.isEmpty())
-        assertTrue(details.backgrounds.isEmpty())
+        assertTrue(details.backdrops.isEmpty())
         assertTrue(details.recommendations.isEmpty())
     }
 
@@ -60,7 +60,7 @@ class TvServiceTest : BaseServiceTest() {
 
         val details = TMDb.showService.details(SHOW_ID_MHA, append = append).invoke()!!
         assertTrue(details.posters.isNotEmpty())
-        assertTrue(details.backgrounds.isNotEmpty())
+        assertTrue(details.backdrops.isNotEmpty())
         assertTrue(details.videos.isNotEmpty())
         assertTrue(details.keywords.isNotEmpty())
 
@@ -77,9 +77,9 @@ class TvServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Get backgrounds`(): Unit = runBlocking {
-        val backgrounds = TMDb.showService.backgrounds(SHOW_ID_MHA).invoke()!!
-        assertTrue(backgrounds.isNotEmpty())
+    fun `Get backdrops`(): Unit = runBlocking {
+        val backdrops = TMDb.showService.backdrops(SHOW_ID_MHA).invoke()!!
+        assertTrue(backdrops.isNotEmpty())
     }
 
     @Test

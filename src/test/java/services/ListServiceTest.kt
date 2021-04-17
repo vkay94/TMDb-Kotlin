@@ -19,7 +19,7 @@ class ListServiceTest : BaseServiceTest() {
 
         assertEquals("Animes", details.name)
         assertEquals(0, details.revenue)
-        assertNotNull(details.background)
+        assertNotNull(details.backdrop)
         assertNull(details.poster)
         assertEquals(ListSortBy.ORIGINAL_ORDER_ASC, details.sortBy)
     }

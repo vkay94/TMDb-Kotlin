@@ -12,7 +12,7 @@ data class TmdbMovie internal constructor(
     @Json(name = "poster_path")
     internal val _posterPath: String?,
     @Json(name = "backdrop_path")
-    internal val _backgroundPath: String?,
+    internal val _backdropPath: String?,
     @Json(name = "original_language")
     val originalLanguage: String,
     @Json(name = "original_title")
@@ -46,9 +46,9 @@ data class TmdbMovie internal constructor(
     val spokenLanguages: List<TmdbLanguage>
 ) : MediaTypeItem(MediaType.MOVIE) {
 
-    val background: TmdbImage?
-        get() = if (!_backgroundPath.isNullOrBlank())
-            TmdbImage(_backgroundPath)
+    val backdrop: TmdbImage?
+        get() = if (!_backdropPath.isNullOrBlank())
+            TmdbImage(_backdropPath)
         else null
 
     val poster: TmdbImage?
@@ -63,7 +63,7 @@ data class TmdbMovie internal constructor(
         @Json(name = "poster_path")
         internal val _posterPath: String?,
         @Json(name = "backdrop_path")
-        internal val _backgroundPath: String?,
+        internal val _backdropPath: String?,
         @Json(name = "original_language")
         val originalLanguage: String,
         @Json(name = "original_title")
@@ -82,9 +82,9 @@ data class TmdbMovie internal constructor(
         val video: Boolean
     ) : MediaTypeItem(MediaType.MOVIE) {
 
-        val background: TmdbImage?
-            get() = if (!_backgroundPath.isNullOrBlank())
-                TmdbImage(_backgroundPath)
+        val backdrop: TmdbImage?
+            get() = if (!_backdropPath.isNullOrBlank())
+                TmdbImage(_backdropPath)
             else null
 
         val poster: TmdbImage?

@@ -10,7 +10,7 @@ data class TmdbList internal constructor(
     @Json(name = "average_rating")
     val averageRating: Double,
     @Json(name = "backdrop_path")
-    internal val _backgroundPath: String?,
+    internal val _backdropPath: String?,
     val description: String,
     val id: Int,
     @Json(name = "iso_3166_1")
@@ -32,9 +32,9 @@ data class TmdbList internal constructor(
     @Json(name = "total_results")
     val totalResults: Int
 ) {
-    val background: TmdbImage?
-        get() = if (!_backgroundPath.isNullOrBlank())
-            TmdbImage(_backgroundPath)
+    val backdrop: TmdbImage?
+        get() = if (!_backdropPath.isNullOrBlank())
+            TmdbImage(_backdropPath)
         else null
 
     val poster: TmdbImage?

@@ -43,7 +43,7 @@ interface TvService {
 
     @GET("tv/{tv_id}/images")
     @ResultsList("backdrops")
-    suspend fun backgrounds(
+    suspend fun backdrops(
         @Path("tv_id") tvShowId: Int,
         @Query("language") language: String? = null
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>

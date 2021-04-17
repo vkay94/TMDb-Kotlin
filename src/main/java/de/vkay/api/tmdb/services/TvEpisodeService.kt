@@ -47,7 +47,7 @@ interface TvEpisodeService {
 
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/images")
     @ResultsList("stills")
-    suspend fun previews(
+    suspend fun stills(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int

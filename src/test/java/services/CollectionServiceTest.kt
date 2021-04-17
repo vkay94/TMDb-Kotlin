@@ -16,7 +16,7 @@ class CollectionServiceTest : BaseServiceTest() {
         assertEquals("Marvel's The Avengers Filmreihe", details.name)
         assertTrue(details.overview.contains("Superhelden wie z. B. Iron Man, Thor, Captain America, Hawkeye,"))
         assertNotNull(details.poster)
-        assertNotNull(details.background)
+        assertNotNull(details.backdrop)
         assertEquals(4, details.movieCount)
     }
 
@@ -27,9 +27,9 @@ class CollectionServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Get backgrounds`() = runBlocking {
-        val backgrounds = TMDb.collectionService.backgrounds(COLLECTION_ID_AVENGERS).invoke()!!
-        assertTrue(backgrounds.isNotEmpty())
+    fun `Get backdrops`() = runBlocking {
+        val backdrops = TMDb.collectionService.backdrops(COLLECTION_ID_AVENGERS).invoke()!!
+        assertTrue(backdrops.isNotEmpty())
     }
 
     @Test
