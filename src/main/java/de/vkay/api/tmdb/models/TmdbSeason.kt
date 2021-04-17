@@ -4,6 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.internals.annotations.ResultsList
+import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
 @JsonClass(generateAdapter = true)
 data class TmdbSeason internal constructor(
@@ -12,7 +13,8 @@ data class TmdbSeason internal constructor(
     @Json(name = "id")
     val seasonId: Int,
     @Json(name = "poster_path")
-    internal val _posterPath: String?,
+    @TMDbImage
+    val poster: TmdbImage?,
     @Json(name = "air_date")
     val premierDate: TmdbDate?,
     val episodes: List<TmdbEpisode.Slim>,
@@ -32,11 +34,6 @@ data class TmdbSeason internal constructor(
     internal val _credits: Credits?
 
 ) : MediaTypeItem(MediaType.SEASON) {
-
-    val poster: TmdbImage?
-        get() = if (!_posterPath.isNullOrBlank())
-            TmdbImage(_posterPath)
-        else null
 
     val videos: List<TmdbVideo> = _videos ?: emptyList()
     val posters: List<TmdbImage> = _images?.posters ?: emptyList()
@@ -67,14 +64,9 @@ data class TmdbSeason internal constructor(
         val title: String,
         val overview: String?,
         @Json(name = "poster_path")
-        internal val _posterPath: String?,
+        @TMDbImage
+        val poster: TmdbImage?,
         @Json(name = "season_number")
         val seasonNumber: Int
-    ) : MediaTypeItem(MediaType.SEASON) {
-
-        val poster: TmdbImage?
-            get() = if (!_posterPath.isNullOrBlank())
-                TmdbImage(_posterPath)
-            else null
-    }
+    ) : MediaTypeItem(MediaType.SEASON)
 }

@@ -2,6 +2,7 @@ package de.vkay.api.tmdb.models
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
 @JsonClass(generateAdapter = true)
 data class TmdbCollection internal constructor(
@@ -11,22 +12,14 @@ data class TmdbCollection internal constructor(
     @Json(name = "parts")
     val movies: List<TmdbMovie.Slim>,
     @Json(name = "poster_path")
-    internal val _posterPath: String?,
+    @TMDbImage
+    val poster: TmdbImage?,
     @Json(name = "backdrop_path")
-    internal val _backdropPath: String?
+    @TMDbImage
+    val backdrop: TmdbImage?
 ) {
     val movieCount: Int
         get() = movies.size
-
-    val poster: TmdbImage?
-        get() = if (!_posterPath.isNullOrBlank())
-            TmdbImage(_posterPath, 0, 0, null)
-        else null
-
-    val backdrop: TmdbImage?
-        get() = if (!_backdropPath.isNullOrBlank())
-            TmdbImage(_backdropPath, 0, 0, null)
-        else null
 
     @JsonClass(generateAdapter = true)
     internal data class Images(
@@ -39,19 +32,11 @@ data class TmdbCollection internal constructor(
         @Json(name = "id")
         val collectionId: Int,
         val name: String,
-        @Json(name = "poster_path")
-        internal val _posterPath: String?,
         @Json(name = "backdrop_path")
-        internal val _backdropPath: String?
-    ) {
-        val poster: TmdbImage?
-            get() = if (!_posterPath.isNullOrBlank())
-                TmdbImage(_posterPath, 0, 0, null)
-            else null
-
-        val backdrop: TmdbImage?
-            get() = if (!_backdropPath.isNullOrBlank())
-                TmdbImage(_backdropPath, 0, 0, null)
-            else null
-    }
+        @TMDbImage
+        val backdrop: TmdbImage?,
+        @Json(name = "poster_path")
+        @TMDbImage
+        val poster: TmdbImage?,
+    )
 }

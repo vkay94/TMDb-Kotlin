@@ -2,6 +2,7 @@ package de.vkay.api.tmdb.models
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
 @JsonClass(generateAdapter = true)
 data class TmdbCompany internal constructor(
@@ -10,15 +11,11 @@ data class TmdbCompany internal constructor(
     @Json(name = "origin_country")
     val originCountry: String,
     @Json(name = "logo_path")
-    internal val _logoPath: String?,
+    @TMDbImage
+    val logo: TmdbImage?,
 
     // Additional fields in details
     val headquarters: String?,
     val homepage: String?,
     val description: String?
-) {
-    val logo: TmdbImage?
-        get() = if (!_logoPath.isNullOrBlank())
-            TmdbImage(_logoPath, 0, 0, null)
-        else null
-}
+)

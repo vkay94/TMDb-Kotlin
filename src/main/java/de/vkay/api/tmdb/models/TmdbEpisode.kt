@@ -4,6 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.internals.annotations.ResultsList
+import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
 @JsonClass(generateAdapter = true)
 data class TmdbEpisode internal constructor(
@@ -16,7 +17,8 @@ data class TmdbEpisode internal constructor(
     val title: String,
     val overview: String,
     @Json(name = "still_path")
-    internal val _stillPath: String?,
+    @TMDbImage
+    val still: TmdbImage?,
     @Json(name = "season_number")
     val seasonNumber: Int,
     @Json(name = "vote_average")
@@ -33,11 +35,6 @@ data class TmdbEpisode internal constructor(
     internal val _videos: List<TmdbVideo>?
 
 ) : MediaTypeItem(MediaType.EPISODE) {
-
-    val still: TmdbImage?
-        get() = if (!_stillPath.isNullOrBlank())
-            TmdbImage(_stillPath)
-        else null
 
     val stills: List<TmdbImage> = _images?.stills ?: emptyList()
     val videos: List<TmdbVideo> = _videos ?: emptyList()
@@ -68,18 +65,13 @@ data class TmdbEpisode internal constructor(
         val title: String,
         val overview: String,
         @Json(name = "still_path")
-        internal val _stillPath: String?,
+        @TMDbImage
+        val still: TmdbImage?,
         @Json(name = "season_number")
         val seasonNumber: Int,
         @Json(name = "vote_average")
         val voteAverage: Double,
         @Json(name = "vote_count")
         val voteCount: Int
-    ) : MediaTypeItem(MediaType.EPISODE) {
-
-        val still: TmdbImage?
-            get() = if (!_stillPath.isNullOrBlank())
-                TmdbImage(_stillPath)
-            else null
-    }
+    ) : MediaTypeItem(MediaType.EPISODE)
 }

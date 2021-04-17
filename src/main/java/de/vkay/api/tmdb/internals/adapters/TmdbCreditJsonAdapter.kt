@@ -4,6 +4,7 @@ import com.squareup.moshi.*
 import de.vkay.api.tmdb.enumerations.PersonGender
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
 import de.vkay.api.tmdb.models.TmdbCredit
+import de.vkay.api.tmdb.models.TmdbImage
 import java.util.*
 
 internal class TmdbCreditCastJsonAdapter : JsonAdapter<TmdbCredit.Cast>() {
@@ -106,7 +107,7 @@ internal class TmdbCreditCastJsonAdapter : JsonAdapter<TmdbCredit.Cast>() {
             originalName = originalName!!,
             gender = gender,
             adult = adult!!,
-            _profilePath = profilePath,
+            profile = profilePath?.let { TmdbImage(it) },
             knownForDepartment = knownForDepartment!!,
             roles = roles ?: emptyList(),
             totalEpisodeCount = totalEpisodeCount,
@@ -221,7 +222,7 @@ internal class TmdbCreditCrewJsonAdapter : JsonAdapter<TmdbCredit.Crew>() {
             originalName = originalName!!,
             gender = gender,
             adult = adult!!,
-            _profilePath = profilePath,
+            profile = profilePath?.let { TmdbImage(it) },
             knownForDepartment = knownForDepartment!!,
             jobs = jobs ?: emptyList(),
             totalEpisodeCount = totalEpisodeCount,

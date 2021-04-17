@@ -6,14 +6,13 @@ import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
 import de.vkay.api.tmdb.enumerations.ShowType
 import de.vkay.api.tmdb.internals.annotations.ResultsList
+import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
 @JsonClass(generateAdapter = true)
 class TmdbShow internal constructor(
     val id: Int,
     @Json(name = "name")
     val title: String,
-    @Json(name = "poster_path")
-    internal val _posterPath: String?,
     @Json(name = "first_air_date")
     val releaseDate: TmdbDate?,
     @Json(name = "episode_run_time")
@@ -68,7 +67,11 @@ class TmdbShow internal constructor(
     @ResultsList
     internal val _keywords: List<TmdbKeyword>?,
     @Json(name = "backdrop_path")
-    internal val _backdropPath: String?
+    @TMDbImage
+    val backdrop: TmdbImage?,
+    @Json(name = "poster_path")
+    @TMDbImage
+    val poster: TmdbImage?
 ) : MediaTypeItem(MediaType.TV) {
 
     val videos: List<TmdbVideo> = _videos ?: emptyList()
@@ -81,16 +84,6 @@ class TmdbShow internal constructor(
     val cast: List<TmdbCredit.Cast> = _credits?.cast ?: emptyList()
     val crew: List<TmdbCredit.Crew> = _credits?.crew ?: emptyList()
     val keywords: List<TmdbKeyword> = _keywords ?: emptyList()
-
-    val backdrop: TmdbImage?
-        get() = if (!_backdropPath.isNullOrBlank())
-            TmdbImage(_backdropPath)
-        else null
-
-    val poster: TmdbImage?
-        get() = if (!_posterPath.isNullOrBlank())
-            TmdbImage(_posterPath)
-        else null
 
     val runtime: Int = episodeRuntimes.firstOrNull() ?: 0
     val hasSpecials: Boolean = seasons.any { it.seasonNumber == 0 }
@@ -125,31 +118,21 @@ class TmdbShow internal constructor(
         val id: Int,
         @Json(name = "name")
         val title: String,
-        @Json(name = "backdrop_path")
-        internal val _backdropPath: String?,
         @Json(name = "first_air_date")
         val releaseDate: TmdbDate?,
-
+        @Json(name = "backdrop_path")
+        @TMDbImage
+        val backdrop: TmdbImage?,
+        @Json(name = "poster_path")
+        @TMDbImage
+        val poster: TmdbImage?,
         @Json(name = "original_name")
         val originalTitle: String,
-        @Json(name = "poster_path")
-        internal val _posterPath: String?,
         @Json(name = "genre_ids")
         val genreIds: List<Int>,
         @Json(name = "vote_average")
         val voteAverage: Double,
         val popularity: Double
 
-    ) : MediaTypeItem(MediaType.TV) {
-
-        val backdrop: TmdbImage?
-            get() = if (!_backdropPath.isNullOrBlank())
-                TmdbImage(_backdropPath)
-            else null
-
-        val poster: TmdbImage?
-            get() = if (!_posterPath.isNullOrBlank())
-                TmdbImage(_posterPath)
-            else null
-    }
+    ) : MediaTypeItem(MediaType.TV)
 }

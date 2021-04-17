@@ -12,6 +12,7 @@ import de.vkay.api.tmdb.internals.adapters.*
 import de.vkay.api.tmdb.internals.annotations.ErrorAnnotationAdapter
 import de.vkay.api.tmdb.internals.annotations.MapListAdapter
 import de.vkay.api.tmdb.internals.annotations.ResultsListAdapter
+import de.vkay.api.tmdb.internals.annotations.TMDbImageAdapter
 import de.vkay.api.tmdb.internals.models.TmdbFindResult
 import de.vkay.api.tmdb.internals.models.WatchProviderListObj
 import de.vkay.api.tmdb.models.*
@@ -124,6 +125,7 @@ object TMDb {
             .add(ErrorAnnotationAdapter())
             .add(ResultsListAdapter.INSTANCE)
             .add(MapListAdapter.INSTANCE)
+            .add(TMDbImageAdapter.INSTANCE)
             .build()
     }
 

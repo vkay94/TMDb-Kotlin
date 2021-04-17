@@ -4,15 +4,18 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
+import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
 @JsonClass(generateAdapter = true)
 data class TmdbMovie internal constructor(
     val id: Int,
     val title: String,
-    @Json(name = "poster_path")
-    internal val _posterPath: String?,
     @Json(name = "backdrop_path")
-    internal val _backdropPath: String?,
+    @TMDbImage
+    val backdrop: TmdbImage?,
+    @Json(name = "poster_path")
+    @TMDbImage
+    val poster: TmdbImage?,
     @Json(name = "original_language")
     val originalLanguage: String,
     @Json(name = "original_title")
@@ -46,24 +49,16 @@ data class TmdbMovie internal constructor(
     val spokenLanguages: List<TmdbLanguage>
 ) : MediaTypeItem(MediaType.MOVIE) {
 
-    val backdrop: TmdbImage?
-        get() = if (!_backdropPath.isNullOrBlank())
-            TmdbImage(_backdropPath)
-        else null
-
-    val poster: TmdbImage?
-        get() = if (!_posterPath.isNullOrBlank())
-            TmdbImage(_posterPath)
-        else null
-
     @JsonClass(generateAdapter = true)
     data class Slim internal constructor(
         val id: Int,
         val title: String,
-        @Json(name = "poster_path")
-        internal val _posterPath: String?,
         @Json(name = "backdrop_path")
-        internal val _backdropPath: String?,
+        @TMDbImage
+        val backdrop: TmdbImage?,
+        @Json(name = "poster_path")
+        @TMDbImage
+        val poster: TmdbImage?,
         @Json(name = "original_language")
         val originalLanguage: String,
         @Json(name = "original_title")
@@ -80,16 +75,5 @@ data class TmdbMovie internal constructor(
         @Json(name = "vote_count")
         val voteCount: Int,
         val video: Boolean
-    ) : MediaTypeItem(MediaType.MOVIE) {
-
-        val backdrop: TmdbImage?
-            get() = if (!_backdropPath.isNullOrBlank())
-                TmdbImage(_backdropPath)
-            else null
-
-        val poster: TmdbImage?
-            get() = if (!_posterPath.isNullOrBlank())
-                TmdbImage(_posterPath)
-            else null
-    }
+    ) : MediaTypeItem(MediaType.MOVIE)
 }
