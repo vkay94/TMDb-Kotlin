@@ -2,7 +2,7 @@ package services
 
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
-import de.vkay.api.tmdb.models.TmdbTranslationData
+import de.vkay.api.tmdb.models.TmdbTranslation
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
@@ -38,10 +38,10 @@ class CollectionServiceTest : BaseServiceTest() {
         val german = translations.find { it.languageCode == "de" && it.countryCode == "DE" }!!
         val us = translations.find { it.languageCode == "en" && it.countryCode == "US" }!!
 
-        assertEquals("Marvel's The Avengers Filmreihe", (german.data as TmdbTranslationData.Overview).title)
-        assertTrue((german.data as TmdbTranslationData.Overview).overview.isNotBlank())
+        assertEquals("Marvel's The Avengers Filmreihe", (german.data as TmdbTranslation.Data.Overview).title)
+        assertTrue((german.data as TmdbTranslation.Data.Overview).overview.isNotBlank())
 
-        assertTrue((us.data as TmdbTranslationData.Overview).title.isBlank())
-        assertTrue((us.data as TmdbTranslationData.Overview).overview.contains("A superhero film series produced"))
+        assertTrue((us.data as TmdbTranslation.Data.Overview).title.isBlank())
+        assertTrue((us.data as TmdbTranslation.Data.Overview).overview.contains("A superhero film series produced"))
     }
 }

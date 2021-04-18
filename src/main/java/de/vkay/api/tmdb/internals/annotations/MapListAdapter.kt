@@ -4,7 +4,6 @@ import com.squareup.moshi.*
 import de.vkay.api.tmdb.enumerations.ReleaseDate
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.TmdbDateJsonAdapter
-import de.vkay.api.tmdb.models.TmdbCertification
 import de.vkay.api.tmdb.models.TmdbReleaseDate
 import java.lang.reflect.Type
 import kotlin.streams.toList
@@ -24,12 +23,6 @@ internal class MapListAdapter(val fieldName: String): JsonAdapter<Map<String, Li
             ReleaseDate::class.java, EnumValueJsonAdapter.create(ReleaseDate::class.java)
             .withUnknownFallback(ReleaseDate.UNKNOWN))
         .build().adapter<List<ReleaseDatesMapHelper>>(listResultsType)
-
-    private val listCertType = Types.newParameterizedType(List::class.java, TmdbCertification::class.java)
-    private val mapCertAdapter: JsonAdapter<Map<String, List<TmdbCertification>>> =
-        Moshi.Builder().build().adapter(
-            Types.newParameterizedType(Map::class.java, String::class.java, listCertType)
-        )
 
     companion object {
         val INSTANCE = MapListFactory()
@@ -61,26 +54,8 @@ internal class MapListAdapter(val fieldName: String): JsonAdapter<Map<String, Li
                 results[it.iso_3166_1] = it.release_dates
             }
             return results
-
-        } else {
-            var results = emptyMap<String, List<TmdbCertification>>()
-
-            reader.beginObject()
-            while (reader.hasNext()) {
-                when (reader.selectName(optionsCertification)) {
-                    -1 -> {
-                        // Unknown name, skip it.
-                        reader.skipName()
-                        reader.skipValue()
-                    }
-                    else -> {
-                        results = mapCertAdapter.fromJson(reader)!!
-                    }
-                }
-            }
-            reader.endObject()
-            return results
         }
+        return emptyMap()
     }
 
     override fun toJson(writer: JsonWriter, value: Map<String, List<Any>>?) =

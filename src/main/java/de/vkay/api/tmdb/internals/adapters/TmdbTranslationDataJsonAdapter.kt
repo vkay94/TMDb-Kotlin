@@ -5,9 +5,9 @@ import com.squareup.moshi.JsonReader
 import com.squareup.moshi.JsonWriter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.internal.Util
-import de.vkay.api.tmdb.models.TmdbTranslationData
+import de.vkay.api.tmdb.models.TmdbTranslation
 
-internal class TmdbTranslationDataJsonAdapter : JsonAdapter<TmdbTranslationData>() {
+internal class TmdbTranslationDataJsonAdapter : JsonAdapter<TmdbTranslation.Data>() {
     private val moshi = Moshi.Builder().build()
 
     private val options: JsonReader.Options = JsonReader.Options.of(
@@ -17,7 +17,7 @@ internal class TmdbTranslationDataJsonAdapter : JsonAdapter<TmdbTranslationData>
     private val stringAdapter: JsonAdapter<String> = moshi.adapter(String::class.java, emptySet(),
         "name")
 
-    override fun fromJson(reader: JsonReader): TmdbTranslationData? {
+    override fun fromJson(reader: JsonReader): TmdbTranslation.Data? {
         var overview: String? = null
         var title: String? = null
         var biography: String? = null
@@ -40,35 +40,18 @@ internal class TmdbTranslationDataJsonAdapter : JsonAdapter<TmdbTranslationData>
         reader.endObject()
 
         return if (biography == null) {
-            TmdbTranslationData.Overview(
+            TmdbTranslation.Data.Overview(
                 title ?: throw Util.missingProperty("title", "title/name", reader),
                 overview ?: throw Util.missingProperty("overview", "overview", reader)
             )
         } else {
-            TmdbTranslationData.Biography(biography)
+            TmdbTranslation.Data.Biography(biography)
         }
     }
 
-    override fun toJson(writer: JsonWriter, value: TmdbTranslationData?) {
+    override fun toJson(writer: JsonWriter, value: TmdbTranslation.Data?) {
         if (value == null) {
             throw NullPointerException("value was null! Wrap in .nullSafe() to write nullable values.")
-        }
-
-        when (value) {
-            is TmdbTranslationData.Overview -> {
-                writer.beginObject()
-                writer.name("title")
-                stringAdapter.toJson(writer, value.title)
-                writer.name("overview")
-                stringAdapter.toJson(writer, value.overview)
-                writer.endObject()
-            }
-            is TmdbTranslationData.Biography -> {
-                writer.beginObject()
-                writer.name("biography")
-                stringAdapter.toJson(writer, value.biography)
-                writer.endObject()
-            }
         }
     }
 }

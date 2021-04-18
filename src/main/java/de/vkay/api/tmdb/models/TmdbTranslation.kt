@@ -12,5 +12,17 @@ data class TmdbTranslation internal constructor(
     val name: String,
     @Json(name = "english_name")
     val englishName: String,
-    val data: TmdbTranslationData
-)
+    val data: Data
+) {
+    sealed class Data {
+
+        data class Overview internal constructor(
+            val title: String,
+            val overview: String
+        ) : Data()
+
+        data class Biography internal constructor(
+            val biography: String,
+        ) : Data()
+    }
+}

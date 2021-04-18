@@ -3,7 +3,7 @@ package services
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.TMDb
-import de.vkay.api.tmdb.models.TmdbTranslationData
+import de.vkay.api.tmdb.models.TmdbTranslation
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
@@ -62,7 +62,7 @@ class TvEpisodeServiceTest : BaseServiceTest() {
         assertTrue(translations.isNotEmpty())
 
         val germanTranslation = translations.first { it.languageCode == "de" }
-        assertTrue((germanTranslation.data as TmdbTranslationData.Overview).overview.contains(
+        assertTrue((germanTranslation.data as TmdbTranslation.Data.Overview).overview.contains(
             "Izuku Midoriya hat leider keine besondere angeborene"
         ))
         assertEquals("Deutsch", germanTranslation.name)

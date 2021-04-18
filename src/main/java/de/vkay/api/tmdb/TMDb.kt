@@ -24,8 +24,8 @@ import java.util.concurrent.TimeUnit
 
 
 object TMDb {
-    private const val BASE_URL = "https://api.themoviedb.org/3/"
-    private const val BASE_URL_4 = "https://api.themoviedb.org/4/"
+    const val BASE_URL = "https://api.themoviedb.org/3/"
+    const val BASE_URL_4 = "https://api.themoviedb.org/4/"
 
     private const val DEFAULT_LANGUAGE = "en-US"
 
@@ -58,7 +58,6 @@ object TMDb {
         tmdbInterceptor.offlineCache(duration, unit)
     }
 
-    val configurationService: ConfigurationService by lazy { retrofit3.create(ConfigurationService::class.java) }
     val searchService: SearchService by lazy { retrofit3.create(SearchService::class.java) }
     val showService: TvService by lazy { retrofit3.create(TvService::class.java) }
     val seasonService: TvSeasonService by lazy { retrofit3.create(TvSeasonService::class.java) }
@@ -73,7 +72,6 @@ object TMDb {
     val discoverService: DiscoverService by lazy { retrofit3.create(DiscoverService::class.java) }
     val trendingService: TrendingService by lazy { retrofit3.create(TrendingService::class.java) }
     val collectionService: CollectionService by lazy { retrofit3.create(CollectionService::class.java) }
-    val certificationService: CertificationService by lazy { retrofit3.create(CertificationService::class.java) }
 
     val listService: ListService by lazy { retrofit4.create(ListService::class.java) }
     val authService: AuthService by lazy { retrofit4.create(AuthService::class.java) }
@@ -110,7 +108,7 @@ object TMDb {
             /* Helpers: Types / Maps */
 
             /* Custom writer adapters */
-            .add(TmdbTranslationData::class.java, TmdbTranslationDataJsonAdapter())
+            .add(TmdbTranslation.Data::class.java, TmdbTranslationDataJsonAdapter())
             .add(TmdbCredit.Cast::class.java, TmdbCreditCastJsonAdapter())
             .add(TmdbCredit.Crew::class.java, TmdbCreditCrewJsonAdapter())
             .add(TmdbCredit.RoleJob::class.java, TmdbCreditRoleJobJsonAdapter())
