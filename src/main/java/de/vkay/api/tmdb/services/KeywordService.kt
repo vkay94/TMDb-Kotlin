@@ -8,6 +8,9 @@ import retrofit2.http.Path
 
 interface KeywordService {
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/keywords/get-keyword-details)
+     */
     @GET("keyword/{keyword_id}")
     suspend fun details(
         @Path("keyword_id") keywordId: Int

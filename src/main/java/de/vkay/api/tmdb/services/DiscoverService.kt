@@ -12,6 +12,9 @@ import retrofit2.http.QueryMap
 
 interface DiscoverService {
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/discover/tv-discover)
+     */
     @GET("discover/tv")
     suspend fun tv(
         @QueryMap options: Discover.ShowBuilder,
@@ -19,6 +22,9 @@ interface DiscoverService {
         @Query("page") page: Int = 1
     ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/discover/movie-discover)
+     */
     @GET("discover/movie")
     suspend fun movie(
         @QueryMap options: Discover.MovieBuilder,

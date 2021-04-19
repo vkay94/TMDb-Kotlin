@@ -10,11 +10,17 @@ import retrofit2.http.Path
 
 interface NetworkService {
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/networks/get-network-details)
+     */
     @GET("network/{network_id}")
     suspend fun details(
         @Path("network_id") id: Int
     ) : NetworkResponse<TmdbNetwork, TmdbError.DefaultError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/networks/get-network-images)
+     */
     @GET("network/{network_id}/images")
     @ResultsList("logos")
     suspend fun logos(

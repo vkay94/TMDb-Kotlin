@@ -10,6 +10,9 @@ import retrofit2.http.Path
 
 interface TrendingService {
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/trending/get-trending)
+     */
     @GET("trending/{media_type}/{time_window}")
     suspend fun get(
         @Path("media_type") mediaType: Trending.Type,

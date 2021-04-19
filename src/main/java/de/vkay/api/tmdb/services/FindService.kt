@@ -11,6 +11,9 @@ import retrofit2.http.Query
 
 interface FindService {
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/find/find-by-id)
+     */
     @GET("find/{external_id}")
     @OtherCases
     suspend fun find(

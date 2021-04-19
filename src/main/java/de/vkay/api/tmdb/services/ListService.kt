@@ -9,6 +9,9 @@ import retrofit2.http.*
 
 interface ListService {
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/4/list/get-list)
+     */
     @GET("list/{list_id}")
     suspend fun details(
         @Path("list_id") id: Int,
@@ -17,6 +20,9 @@ interface ListService {
         @Query("sort_by") sortBy: ListSortBy? = null
     ): NetworkResponse<TmdbList, TmdbError.DefaultError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/4/list/create-list)
+     */
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @FormUrlEncoded
     @POST("list")
@@ -28,6 +34,9 @@ interface ListService {
         @Field("iso_3166_1") countryCode: String? = null
     ): NetworkResponse<TmdbMessage.CreateList, TmdbError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/4/list/update-list)
+     */
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @FormUrlEncoded
     @PUT("list/{list_id}")
@@ -39,6 +48,9 @@ interface ListService {
         @Field("sort_by") sortBy: ListSortBy? = null
     ): NetworkResponse<TmdbMessage, TmdbError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/4/list/delete-list)
+     */
     @Headers("Content-Type: application/json;charset=utf-8")
     @DELETE("list/{list_id}")
     suspend fun delete(

@@ -9,12 +9,18 @@ import retrofit2.http.Query
 
 interface GenreService {
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/genres/get-tv-list)
+     */
     @GET("genre/tv/list")
     @ResultsList("genres")
     suspend fun tv(
         @Query("language") language: String? = null
     ): NetworkResponse<List<TmdbGenre>, TmdbError.DefaultError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/genres/get-movie-list)
+     */
     @GET("genre/movie/list")
     @ResultsList("genres")
     suspend fun movie(

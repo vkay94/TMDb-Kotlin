@@ -10,6 +10,9 @@ import retrofit2.http.Query
 
 interface TvSeasonService {
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-details)
+     */
     @GET("tv/{tv_id}/season/{season_number}")
     suspend fun details(
         @Path("tv_id") tvShowId: Int,
@@ -18,12 +21,18 @@ interface TvSeasonService {
         @Query("append_to_response") append: AppendToResponse? = null
     ): NetworkResponse<TmdbSeason, TmdbError.DefaultError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-external-ids)
+     */
     @GET("tv/{tv_id}/season/{season_number}/external_ids")
     suspend fun externalIds(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
     ): NetworkResponse<TmdbExternalIds, TmdbError.DefaultError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-images)
+     */
     @GET("tv/{tv_id}/season/{season_number}/images")
     @ResultsList("posters")
     suspend fun posters(
@@ -31,6 +40,9 @@ interface TvSeasonService {
         @Path("season_number") tvShowSeasonNumber: Int,
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-credits)
+     */
     @GET("tv/{tv_id}/season/{season_number}/credits")
     @ResultsList("crew")
     suspend fun crew(
@@ -38,6 +50,9 @@ interface TvSeasonService {
         @Path("season_number") tvShowSeasonNumber: Int,
     ): NetworkResponse<List<TmdbCredit.Crew>, TmdbError.DefaultError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-credits)
+     */
     @GET("tv/{tv_id}/season/{season_number}/credits")
     @ResultsList("cast")
     suspend fun cast(
@@ -45,6 +60,9 @@ interface TvSeasonService {
         @Path("season_number") tvShowSeasonNumber: Int,
     ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-translations)
+     */
     @GET("tv/{tv_id}/season/{season_number}/translations")
     @ResultsList("translations")
     suspend fun translations(
@@ -52,6 +70,9 @@ interface TvSeasonService {
         @Path("season_number") tvShowSeasonNumber: Int,
     ): NetworkResponse<List<TmdbTranslation>, TmdbError.DefaultError>
 
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-videos)
+     */
     @GET("tv/{tv_id}/season/{season_number}/videos")
     @ResultsList
     suspend fun videos(
