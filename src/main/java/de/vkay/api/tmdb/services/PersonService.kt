@@ -47,6 +47,66 @@ interface PersonService {
     ): NetworkResponse<TmdbExternalIds, TmdbError.DefaultError>
 
     /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-tv-credits)
+     */
+    @GET("person/{person_id}/tv_credits")
+    @ResultsList("cast")
+    suspend fun tvCast(
+        @Path("person_id") personId: Int,
+        @Query("language") language: String? = null
+    ): NetworkResponse<List<TmdbShow.Slim>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-tv-credits)
+     */
+    @GET("person/{person_id}/tv_credits")
+    @ResultsList("crew")
+    suspend fun tvCrew(
+        @Path("person_id") personId: Int,
+        @Query("language") language: String? = null
+    ): NetworkResponse<List<TmdbShow.Slim>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-movie-credits)
+     */
+    @GET("person/{person_id}/movie_credits")
+    @ResultsList("cast")
+    suspend fun movieCast(
+        @Path("person_id") personId: Int,
+        @Query("language") language: String? = null
+    ): NetworkResponse<List<TmdbMovie.Slim>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-movie-credits)
+     */
+    @GET("person/{person_id}/movie_credits")
+    @ResultsList("crew")
+    suspend fun movieCrew(
+        @Path("person_id") personId: Int,
+        @Query("language") language: String? = null
+    ): NetworkResponse<List<TmdbMovie.Slim>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-combined-credits)
+     */
+    @GET("person/{person_id}/combined_credits")
+    @ResultsList("cast")
+    suspend fun combinedCast(
+        @Path("person_id") personId: Int,
+        @Query("language") language: String? = null
+    ): NetworkResponse<List<MediaTypeItem>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-combined-credits)
+     */
+    @GET("person/{person_id}/combined_credits")
+    @ResultsList("crew")
+    suspend fun combinedCrew(
+        @Path("person_id") personId: Int,
+        @Query("language") language: String? = null
+    ): NetworkResponse<List<MediaTypeItem>, TmdbError.DefaultError>
+
+    /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-popular-people)
      */
     @GET("person/popular")
