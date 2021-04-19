@@ -32,7 +32,7 @@ data class TmdbMovie internal constructor(
     val voteCount: Long,
     val video: Boolean,
     @Json(name = "belongs_to_collection")
-    val belongsToCollection: TmdbCollection.BelongsTo?,
+    val belongsToCollection: TmdbCollection.Slim?,
     val budget: Long,
     val revenue: Long,
     val runtime: Int,

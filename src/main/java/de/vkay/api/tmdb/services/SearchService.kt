@@ -66,4 +66,14 @@ interface SearchService {
         @Query("query") query: String,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbCompany>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/search/search-collections)
+     */
+    @GET("search/collection")
+    suspend fun collection(
+        @Query("query") query: String,
+        @Query("language") language: String? = null,
+        @Query("page") page: Int? = null
+    ): NetworkResponse<TmdbPage<TmdbCollection.Slim>, TmdbError.DefaultError>
 }

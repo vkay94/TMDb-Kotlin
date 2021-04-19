@@ -20,7 +20,7 @@ class TMDbInterceptor(
         this.accessToken = token
     }
 
-    fun onlineCondition(condition: () -> Boolean) {
+    fun onlineCondition(condition: (() -> Boolean)?) {
         onlineCondition = condition
     }
 

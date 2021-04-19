@@ -78,6 +78,13 @@ class SearchServiceTest : BaseServiceTest() {
     }
 
     @Test
+    fun `Search collections`() = runBlocking {
+        val searchResult = TMDb.searchService.collection("Disney").invoke()!!
+        assertEquals(2, searchResult.totalResults)
+        assertEquals(91657, searchResult.results.find { it.name == "Disney Buddies Collection" }?.collectionId)
+    }
+
+    @Test
     fun `Search for networks (locally)`() = runBlocking {
         val searchResult = TMDb.searchNetworks("Netflix")
         val searchResult2 = TMDb.searchNetworks("crun")

@@ -61,6 +61,26 @@ interface TvSeasonService {
     ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
 
     /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-aggregate-credits)
+     */
+    @GET("tv/{tv_id}/season/{season_number}/aggregate_credits")
+    @ResultsList("crew")
+    suspend fun aggregateCrew(
+        @Path("tv_id") tvShowId: Int,
+        @Path("season_number") tvShowSeasonNumber: Int,
+    ): NetworkResponse<List<TmdbCredit.Crew>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-aggregate-credits)
+     */
+    @GET("tv/{tv_id}/season/{season_number}/aggregate_credits")
+    @ResultsList("cast")
+    suspend fun aggregateCast(
+        @Path("tv_id") tvShowId: Int,
+        @Path("season_number") tvShowSeasonNumber: Int,
+    ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
+
+    /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-translations)
      */
     @GET("tv/{tv_id}/season/{season_number}/translations")

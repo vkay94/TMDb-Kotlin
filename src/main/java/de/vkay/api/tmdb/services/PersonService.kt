@@ -53,4 +53,12 @@ interface PersonService {
     suspend fun popular(
         @Query("language") language: String? = null,
     ): NetworkResponse<TmdbPage<TmdbPerson.Slim>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-latest-person)
+     */
+    @GET("person/latest")
+    suspend fun latest(
+        @Query("language") language: String? = null
+    ): NetworkResponse<TmdbPerson, TmdbError.DefaultError>
 }

@@ -28,7 +28,7 @@ data class TmdbCollection internal constructor(
     )
 
     @JsonClass(generateAdapter = true)
-    data class BelongsTo(
+    data class Slim(
         @Json(name = "id")
         val collectionId: Int,
         val name: String,
