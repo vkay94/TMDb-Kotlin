@@ -481,8 +481,8 @@ the network:</p>
 </code></pre></div>
 <h2 id="use-cases">Use cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
 <h3 id="appendtoresponse"><code>AppendToResponse</code><a class="headerlink" href="#appendtoresponse" title="Permanent link">&para;</a></h3>
-<p>With <code>AppendToReponse</code> you can add optional data to the <code>details</code> call such as images and credits.
-and access it then. If it isn&rsquo;t passed accessing the field return an empty list (or of the API
+<p>With <code>AppendToReponse</code> you can add optional data to the <code>details</code> call such as images and credits. 
+If it isn&rsquo;t passed accessing the field returns an empty list (or of the API
 doesn&rsquo;t have the data).</p>
 <div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">appendToResponse</span> <span class="p">=</span> <span class="n">AppendToResponse</span><span class="p">(</span>
     <span class="n">AppendToResponse</span><span class="p">.</span><span class="n">Item</span><span class="p">.</span><span class="n">VIDEOS</span>
