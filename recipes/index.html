@@ -309,6 +309,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    Use cases
+  </a>
+  
+    <nav class="md-nav" aria-label="Use cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appendtoresponse" class="md-nav__link">
+    AppendToResponse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-targetted-data-directly" class="md-nav__link">
+    Get targetted data directly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -383,6 +410,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    Use cases
+  </a>
+  
+    <nav class="md-nav" aria-label="Use cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#appendtoresponse" class="md-nav__link">
+    AppendToResponse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-targetted-data-directly" class="md-nav__link">
+    Get targetted data directly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -425,6 +479,33 @@ the network:</p>
 <span class="n">TMDb</span><span class="p">.</span><span class="n">tmdbInterceptor</span> <span class="p">=</span> <span class="n">customInterceptor</span>
 <span class="n">TMDb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">&quot;YOUR_KEY&quot;</span><span class="p">)</span>
 </code></pre></div>
+<h2 id="use-cases">Use cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
+<h3 id="appendtoresponse"><code>AppendToResponse</code><a class="headerlink" href="#appendtoresponse" title="Permanent link">&para;</a></h3>
+<p>With <code>AppendToReponse</code> you can add optional data to the <code>details</code> call such as images and credits.
+and access it then. If it isn&rsquo;t passed accessing the field return an empty list (or of the API
+doesn&rsquo;t have the data).</p>
+<div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">appendToResponse</span> <span class="p">=</span> <span class="n">AppendToResponse</span><span class="p">(</span>
+    <span class="n">AppendToResponse</span><span class="p">.</span><span class="n">Item</span><span class="p">.</span><span class="n">VIDEOS</span>
+<span class="p">)</span>
+<span class="k">val</span> <span class="py">tvShow</span><span class="p">:</span> <span class="n">TmdbShow</span> <span class="p">=</span> <span class="n">TMDb</span><span class="p">.</span><span class="n">showService</span><span class="p">.</span><span class="n">details</span><span class="p">(</span>
+    <span class="n">SOME_ID</span><span class="p">,</span> <span class="n">append</span> <span class="p">=</span> <span class="n">appendToResponse</span><span class="p">).</span><span class="n">invoke</span><span class="p">()</span><span class="o">!!</span>
+
+<span class="k">val</span> <span class="py">youtubeVideoThumbnail</span><span class="p">:</span> <span class="n">String</span><span class="p">?</span> <span class="p">=</span> 
+    <span class="k">if</span> <span class="p">(</span><span class="n">tvShow</span><span class="p">.</span><span class="n">videos</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">())</span> <span class="k">null</span> 
+    <span class="k">else</span> <span class="n">tvShow</span><span class="p">.</span><span class="n">videos</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">youtubeThumbnail</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="get-targetted-data-directly">Get targetted data directly<a class="headerlink" href="#get-targetted-data-directly" title="Permanent link">&para;</a></h3>
+<p>If you&rsquo;re interested in specific data only (for example movies/shows in which a person was cast member
+of), you can retrieve this data directly with a call:</p>
+<div class="highlight"><pre><span></span><code><span class="k">val</span> <span class="py">castMovies</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">TmdbMovie</span><span class="p">.</span><span class="n">Slim</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">TMDb</span><span class="p">.</span><span class="n">personService</span><span class="p">.</span><span class="n">movieCast</span><span class="p">(</span><span class="n">SOME_ID</span><span class="p">).</span><span class="n">invoke</span><span class="p">()</span><span class="o">!!</span>
+<span class="k">val</span> <span class="py">firstMovie</span><span class="p">:</span> <span class="n">TmdbMovie</span><span class="p">.</span><span class="n">Slim</span><span class="p">?</span> <span class="p">=</span> <span class="n">castMovie</span><span class="p">.</span><span class="n">firstOrNull</span><span class="p">()</span>
+
+<span class="k">val</span> <span class="py">castTv</span><span class="p">:</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">TmdbShow</span><span class="p">.</span><span class="n">Slim</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">TMDb</span><span class="p">.</span><span class="n">personService</span><span class="p">.</span><span class="n">tvCast</span><span class="p">(</span><span class="n">SOME_ID</span><span class="p">).</span><span class="n">invoke</span><span class="p">()</span><span class="o">!!</span>
+<span class="k">val</span> <span class="py">firstShow</span><span class="p">:</span> <span class="n">TmdbShow</span><span class="p">.</span><span class="n">Slim</span><span class="p">?</span> <span class="p">=</span> <span class="n">castTv</span><span class="p">.</span><span class="n">firstOrNull</span><span class="p">()</span>
+<span class="p">...</span>
+</code></pre></div>
+<p>If you want to fetch crew and cast movies you have to do it seperately. But in case you&rsquo;re caching
+the responses there won&rsquo;t be additional trafic since the API url is the same.</p>
                 
               
               

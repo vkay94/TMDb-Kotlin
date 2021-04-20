@@ -260,6 +260,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#response-restructing" class="md-nav__link">
+    Response restructing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#recurrent-classes-concepts" class="md-nav__link">
     Recurrent classes &amp; concepts
   </a>
@@ -406,6 +413,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#response-restructing" class="md-nav__link">
+    Response restructing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#recurrent-classes-concepts" class="md-nav__link">
     Recurrent classes &amp; concepts
   </a>
@@ -522,6 +536,10 @@ library in such way by</p>
 </tr>
 </tbody>
 </table>
+<h2 id="response-restructing">Response restructing<a class="headerlink" href="#response-restructing" title="Permanent link">&para;</a></h2>
+<p>Some API endpoints return data which is related to the languge/country code (for example movie release
+dates). Instead of returning a new object class the call returns a <code>Map&lt;String, List&lt;T&gt;</code> for example
+where the key is language / country code.</p>
 <h2 id="recurrent-classes-concepts">Recurrent classes &amp; concepts<a class="headerlink" href="#recurrent-classes-concepts" title="Permanent link">&para;</a></h2>
 <h3 id="slim-variants">Slim variants<a class="headerlink" href="#slim-variants" title="Permanent link">&para;</a></h3>
 <p>Slims are classes with less data in comparision to its normal variant. They&rsquo;re used
@@ -544,7 +562,8 @@ or if <code>AppendToResponse.Item.IMAGE</code> is used.</p>
 return a date string according to the user&rsquo;s location.
 <a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbDate.kt"><strong>&#8594; Doc</strong></a></p>
 <h3 id="tmdberror"><code>TmdbError</code><a class="headerlink" href="#tmdberror" title="Permanent link">&para;</a></h3>
-<p><a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbError.kt"><strong>&#8594; Doc</strong></a></p>
+<p>[&hellip;]
+[<strong>&#8594; Doc</strong>]<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbError.kt">doc_tmdberror</a></p>
 <h3 id="appendtoresponse"><code>AppendToResponse</code><a class="headerlink" href="#appendtoresponse" title="Permanent link">&para;</a></h3>
 <p>Some classes support optional addable data like videos or images which can be retrieved directly
 in the <code>details</code> call. Classes supporting the functionality:
