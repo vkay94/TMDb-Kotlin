@@ -156,4 +156,41 @@ internal class ErrorAnnotationAdapter {
     }
 
     //endregion
+
+    //region Rated
+
+    @Rated
+    @FromJson
+    fun normmafrsglR(input: String?): TmdbError? {
+        return null
+    }
+
+    @ToJson
+    fun normmgrggalR(@Rated input: TmdbError): String {
+        throw UnsupportedOperationException()
+    }
+
+    @Rated
+    @FromJson
+    fun defagrumltR(input: String?): TmdbError.DefaultError? {
+        return null
+    }
+
+    @ToJson
+    fun defgrgmaultR(@Rated input: TmdbError.DefaultError): String {
+        throw UnsupportedOperationException()
+    }
+
+    @Rated
+    @FromJson
+    fun posargtmR(input: String?): TmdbError.PostError? {
+        return null
+    }
+
+    @ToJson
+    fun pogrgsmtR(@Rated input: TmdbError.PostError): String {
+        throw UnsupportedOperationException()
+    }
+
+    //endregion
 }

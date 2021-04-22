@@ -12,7 +12,7 @@ interface AccountService {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     @FormUrlEncoded
     @POST("authentication/session/convert/4")
-    suspend fun convertToSessionId(
+    suspend fun accessTokenToSessionID(
         @Field("access_token") id: String
     ) : NetworkResponse<TmdbMessage.SessionId, TmdbError>
 

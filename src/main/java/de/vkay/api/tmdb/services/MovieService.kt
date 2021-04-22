@@ -202,4 +202,12 @@ interface MovieService {
         @Query("region") languageCode: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/movies/get-movie-account-states)
+     */
+    @GET("movie/{movie_id}/account_states")
+    suspend fun accountState(
+        @Path("movie_id") movieId: Int
+    ) : NetworkResponse<TmdbAccountState.Movie, TmdbError>
 }

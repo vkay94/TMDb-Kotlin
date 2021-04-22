@@ -99,4 +99,14 @@ interface TvSeasonService {
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
     ): NetworkResponse<List<TmdbVideo>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-account-states)
+     */
+    @GET("tv/{tv_id}/season/{season_number}/account_states")
+    @ResultsList("results")
+    suspend fun accountState(
+        @Path("tv_id") tvId: Int,
+        @Path("season_number") season: Int
+    ) : NetworkResponse<List<TmdbAccountState.EpisodeItem>, TmdbError.DefaultError>
 }

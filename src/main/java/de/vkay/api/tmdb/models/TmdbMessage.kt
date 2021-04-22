@@ -9,7 +9,7 @@ data class TmdbMessage internal constructor(
     val code: Int,
     @Json(name = "status_message")
     val message: String,
-    val success: Boolean
+    val success: Boolean?
 ) {
     @JsonClass(generateAdapter = true)
     data class RequestToken internal constructor(

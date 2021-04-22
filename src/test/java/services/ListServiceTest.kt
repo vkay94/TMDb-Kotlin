@@ -52,7 +52,7 @@ class ListServiceTest : BaseServiceTest() {
         assertEquals("Desc", details.description)
         assertEquals("de", details.languageCode)
 
-        assertTrue(TMDb.listService.delete(createdListId).invoke()!!.success)
+        assertTrue(TMDb.listService.delete(createdListId).invoke()!!.success!!)
     }
 
     @Test
@@ -64,7 +64,7 @@ class ListServiceTest : BaseServiceTest() {
             listId,"My New Name", "New Desc", false
         ).invoke()!!
 
-        assertTrue(updateResponse.success)
+        assertTrue(updateResponse.success!!)
 
         val details = TMDb.listService.details(listId).invoke()!!
 
@@ -73,6 +73,6 @@ class ListServiceTest : BaseServiceTest() {
         assertEquals("New Desc", details.description)
         assertEquals(false, details.public)
 
-        assertTrue(TMDb.listService.delete(listId).invoke()!!.success)
+        assertTrue(TMDb.listService.delete(listId).invoke()!!.success!!)
     }
 }

@@ -9,10 +9,7 @@ import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
 import de.vkay.api.tmdb.enumerations.*
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.*
-import de.vkay.api.tmdb.internals.annotations.ErrorAnnotationAdapter
-import de.vkay.api.tmdb.internals.annotations.MapListAdapter
-import de.vkay.api.tmdb.internals.annotations.ResultsListAdapter
-import de.vkay.api.tmdb.internals.annotations.TMDbImageAdapter
+import de.vkay.api.tmdb.internals.annotations.*
 import de.vkay.api.tmdb.internals.models.TmdbFindResult
 import de.vkay.api.tmdb.internals.models.WatchProviderListObj
 import de.vkay.api.tmdb.models.*
@@ -136,6 +133,7 @@ object TMDb {
             .add(ResultsListAdapter.INSTANCE)
             .add(MapListAdapter.INSTANCE)
             .add(TMDbImageAdapter.INSTANCE)
+            .add(RatedJsonAdapter())
             .build()
     }
 

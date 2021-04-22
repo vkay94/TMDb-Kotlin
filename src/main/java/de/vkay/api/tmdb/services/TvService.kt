@@ -225,4 +225,12 @@ interface TvService {
         @Path("id") groupId: String,
         @Query("language") language: String? = null,
     ): NetworkResponse<TmdbEpisodeGroupListObject, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-account-states)
+     */
+    @GET("tv/{tv_id}/account_states")
+    suspend fun accountState(
+        @Path("tv_id") tvId: Int
+    ) : NetworkResponse<TmdbAccountState.Show, TmdbError>
 }
