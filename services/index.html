@@ -441,21 +441,25 @@
 of supported services and all necessary info to them. Brief examples to calls can be found
 on the given test links or on the Recipes page.</p>
 <p><a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/main/java/de/vkay/api/tmdb/services"><strong>&#8594; All implemented services (GitHub)</strong></a></p>
-<details class="info"><summary>Missing services</summary><ul>
-<li>AccountService (<a href="https://developers.themoviedb.org/3/account/get-account-details">TMDb API</a>)
-    (to get account lists etc.)</li>
-</ul>
-</details>
+<!-- ??? info "Missing services"
+    - AccountService ([TMDb API](https://developers.themoviedb.org/3/account/get-account-details))
+        (to get account lists etc.) -->
+
 <details class="info"><summary>Services and endpoints not going to be implemented (niche)</summary><ul>
 <li>Reviews</li>
-<li>Configuration which return static data (for example available languages)</li>
-<li>Watch providers listing (those which are available)</li>
-<li>Credit (getting details by credit id)</li>
 <li>Changes</li>
-<li>Account state endpoints</li>
-<li>Rating endpoints</li>
-<li>Person: tagged images</li>
 <li>TV Shows: screened theatrically</li>
+<li>Credit: details by credit id</li>
+<li>
+<p>Person: tagged images</p>
+</li>
+<li>
+<p>Data which is <em>static</em>:</p>
+<ul>
+<li>Configuration such as available languages/regions and image resolutions</li>
+<li>Available watch providers</li>
+</ul>
+</li>
 </ul>
 </details>
 <h2 id="fetch-services-only">Fetch services only<a class="headerlink" href="#fetch-services-only" title="Permanent link">&para;</a></h2>

@@ -310,11 +310,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-cases" class="md-nav__link">
-    Use cases
+  <a href="#general" class="md-nav__link">
+    General
   </a>
   
-    <nav class="md-nav" aria-label="Use cases">
+    <nav class="md-nav" aria-label="General">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -327,6 +327,33 @@
           <li class="md-nav__item">
   <a href="#get-targetted-data-directly" class="md-nav__link">
     Get targetted data directly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#account" class="md-nav__link">
+    Account
+  </a>
+  
+    <nav class="md-nav" aria-label="Account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-request-token-and-access-token" class="md-nav__link">
+    Get Request Token and Access Token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-account-info-and-related-data" class="md-nav__link">
+    Get account info and related data
   </a>
   
 </li>
@@ -411,11 +438,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-cases" class="md-nav__link">
-    Use cases
+  <a href="#general" class="md-nav__link">
+    General
   </a>
   
-    <nav class="md-nav" aria-label="Use cases">
+    <nav class="md-nav" aria-label="General">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -428,6 +455,33 @@
           <li class="md-nav__item">
   <a href="#get-targetted-data-directly" class="md-nav__link">
     Get targetted data directly
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#account" class="md-nav__link">
+    Account
+  </a>
+  
+    <nav class="md-nav" aria-label="Account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-request-token-and-access-token" class="md-nav__link">
+    Get Request Token and Access Token
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-account-info-and-related-data" class="md-nav__link">
+    Get account info and related data
   </a>
   
 </li>
@@ -479,7 +533,7 @@ the network:</p>
 <span class="n">TMDb</span><span class="p">.</span><span class="n">tmdbInterceptor</span> <span class="p">=</span> <span class="n">customInterceptor</span>
 <span class="n">TMDb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">&quot;YOUR_KEY&quot;</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="use-cases">Use cases<a class="headerlink" href="#use-cases" title="Permanent link">&para;</a></h2>
+<h2 id="general">General<a class="headerlink" href="#general" title="Permanent link">&para;</a></h2>
 <h3 id="appendtoresponse"><code>AppendToResponse</code><a class="headerlink" href="#appendtoresponse" title="Permanent link">&para;</a></h3>
 <p>With <code>AppendToReponse</code> you can add optional data to the <code>details</code> call such as images and credits. 
 If it isn&rsquo;t passed accessing the field returns an empty list (or of the API
@@ -506,6 +560,39 @@ of), you can retrieve this data directly with a call:</p>
 </code></pre></div>
 <p>If you want to fetch crew and cast movies you have to do it seperately. But in case you&rsquo;re caching
 the responses there won&rsquo;t be additional trafic since the API url is the same.</p>
+<h2 id="account">Account<a class="headerlink" href="#account" title="Permanent link">&para;</a></h2>
+<h3 id="get-request-token-and-access-token">Get Request Token and Access Token<a class="headerlink" href="#get-request-token-and-access-token" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">TMDb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">YOUR_API_KEY</span><span class="p">,</span> <span class="n">V4_AUTH_KEY</span><span class="p">)</span>
+
+<span class="c1">// Get request token</span>
+<span class="k">val</span> <span class="py">requestTokenResponse</span><span class="p">:</span> <span class="n">TmdbMessage</span><span class="p">.</span><span class="n">RequestToken</span> <span class="p">=</span> 
+    <span class="n">TMDb</span><span class="p">.</span><span class="n">authService</span><span class="p">.</span><span class="n">requestToken</span><span class="p">().</span><span class="n">invoke</span><span class="p">()</span><span class="o">!!</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">requestTokenResponse</span><span class="p">.</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Authentificate requestToken by redirecting the user to the </span>
+    <span class="c1">// auth url on The Movie Database</span>
+    <span class="k">val</span> <span class="py">authUrl</span> <span class="p">=</span> <span class="n">TMDb</span><span class="p">.</span><span class="n">authLink</span><span class="p">(</span><span class="n">requestTokenResponse</span><span class="p">.</span><span class="n">requestToken</span><span class="p">)</span>
+
+    <span class="c1">// If request code is accepted get the access token</span>
+    <span class="k">val</span> <span class="py">accessTokenResponse</span><span class="p">:</span> <span class="n">TmdbMessage</span><span class="p">.</span><span class="n">AccessToken</span> <span class="p">=</span>
+        <span class="n">TMDb</span><span class="p">.</span><span class="n">accessToken</span><span class="p">(</span><span class="n">requestTokenResponse</span><span class="p">.</span><span class="n">requestToken</span><span class="p">).</span><span class="n">invoke</span><span class="p">()</span><span class="o">!!</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">accessTokenResponse</span><span class="p">.</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Save the access token to the TMDb object</span>
+        <span class="n">TMDb</span><span class="p">.</span><span class="n">accessToken</span> <span class="p">=</span> <span class="n">accessTokenResponse</span><span class="p">.</span><span class="n">accessToken</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="get-account-info-and-related-data">Get account info and related data<a class="headerlink" href="#get-account-info-and-related-data" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// Generate a session id using access token</span>
+<span class="k">val</span> <span class="py">sessionId</span> <span class="p">=</span> <span class="n">TMDb</span><span class="p">.</span><span class="n">accountService</span><span class="p">.</span><span class="n">accessTokenToSessionID</span><span class="p">(</span><span class="n">ACCESS_TOKEN</span><span class="p">).</span><span class="n">invoke</span><span class="p">()</span><span class="o">!!</span><span class="p">.</span><span class="n">sessionId</span>
+
+<span class="c1">// Save the session id to the TMDb object</span>
+<span class="n">TMDb</span><span class="p">.</span><span class="n">sessionId</span> <span class="p">=</span> <span class="n">sessionId</span>
+
+<span class="k">val</span> <span class="py">account</span><span class="p">:</span> <span class="n">TmdbAccount</span> <span class="p">=</span> <span class="n">TMDb</span><span class="p">.</span><span class="n">accountService</span><span class="p">.</span><span class="n">details</span><span class="p">().</span><span class="n">invoke</span><span class="p">()</span><span class="o">!!</span>
+<span class="k">val</span> <span class="py">favoriteShowsPage</span><span class="p">:</span> <span class="n">TmdbPage</span><span class="p">&lt;</span><span class="n">TmdbShow</span><span class="p">.</span><span class="n">Slim</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">TMDb</span><span class="p">.</span><span class="n">favoriteTv</span><span class="p">(</span><span class="n">account</span><span class="p">.</span><span class="n">accountId</span><span class="p">).</span><span class="n">invoke</span><span class="p">()</span><span class="o">!!</span>
+</code></pre></div>
                 
               
               
