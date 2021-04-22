@@ -3,6 +3,7 @@ package de.vkay.api.tmdb.models
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
+import de.vkay.api.tmdb.internals.annotations.Rated
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
@@ -72,6 +73,10 @@ data class TmdbEpisode internal constructor(
         @Json(name = "vote_average")
         val voteAverage: Double,
         @Json(name = "vote_count")
-        val voteCount: Int
+        val voteCount: Int,
+
+        // Optional when getting rated episodes (AccountService)
+        @Rated
+        val rating: Int?
     ) : MediaTypeItem(MediaType.EPISODE)
 }

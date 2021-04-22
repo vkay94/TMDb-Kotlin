@@ -5,6 +5,7 @@ import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
 import de.vkay.api.tmdb.enumerations.ShowType
+import de.vkay.api.tmdb.internals.annotations.Rated
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
@@ -132,7 +133,10 @@ class TmdbShow internal constructor(
         val genreIds: List<Int>,
         @Json(name = "vote_average")
         val voteAverage: Double,
-        val popularity: Double
+        val popularity: Double,
 
+        // Optional when getting rated shows (AccountService)
+        @Rated
+        val rating: Int?
     ) : MediaTypeItem(MediaType.TV)
 }

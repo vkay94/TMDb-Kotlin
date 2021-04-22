@@ -62,7 +62,7 @@ class AccountServiceTest : BaseServiceTest() {
         val stateOne = TMDb.movieService.accountState(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
         assertFalse(stateOne.favorite)
         assertFalse(stateOne.watchlist)
-        assertEquals(-1, stateOne.rating)
+        assertNull(stateOne.rating)
         assertEquals(MOVIE_ID_AVENGERS_ENDGAME, stateOne.id)
 
         val stateTwo = TMDb.movieService.accountState(MOVIE_ID_BUNNY_GIRL_SENPAI).invoke()!!
@@ -82,12 +82,34 @@ class AccountServiceTest : BaseServiceTest() {
     @Test
     fun `Get account state (season)`() = runBlocking {
         val seasonStateList = TMDb.seasonService.accountState(SHOW_ID_MHA, 1).invoke()!!
-        assertTrue(seasonStateList.first().rating == -1)
+        assertNull(seasonStateList.first().rating)
     }
 
     @Test
     fun `Get account state (episode)`() = runBlocking {
         val episodeState = TMDb.episodeService.accountState(SHOW_ID_MHA, 1, 1).invoke()!!
-        assertEquals(-1, episodeState.rating)
+        assertNull(episodeState.rating)
+    }
+
+    @Test
+    fun `Get rated movies`() = runBlocking {
+        val ratedMoviePage = TMDb.accountService.ratedMovies("de").invoke()!!
+        assertEquals(1, ratedMoviePage.totalPages)
+        assertTrue(ratedMoviePage.totalResults > 0)
+        assertTrue(ratedMoviePage.results.all { it.rating != null })
+    }
+
+    @Test
+    fun `Get rated shows`() = runBlocking {
+        val ratedShowsPage = TMDb.accountService.ratedShows("de").invoke()!!
+        assertTrue(ratedShowsPage.totalPages >= 4)
+        assertTrue(ratedShowsPage.totalResults >= 80)
+        assertTrue(ratedShowsPage.results.all { it.rating != null })
+    }
+
+    @Test
+    fun `Get rated episodes`() = runBlocking {
+        val ratedShowsPage = TMDb.accountService.ratedEpisodes("de").invoke()!!
+        assertTrue(ratedShowsPage.totalResults == 0)
     }
 }

@@ -4,6 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
+import de.vkay.api.tmdb.internals.annotations.Rated
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
 @JsonClass(generateAdapter = true)
@@ -74,6 +75,10 @@ data class TmdbMovie internal constructor(
         val popularity: Double,
         @Json(name = "vote_count")
         val voteCount: Int,
-        val video: Boolean
+        val video: Boolean,
+
+        // Optional when getting rated movies (AccountService)
+        @Rated
+        val rating: Int?
     ) : MediaTypeItem(MediaType.MOVIE)
 }

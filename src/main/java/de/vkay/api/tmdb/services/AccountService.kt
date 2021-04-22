@@ -75,4 +75,34 @@ interface AccountService {
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
     ) : NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/account/get-rated-movies)
+     */
+    @GET("account/{account_id}/rated/movies")
+    suspend fun ratedMovies(
+        @Query("language") language: String? = null,
+        @Query("page") page: Int? = null
+        // TODO: SortBy (created_at.asc, created_at.desc)
+    ) : NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/account/get-rated-tv-shows)
+     */
+    @GET("account/{account_id}/rated/tv")
+    suspend fun ratedShows(
+        @Query("language") language: String? = null,
+        @Query("page") page: Int? = null
+        // TODO: SortBy (created_at.asc, created_at.desc)
+    ) : NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/account/get-rated-tv-episodes)
+     */
+    @GET("account/{account_id}/rated/tv/episodes")
+    suspend fun ratedEpisodes(
+        @Query("language") language: String? = null,
+        @Query("page") page: Int? = null
+        // TODO: SortBy (created_at.asc, created_at.desc)
+    ) : NetworkResponse<TmdbPage<TmdbEpisode.Slim>, TmdbError.DefaultError>
 }

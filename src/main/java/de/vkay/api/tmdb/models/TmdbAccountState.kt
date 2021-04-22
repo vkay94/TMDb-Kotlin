@@ -13,7 +13,7 @@ class TmdbAccountState {
         val watchlist: Boolean,
         @Rated
         @Json(name = "rated")
-        val rating: Int
+        val rating: Int?
     )
 
     @JsonClass(generateAdapter = true)
@@ -23,7 +23,7 @@ class TmdbAccountState {
         val watchlist: Boolean,
         @Rated
         @Json(name = "rated")
-        val rating: Int
+        val rating: Int?
     )
 
     @JsonClass(generateAdapter = true)
@@ -34,13 +34,13 @@ class TmdbAccountState {
         val episode: Int,
         @Rated
         @Json(name = "rated")
-        val rating: Int
+        val rating: Int?
     )
 
     @JsonClass(generateAdapter = true)
     data class Episode internal constructor(
         @Rated
         @Json(name = "rated")
-        val rating: Int
+        val rating: Int?
     )
 }

@@ -16,7 +16,7 @@ class RatedJsonAdapter {
 
     @Rated
     @FromJson
-    fun fromJson(any: Any): Int {
+    fun fromJson(any: Any?): Int? {
         val json = any.toString()
         val regEx = """\{value=([\d.]*)}""".toRegex()
 
@@ -24,11 +24,17 @@ class RatedJsonAdapter {
             val (rating) = it
             return rating.toDouble().toInt()
         }
-        return -1
+
+        try {
+            return json.toDouble().toInt()
+        } catch (e: NumberFormatException) {
+            // ignore
+        }
+        return null
     }
 
     @ToJson
-    fun toJson(@Rated value: Int): Any {
-        return "EMPTY"
+    fun toJson(@Rated value: Int?): Any {
+        throw NotImplementedError("Not implemented")
     }
 }
