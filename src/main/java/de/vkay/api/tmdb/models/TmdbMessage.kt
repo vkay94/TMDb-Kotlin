@@ -31,8 +31,13 @@ data class TmdbMessage internal constructor(
         @Json(name = "status_message")
         val message: String,
         val success: Boolean
+    )
 
-
+    @JsonClass(generateAdapter = true)
+    data class SessionId(
+        @Json(name = "session_id")
+        val sessionId: String,
+        val success: Boolean
     )
 
     @JsonClass(generateAdapter = true)

@@ -46,6 +46,12 @@ object TMDb {
             field = value
         }
 
+    var sessionId: String? = null
+        set(value) {
+            tmdbInterceptor.setSessionId(value)
+            field = value
+        }
+
     fun onlineCondition(condition: () -> Boolean) = apply {
         tmdbInterceptor.onlineCondition(condition)
     }
@@ -75,6 +81,7 @@ object TMDb {
 
     val listService: ListService by lazy { retrofit4.create(ListService::class.java) }
     val authService: AuthService by lazy { retrofit4.create(AuthService::class.java) }
+    val accountService: AccountService by lazy { retrofit3.create(AccountService::class.java) }
 
     private val moshiWithAdapters: Moshi by lazy {
         return@lazy Moshi.Builder()
@@ -102,8 +109,13 @@ object TMDb {
             .add(
                 ListSortBy::class.java, EnumJsonAdapter.create(ListSortBy::class.java)
                     .withUnknownFallback(ListSortBy.UNKNOWN))
-            .add(ReleaseDate::class.java, EnumValueJsonAdapter.create(ReleaseDate::class.java)
-                .withUnknownFallback(ReleaseDate.UNKNOWN))
+            .add(
+                ReleaseDate::class.java, EnumValueJsonAdapter.create(ReleaseDate::class.java)
+                    .withUnknownFallback(ReleaseDate.UNKNOWN))
+
+            .add(
+                MediaType::class.java, EnumJsonAdapter.create(MediaType::class.java)
+                    .withUnknownFallback(MediaType.UNKNOWN))
 
             /* Helpers: Types / Maps */
 

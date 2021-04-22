@@ -155,6 +155,8 @@ interface TvService {
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-watch-providers)
+     *
+     * **Map key**: Country code, for example: DE, US, FR
      */
     @GET("tv/{tv_id}/watch/providers")
     @OtherCases

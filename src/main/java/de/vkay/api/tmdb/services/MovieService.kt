@@ -129,6 +129,8 @@ interface MovieService {
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/movies/get-movie-watch-providers)
+     *
+     * **Map key**: Country code, for example: DE, US, FR
      */
     @GET("movie/{movie_id}}/watch/providers")
     @OtherCases
@@ -146,6 +148,8 @@ interface MovieService {
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/movies/get-movie-release-dates)
+     *
+     * **Map key**: Country code, for example: DE, US, FR
      */
     @GET("movie/{movie_id}/release_dates")
     @MapList

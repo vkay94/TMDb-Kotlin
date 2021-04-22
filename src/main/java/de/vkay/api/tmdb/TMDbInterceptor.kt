@@ -12,12 +12,18 @@ class TMDbInterceptor(
 ) : Interceptor {
 
     private var accessToken: String? = null
+    private var sessionId: String? = null
+
     private var onlineCacheDurationSeconds = TimeUnit.HOURS.toSeconds(2)
     private var offlineCacheDurationSeconds = TimeUnit.DAYS.toSeconds(2)
     private var onlineCondition: (() -> Boolean)? = null
 
     fun setAccessToken(token: String?) {
         this.accessToken = token
+    }
+
+    fun setSessionId(id: String?) {
+        this.sessionId = id
     }
 
     fun onlineCondition(condition: (() -> Boolean)?) {
@@ -36,6 +42,10 @@ class TMDbInterceptor(
         val request = chain.request()
         val httpUrl = request.url.newBuilder()
             .addQueryParameter("api_key", apiKey)
+
+        sessionId?.let {
+            httpUrl.addQueryParameter("session_id", sessionId)
+        }
 
         val newRequestBuilder = request.newBuilder()
             .url(httpUrl.build())
