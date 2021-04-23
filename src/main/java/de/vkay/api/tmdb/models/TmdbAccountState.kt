@@ -9,8 +9,10 @@ class TmdbAccountState {
     @JsonClass(generateAdapter = true)
     data class Movie internal constructor(
         val id: Int,
-        val favorite: Boolean,
-        val watchlist: Boolean,
+        @Json(name = "favorite")
+        val isFavorite: Boolean,
+        @Json(name = "watchlist")
+        val isOnWatchlist: Boolean,
         @Rated
         @Json(name = "rated")
         val rating: Int?
@@ -19,8 +21,10 @@ class TmdbAccountState {
     @JsonClass(generateAdapter = true)
     data class Show internal constructor(
         val id: Int,
-        val favorite: Boolean,
-        val watchlist: Boolean,
+        @Json(name = "favorite")
+        val isFavorite: Boolean,
+        @Json(name = "watchlist")
+        val isOnWatchlist: Boolean,
         @Rated
         @Json(name = "rated")
         val rating: Int?

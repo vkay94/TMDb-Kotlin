@@ -81,6 +81,7 @@ interface AccountService {
      */
     @GET("account/{account_id}/rated/movies")
     suspend fun ratedMovies(
+        @Path("account_id") accountId: Int,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
@@ -91,6 +92,7 @@ interface AccountService {
      */
     @GET("account/{account_id}/rated/tv")
     suspend fun ratedShows(
+        @Path("account_id") accountId: Int,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
@@ -101,8 +103,30 @@ interface AccountService {
      */
     @GET("account/{account_id}/rated/tv/episodes")
     suspend fun ratedEpisodes(
+        @Path("account_id") accountId: Int,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
     ) : NetworkResponse<TmdbPage<TmdbEpisode.Slim>, TmdbError.DefaultError>
+
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/account/mark-as-favorite)
+     */
+    @Headers("Content-Type: application/json;charset=utf-8")
+    @POST("account/{account_id}/favorite")
+    suspend fun markFavorite(
+        @Path("account_id") accountId: Int,
+        @Body body: TmdbBody.MarkFavorite
+    ) : NetworkResponse<TmdbMessage, TmdbError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/account/add-to-watchlist)
+     */
+    @Headers("Content-Type: application/json;charset=utf-8")
+    @POST("account/{account_id}/watchlist")
+    suspend fun addToWatchlist(
+        @Path("account_id") accountId: Int,
+        @Body body: TmdbBody.AddToWatchlist
+    ) : NetworkResponse<TmdbMessage, TmdbError>
 }

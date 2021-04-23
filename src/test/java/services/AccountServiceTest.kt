@@ -4,6 +4,8 @@ import ACCESS_TOKEN
 import ACCOUNT_ID_INT
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
+import de.vkay.api.tmdb.enumerations.MediaType
+import de.vkay.api.tmdb.models.TmdbBody
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Before
@@ -60,22 +62,22 @@ class AccountServiceTest : BaseServiceTest() {
     @Test
     fun `Get account state (movie)`() = runBlocking {
         val stateOne = TMDb.movieService.accountState(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
-        assertFalse(stateOne.favorite)
-        assertFalse(stateOne.watchlist)
+        assertFalse(stateOne.isFavorite)
+        assertFalse(stateOne.isOnWatchlist)
         assertNull(stateOne.rating)
         assertEquals(MOVIE_ID_AVENGERS_ENDGAME, stateOne.id)
 
         val stateTwo = TMDb.movieService.accountState(MOVIE_ID_BUNNY_GIRL_SENPAI).invoke()!!
-        assertTrue(stateTwo.favorite)
-        assertFalse(stateTwo.watchlist)
+        assertTrue(stateTwo.isFavorite)
+        assertFalse(stateTwo.isOnWatchlist)
         assertEquals(10, stateTwo.rating)
     }
 
     @Test
     fun `Get account state (tv)`() = runBlocking {
         val state = TMDb.showService.accountState(SHOW_ID_BLACK_CLOVER).invoke()!!
-        assertTrue(state.favorite)
-        assertFalse(state.watchlist)
+        assertTrue(state.isFavorite)
+        assertFalse(state.isOnWatchlist)
         assertEquals(10, state.rating)
     }
 
@@ -93,7 +95,7 @@ class AccountServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get rated movies`() = runBlocking {
-        val ratedMoviePage = TMDb.accountService.ratedMovies("de").invoke()!!
+        val ratedMoviePage = TMDb.accountService.ratedMovies(ACCOUNT_ID_INT, "de").invoke()!!
         assertEquals(1, ratedMoviePage.totalPages)
         assertTrue(ratedMoviePage.totalResults > 0)
         assertTrue(ratedMoviePage.results.all { it.rating != null })
@@ -101,7 +103,7 @@ class AccountServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get rated shows`() = runBlocking {
-        val ratedShowsPage = TMDb.accountService.ratedShows("de").invoke()!!
+        val ratedShowsPage = TMDb.accountService.ratedShows(ACCOUNT_ID_INT, "de").invoke()!!
         assertTrue(ratedShowsPage.totalPages >= 4)
         assertTrue(ratedShowsPage.totalResults >= 80)
         assertTrue(ratedShowsPage.results.all { it.rating != null })
@@ -109,7 +111,41 @@ class AccountServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get rated episodes`() = runBlocking {
-        val ratedShowsPage = TMDb.accountService.ratedEpisodes("de").invoke()!!
+        val ratedShowsPage = TMDb.accountService.ratedEpisodes(ACCOUNT_ID_INT, "de").invoke()!!
         assertTrue(ratedShowsPage.totalResults == 0)
+    }
+
+    @Test
+    fun `Mark as favorite`() = runBlocking {
+        val addFavoriteBody = TmdbBody.MarkFavorite(MediaType.MOVIE, MOVIE_ID_AVENGERS_ENDGAME, true)
+        val removeFavoriteBody = TmdbBody.MarkFavorite(MediaType.MOVIE, MOVIE_ID_AVENGERS_ENDGAME, false)
+
+        val add = TMDb.accountService.markFavorite(ACCOUNT_ID_INT, addFavoriteBody).invoke()!!
+        val stateOne = TMDb.movieService.accountState(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+
+        val remove = TMDb.accountService.markFavorite(ACCOUNT_ID_INT, removeFavoriteBody).invoke()!!
+        val stateTwo = TMDb.movieService.accountState(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+
+        assertTrue(add.success!!)
+        assertTrue(remove.success!!)
+        assertTrue(stateOne.isFavorite)
+        assertFalse(stateTwo.isFavorite)
+    }
+
+    @Test
+    fun `Add to watchlist`() = runBlocking {
+        val addBody = TmdbBody.AddToWatchlist(MediaType.MOVIE, MOVIE_ID_AVENGERS_ENDGAME, true)
+        val removeBody = TmdbBody.AddToWatchlist(MediaType.MOVIE, MOVIE_ID_AVENGERS_ENDGAME, false)
+
+        val add = TMDb.accountService.addToWatchlist(ACCOUNT_ID_INT, addBody).invoke()!!
+        val stateOne = TMDb.movieService.accountState(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+
+        val remove = TMDb.accountService.addToWatchlist(ACCOUNT_ID_INT, removeBody).invoke()!!
+        val stateTwo = TMDb.movieService.accountState(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+
+        assertTrue(add.success!!)
+        assertTrue(remove.success!!)
+        assertTrue(stateOne.isOnWatchlist)
+        assertFalse(stateTwo.isOnWatchlist)
     }
 }
