@@ -50,4 +50,17 @@ data class TmdbMessage internal constructor(
         val message: String,
         val success: Boolean
     )
+
+    @JsonClass(generateAdapter = true)
+    data class ClearList internal constructor(
+        @Json(name = "id")
+        val listId: Int,
+        @Json(name = "status_code")
+        val code: Int,
+        @Json(name = "status_message")
+        val message: String,
+        val success: Boolean,
+        @Json(name = "items_deleted")
+        val itemsDeleted: Int,
+    )
 }
