@@ -47,7 +47,7 @@ interface AccountService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/account/get-favorite-tv-shows)
      */
     @GET("account/{account_id}/favorite/tv")
-    suspend fun favoriteTv(
+    suspend fun favoriteShows(
         @Path("account_id") accountId: Int,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
@@ -58,7 +58,7 @@ interface AccountService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/account/get-movie-watchlist)
      */
     @GET("account/{account_id}/watchlist/movies")
-    suspend fun watchListMovies(
+    suspend fun watchlistMovies(
         @Path("account_id") accountId: Int,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null
@@ -69,7 +69,7 @@ interface AccountService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/account/get-tv-show-watchlist)
      */
     @GET("account/{account_id}/favorite/tv")
-    suspend fun watchListTv(
+    suspend fun watchlistShows(
         @Path("account_id") accountId: Int,
         @Query("language") language: String? = null,
         @Query("page") page: Int? = null

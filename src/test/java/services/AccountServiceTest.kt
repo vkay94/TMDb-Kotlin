@@ -54,7 +54,7 @@ class AccountServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get favorite tv shows`() = runBlocking {
-        val page = TMDb.accountService.favoriteTv(ACCOUNT_ID_INT).invoke()!!
+        val page = TMDb.accountService.favoriteShows(ACCOUNT_ID_INT).invoke()!!
         assertEquals(2, page.totalPages)
         assertTrue(page.totalResults >= 25)
     }

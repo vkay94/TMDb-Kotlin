@@ -45,13 +45,13 @@ class DiscoverServiceShowTest : BaseServiceTest() {
             .withNetworks(listOf(networkIdCrunchyroll))
 
         val resultSingle = TMDb.discoverService.tv(builderSingle).invoke()!!
-        assertEquals(17, resultSingle.totalResults)
+        assertTrue(resultSingle.totalResults > 15)
 
         val builderMultiple = Discover.ShowBuilder()
             .withNetworks(listOf(networkIdTokyoMx, networkIdCrunchyroll))
 
         val resultMultiple = TMDb.discoverService.tv(builderMultiple).invoke()!!
-        assertEquals(1, resultMultiple.totalResults)
+        assertTrue(resultMultiple.totalResults > 1)
         assertEquals("Tower of God", resultMultiple.results.first().title)
     }
 }

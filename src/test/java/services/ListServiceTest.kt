@@ -11,6 +11,7 @@ import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
+import java.util.*
 
 
 class ListServiceTest : BaseServiceTest() {
@@ -46,38 +47,42 @@ class ListServiceTest : BaseServiceTest() {
     @Test
     fun `Create and delete list`() = runBlocking {
         TMDb.accessToken = ACCESS_TOKEN
+        val createListBody = TmdbBody.CreateList("My List", Locale.GERMAN.language)
+        val listId = TMDb.listService.create(createListBody).invoke()!!.listId
 
-//        val createdListId = TMDb.listService.create("My List", "de", "Desc").invoke()!!.listId
-//        val details = TMDb.listService.details(createdListId).invoke()!!
-//
-//        assertEquals("My List", details.name)
-//        assertEquals("Desc", details.description)
-//        assertEquals("de", details.languageCode)
-//
-//        assertTrue(TMDb.listService.delete(createdListId).invoke()!!.success!!)
+        val details = TMDb.listService.details(listId).invoke()!!
+
+        assertEquals("My List", details.name)
+        assertTrue(details.description.isBlank())
+        assertTrue(details.public)
+        assertEquals(Locale.GERMAN.language, details.languageCode)
+
+        assertTrue(TMDb.listService.delete(listId).invoke()!!.success!!)
     }
 
     @Test
     fun `Create, update and delete list`() = runBlocking {
         TMDb.accessToken = ACCESS_TOKEN
 
-        val createListBody = TmdbBody.CreateList("My List", "de")
+        val createListBody = TmdbBody.CreateList("My List", Locale.GERMAN.language)
+        val updateListBody = TmdbBody.UpdateList(
+            ListSortBy.VOTE_AVERAGE_DESC,
+            name = "New Name",
+            description = "Added Description",
+            public = false
+        )
 
         val listId = TMDb.listService.create(createListBody).invoke()!!.listId
-//        val updateResponse = TMDb.listService.update(
-//            listId,"My New Name", "New Desc", false
-//        ).invoke()!!
-//
-//        assertTrue(updateResponse.success!!)
-//
-//        val details = TMDb.listService.details(listId).invoke()!!
-//
-//        assertEquals(listId, details.id)
-//        assertEquals("My New Name", details.name)
-//        assertEquals("New Desc", details.description)
-//        assertEquals(false, details.public)
-//
-//        assertTrue(TMDb.listService.delete(listId).invoke()!!.success!!)
+        val update = TMDb.listService.update(listId, updateListBody).invoke()!!
+
+        val details = TMDb.listService.details(listId).invoke()!!
+
+        assertEquals("New Name", details.name)
+        assertEquals("Added Description", details.description)
+        assertEquals(ListSortBy.VOTE_AVERAGE_DESC, details.sortBy)
+        assertFalse(details.public)
+
+        assertTrue(TMDb.listService.delete(listId).invoke()!!.success!!)
     }
 
     @Test

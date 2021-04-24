@@ -26,9 +26,7 @@ enum class ListSortBy(private val jsonValue: String) {
     VOTE_AVERAGE_ASC("vote_average.desc"),
 
     @Json(name = "vote_average.desc")
-    VOTE_AVERAGE_DESC("vote_average.desc"),
-
-    UNKNOWN("UNKNOWN");
+    VOTE_AVERAGE_DESC("vote_average.desc");
 
     override fun toString(): String = jsonValue
 }

@@ -59,11 +59,11 @@ class TmdbBody {
 
     @JsonClass(generateAdapter = true)
     data class UpdateList(
-        val name: String?,
-        val description: String?,
-        val public: Boolean?,
         @Json(name = "sort_by")
-        val sortBy: ListSortBy?
+        val sortBy: ListSortBy,
+        val name: String? = null,
+        val description: String? = null,
+        val public: Boolean? = null
     )
 
     @JsonClass(generateAdapter = true)

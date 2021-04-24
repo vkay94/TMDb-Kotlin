@@ -105,7 +105,7 @@ object TMDb {
                     .withUnknownFallback(ShowType.UNKNOWN))
             .add(
                 ListSortBy::class.java, EnumJsonAdapter.create(ListSortBy::class.java)
-                    .withUnknownFallback(ListSortBy.UNKNOWN))
+                    .withUnknownFallback(ListSortBy.ORIGINAL_ORDER_ASC))
             .add(
                 ReleaseDate::class.java, EnumValueJsonAdapter.create(ReleaseDate::class.java)
                     .withUnknownFallback(ReleaseDate.UNKNOWN))
