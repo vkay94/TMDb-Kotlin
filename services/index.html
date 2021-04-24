@@ -245,78 +245,9 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Services
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         Services
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#fetch-services-only" class="md-nav__link">
-    Fetch services only
-  </a>
-  
-    <nav class="md-nav" aria-label="Fetch services only">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#searchservice" class="md-nav__link">
-    SearchService
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#movieservice" class="md-nav__link">
-    MovieService
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#auth-and-account-services" class="md-nav__link">
-    Auth and account services*
-  </a>
-  
-    <nav class="md-nav" aria-label="Auth and account services*">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#authservice" class="md-nav__link">
-    AuthService
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -370,61 +301,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#fetch-services-only" class="md-nav__link">
-    Fetch services only
-  </a>
-  
-    <nav class="md-nav" aria-label="Fetch services only">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#searchservice" class="md-nav__link">
-    SearchService
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#movieservice" class="md-nav__link">
-    MovieService
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#auth-and-account-services" class="md-nav__link">
-    Auth and account services*
-  </a>
-  
-    <nav class="md-nav" aria-label="Auth and account services*">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#authservice" class="md-nav__link">
-    AuthService
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -437,21 +313,33 @@
                 
                 
                 <h1 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h1>
-<p>Currently almost all endoints are usable. In the following you&rsquo;ll see the table
-of supported services and all necessary info to them. Brief examples to calls can be found
-on the given test links or on the Recipes page.</p>
-<p><a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/main/java/de/vkay/api/tmdb/services"><strong>&#8594; All implemented services (GitHub)</strong></a></p>
-<!-- ??? info "Missing services"
-    - AccountService ([TMDb API](https://developers.themoviedb.org/3/account/get-account-details))
-        (to get account lists etc.) -->
-
+<p>Currently, all essential endpoints are usable. In the following you&rsquo;ll find the necesary links for the
+supported services. Brief examples to calls can be found on the given test links or on the Recipes page.</p>
 <details class="info"><summary>Services and endpoints not going to be implemented (niche)</summary><ul>
 <li>Reviews</li>
 <li>Changes</li>
-<li>TV Shows: screened theatrically</li>
-<li>Credit: details by credit id</li>
+<li>TV Shows:<ul>
+<li>Screened theatrically</li>
+</ul>
+</li>
+<li>Credit:<ul>
+<li>Details by credit id</li>
+</ul>
+</li>
+<li>Person:<ul>
+<li>Tagged images</li>
+</ul>
+</li>
+<li>List:<ul>
+<li>Update items (only comment as addition)</li>
+<li>Check item status</li>
+</ul>
+</li>
 <li>
-<p>Person: tagged images</p>
+<p>Account:</p>
+<ul>
+<li>Recommended shows/movies (part of v4, but v3 is used for account)</li>
+</ul>
 </li>
 <li>
 <p>Data which is <em>static</em>:</p>
@@ -462,71 +350,12 @@ on the given test links or on the Recipes page.</p>
 </li>
 </ul>
 </details>
-<h2 id="fetch-services-only">Fetch services only<a class="headerlink" href="#fetch-services-only" title="Permanent link">&para;</a></h2>
-<h3 id="searchservice">SearchService<a class="headerlink" href="#searchservice" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th align="center">Library</th>
-<th align="center">Official dcumentation</th>
-<th align="center">Tests / examples</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/main/java/de/vkay/api/tmdb/services/SearchService.kt">Github</a></td>
-<td align="center"><a href="https://developers.themoviedb.org/3/search">TMDb</a></td>
-<td align="center"><a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/test/java/services/SearchServiceTest.kt">Github</a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="movieservice">MovieService<a class="headerlink" href="#movieservice" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th align="center">Library</th>
-<th align="center">Official dcumentation</th>
-<th align="center">Tests / examples</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/main/java/de/vkay/api/tmdb/services/MovieService.kt">Github</a></td>
-<td align="center"><a href="https://developers.themoviedb.org/3/movies">TMDb</a></td>
-<td align="center"><a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/test/java/services/MovieServiceTest.kt">Github</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="auth-and-account-services">Auth and account services*<a class="headerlink" href="#auth-and-account-services" title="Permanent link">&para;</a></h2>
-<p><small>*V4 auth key required</small></p>
-<h3 id="authservice">AuthService<a class="headerlink" href="#authservice" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th align="center">Library</th>
-<th align="center">Official dcumentation</th>
-<th align="center">Tests / examples</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><a href="njj">Github</a></td>
-<td align="center"><a href="njj">TMDb</a></td>
-<td align="center"><a href="njj">Github</a></td>
-</tr>
-</tbody>
-</table>
-<!-- 
-### Service
-
-| Library             | Official dcumentation | Tests / examples |
-| :-----------------: |  :-------------------: | :----------------:  |
-| [Github][_lib] | [TMDb][_tmdb] | [Github][_tests]  |
-
-[_lib]: https://github.com/vkay94/TMDb-Kotlin/tree/master/src/main/java/de/vkay/api/tmdb/services/Service.kt
-[_tmdb]: https://developers.themoviedb.org/3/
-[_tests]: https://github.com/vkay94/TMDb-Kotlin/blob/master/src/test/java/services/ServiceTest.kt
--->
+<p><a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/main/java/de/vkay/api/tmdb/services">&#8594; All implemented services (GitHub)</a></p>
+<p><a href="https://developers.themoviedb.org/3">&#8594; Official documentation (The Movie Database)</a></p>
+<p><a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/test/java/services">&#8594; Unit tests / proof examples (GitHub)</a></p>
+<!-- ??? info "Missing services"
+    - AccountService ([TMDb API](https://developers.themoviedb.org/3/account/get-account-details))
+        (to get account lists etc.) -->
                 
               
               
