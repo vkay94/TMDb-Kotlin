@@ -310,6 +310,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tmdbmessage" class="md-nav__link">
+    TmdbMessage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tmdbbody" class="md-nav__link">
+    TmdbBody
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#appendtoresponse" class="md-nav__link">
     AppendToResponse
   </a>
@@ -463,6 +477,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tmdbmessage" class="md-nav__link">
+    TmdbMessage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tmdbbody" class="md-nav__link">
+    TmdbBody
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#appendtoresponse" class="md-nav__link">
     AppendToResponse
   </a>
@@ -562,8 +590,19 @@ or if <code>AppendToResponse.Item.IMAGE</code> is used.</p>
 return a date string according to the user&rsquo;s location.
 <a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbDate.kt"><strong>&#8594; Doc</strong></a></p>
 <h3 id="tmdberror"><code>TmdbError</code><a class="headerlink" href="#tmdberror" title="Permanent link">&para;</a></h3>
-<p>[&hellip;]
-[<strong>&#8594; Doc</strong>]<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbError.kt">doc_tmdberror</a></p>
+<p>If there is an server error during networking this class is returned (requires check for <code>NetworkResponse.ServerError</code>).
+In most scenarios <code>TmdbError.DefaultError</code> is returned which is caused by not-found resources often.
+<code>TmdbError.PostError</code> will be returned if malformed data is passed to the body.
+<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbError.kt"><strong>&#8594; Doc</strong></a></p>
+<h3 id="tmdbmessage"><code>TmdbMessage</code><a class="headerlink" href="#tmdbmessage" title="Permanent link">&para;</a></h3>
+<p>This class is used for calls which return status data and simple data like <em>access token</em> and
+account related messages (id, successfull update data etc.). It contains sub-classes which provide the
+essential data.
+<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbMessage.kt"><strong>&#8594; Doc</strong></a></p>
+<h3 id="tmdbbody"><code>TmdbBody</code><a class="headerlink" href="#tmdbbody" title="Permanent link">&para;</a></h3>
+<p><code>TmdbBody</code>&lsquo;s inner classes are used to pass data for updating account related data in <code>AccountService</code>,
+for example adding items to a list or update its description (set valid session id required).
+<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbBody.kt"><strong>&#8594; Doc</strong></a></p>
 <h3 id="appendtoresponse"><code>AppendToResponse</code><a class="headerlink" href="#appendtoresponse" title="Permanent link">&para;</a></h3>
 <p>Some classes support optional addable data like videos or images which can be retrieved directly
 in the <code>details</code> call. Classes supporting the functionality:
