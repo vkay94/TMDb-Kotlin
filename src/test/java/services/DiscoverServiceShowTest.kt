@@ -4,7 +4,6 @@ import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.Discover
 import de.vkay.api.tmdb.TMDb
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.threeten.bp.LocalDate
@@ -37,21 +36,26 @@ class DiscoverServiceShowTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Test with networks`() = runBlocking {
+    fun `Test with networks (single)`() = runBlocking {
+        val networkIdCrunchyroll = 1112
+
+        val builder = Discover.ShowBuilder()
+            .withNetworks(listOf(networkIdCrunchyroll))
+
+        val result = TMDb.discoverService.tv(builder).invoke()!!
+        assertTrue(result.totalResults > 15)
+    }
+
+    @Test
+    fun `Test with networks (multiple)`() = runBlocking {
         val networkIdTokyoMx = 614
         val networkIdCrunchyroll = 1112
 
-        val builderSingle = Discover.ShowBuilder()
-            .withNetworks(listOf(networkIdCrunchyroll))
-
-        val resultSingle = TMDb.discoverService.tv(builderSingle).invoke()!!
-        assertTrue(resultSingle.totalResults > 15)
-
-        val builderMultiple = Discover.ShowBuilder()
+        val builder = Discover.ShowBuilder()
             .withNetworks(listOf(networkIdTokyoMx, networkIdCrunchyroll))
 
-        val resultMultiple = TMDb.discoverService.tv(builderMultiple).invoke()!!
-        assertTrue(resultMultiple.totalResults > 1)
-        assertEquals("Tower of God", resultMultiple.results.first().title)
+        val result = TMDb.discoverService.tv(builder).invoke()!!
+        assertTrue(result.totalResults > 1)
+        assertTrue(result.results.any { it.title == "Tower of God" })
     }
 }

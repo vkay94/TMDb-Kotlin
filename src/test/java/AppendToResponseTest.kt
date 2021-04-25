@@ -5,9 +5,15 @@ import org.junit.Test
 class AppendToResponseTest {
 
     @Test
-    fun `Test appendItems`() {
+    fun `Test appendItems without special key`() {
         val append = AppendToResponse(AppendToResponse.Item.IMAGES, AppendToResponse.Item.VIDEOS)
         assertEquals("images,videos", append.toString())
+    }
+
+    @Test
+    fun `Test appendItems with special key`() {
+        val append = AppendToResponse(AppendToResponse.Item.WATCH_PROVIDERS)
+        assertEquals("watch/providers", append.toString())
     }
 
 //    @Test

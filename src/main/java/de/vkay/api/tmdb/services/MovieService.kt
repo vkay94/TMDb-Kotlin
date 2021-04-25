@@ -40,7 +40,7 @@ interface MovieService {
     @ResultsList("cast")
     suspend fun cast(
         @Path("movie_id") movieId: Int
-    ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbPerson.Cast>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/movies/get-movie-credits)
@@ -49,7 +49,7 @@ interface MovieService {
     @ResultsList("crew")
     suspend fun crew(
         @Path("movie_id") movieId: Int
-    ): NetworkResponse<List<TmdbCredit.Crew>, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbPerson.Crew>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/movies/get-movie-external-ids)

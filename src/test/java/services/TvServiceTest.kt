@@ -7,7 +7,7 @@ import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.EpisodeGroupType
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
-import de.vkay.api.tmdb.models.TmdbCredit
+import de.vkay.api.tmdb.models.TmdbPerson
 import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
@@ -137,7 +137,7 @@ class TvServiceTest : BaseServiceTest() {
         val cast = TMDb.showService.cast(SHOW_ID_TBBT).invoke()!!
         assertEquals(8, cast.count())
         assertNotNull(cast.firstOrNull()?.profile)
-        assertTrue(cast.firstOrNull() is TmdbCredit.Cast)
+        assertTrue(cast.firstOrNull() is TmdbPerson.Cast)
     }
 
     @Test
@@ -146,7 +146,7 @@ class TvServiceTest : BaseServiceTest() {
         println(cast.size)
         assertTrue(cast.isNotEmpty())
         assertNotNull(cast.firstOrNull()?.profile)
-        assertTrue(cast.firstOrNull() is TmdbCredit.Cast)
+        assertTrue(cast.firstOrNull() is TmdbPerson.Cast)
     }
 
     @Test
@@ -154,7 +154,7 @@ class TvServiceTest : BaseServiceTest() {
         val crew = TMDb.showService.crew(SHOW_ID_TBBT).invoke()!!
         assertTrue(crew.isNotEmpty())
         assertNull(crew.firstOrNull()?.profile)
-        assertTrue(crew.firstOrNull() is TmdbCredit.Crew)
+        assertTrue(crew.firstOrNull() is TmdbPerson.Crew)
     }
 
     @Test

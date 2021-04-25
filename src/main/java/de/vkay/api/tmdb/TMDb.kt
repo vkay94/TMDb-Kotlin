@@ -118,9 +118,9 @@ object TMDb {
 
             /* Custom writer adapters */
             .add(TmdbTranslation.Data::class.java, TmdbTranslationDataJsonAdapter())
-            .add(TmdbCredit.Cast::class.java, TmdbCreditCastJsonAdapter())
-            .add(TmdbCredit.Crew::class.java, TmdbCreditCrewJsonAdapter())
-            .add(TmdbCredit.RoleJob::class.java, TmdbCreditRoleJobJsonAdapter())
+            .add(TmdbPerson.Cast::class.java, TmdbCreditCastJsonAdapter())
+            .add(TmdbPerson.Crew::class.java, TmdbCreditCrewJsonAdapter())
+            .add(TmdbPerson.RoleJob::class.java, TmdbCreditRoleJobJsonAdapter())
             .add(TmdbFindResult.ADAPTER)
             .add(TmdbDateJsonAdapter())
 

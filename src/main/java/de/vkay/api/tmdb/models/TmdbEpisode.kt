@@ -39,8 +39,8 @@ data class TmdbEpisode internal constructor(
 
     val stills: List<TmdbImage> = _images?.stills ?: emptyList()
     val videos: List<TmdbVideo> = _videos ?: emptyList()
-    val crew: List<TmdbCredit.Crew> = _credits?.crew ?: emptyList()
-    val cast: List<TmdbCredit.Cast> = _credits?.cast ?: emptyList()
+    val crew: List<TmdbPerson.Crew> = _credits?.crew ?: emptyList()
+    val cast: List<TmdbPerson.Cast> = _credits?.cast ?: emptyList()
 
     @JsonClass(generateAdapter = true)
     internal data class Images(
@@ -49,10 +49,10 @@ data class TmdbEpisode internal constructor(
 
     @JsonClass(generateAdapter = true)
     internal data class Credits(
-        val cast: List<TmdbCredit.Cast>,
-        val crew: List<TmdbCredit.Crew>,
+        val cast: List<TmdbPerson.Cast>,
+        val crew: List<TmdbPerson.Crew>,
         @Json(name = "guest_stars")
-        val guestStars: List<TmdbCredit.Guest>?
+        val guestStars: List<TmdbPerson.Guest>?
     )
 
     @JsonClass(generateAdapter = true)

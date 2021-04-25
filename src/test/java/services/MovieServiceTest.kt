@@ -6,7 +6,7 @@ import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
 import de.vkay.api.tmdb.enumerations.ReleaseDate
-import de.vkay.api.tmdb.models.TmdbCredit
+import de.vkay.api.tmdb.models.TmdbPerson
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Test
@@ -120,7 +120,7 @@ class MovieServiceTest : BaseServiceTest() {
         val cast = TMDb.movieService.cast(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
         assertTrue(cast.isNotEmpty())
         assertNotNull(cast.firstOrNull()?.profile)
-        assertTrue(cast.firstOrNull() is TmdbCredit.Cast)
+        assertTrue(cast.firstOrNull() is TmdbPerson.Cast)
     }
 
     @Test
@@ -128,7 +128,7 @@ class MovieServiceTest : BaseServiceTest() {
         val crew = TMDb.movieService.crew(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
         assertTrue(crew.isNotEmpty())
         assertNotNull(crew.firstOrNull()?.profile)
-        assertTrue(crew.firstOrNull() is TmdbCredit.Crew)
+        assertTrue(crew.firstOrNull() is TmdbPerson.Crew)
     }
 
     @Test

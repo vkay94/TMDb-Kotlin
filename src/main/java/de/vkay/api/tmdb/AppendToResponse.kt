@@ -16,14 +16,12 @@
  */
 package de.vkay.api.tmdb
 
-import java.util.*
-
 class AppendToResponse(private vararg val appendItems: Item = arrayOf()) {
     private val seasons = mutableListOf<Int>()
 
     override fun toString(): String {
         var result = ""
-        result += appendItems.joinToString(separator = ",") { it.name.toLowerCase(Locale.ROOT) }
+        result += appendItems.joinToString(separator = ",") { it.toString() }
         if (seasons.isNotEmpty()) {
             result += if (appendItems.isNotEmpty()) "," else ""
             result += seasons.joinToString(separator = ",") { "season/$it" }
@@ -31,8 +29,12 @@ class AppendToResponse(private vararg val appendItems: Item = arrayOf()) {
         return result
     }
 
-    enum class Item {
-        IMAGES, CREDITS, VIDEOS, EXTERNAL_IDS, RECOMMENDATIONS, SIMILAR, KEYWORDS
+    enum class Item(private val key: String) {
+        IMAGES(""), CREDITS(""), VIDEOS(""), EXTERNAL_IDS(""),
+        RECOMMENDATIONS(""), SIMILAR(""), KEYWORDS(""),
+        WATCH_PROVIDERS("watch/providers");
+
+        override fun toString(): String = key.ifBlank { name.toLowerCase() }
     }
 
     /*

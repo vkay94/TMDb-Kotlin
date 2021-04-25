@@ -82,8 +82,8 @@ class TmdbShow internal constructor(
     val recommendations: List<Slim> = _recommendations?.results ?: emptyList()
     val similar: List<Slim> = _similar?.results ?: emptyList()
 
-    val cast: List<TmdbCredit.Cast> = _credits?.cast ?: emptyList()
-    val crew: List<TmdbCredit.Crew> = _credits?.crew ?: emptyList()
+    val cast: List<TmdbPerson.Cast> = _credits?.cast ?: emptyList()
+    val crew: List<TmdbPerson.Crew> = _credits?.crew ?: emptyList()
     val keywords: List<TmdbKeyword> = _keywords ?: emptyList()
 
     val runtime: Int = episodeRuntimes.firstOrNull() ?: 0
@@ -110,8 +110,8 @@ class TmdbShow internal constructor(
 
     @JsonClass(generateAdapter = true)
     internal data class Credits(
-        val cast: List<TmdbCredit.Cast>,
-        val crew: List<TmdbCredit.Crew>,
+        val cast: List<TmdbPerson.Cast>,
+        val crew: List<TmdbPerson.Crew>,
     )
 
     @JsonClass(generateAdapter = true)

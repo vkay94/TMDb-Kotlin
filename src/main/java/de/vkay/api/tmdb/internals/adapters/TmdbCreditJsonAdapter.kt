@@ -3,16 +3,16 @@ package de.vkay.api.tmdb.internals.adapters
 import com.squareup.moshi.*
 import de.vkay.api.tmdb.enumerations.PersonGender
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
-import de.vkay.api.tmdb.models.TmdbCredit
 import de.vkay.api.tmdb.models.TmdbImage
+import de.vkay.api.tmdb.models.TmdbPerson.*
 import java.util.*
 
-internal class TmdbCreditCastJsonAdapter : JsonAdapter<TmdbCredit.Cast>() {
+internal class TmdbCreditCastJsonAdapter : JsonAdapter<Cast>() {
 
     private val moshi = Moshi.Builder()
         .add(PersonGender::class.java, EnumValueJsonAdapter.create(PersonGender::class.java)
             .withUnknownFallback(PersonGender.OTHER))
-        .add(TmdbCredit.RoleJob::class.java, TmdbCreditRoleJobJsonAdapter())
+        .add(RoleJob::class.java, TmdbCreditRoleJobJsonAdapter())
         .build()
 
     private val options: JsonReader.Options = JsonReader.Options.of(
@@ -38,10 +38,10 @@ internal class TmdbCreditCastJsonAdapter : JsonAdapter<TmdbCredit.Cast>() {
     private val nullableStringAdapter: JsonAdapter<String?> = moshi.adapter(String::class.java)
     private val nullablePersonGenderAdapter: JsonAdapter<PersonGender?> = moshi.adapter(PersonGender::class.java)
 
-    private val listOfTmdbRoleJobAdapter: JsonAdapter<List<TmdbCredit.RoleJob>> =
-        moshi.adapter(Types.newParameterizedType(List::class.java, TmdbCredit.RoleJob::class.java))
+    private val listOfTmdbRoleJobAdapter: JsonAdapter<List<RoleJob>> =
+        moshi.adapter(Types.newParameterizedType(List::class.java, RoleJob::class.java))
 
-    override fun fromJson(reader: JsonReader): TmdbCredit.Cast {
+    override fun fromJson(reader: JsonReader): Cast {
         var personId: Int? = null
         var name: String? = null
         var originalName: String? = null
@@ -54,7 +54,7 @@ internal class TmdbCreditCastJsonAdapter : JsonAdapter<TmdbCredit.Cast>() {
 
         var totalEpisodeCount: Int? = null
         var order: Int? = null
-        var roles: List<TmdbCredit.RoleJob>? = null
+        var roles: List<RoleJob>? = null
 
         reader.beginObject()
         while (reader.hasNext()) {
@@ -96,12 +96,12 @@ internal class TmdbCreditCastJsonAdapter : JsonAdapter<TmdbCredit.Cast>() {
 
         if (roles == null) {
             roles = Collections.singletonList(
-                TmdbCredit.RoleJob(
+                RoleJob(
                 creditId ?: "UNKNWON", character ?: "UNKNOWN", null
             ))
         }
 
-        return TmdbCredit.Cast(
+        return Cast(
             personId = personId!!,
             name = name!!,
             originalName = originalName!!,
@@ -115,19 +115,19 @@ internal class TmdbCreditCastJsonAdapter : JsonAdapter<TmdbCredit.Cast>() {
         )
     }
 
-    override fun toJson(writer: JsonWriter, value: TmdbCredit.Cast?) {
+    override fun toJson(writer: JsonWriter, value: Cast?) {
         if (value == null) {
             throw NullPointerException("value was null! Wrap in .nullSafe() to write nullable values.")
         }
     }
 }
 
-internal class TmdbCreditCrewJsonAdapter : JsonAdapter<TmdbCredit.Crew>() {
+internal class TmdbCreditCrewJsonAdapter : JsonAdapter<Crew>() {
 
     private val moshi = Moshi.Builder()
         .add(PersonGender::class.java, EnumValueJsonAdapter.create(PersonGender::class.java)
             .withUnknownFallback(PersonGender.OTHER))
-        .add(TmdbCredit.RoleJob::class.java, TmdbCreditRoleJobJsonAdapter())
+        .add(RoleJob::class.java, TmdbCreditRoleJobJsonAdapter())
         .build()
 
     private val options: JsonReader.Options = JsonReader.Options.of(
@@ -153,10 +153,10 @@ internal class TmdbCreditCrewJsonAdapter : JsonAdapter<TmdbCredit.Crew>() {
     private val nullableIntAdapter: JsonAdapter<Int?> = moshi.adapter(Int::class.java)
     private val nullablePersonGenderAdapter: JsonAdapter<PersonGender?> = moshi.adapter(PersonGender::class.java)
 
-    private val listOfTmdbRoleJobAdapter: JsonAdapter<List<TmdbCredit.RoleJob>> =
-        moshi.adapter(Types.newParameterizedType(List::class.java, TmdbCredit.RoleJob::class.java))
+    private val listOfTmdbRoleJobAdapter: JsonAdapter<List<RoleJob>> =
+        moshi.adapter(Types.newParameterizedType(List::class.java, RoleJob::class.java))
 
-    override fun fromJson(reader: JsonReader): TmdbCredit.Crew {
+    override fun fromJson(reader: JsonReader): Crew {
         var personId: Int? = null
         var name: String? = null
         var originalName: String? = null
@@ -169,7 +169,7 @@ internal class TmdbCreditCrewJsonAdapter : JsonAdapter<TmdbCredit.Crew>() {
 
         var totalEpisodeCount: Int? = null
         var job: String? = null
-        var jobs: List<TmdbCredit.RoleJob>? = null
+        var jobs: List<RoleJob>? = null
 
         reader.beginObject()
         while (reader.hasNext()) {
@@ -211,12 +211,12 @@ internal class TmdbCreditCrewJsonAdapter : JsonAdapter<TmdbCredit.Crew>() {
 
         if (jobs == null) {
             jobs = Collections.singletonList(
-                TmdbCredit.RoleJob(
+                RoleJob(
                     creditId ?: "UNKNWON", job ?: "UNKNOWN", null
                 ))
         }
 
-        return TmdbCredit.Crew(
+        return Crew(
             personId = personId!!,
             name = name!!,
             originalName = originalName!!,
@@ -230,14 +230,14 @@ internal class TmdbCreditCrewJsonAdapter : JsonAdapter<TmdbCredit.Crew>() {
         )
     }
 
-    override fun toJson(writer: JsonWriter, value: TmdbCredit.Crew?) {
+    override fun toJson(writer: JsonWriter, value: Crew?) {
         if (value == null) {
             throw NullPointerException("value was null! Wrap in .nullSafe() to write nullable values.")
         }
     }
 }
 
-internal class TmdbCreditRoleJobJsonAdapter : JsonAdapter<TmdbCredit.RoleJob>() {
+internal class TmdbCreditRoleJobJsonAdapter : JsonAdapter<RoleJob>() {
 
     private val moshi = Moshi.Builder().build()
 
@@ -251,7 +251,7 @@ internal class TmdbCreditRoleJobJsonAdapter : JsonAdapter<TmdbCredit.RoleJob>() 
     private val intAdapter: JsonAdapter<Int> = moshi.adapter(Int::class.java)
     private val stringAdapter: JsonAdapter<String> = moshi.adapter(String::class.java)
 
-    override fun fromJson(reader: JsonReader): TmdbCredit.RoleJob {
+    override fun fromJson(reader: JsonReader): RoleJob {
         var creditId: String? = null
         var character: String? = null
         var job: String? = null
@@ -273,14 +273,14 @@ internal class TmdbCreditRoleJobJsonAdapter : JsonAdapter<TmdbCredit.RoleJob>() 
         }
         reader.endObject()
 
-        return TmdbCredit.RoleJob(
+        return RoleJob(
             creditId = creditId!!,
             jobCharacter = job ?: character!!,
             episodeCount = episodeCount ?: 0
         )
     }
 
-    override fun toJson(writer: JsonWriter, value: TmdbCredit.RoleJob?) {
+    override fun toJson(writer: JsonWriter, value: RoleJob?) {
         if (value == null) {
             throw NullPointerException("value was null! Wrap in .nullSafe() to write nullable values.")
         }

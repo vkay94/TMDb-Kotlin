@@ -124,7 +124,7 @@ interface TvService {
     @ResultsList("cast")
     suspend fun cast(
         @Path("tv_id") tvShowId: Int
-    ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbPerson.Cast>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-aggregate-credits)
@@ -133,7 +133,7 @@ interface TvService {
     @ResultsList("crew")
     suspend fun aggregateCrew(
         @Path("tv_id") tvShowId: Int
-    ): NetworkResponse<List<TmdbCredit.Crew>, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbPerson.Crew>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-aggregate-credits)
@@ -142,7 +142,7 @@ interface TvService {
     @ResultsList("cast")
     suspend fun aggregateCast(
         @Path("tv_id") tvShowId: Int
-    ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbPerson.Cast>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-credits)
@@ -151,7 +151,7 @@ interface TvService {
     @ResultsList("crew")
     suspend fun crew(
         @Path("tv_id") tvShowId: Int
-    ): NetworkResponse<List<TmdbCredit.Crew>, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbPerson.Crew>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-watch-providers)

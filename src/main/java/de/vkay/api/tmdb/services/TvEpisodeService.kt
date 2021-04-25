@@ -33,7 +33,7 @@ interface TvEpisodeService {
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int
-    ): NetworkResponse<List<TmdbCredit.Cast>, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbPerson.Cast>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-episodes/get-tv-episode-credits)
@@ -44,7 +44,7 @@ interface TvEpisodeService {
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int
-    ): NetworkResponse<List<TmdbCredit.Crew>, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbPerson.Crew>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-episodes/get-tv-episode-credits)
@@ -55,7 +55,7 @@ interface TvEpisodeService {
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int
-    ): NetworkResponse<List<TmdbCredit.Guest>, TmdbError.DefaultError>
+    ): NetworkResponse<List<TmdbPerson.Guest>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-episodes/get-tv-episode-images)
