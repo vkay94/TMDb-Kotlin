@@ -13,21 +13,21 @@
         <meta name="author" content="Viktor Krez">
       
       
-        <link rel="canonical" href="https://github.com/vkay94/TMDb-Kotlin/design/">
+        <link rel="canonical" href="https://github.com/vkay94/TMDb-Kotlin/design/overview/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
     
     
       
-        <title>Design - TMDb-Kotlin</title>
+        <title>Overview - TMDb-Kotlin</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.9299cb39.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
         
           
           
@@ -46,7 +46,7 @@
     
     
     
-      <link rel="stylesheet" href="../css/app.css">
+      <link rel="stylesheet" href="../../css/app.css">
     
     
       
@@ -63,7 +63,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="white">
   
     
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -82,7 +82,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="TMDb-Kotlin" class="md-header__button md-logo" aria-label="TMDb-Kotlin" data-md-component="logo">
+    <a href="../.." title="TMDb-Kotlin" class="md-header__button md-logo" aria-label="TMDb-Kotlin" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Design
+              Overview
             
           </span>
         </div>
@@ -161,6 +161,97 @@
       
       
         
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../introduction/" class="md-tabs__link">
+      Introduction
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../quick_start/setup/" class="md-tabs__link">
+        Quick start
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Design
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../services/" class="md-tabs__link">
+      Services
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../recipes/" class="md-tabs__link">
+      Recipes
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../future-plans/" class="md-tabs__link">
+      Future plans
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -172,10 +263,12 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="TMDb-Kotlin" class="md-nav__button md-logo" aria-label="TMDb-Kotlin" data-md-component="logo">
+    <a href="../.." title="TMDb-Kotlin" class="md-nav__button md-logo" aria-label="TMDb-Kotlin" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -207,9 +300,63 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        Quick start
+      <a href="../../introduction/" class="md-nav__link">
+        Introduction
       </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Quick start
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Quick start" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Quick start
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick_start/setup/" class="md-nav__link">
+        Setup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quick_start/making_requests/" class="md-nav__link">
+        Making requests
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -223,6 +370,29 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Design
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Design" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -231,12 +401,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Design
+          Overview
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Design
+        Overview
       </a>
       
         
@@ -266,86 +436,28 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#recurrent-classes-concepts" class="md-nav__link">
-    Recurrent classes &amp; concepts
-  </a>
-  
-    <nav class="md-nav" aria-label="Recurrent classes &amp; concepts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#slim-variants" class="md-nav__link">
-    Slim variants
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdbpagetype" class="md-nav__link">
-    TmdbPage&lt;Type&gt;
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdbimage" class="md-nav__link">
-    TmdbImage
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdbdate" class="md-nav__link">
-    TmdbDate
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdberror" class="md-nav__link">
-    TmdbError
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdbmessage" class="md-nav__link">
-    TmdbMessage
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdbbody" class="md-nav__link">
-    TmdbBody
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appendtoresponse" class="md-nav__link">
-    AppendToResponse
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../classes/" class="md-nav__link">
+        Recurrent classes & concepts
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -358,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../services/" class="md-nav__link">
+      <a href="../../services/" class="md-nav__link">
         Services
       </a>
     </li>
@@ -373,7 +485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../recipes/" class="md-nav__link">
+      <a href="../../recipes/" class="md-nav__link">
         Recipes
       </a>
     </li>
@@ -388,8 +500,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../future-plans/" class="md-nav__link">
-        Future plans / ToDo's
+      <a href="../../future-plans/" class="md-nav__link">
+        Future plans
       </a>
     </li>
   
@@ -429,82 +541,6 @@
         <li class="md-nav__item">
   <a href="#response-restructuring" class="md-nav__link">
     Response restructuring
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recurrent-classes-concepts" class="md-nav__link">
-    Recurrent classes &amp; concepts
-  </a>
-  
-    <nav class="md-nav" aria-label="Recurrent classes &amp; concepts">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#slim-variants" class="md-nav__link">
-    Slim variants
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdbpagetype" class="md-nav__link">
-    TmdbPage&lt;Type&gt;
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdbimage" class="md-nav__link">
-    TmdbImage
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdbdate" class="md-nav__link">
-    TmdbDate
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdberror" class="md-nav__link">
-    TmdbError
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdbmessage" class="md-nav__link">
-    TmdbMessage
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tmdbbody" class="md-nav__link">
-    TmdbBody
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appendtoresponse" class="md-nav__link">
-    AppendToResponse
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enumerations" class="md-nav__link">
-    Enumerations
   </a>
   
 </li>
@@ -568,54 +604,6 @@ library in such way by</p>
 <p>Some API endpoints return data which is related to the language/country code (for example movie release
 dates). Instead of returning a new object class the call returns a <code>Map&lt;String, List&lt;T&gt;</code> for example
 where the key is language / country code.</p>
-<h2 id="recurrent-classes-concepts">Recurrent classes &amp; concepts<a class="headerlink" href="#recurrent-classes-concepts" title="Permanent link">&para;</a></h2>
-<h3 id="slim-variants">Slim variants<a class="headerlink" href="#slim-variants" title="Permanent link">&para;</a></h3>
-<p>Slims are classes with fewer data in comparison to its normal variant. They&rsquo;re used
-in search results (= lists), so <code>TmdbMovie.Slim</code> doesn&rsquo;t contain data such as production
-countries and companies for example.</p>
-<h3 id="tmdbpagetype"><code>TmdbPage&lt;Type&gt;</code><a class="headerlink" href="#tmdbpagetype" title="Permanent link">&para;</a></h3>
-<p>This class represents a page of items for the given type, for example <code>TmdbPage&lt;TmdbMovie.Slim&gt;</code>.
-Pages are used primarily in searches or e.g. movie/tv show
-recommendations where you can specify the actual page.
-<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbPage.kt"><strong>&#8594; Doc</strong></a></p>
-<h3 id="tmdbimage"><code>TmdbImage</code><a class="headerlink" href="#tmdbimage" title="Permanent link">&para;</a></h3>
-<p><code>TmdbImage</code> is used for all image paths including poster, backdrop and still paths.</p>
-<p>If the images are <em>standalone</em> - for example a poster or backdrop as part of a movie - they don&rsquo;t
-contain additional data like <code>width</code> and <code>height</code>. These are available for concrete calls only like <code>&lt;Service&gt;.posters(id)</code>
-or if <code>AppendToResponse.Item.IMAGE</code> is used.</p>
-<p>The class supports the method <code>get(Quality)</code> which produces the full link to the image resource.
-<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbImage.kt"><strong>&#8594; Doc</strong></a></p>
-<h3 id="tmdbdate"><code>TmdbDate</code><a class="headerlink" href="#tmdbdate" title="Permanent link">&para;</a></h3>
-<p><code>TmdbDate</code> is a wrapper class for <code>LocalDate</code> which supports the method <code>localize(Locale, Format)</code> to
-return a date string according to the user&rsquo;s location.
-<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbDate.kt"><strong>&#8594; Doc</strong></a></p>
-<h3 id="tmdberror"><code>TmdbError</code><a class="headerlink" href="#tmdberror" title="Permanent link">&para;</a></h3>
-<p>If there is an server error during networking this class is returned (requires check for <code>NetworkResponse.ServerError</code>).
-In most scenarios <code>TmdbError.DefaultError</code> is returned which is caused by not-found resources often.
-<code>TmdbError.PostError</code> will be returned if malformed data is passed to the body.
-<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbError.kt"><strong>&#8594; Doc</strong></a></p>
-<h3 id="tmdbmessage"><code>TmdbMessage</code><a class="headerlink" href="#tmdbmessage" title="Permanent link">&para;</a></h3>
-<p>This class is used for calls which return status data and simple data like <em>access token</em> and
-account related messages (id, successfull update data etc.). It contains sub-classes which provide the
-essential data.
-<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbMessage.kt"><strong>&#8594; Doc</strong></a></p>
-<h3 id="tmdbbody"><code>TmdbBody</code><a class="headerlink" href="#tmdbbody" title="Permanent link">&para;</a></h3>
-<p><code>TmdbBody</code>&lsquo;s inner classes are used to pass data for updating account related data in <code>AccountService</code>,
-for example adding items to a list or update its description (set valid session id required).
-<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/models/TmdbBody.kt"><strong>&#8594; Doc</strong></a></p>
-<h3 id="appendtoresponse"><code>AppendToResponse</code><a class="headerlink" href="#appendtoresponse" title="Permanent link">&para;</a></h3>
-<p>Some classes support optional addable data like videos or images which can be retrieved directly
-in the <code>details</code> call. Classes supporting the functionality:
-<code>TmdbShow</code>,
-<code>TmdbSeason</code>,
-<code>TmdbEpisode</code>,
-<code>TmdbMovie</code>,
-<code>TmdbPerson</code></p>
-<p>For more info how it works you should look on the official <a href="https://developers.themoviedb.org/3/getting-started/append-to-response">TMDb page</a> and in
-Recipes for examples.
-<a href="https://github.com/vkay94/TMDb-Kotlin/blob/master/src/main/java/de/vkay/api/tmdb/AppendToResponse.kt#L34"><strong>&#8594; Doc</strong></a></p>
-<h2 id="enumerations">Enumerations<a class="headerlink" href="#enumerations" title="Permanent link">&para;</a></h2>
-<p>All available enumerations are listed here: <a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/main/java/de/vkay/api/tmdb/enumerations">Github</a></p>
                 
               
               
@@ -634,7 +622,7 @@ Recipes for examples.
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href=".." class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../../quick_start/making_requests/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -643,19 +631,19 @@ Recipes for examples.
               <span class="md-footer__direction">
                 Previous
               </span>
-              Quick start
+              Making requests
             </div>
           </div>
         </a>
       
       
-        <a href="../services/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../classes/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Services
+              Recurrent classes & concepts
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -688,10 +676,10 @@ Recipes for examples.
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.7353b375.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
       
     
   </body>

@@ -13,21 +13,21 @@
         <meta name="author" content="Viktor Krez">
       
       
-        <link rel="canonical" href="https://github.com/vkay94/TMDb-Kotlin/">
+        <link rel="canonical" href="https://github.com/vkay94/TMDb-Kotlin/quick_start/making_requests/">
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
     
     
       
-        <title>TMDb-Kotlin</title>
+        <title>Making requests - TMDb-Kotlin</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.9299cb39.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ef6f36e2.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
         
           
           
@@ -46,7 +46,7 @@
     
     
     
-      <link rel="stylesheet" href="css/app.css">
+      <link rel="stylesheet" href="../../css/app.css">
     
     
       
@@ -63,7 +63,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="white">
   
     
-    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tmdb-kotlin" class="md-skip">
+        <a href="#making-requests" class="md-skip">
           Skip to content
         </a>
       
@@ -82,7 +82,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="TMDb-Kotlin" class="md-header__button md-logo" aria-label="TMDb-Kotlin" data-md-component="logo">
+    <a href="../.." title="TMDb-Kotlin" class="md-header__button md-logo" aria-label="TMDb-Kotlin" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Quick start
+              Making requests
             
           </span>
         </div>
@@ -161,6 +161,97 @@
       
       
         
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../introduction/" class="md-tabs__link">
+      Introduction
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../setup/" class="md-tabs__link md-tabs__link--active">
+        Quick start
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../design/overview/" class="md-tabs__link">
+        Design
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../services/" class="md-tabs__link">
+      Services
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../recipes/" class="md-tabs__link">
+      Recipes
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../future-plans/" class="md-tabs__link">
+      Future plans
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -172,10 +263,12 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="TMDb-Kotlin" class="md-nav__button md-logo" aria-label="TMDb-Kotlin" data-md-component="logo">
+    <a href="../.." title="TMDb-Kotlin" class="md-nav__button md-logo" aria-label="TMDb-Kotlin" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -205,6 +298,56 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      <label class="md-nav__link" for="__nav_2">
+        Quick start
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Quick start" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Quick start
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        Setup
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
     
   
   
@@ -216,12 +359,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Quick start
+          Making requests
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
-        Quick start
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Making requests
       </a>
       
         
@@ -238,41 +381,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
-  </a>
-  
-    <nav class="md-nav" aria-label="Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#import-into-your-project" class="md-nav__link">
-    Import into your project
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#initialize-the-instance" class="md-nav__link">
-    Initialize the instance
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#making-requests" class="md-nav__link">
-    Making requests
-  </a>
-  
-    <nav class="md-nav" aria-label="Making requests">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#examples" class="md-nav__link">
     Examples
   </a>
@@ -298,32 +406,6 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    Next steps
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#used-libraries-and-thanks" class="md-nav__link">
-    Used libraries and thanks
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#attribution-requirements" class="md-nav__link">
-    Attribution Requirements
-  </a>
-  
-</li>
       
     </ul>
   
@@ -332,6 +414,12 @@
     </li>
   
 
+          
+        </ul>
+      </nav>
+    </li>
+  
+
     
       
       
@@ -340,10 +428,49 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="design/" class="md-nav__link">
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
         Design
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Design" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/overview/" class="md-nav__link">
+        Overview
       </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/classes/" class="md-nav__link">
+        Recurrent classes & concepts
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -356,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="services/" class="md-nav__link">
+      <a href="../../services/" class="md-nav__link">
         Services
       </a>
     </li>
@@ -371,7 +498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="recipes/" class="md-nav__link">
+      <a href="../../recipes/" class="md-nav__link">
         Recipes
       </a>
     </li>
@@ -386,8 +513,8 @@
   
   
     <li class="md-nav__item">
-      <a href="future-plans/" class="md-nav__link">
-        Future plans / ToDo's
+      <a href="../../future-plans/" class="md-nav__link">
+        Future plans
       </a>
     </li>
   
@@ -418,41 +545,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#setup" class="md-nav__link">
-    Setup
-  </a>
-  
-    <nav class="md-nav" aria-label="Setup">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#import-into-your-project" class="md-nav__link">
-    Import into your project
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#initialize-the-instance" class="md-nav__link">
-    Initialize the instance
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#making-requests" class="md-nav__link">
-    Making requests
-  </a>
-  
-    <nav class="md-nav" aria-label="Making requests">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#examples" class="md-nav__link">
     Examples
   </a>
@@ -478,32 +570,6 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    Next steps
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#used-libraries-and-thanks" class="md-nav__link">
-    Used libraries and thanks
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#attribution-requirements" class="md-nav__link">
-    Attribution Requirements
-  </a>
-  
-</li>
       
     </ul>
   
@@ -518,73 +584,13 @@
               
                 
                 
-                <h1 id="tmdb-kotlin">TMDb-Kotlin<a class="headerlink" href="#tmdb-kotlin" title="Permanent link">&para;</a></h1>
-<p>This is the <a href="https://www.themoviedb.org/documentation/api">TMDb API</a> documentation page for the TMDb wrapper
-<em>TMDb-Kotlin</em> written in and for Kotlin.
-I&rsquo;ve created the library for Android apps primarily, but it can be also used in any Gradle project.</p>
-<p>Most of the functionality and callbacks are implemented (except some account related calls).
-The library is therefore WIP, so there might be breaking changes in the future (but I doubt it).
-The library is built on top of Retrofit2 for networking.</p>
-<p>If you&rsquo;ve got questions, suggestions or encounter any issues feel free to contact me via
-<a href="https://github.com/vkay94/TMDb-Kotlin/issues">GitHub issues</a>.
-I&rsquo;d be happy to help ;)</p>
-<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
-<h3 id="import-into-your-project">Import into your project<a class="headerlink" href="#import-into-your-project" title="Permanent link">&para;</a></h3>
-<p>This library uses <a href="https://jitpack.io/#vkay94/TMDb-Kotlin">JitPack.io</a> so you&rsquo;ve to add the repo to your projects gradle file:</p>
-<div class="highlight"><pre><span></span><code>repositories {
-    maven { url &quot;https://jitpack.io&quot; }
-}
-</code></pre></div>
-<p>Then, on app level add the library:</p>
-<!--
-<img src="https://img.shields.io/badge/TMDb--Kotlin-dc52d4c86c8328064614ba1d3160765b166ba23d-blue"/>
--->
-
-<div class="highlight"><pre><span></span><code>dependencies {
-    implementation &quot;com.github.vkay94:TMDb-Kotlin:dc52d4c86c8328064614ba1d3160765b166ba23d&quot;
-
-    // This module uses the ThreetenABP library to ensure LocalDate support in 
-    // Android versions below API 26 so you should use this as well for 
-    // using dates.
-    implementation &quot;com.jakewharton.threetenabp:threetenabp:1.3.0&quot;
-}
-</code></pre></div>
-<h3 id="initialize-the-instance">Initialize the instance<a class="headerlink" href="#initialize-the-instance" title="Permanent link">&para;</a></h3>
-<p>Basic initialization:</p>
-<div class="highlight"><pre><span></span><code><span class="n">TMDb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">API_KEY</span> <span class="p">[,</span> <span class="n">V4_AUTH_KEY</span><span class="p">])</span> <span class="c1">// [] = optional</span>
-</code></pre></div>
-<p>In Android applications it is best-practice to initialize the instance directly within <code>App</code> to make
-use of Kotlin&rsquo;s objects, so the instance can be used in the whole app directly.</p>
-<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">App.kt</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">App</span> <span class="p">:</span> <span class="n">Application</span><span class="p">()</span> <span class="p">{</span>
-
-    <span class="k">override</span> <span class="k">fun</span> <span class="nf">onCreate</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">TMDb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">API_KEY</span><span class="p">)</span>
-        <span class="c1">// or TMDb.init(YOUR_API_KEY, V4_AUTH_KEY) for authentication</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">AndroidManifest.xml</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code>    <span class="nt">&lt;manifest</span>
-        <span class="err">...</span><span class="nt">&gt;</span> 
-        <span class="nt">&lt;uses-permission</span> <span class="na">android:name=</span><span class="s">&quot;android.permission.INTERNET&quot;</span> <span class="nt">/&gt;</span>
-
-        <span class="nt">&lt;application</span>
-            <span class="na">android:name=</span><span class="s">&quot;.App&quot;</span>
-            <span class="err">...</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;/application&gt;</span>
-    <span class="nt">&lt;/manifest&gt;</span>
-</code></pre></div>
-</div>
-</div>
-<h2 id="making-requests">Making requests<a class="headerlink" href="#making-requests" title="Permanent link">&para;</a></h2>
+                <h1 id="making-requests">Making requests<a class="headerlink" href="#making-requests" title="Permanent link">&para;</a></h1>
 <p>At the moment all calls are suspended and require to be called in Kotlin Coroutines.
 An overview of how to use them can be found here:
 <a href="https://kotlinlang.org/docs/composing-suspending-functions.html">Composing suspending functions</a>.</p>
 <p>They&rsquo;re also wrapped in <code>NetworkResponse</code>s, so you can react for errors easily or access the data directly.</p>
-<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
-<h4 id="searching-with-error-handling">Searching with error handling<a class="headerlink" href="#searching-with-error-handling" title="Permanent link">&para;</a></h4>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<h3 id="searching-with-error-handling">Searching with error handling<a class="headerlink" href="#searching-with-error-handling" title="Permanent link">&para;</a></h3>
 <p>There are four cases which the response can take value of:
 <code>Success</code>, <code>ServerError</code>, <code>NetworkError</code> and <code>UnknownError</code>.  For more info you should take a look
 <a href="https://haroldadmin.github.io/NetworkResponseAdapter/">here</a>.</p>
@@ -614,7 +620,7 @@ An overview of how to use them can be found here:
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="searching-with-direct-access">Searching with direct access<a class="headerlink" href="#searching-with-direct-access" title="Permanent link">&para;</a></h4>
+<h3 id="searching-with-direct-access">Searching with direct access<a class="headerlink" href="#searching-with-direct-access" title="Permanent link">&para;</a></h3>
 <p>You can also access the response directly without checking for the NetworkResponse type by
 calling <code>invoke()</code>. 
 In this case the object might be <code>null</code>:</p>
@@ -631,33 +637,6 @@ In this case the object might be <code>null</code>:</p>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>This introduction is pretty briefly.
-For some more practice scenarios you can either look into the Recipes page on the left or into 
-the test folder on GitHub <a href="https://github.com/vkay94/TMDb-Kotlin/tree/master/src/test/java">here</a>.</p>
-<h2 id="used-libraries-and-thanks">Used libraries and thanks<a class="headerlink" href="#used-libraries-and-thanks" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://github.com/square/retrofit">Retrofit2</a> by Square</li>
-<li><a href="https://github.com/square/moshi">Moshi</a> by Square</li>
-<li><a href="https://haroldadmin.github.io/NetworkResponseAdapter/">NetworkResponseAdapter</a> by Kshitij Chauhan</li>
-<li><a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a> by Jake Wharton</li>
-</ul>
-<p>Thanks go to</p>
-<ul>
-<li><a href="https://www.themoviedb.org/">The Movie Database</a>
-    for the API</li>
-<li>Uwe Trottmann&rsquo;s <a href="https://github.com/UweTrottmann/tmdb-java">tmdb-java</a> for the basic idea and some structuring elements</li>
-<li>Kshitij Chauhan&rsquo; <a href="https://haroldadmin.github.io/NetworkResponseAdapter/">NetworkResponseAdapter</a> for the great error handling</li>
-</ul>
-<h2 id="attribution-requirements">Attribution Requirements<a class="headerlink" href="#attribution-requirements" title="Permanent link">&para;</a></h2>
-<div>
-   <img style="float: right; padding-bottom: 20px; padding-left: 10px;" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" height="170px" width="170px">
-   This wrapper is for the The Movie Database API. Using the data requires to attribute the data source.
-   Same applies to JustWatch data if you're using their data.
-   <br><br>
-   For more info read here: <a href="https://www.themoviedb.org/documentation/api">Link</a>
-</div>
-
 <!-- Links -->
                 
               
@@ -677,14 +656,28 @@ the test folder on GitHub <a href="https://github.com/vkay94/TMDb-Kotlin/tree/ma
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
+        <a href="../setup/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Setup
+            </div>
+          </div>
+        </a>
       
-        <a href="design/" class="md-footer__link md-footer__link--next" rel="next">
+      
+        <a href="../../design/overview/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Design
+              Overview
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -717,10 +710,10 @@ the test folder on GitHub <a href="https://github.com/vkay94/TMDb-Kotlin/tree/ma
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.expand"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.7353b375.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
       
     
   </body>

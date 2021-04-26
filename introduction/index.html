@@ -13,14 +13,14 @@
         <meta name="author" content="Viktor Krez">
       
       
-        <link rel="canonical" href="https://github.com/vkay94/TMDb-Kotlin/future-plans/">
+        <link rel="canonical" href="https://github.com/vkay94/TMDb-Kotlin/introduction/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
     
     
       
-        <title>Future plans - TMDb-Kotlin</title>
+        <title>Introduction - TMDb-Kotlin</title>
       
     
     
@@ -71,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#plans" class="md-skip">
+        <a href="#tmdb-kotlin" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Future plans
+              Introduction
             
           </span>
         </div>
@@ -169,10 +169,12 @@
         
   
   
+    
+  
 
 
   <li class="md-tabs__item">
-    <a href="../introduction/" class="md-tabs__link">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
       Introduction
     </a>
   </li>
@@ -237,12 +239,10 @@
         
   
   
-    
-  
 
 
   <li class="md-tabs__item">
-    <a href="./" class="md-tabs__link md-tabs__link--active">
+    <a href="../future-plans/" class="md-tabs__link">
       Future plans
     </a>
   </li>
@@ -298,11 +298,56 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../introduction/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Introduction
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#used-libraries-and-thanks" class="md-nav__link">
+    Used libraries and thanks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attribution-requirements" class="md-nav__link">
+    Attribution Requirements
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -451,49 +496,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Future plans
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../future-plans/" class="md-nav__link">
         Future plans
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ideas" class="md-nav__link">
-    Ideas
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -523,8 +530,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ideas" class="md-nav__link">
-    Ideas
+  <a href="#used-libraries-and-thanks" class="md-nav__link">
+    Used libraries and thanks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#attribution-requirements" class="md-nav__link">
+    Attribution Requirements
   </a>
   
 </li>
@@ -542,14 +556,40 @@
               
                 
                 
-                <h1 id="plans">Plans<a class="headerlink" href="#plans" title="Permanent link">&para;</a></h1>
-<h2 id="ideas">Ideas<a class="headerlink" href="#ideas" title="Permanent link">&para;</a></h2>
+                <h1 id="tmdb-kotlin">TMDb-Kotlin<a class="headerlink" href="#tmdb-kotlin" title="Permanent link">&para;</a></h1>
+<p>This is the <a href="https://www.themoviedb.org/documentation/api">TMDb API</a> documentation page for the TMDb wrapper
+<em>TMDb-Kotlin</em> written in and for Kotlin.
+I&rsquo;ve created the library for Android apps primarily, but it can be also used in any Gradle project.</p>
+<p>Most of the functionality and callbacks are implemented (except some account related calls).
+The library is therefore WIP, so there might be breaking changes in the future (but I doubt it).
+The library is built on top of Retrofit2 for networking.</p>
+<p>If you&rsquo;ve got questions, suggestions or encounter any issues feel free to contact me via
+<a href="https://github.com/vkay94/TMDb-Kotlin/issues">GitHub issues</a>.
+I&rsquo;d be happy to help ;)</p>
+<h2 id="used-libraries-and-thanks">Used libraries and thanks<a class="headerlink" href="#used-libraries-and-thanks" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Support more Retrofit2 types, e.g <code>Call&lt;T&gt;</code>, RxJava (<code>Single</code> + <code>Completable</code>) by using artifacts</li>
+<li><a href="https://github.com/square/retrofit">Retrofit2</a> by Square</li>
+<li><a href="https://github.com/square/moshi">Moshi</a> by Square</li>
+<li><a href="https://haroldadmin.github.io/NetworkResponseAdapter/">NetworkResponseAdapter</a> by Kshitij Chauhan</li>
+<li><a href="https://github.com/JakeWharton/ThreeTenABP">ThreeTenABP</a> by Jake Wharton</li>
 </ul>
-<!-- ## ToDo's
+<p>Thanks go to</p>
+<ul>
+<li><a href="https://www.themoviedb.org/">The Movie Database</a>
+    for the API</li>
+<li>Uwe Trottmann&rsquo;s <a href="https://github.com/UweTrottmann/tmdb-java">tmdb-java</a> for the basic idea and some structuring elements</li>
+<li>Kshitij Chauhan&rsquo; <a href="https://haroldadmin.github.io/NetworkResponseAdapter/">NetworkResponseAdapter</a> for the great error handling</li>
+</ul>
+<h2 id="attribution-requirements">Attribution Requirements<a class="headerlink" href="#attribution-requirements" title="Permanent link">&para;</a></h2>
+<div>
+   <img style="float: right; padding-bottom: 20px; padding-left: 10px;" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" height="170px" width="170px">
+   This wrapper is for the The Movie Database API. Using the data requires to attribute the data source.
+   Same applies to JustWatch data if you're using their data.
+   <br><br>
+   For more info read here: <a href="https://www.themoviedb.org/documentation/api">Link</a>
+</div>
 
-- ... -->
+<!-- Links -->
                 
               
               
@@ -568,20 +608,20 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../recipes/" class="md-footer__link md-footer__link--prev" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
+      
+        <a href="../quick_start/setup/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
-                Previous
+                Next
               </span>
-              Recipes
+              Setup
             </div>
           </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
         </a>
-      
       
     </nav>
   
