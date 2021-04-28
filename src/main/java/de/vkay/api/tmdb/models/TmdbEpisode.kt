@@ -6,6 +6,7 @@ import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.internals.annotations.Rated
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
+import de.vkay.api.tmdb.internals.models.TmdbCredits
 
 @JsonClass(generateAdapter = true)
 data class TmdbEpisode internal constructor(
@@ -27,33 +28,24 @@ data class TmdbEpisode internal constructor(
     @Json(name = "vote_count")
     val voteCount: Int,
 
+    // Append
     @Json(name = "images")
-    internal val _images: Images?,
+    @ResultsList("stills")
+    internal val _stills: List<TmdbImage>?,
     @Json(name = "credits")
-    internal val _credits: Credits?,
+    internal val _credits: TmdbCredits?,
     @Json(name = "videos")
     @ResultsList
     internal val _videos: List<TmdbVideo>?
 
 ) : MediaTypeItem(MediaType.EPISODE) {
 
-    val stills: List<TmdbImage> = _images?.stills ?: emptyList()
+    val stills: List<TmdbImage> = _stills ?: emptyList()
     val videos: List<TmdbVideo> = _videos ?: emptyList()
+
     val crew: List<TmdbPerson.Crew> = _credits?.crew ?: emptyList()
     val cast: List<TmdbPerson.Cast> = _credits?.cast ?: emptyList()
-
-    @JsonClass(generateAdapter = true)
-    internal data class Images(
-        val stills: List<TmdbImage>
-    )
-
-    @JsonClass(generateAdapter = true)
-    internal data class Credits(
-        val cast: List<TmdbPerson.Cast>,
-        val crew: List<TmdbPerson.Crew>,
-        @Json(name = "guest_stars")
-        val guestStars: List<TmdbPerson.Guest>?
-    )
+    val guestStars: List<TmdbPerson.Guest> = _credits?.guest_stars ?: emptyList()
 
     @JsonClass(generateAdapter = true)
     data class Slim internal constructor(

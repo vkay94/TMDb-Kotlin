@@ -4,6 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.PersonGender
+import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
 @JsonClass(generateAdapter = true)
@@ -24,19 +25,16 @@ data class TmdbPerson internal constructor(
     @TMDbImage
     val profile: TmdbImage?,
 
+    // Append
     @Json(name = "images")
-    internal val _images: Images?
+    @ResultsList("profiles")
+    internal val _profiles: List<TmdbImage>?
 
 ) : MediaTypeItem(MediaType.PERSON) {
 
-    val profiles: List<TmdbImage> = _images?.profiles ?: emptyList()
+    val profiles: List<TmdbImage> = _profiles ?: emptyList()
 
     val isDead: Boolean = deathDay != null
-
-    @JsonClass(generateAdapter = true)
-    internal data class Images(
-        val profiles: List<TmdbImage>
-    )
 
     @JsonClass(generateAdapter = true)
     data class Slim internal constructor(

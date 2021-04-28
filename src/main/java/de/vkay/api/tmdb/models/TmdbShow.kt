@@ -8,6 +8,8 @@ import de.vkay.api.tmdb.enumerations.ShowType
 import de.vkay.api.tmdb.internals.annotations.Rated
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
+import de.vkay.api.tmdb.internals.models.TmdbCredits
+import de.vkay.api.tmdb.internals.models.TmdbImages
 
 @JsonClass(generateAdapter = true)
 class TmdbShow internal constructor(
@@ -51,8 +53,16 @@ class TmdbShow internal constructor(
     val type: ShowType,
     @Json(name = "spoken_languages")
     val spokenLanguages: List<TmdbLanguage>,
+    @Json(name = "backdrop_path")
+    @TMDbImage
+    val backdrop: TmdbImage?,
+    @Json(name = "poster_path")
+    @TMDbImage
+    val poster: TmdbImage?,
+
+    // Append
     @Json(name = "images")
-    internal val _images: Images?,
+    internal val _images: TmdbImages?,
     @Json(name = "recommendations")
     internal val _recommendations: TmdbPage<Slim>?,
     @Json(name = "similar")
@@ -63,16 +73,10 @@ class TmdbShow internal constructor(
     @Json(name = "videos")
     internal val _videos: List<TmdbVideo>?,
     @Json(name = "credits")
-    internal val _credits: Credits?,
+    internal val _credits: TmdbCredits?,
     @Json(name = "keywords")
     @ResultsList
-    internal val _keywords: List<TmdbKeyword>?,
-    @Json(name = "backdrop_path")
-    @TMDbImage
-    val backdrop: TmdbImage?,
-    @Json(name = "poster_path")
-    @TMDbImage
-    val poster: TmdbImage?
+    internal val _keywords: List<TmdbKeyword>?
 ) : MediaTypeItem(MediaType.TV) {
 
     val videos: List<TmdbVideo> = _videos ?: emptyList()
@@ -100,19 +104,6 @@ class TmdbShow internal constructor(
                     seasons.filter { it.seasonNumber in 1 until latestEpisode.seasonNumber }
                         .map { it.episodeCount }.sum()
         }
-
-
-    @JsonClass(generateAdapter = true)
-    internal data class Images(
-        val backdrops: List<TmdbImage>,
-        val posters: List<TmdbImage>
-    )
-
-    @JsonClass(generateAdapter = true)
-    internal data class Credits(
-        val cast: List<TmdbPerson.Cast>,
-        val crew: List<TmdbPerson.Crew>,
-    )
 
     @JsonClass(generateAdapter = true)
     data class Slim internal constructor(
