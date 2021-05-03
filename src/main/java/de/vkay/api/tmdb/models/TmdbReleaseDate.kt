@@ -2,7 +2,7 @@ package de.vkay.api.tmdb.models
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import de.vkay.api.tmdb.enumerations.ReleaseDate
+import de.vkay.api.tmdb.enumerations.ReleaseType
 
 @JsonClass(generateAdapter = true)
 data class TmdbReleaseDate internal constructor(
@@ -13,5 +13,5 @@ data class TmdbReleaseDate internal constructor(
     val releaseDate: TmdbDate,
     val certification: String,
     @Json(name = "type")
-    val releaseType: ReleaseDate
+    val releaseType: ReleaseType
 )

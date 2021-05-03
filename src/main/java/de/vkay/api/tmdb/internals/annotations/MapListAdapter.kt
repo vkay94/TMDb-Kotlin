@@ -1,7 +1,7 @@
 package de.vkay.api.tmdb.internals.annotations
 
 import com.squareup.moshi.*
-import de.vkay.api.tmdb.enumerations.ReleaseDate
+import de.vkay.api.tmdb.enumerations.ReleaseType
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
 import de.vkay.api.tmdb.internals.adapters.TmdbDateJsonAdapter
 import de.vkay.api.tmdb.models.TmdbReleaseDate
@@ -20,8 +20,8 @@ internal class MapListAdapter(val fieldName: String): JsonAdapter<Map<String, Li
     private val listResultsAdapter = Moshi.Builder()
         .add(TmdbDateJsonAdapter())
         .add(
-            ReleaseDate::class.java, EnumValueJsonAdapter.create(ReleaseDate::class.java)
-            .withUnknownFallback(ReleaseDate.UNKNOWN))
+            ReleaseType::class.java, EnumValueJsonAdapter.create(ReleaseType::class.java)
+            .withUnknownFallback(ReleaseType.UNKNOWN))
         .build().adapter<List<ReleaseDatesMapHelper>>(listResultsType)
 
     companion object {

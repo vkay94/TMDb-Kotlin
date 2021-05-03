@@ -5,7 +5,7 @@ import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
-import de.vkay.api.tmdb.enumerations.ReleaseDate
+import de.vkay.api.tmdb.enumerations.ReleaseType
 import de.vkay.api.tmdb.models.TmdbPerson
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
@@ -151,7 +151,7 @@ class MovieServiceTest : BaseServiceTest() {
     fun `Get release dates`(): Unit = runBlocking {
         val releaseDatesMap = TMDb.movieService.releaseDates(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
         val germany = releaseDatesMap[Locale.GERMANY.country]!!
-        val theater = germany.first { it.releaseType == ReleaseDate.THEATRICAL }
+        val theater = germany.first { it.releaseType == ReleaseType.THEATRICAL }
         assertEquals(LocalDate.of(2019, 4, 24), theater.releaseDate.date)
     }
 
