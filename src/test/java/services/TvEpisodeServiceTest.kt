@@ -5,8 +5,8 @@ import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.models.TmdbTranslation
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 import org.threeten.bp.LocalDate
 
 class TvEpisodeServiceTest : BaseServiceTest() {

@@ -5,9 +5,9 @@ import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.Trending
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
 
 class TrendingServiceTest : BaseServiceTest() {
 

@@ -3,7 +3,7 @@ package services
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.TMDb
 import kotlinx.coroutines.runBlocking
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class AuthServiceTest : BaseServiceTest() {
 

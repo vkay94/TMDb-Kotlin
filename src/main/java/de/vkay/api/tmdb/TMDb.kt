@@ -2,7 +2,6 @@ package de.vkay.api.tmdb
 
 import com.beust.klaxon.Klaxon
 import com.haroldadmin.cnradapter.NetworkResponseAdapterFactory
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.EnumJsonAdapter
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
@@ -140,7 +139,6 @@ object TMDb {
     private val retrofit3: Retrofit by lazy {
         return@lazy Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addCallAdapterFactory(NetworkResponseAdapterFactory())
             .addConverterFactory(MoshiConverterFactory.create(moshiWithAdapters))
             .client(client)
@@ -151,7 +149,6 @@ object TMDb {
         return@lazy Retrofit.Builder()
             .baseUrl(BASE_URL_4)
             .addConverterFactory(MoshiConverterFactory.create(moshiWithAdapters))
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addCallAdapterFactory(NetworkResponseAdapterFactory())
             .client(client)
             .build()

@@ -4,8 +4,8 @@ import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.Discover
 import de.vkay.api.tmdb.TMDb
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
 import org.threeten.bp.LocalDate
 
 class DiscoverServiceShowTest : BaseServiceTest() {

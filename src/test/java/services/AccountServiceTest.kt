@@ -7,16 +7,16 @@ import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.models.TmdbBody
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.util.*
 
 class AccountServiceTest : BaseServiceTest() {
 
     var sessionId = ""
 
-    @Before
+    @BeforeEach
     fun setup() = runBlocking {
         sessionId = TMDb.accountService.accessTokenToSessionID(ACCESS_TOKEN).invoke()!!.sessionId
         assertTrue(sessionId.isNotBlank())

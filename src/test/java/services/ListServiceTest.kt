@@ -9,8 +9,8 @@ import de.vkay.api.tmdb.models.TmdbBody
 import de.vkay.api.tmdb.models.TmdbMovie
 import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 import java.util.*
 
 

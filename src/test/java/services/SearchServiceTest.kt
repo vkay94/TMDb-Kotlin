@@ -7,8 +7,8 @@ import de.vkay.api.tmdb.models.TmdbMovie
 import de.vkay.api.tmdb.models.TmdbPerson
 import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 
 class SearchServiceTest : BaseServiceTest() {
 

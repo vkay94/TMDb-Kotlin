@@ -8,9 +8,9 @@ import de.vkay.api.tmdb.models.TmdbEpisode
 import de.vkay.api.tmdb.models.TmdbPerson
 import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Test
 
 class FindServiceTest : BaseServiceTest() {
 

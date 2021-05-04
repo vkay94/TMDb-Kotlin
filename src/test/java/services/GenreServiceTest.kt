@@ -3,9 +3,9 @@ package services
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
 
 class GenreServiceTest : BaseServiceTest() {
 

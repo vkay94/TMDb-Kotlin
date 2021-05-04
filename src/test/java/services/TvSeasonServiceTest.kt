@@ -4,8 +4,8 @@ import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.TMDb
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 import org.threeten.bp.LocalDate
 
 class TvSeasonServiceTest : BaseServiceTest() {

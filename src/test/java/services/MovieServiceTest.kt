@@ -8,8 +8,8 @@ import de.vkay.api.tmdb.enumerations.ProductionStatus
 import de.vkay.api.tmdb.enumerations.ReleaseType
 import de.vkay.api.tmdb.models.TmdbPerson
 import kotlinx.coroutines.runBlocking
-import org.junit.Assert.*
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 import org.threeten.bp.LocalDate
 import java.util.*
 
