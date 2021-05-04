@@ -12,7 +12,7 @@ import com.squareup.moshi.ToJson
 @JsonQualifier
 internal annotation class Rated
 
-class RatedJsonAdapter {
+internal class RatedJsonAdapter {
 
     @Rated
     @FromJson

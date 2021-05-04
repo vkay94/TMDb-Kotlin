@@ -122,7 +122,7 @@ object TMDb {
             .add(TmdbPerson.Crew::class.java, TmdbCreditCrewJsonAdapter())
             .add(TmdbPerson.RoleJob::class.java, TmdbCreditRoleJobJsonAdapter())
             .add(TmdbFindResult.ADAPTER)
-            .add(TmdbDateJsonAdapter())
+            .add(TmdbDate.ADAPTER)
 
             /* Objects to lists such as watch providers */
             .add(WatchProviderListObj.ADAPTER)
@@ -148,7 +148,6 @@ object TMDb {
     }
 
     private val retrofit4: Retrofit by lazy {
-        // println("TMDb: Create Retrofit")
         return@lazy Retrofit.Builder()
             .baseUrl(BASE_URL_4)
             .addConverterFactory(MoshiConverterFactory.create(moshiWithAdapters))

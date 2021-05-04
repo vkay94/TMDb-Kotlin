@@ -1,5 +1,7 @@
 package de.vkay.api.tmdb.models
 
+import com.squareup.moshi.FromJson
+import com.squareup.moshi.ToJson
 import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
@@ -40,6 +42,22 @@ class TmdbDate constructor(val date: LocalDate?) : Comparable<TmdbDate> {
                 LocalDate.parse(str?.split("T")?.first())
             } catch (e: DateTimeParseException) {
                 null
+            }
+        }
+
+        internal val ADAPTER = object : Any() {
+            @FromJson
+            fun fromJson(json: String?): TmdbDate? {
+                return try {
+                    TmdbDate(json)
+                } catch (e: DateTimeParseException) {
+                    null
+                }
+            }
+
+            @ToJson
+            fun toJson(date: TmdbDate): String {
+                return date.toString()
             }
         }
     }

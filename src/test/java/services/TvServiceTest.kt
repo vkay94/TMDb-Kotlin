@@ -143,7 +143,6 @@ class TvServiceTest : BaseServiceTest() {
     @Test
     fun `Get aggregate cast`(): Unit = runBlocking {
         val cast = TMDb.showService.aggregateCast(SHOW_ID_TBBT).invoke()!!
-        println(cast.size)
         assertTrue(cast.isNotEmpty())
         assertNotNull(cast.firstOrNull()?.profile)
         assertTrue(cast.firstOrNull() is TmdbPerson.Cast)
