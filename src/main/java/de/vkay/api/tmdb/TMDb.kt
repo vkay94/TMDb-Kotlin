@@ -133,6 +133,7 @@ object TMDb {
             .add(MapListAdapter.INSTANCE)
             .add(TMDbImageAdapter.INSTANCE)
             .add(RatedJsonAdapter())
+            .add(CharJobAdapter.INSTANCE)
             .build()
     }
 

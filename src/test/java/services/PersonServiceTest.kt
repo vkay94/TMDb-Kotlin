@@ -28,24 +28,26 @@ class PersonServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get movie credits`() = runBlocking {
-        val movieCrew = TMDb.personService.movieCrew(PERSON_ID_WILL_SMITH).invoke()!!
-        assertTrue(movieCrew.isNotEmpty())
-        assertNotNull(movieCrew.find { it.id == 1402 }) /* The Pursuit of Happyness */
-
         val movieCast = TMDb.personService.movieCast(PERSON_ID_WILL_SMITH).invoke()!!
         assertTrue(movieCast.isNotEmpty())
-        assertNotNull(movieCast.find { it.id == 602 }) /* Independence Day */
+
+        val (movie, roleJob) = movieCast.find { it.first.id == 602 }!!
+        assertEquals("Independence Day", movie.title)
+        assertEquals("Capt. Steven Hiller", roleJob.jobCharacter)
+        assertEquals("52fe425bc3a36847f8017f8b", roleJob.creditId)
+        assertEquals(null, roleJob.episodeCount)
     }
 
     @Test
     fun `Get tv credits`() = runBlocking {
         val tvCrew = TMDb.personService.tvCrew(PERSON_ID_WILL_SMITH).invoke()!!
         assertTrue(tvCrew.isNotEmpty())
-        assertNotNull(tvCrew.find { it.id == 1566 }) /* All of Us */
 
-        val tvCast = TMDb.personService.tvCast(PERSON_ID_WILL_SMITH).invoke()!!
-        assertTrue(tvCast.isNotEmpty())
-        assertNotNull(tvCast.find { it.id == 1514 }) /* The One Show */
+        val (show, roleJob) = tvCrew.find { it.first.id == 1566 }!! /* All of Us */
+        assertEquals("All of Us", show.title)
+        assertEquals("Director", roleJob.jobCharacter)
+        assertEquals("52570ce219c29571140186c5", roleJob.creditId)
+        assertEquals(1, roleJob.episodeCount)
     }
 
     @Test

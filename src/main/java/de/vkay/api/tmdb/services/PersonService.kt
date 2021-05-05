@@ -2,6 +2,8 @@ package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
+import de.vkay.api.tmdb.enumerations.MediaType
+import de.vkay.api.tmdb.internals.annotations.CharJob
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.models.*
 import retrofit2.http.GET
@@ -50,61 +52,61 @@ interface PersonService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-tv-credits)
      */
     @GET("person/{person_id}/tv_credits")
-    @ResultsList("cast")
+    @CharJob(fieldName = "cast", mediaType = MediaType.TV)
     suspend fun tvCast(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<TmdbShow.Slim>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbShow.Slim, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-tv-credits)
      */
     @GET("person/{person_id}/tv_credits")
-    @ResultsList("crew")
+    @CharJob(fieldName = "crew", mediaType = MediaType.TV)
     suspend fun tvCrew(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<TmdbShow.Slim>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbShow.Slim, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-movie-credits)
      */
     @GET("person/{person_id}/movie_credits")
-    @ResultsList("cast")
+    @CharJob(fieldName = "cast", mediaType = MediaType.MOVIE)
     suspend fun movieCast(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<TmdbMovie.Slim>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbMovie.Slim, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-movie-credits)
      */
     @GET("person/{person_id}/movie_credits")
-    @ResultsList("crew")
+    @CharJob(fieldName = "crew", mediaType = MediaType.MOVIE)
     suspend fun movieCrew(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<TmdbMovie.Slim>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbMovie.Slim, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-combined-credits)
      */
     @GET("person/{person_id}/combined_credits")
-    @ResultsList("cast")
+    @CharJob(fieldName = "cast")
     suspend fun combinedCast(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<MediaTypeItem>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<MediaTypeItem, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-combined-credits)
      */
     @GET("person/{person_id}/combined_credits")
-    @ResultsList("crew")
+    @CharJob("crew")
     suspend fun combinedCrew(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<MediaTypeItem>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<MediaTypeItem, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-popular-people)

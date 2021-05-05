@@ -241,5 +241,6 @@ hs_err_pid*
 
 # KmDocs Material
 site/
+assets/
 docs/
 mkdocs.yml
