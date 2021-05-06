@@ -6,7 +6,6 @@ import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
 import de.vkay.api.tmdb.enumerations.ReleaseType
-import de.vkay.api.tmdb.models.TmdbPerson
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
@@ -119,16 +118,22 @@ class MovieServiceTest : BaseServiceTest() {
     fun `Get cast`(): Unit = runBlocking {
         val cast = TMDb.movieService.cast(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
         assertTrue(cast.isNotEmpty())
-        assertNotNull(cast.firstOrNull()?.profile)
-        assertTrue(cast.firstOrNull() is TmdbPerson.Cast)
+
+        val (person, role) = cast.findLast { it.first.name.contains("Downey") }!!
+        assertEquals("Robert Downey Jr.", person.name)
+        assertEquals("Tony Stark / Iron Man", role.character)
+        assertNull(role.episodeCount)
     }
 
     @Test
     fun `Get crew`(): Unit = runBlocking {
         val crew = TMDb.movieService.crew(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
         assertTrue(crew.isNotEmpty())
-        assertNotNull(crew.firstOrNull()?.profile)
-        assertTrue(crew.firstOrNull() is TmdbPerson.Crew)
+
+        val (person, job) = crew.findLast { it.first.name.contains("Downey") }!!
+        assertEquals("Lisa Theresa Downey-Dent", person.name)
+        assertEquals("Visual Effects Coordinator", job.job)
+        assertNull(job.episodeCount)
     }
 
     @Test

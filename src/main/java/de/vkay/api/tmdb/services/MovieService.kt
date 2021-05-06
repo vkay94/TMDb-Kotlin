@@ -3,6 +3,7 @@ package de.vkay.api.tmdb.services
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.ImageLanguages
+import de.vkay.api.tmdb.internals.annotations.CharJobPerson
 import de.vkay.api.tmdb.internals.annotations.MapList
 import de.vkay.api.tmdb.internals.annotations.OtherCases
 import de.vkay.api.tmdb.internals.annotations.ResultsList
@@ -37,19 +38,19 @@ interface MovieService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/movies/get-movie-credits)
      */
     @GET("movie/{movie_id}/credits")
-    @ResultsList("cast")
+    @CharJobPerson("cast")
     suspend fun cast(
         @Path("movie_id") movieId: Int
-    ): NetworkResponse<List<TmdbPerson.Cast>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/movies/get-movie-credits)
      */
     @GET("movie/{movie_id}/credits")
-    @ResultsList("crew")
+    @CharJobPerson("crew")
     suspend fun crew(
         @Path("movie_id") movieId: Int
-    ): NetworkResponse<List<TmdbPerson.Crew>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/movies/get-movie-external-ids)

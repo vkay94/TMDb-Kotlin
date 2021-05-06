@@ -5,7 +5,6 @@ import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
-import de.vkay.api.tmdb.internals.models.TmdbCredits
 
 @JsonClass(generateAdapter = true)
 data class TmdbSeason internal constructor(
@@ -31,17 +30,12 @@ data class TmdbSeason internal constructor(
     internal val _posters: List<TmdbImage>?,
     @Json(name = "videos")
     @ResultsList
-    internal val _videos: List<TmdbVideo>?,
-    @Json(name = "credits")
-    internal val _credits: TmdbCredits?
+    internal val _videos: List<TmdbVideo>?
 
 ) : MediaTypeItem(MediaType.SEASON) {
 
     val videos: List<TmdbVideo> = _videos ?: emptyList()
     val posters: List<TmdbImage> = _posters ?: emptyList()
-
-    val cast: List<TmdbPerson.Cast> = _credits?.cast ?: emptyList()
-    val crew: List<TmdbPerson.Crew> = _credits?.crew ?: emptyList()
 
     @JsonClass(generateAdapter = true)
     data class Slim internal constructor(

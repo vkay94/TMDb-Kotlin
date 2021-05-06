@@ -7,7 +7,6 @@ import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.EpisodeGroupType
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
-import de.vkay.api.tmdb.models.TmdbPerson
 import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -66,8 +65,6 @@ class TvServiceTest : BaseServiceTest() {
 
         assertTrue(details.recommendations.isEmpty())
         assertTrue(details.similar.isEmpty())
-        assertTrue(details.crew.isEmpty())
-        assertTrue(details.cast.isEmpty())
     }
 
     @Test
@@ -136,24 +133,33 @@ class TvServiceTest : BaseServiceTest() {
     fun `Get cast`(): Unit = runBlocking {
         val cast = TMDb.showService.cast(SHOW_ID_TBBT).invoke()!!
         assertEquals(8, cast.count())
-        assertNotNull(cast.firstOrNull()?.profile)
-        assertTrue(cast.firstOrNull() is TmdbPerson.Cast)
+
+        val (person, role) = cast.find { it.first.name.contains("Kaley") }!!
+        assertEquals("Kaley Cuoco", person.name)
+        assertEquals("Penny", role.character)
+        assertNull(role.episodeCount)
     }
 
     @Test
     fun `Get aggregate cast`(): Unit = runBlocking {
         val cast = TMDb.showService.aggregateCast(SHOW_ID_TBBT).invoke()!!
         assertTrue(cast.isNotEmpty())
-        assertNotNull(cast.firstOrNull()?.profile)
-        assertTrue(cast.firstOrNull() is TmdbPerson.Cast)
+
+        val (person, role) = cast.find { it.first.name.contains("Kaley") }!!
+        assertEquals("Kaley Cuoco", person.name)
+        assertEquals("Penny", role.character)
+        assertEquals(279, role.episodeCount)
     }
 
     @Test
     fun `Get crew`(): Unit = runBlocking {
         val crew = TMDb.showService.crew(SHOW_ID_TBBT).invoke()!!
         assertTrue(crew.isNotEmpty())
-        assertNull(crew.firstOrNull()?.profile)
-        assertTrue(crew.firstOrNull() is TmdbPerson.Crew)
+
+        val (person, job) = crew.find { it.first.name == "Francoise Cherry-Cohen" }!!
+        assertEquals("Francoise Cherry-Cohen", person.name)
+        assertEquals("Art Direction", job.job)
+        assertNull(job.episodeCount)
     }
 
     @Test

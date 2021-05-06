@@ -30,7 +30,7 @@ class AppendToResponse(private vararg val appendItems: Item = arrayOf()) {
     }
 
     enum class Item(private val key: String) {
-        IMAGES(""), CREDITS(""), VIDEOS(""), EXTERNAL_IDS(""),
+        IMAGES(""), VIDEOS(""), EXTERNAL_IDS(""),
         RECOMMENDATIONS(""), SIMILAR(""), KEYWORDS(""),
         WATCH_PROVIDERS("watch/providers");
 

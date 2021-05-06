@@ -38,67 +38,40 @@ data class TmdbPerson internal constructor(
 
     @JsonClass(generateAdapter = true)
     data class Slim internal constructor(
+        val adult: Boolean,
         val name: String,
         val id: Int,
         val gender: PersonGender,
         @Json(name = "profile_path")
         @TMDbImage
         val profile: TmdbImage?,
+        val popularity: Double,
+        @Json(name = "known_for_department")
+        val knownForDepartment: String,
+
+        // Optional (not in Find and Search)
+        @Json(name = "original_name")
+        val originalName: String?
     ) : MediaTypeItem(MediaType.PERSON)
 
     //region Credits related sub-classes
 
-    data class RoleJob internal constructor(
+    data class CrewJob internal constructor(
         val creditId: String,
-        val jobCharacter: String,
-        val episodeCount: Int?
+        val job: String,
+        val department: String,
+
+        // Optional TV
+        val episodeCount: Int? = null,
     )
 
-    data class Cast internal constructor(
-        val personId: Int,
-        val name: String,
-        val originalName: String,
-        val gender: PersonGender?,
-        val adult: Boolean,
-        val profile: TmdbImage?,
-        val knownForDepartment: String,
-        val roles: List<RoleJob>,
-        val totalEpisodeCount: Int?,
-        val order: Int
-    )
-
-    data class Crew internal constructor(
-        val personId: Int,
-        val name: String,
-        val originalName: String,
-        val gender: PersonGender?,
-        val adult: Boolean,
-        val profile: TmdbImage?,
-        val knownForDepartment: String,
-        val jobs: List<RoleJob>,
-        val totalEpisodeCount: Int?,
-        val department: String
-    )
-
-    @JsonClass(generateAdapter = true)
-    data class Guest internal constructor(
-        @Json(name = "id")
-        val personId: Int,
-        @Json(name = "credit_id")
+    data class CastRole internal constructor(
         val creditId: String,
-        val name: String,
-        @Json(name = "original_name")
-        val originalName: String,
-        val gender: PersonGender?,
-        val adult: Boolean,
-        @Json(name = "profile_path")
-        @TMDbImage
-        val profile: TmdbImage?,
-        @Json(name = "known_for_department")
-        val knownForDepartment: String,
-
-        @Json(name = "character")
-        val character: String
+        val character: String,
+        // Optional
+        val order: Int = -1,
+        // Aggregated credits and person tv credits
+        val episodeCount: Int? = null
     )
 
     //endregion

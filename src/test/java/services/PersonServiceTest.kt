@@ -3,6 +3,7 @@ package services
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.PersonGender
+import de.vkay.api.tmdb.models.TmdbPerson
 import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -33,7 +34,7 @@ class PersonServiceTest : BaseServiceTest() {
 
         val (movie, roleJob) = movieCast.find { it.first.id == 602 }!!
         assertEquals("Independence Day", movie.title)
-        assertEquals("Capt. Steven Hiller", roleJob.jobCharacter)
+        assertEquals("Capt. Steven Hiller", roleJob.character)
         assertEquals("52fe425bc3a36847f8017f8b", roleJob.creditId)
         assertEquals(null, roleJob.episodeCount)
     }
@@ -45,7 +46,7 @@ class PersonServiceTest : BaseServiceTest() {
 
         val (show, roleJob) = tvCrew.find { it.first.id == 1566 }!! /* All of Us */
         assertEquals("All of Us", show.title)
-        assertEquals("Director", roleJob.jobCharacter)
+        assertEquals("Director", roleJob.job)
         assertEquals("52570ce219c29571140186c5", roleJob.creditId)
         assertEquals(1, roleJob.episodeCount)
     }
@@ -53,7 +54,12 @@ class PersonServiceTest : BaseServiceTest() {
     @Test
     fun `Get combined credits`() = runBlocking {
         val combinedCast = TMDb.personService.combinedCast(PERSON_ID_WILL_SMITH).invoke()!!
-        val shows = combinedCast.filterIsInstance<TmdbShow.Slim>()
-        assertNotNull(shows.find { it.id == 1514 }) /* The One Show */
+        val shows = combinedCast.filter { it.first is TmdbShow.Slim }
+                as List<Pair<TmdbShow.Slim, TmdbPerson.CastRole>>
+
+        assertFalse(shows.isEmpty())
+        val (show, role) = shows.find { it.first.id == 1514 }!!
+        assertEquals("The One Show", show.title)
+        assertTrue(role.character.isBlank())
     }
 }

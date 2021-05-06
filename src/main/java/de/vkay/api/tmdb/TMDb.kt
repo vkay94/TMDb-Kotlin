@@ -7,7 +7,8 @@ import com.squareup.moshi.adapters.EnumJsonAdapter
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
 import de.vkay.api.tmdb.enumerations.*
 import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
-import de.vkay.api.tmdb.internals.adapters.*
+import de.vkay.api.tmdb.internals.adapters.TmdbErrorJsonAdapter
+import de.vkay.api.tmdb.internals.adapters.TmdbTranslationDataJsonAdapter
 import de.vkay.api.tmdb.internals.annotations.*
 import de.vkay.api.tmdb.internals.models.TmdbFindResult
 import de.vkay.api.tmdb.internals.models.WatchProviderListObj
@@ -89,10 +90,12 @@ object TMDb {
             )
 
             /* Enums with fallbacks */
-            .add(PersonGender::class.java, EnumValueJsonAdapter.create(PersonGender::class.java)
-                .withUnknownFallback(PersonGender.OTHER))
-            .add(EpisodeGroupType::class.java, EnumValueJsonAdapter.create(EpisodeGroupType::class.java)
-                .withUnknownFallback(EpisodeGroupType.UNDEFINED))
+            .add(
+                PersonGender::class.java, EnumValueJsonAdapter.create(PersonGender::class.java)
+                    .withUnknownFallback(PersonGender.OTHER))
+            .add(
+                EpisodeGroupType::class.java, EnumValueJsonAdapter.create(EpisodeGroupType::class.java)
+                    .withUnknownFallback(EpisodeGroupType.UNDEFINED))
             .add(
                 TmdbVideo.Site::class.java, EnumJsonAdapter.create(TmdbVideo.Site::class.java)
                     .withUnknownFallback(TmdbVideo.Site.UNDEFINED))
@@ -108,7 +111,6 @@ object TMDb {
             .add(
                 ReleaseType::class.java, EnumValueJsonAdapter.create(ReleaseType::class.java)
                     .withUnknownFallback(ReleaseType.UNKNOWN))
-
             .add(
                 MediaType::class.java, EnumJsonAdapter.create(MediaType::class.java)
                     .withUnknownFallback(MediaType.UNKNOWN))
@@ -117,9 +119,6 @@ object TMDb {
 
             /* Custom writer adapters */
             .add(TmdbTranslation.Data::class.java, TmdbTranslationDataJsonAdapter())
-            .add(TmdbPerson.Cast::class.java, TmdbCreditCastJsonAdapter())
-            .add(TmdbPerson.Crew::class.java, TmdbCreditCrewJsonAdapter())
-            .add(TmdbPerson.RoleJob::class.java, TmdbCreditRoleJobJsonAdapter())
             .add(TmdbFindResult.ADAPTER)
             .add(TmdbDate.ADAPTER)
 
@@ -134,6 +133,7 @@ object TMDb {
             .add(TMDbImageAdapter.INSTANCE)
             .add(RatedJsonAdapter())
             .add(CharJobAdapter.INSTANCE)
+            .add(CharJobPersonAdapter.INSTANCE)
             .build()
     }
 

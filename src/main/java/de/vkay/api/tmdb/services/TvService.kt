@@ -3,6 +3,7 @@ package de.vkay.api.tmdb.services
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.ImageLanguages
+import de.vkay.api.tmdb.internals.annotations.CharJobPerson
 import de.vkay.api.tmdb.internals.annotations.OtherCases
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.models.*
@@ -121,37 +122,37 @@ interface TvService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-credits)
      */
     @GET("tv/{tv_id}/credits")
-    @ResultsList("cast")
+    @CharJobPerson("cast")
     suspend fun cast(
         @Path("tv_id") tvShowId: Int
-    ): NetworkResponse<List<TmdbPerson.Cast>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-aggregate-credits)
      */
     @GET("tv/{tv_id}/aggregate_credits")
-    @ResultsList("crew")
+    @CharJobPerson("crew")
     suspend fun aggregateCrew(
         @Path("tv_id") tvShowId: Int
-    ): NetworkResponse<List<TmdbPerson.Crew>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-aggregate-credits)
      */
     @GET("tv/{tv_id}/aggregate_credits")
-    @ResultsList("cast")
+    @CharJobPerson("cast")
     suspend fun aggregateCast(
         @Path("tv_id") tvShowId: Int
-    ): NetworkResponse<List<TmdbPerson.Cast>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-credits)
      */
     @GET("tv/{tv_id}/credits")
-    @ResultsList("crew")
+    @CharJobPerson(fieldName = "crew")
     suspend fun crew(
         @Path("tv_id") tvShowId: Int
-    ): NetworkResponse<List<TmdbPerson.Crew>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-watch-providers)

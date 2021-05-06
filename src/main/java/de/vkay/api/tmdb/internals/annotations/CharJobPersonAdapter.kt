@@ -1,37 +1,29 @@
 package de.vkay.api.tmdb.internals.annotations
 
 import com.squareup.moshi.*
-import de.vkay.api.tmdb.enumerations.MediaType
-import de.vkay.api.tmdb.models.*
+import de.vkay.api.tmdb.models.MediaTypeItem
+import de.vkay.api.tmdb.models.TmdbError
+import de.vkay.api.tmdb.models.TmdbPerson
 import java.lang.reflect.Type
 import kotlin.streams.toList
 
 /**
  * Reference: [Stackoverflow](https://stackoverflow.com/questions/53344033/moshi-parse-single-object-or-list-of-objects-kotlin)
  */
-internal class CharJobAdapter(
+internal class CharJobPersonAdapter(
     moshi: Moshi,
     fieldName: String,
-    private val mediaType: MediaType
 ) : JsonAdapter<Any>() {
 
-    private val movieJsonAdapter = moshi.adapter(TmdbMovie.Slim::class.java)
-    private val showJsonAdapter = moshi.adapter(TmdbShow.Slim::class.java)
-    private val mediaItemJsonAdapter = moshi.adapter(MediaTypeItem::class.java)
-
+    private val personJsonAdapter = moshi.adapter(TmdbPerson.Slim::class.java)
     private val options: JsonReader.Options = JsonReader.Options.of(fieldName)
-    private val creditOptions: JsonReader.Options = JsonReader.Options.of(
-        "credit_id",
-        "character",
-        "job",
-        "episode_count"
-    )
 
     companion object {
-        val INSTANCE = RoleJobFactory()
+        val INSTANCE = CharJobPersonFactory()
     }
 
     override fun fromJson(reader: JsonReader): Any {
+        // Any = CrewJon, CastRole
         val result = mutableListOf<Pair<MediaTypeItem, Any>>()
         reader.beginObject()
 
@@ -43,33 +35,14 @@ internal class CharJobAdapter(
                     reader.skipValue()
                 }
                 else -> {
-                    var tmpCreditId = "INVALID"
-                    var tmpJob: String? = null
-                    var tmpCharacter: String? = null
-                    var tmpEpCount: Int? = null
-
                     reader.beginArray()
                     // Iterate over all items
                     while (reader.hasNext()) {
-                        val tmpReader = reader.peekJson()
-                        val cr = getCredit(tmpReader)!!
+                        val rc = reader.peekJson()
+                        val jobChar = getCredit(rc)!!
 
-                        when (mediaType) {
-                            MediaType.TV -> {
-                                showJsonAdapter.fromJson(reader)?.let {
-                                    result.add(Pair(it, cr))
-                                }
-                            }
-                            MediaType.MOVIE -> {
-                                movieJsonAdapter.fromJson(reader)?.let {
-                                    result.add(Pair(it, cr))
-                                }
-                            }
-                            else -> {
-                                mediaItemJsonAdapter.fromJson(reader)?.let {
-                                    result.add(Pair(it, cr))
-                                }
-                            }
+                        personJsonAdapter.fromJson(reader)?.let {
+                            result.add(Pair(it, jobChar))
                         }
                     }
                     reader.endArray()
@@ -89,6 +62,8 @@ internal class CharJobAdapter(
             "episode_count",    // 3
             "order",            // 4
             "department",       // 5
+            "roles",            // 6    => credit_id, character, episode_count
+            "jobs"              // 7
         )
 
         var creditId = "INVALID"
@@ -111,6 +86,44 @@ internal class CharJobAdapter(
                 3 -> episodeCount = reader.nextInt()
                 4 -> order = reader.nextInt()
                 5 -> department = reader.nextString()
+                6 -> {
+                    // Roles
+                    reader.beginArray()
+                    while (reader.hasNext()) {
+                        reader.beginObject()
+                        while (reader.hasNext()) {
+                            when (reader.selectName(options)) {
+                                -1 -> {
+                                    reader.skipName()
+                                    reader.skipValue()
+                                }
+                                0 -> creditId = reader.nextString()
+                                1 -> character = reader.nextString()
+                                3 -> episodeCount = reader.nextInt()
+                            }
+                        }
+                        reader.endObject()
+                    }
+                    reader.endArray()
+                }
+                7 -> {
+                    // Jobs
+                    reader.beginArray()
+                    while (reader.hasNext()) {
+                        reader.beginObject()
+                        when (reader.selectName(options)) {
+                            -1 -> {
+                                reader.skipName()
+                                reader.skipValue()
+                            }
+                            0 -> creditId = reader.nextString()
+                            2 -> job = reader.nextString()
+                            3 -> episodeCount = reader.nextInt()
+                        }
+                        reader.endObject()
+                    }
+                    reader.endArray()
+                }
             }
         }
         reader.endObject()
@@ -123,26 +136,25 @@ internal class CharJobAdapter(
     }
 
     override fun toJson(writer: JsonWriter, value: Any?) =
-        throw UnsupportedOperationException("ResultsListAdapter is only used to deserialize objects")
+        throw UnsupportedOperationException("CharJobPersonAdapter is only used to deserialize objects")
 
-    class RoleJobFactory : Factory {
+    class CharJobPersonFactory : Factory {
         override fun create(type: Type, annotations: Set<Annotation>, moshi: Moshi): JsonAdapter<Any>? {
-            Types.nextAnnotations(annotations, CharJob::class.java) ?: return null
+            Types.nextAnnotations(annotations, CharJobPerson::class.java) ?: return null
 
             val rawType = Types.getRawType(type)
 
             if (!TmdbError.isAnyError(rawType)) {
                 if (Types.getRawType(type) != List::class.java )
-                    throw IllegalArgumentException("Only lists may be annotated with @ResultsList. Found: $type")
+                    throw IllegalArgumentException("Only lists may be annotated with @CharJobPerson. Found: $type")
             }
 
-            val resListAnno = annotations.stream().filter { it is CharJob }.toList().firstOrNull()
+            val resListAnno = annotations.stream().filter { it is CharJobPerson }.toList().firstOrNull()
                 ?: throw IllegalArgumentException("List has no valid fieldName: $type")
 
-            val fieldName = (resListAnno as CharJob).fieldName
-            val mediaType = resListAnno.mediaType
+            val fieldName = (resListAnno as CharJobPerson).fieldName
 
-            return CharJobAdapter(moshi, fieldName, mediaType)
+            return CharJobPersonAdapter(moshi, fieldName)
         }
     }
 }

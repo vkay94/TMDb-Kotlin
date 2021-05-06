@@ -56,7 +56,7 @@ interface PersonService {
     suspend fun tvCast(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<Pair<TmdbShow.Slim, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbShow.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-tv-credits)
@@ -66,7 +66,7 @@ interface PersonService {
     suspend fun tvCrew(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<Pair<TmdbShow.Slim, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbShow.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-movie-credits)
@@ -76,7 +76,7 @@ interface PersonService {
     suspend fun movieCast(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<Pair<TmdbMovie.Slim, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbMovie.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-movie-credits)
@@ -86,7 +86,7 @@ interface PersonService {
     suspend fun movieCrew(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<Pair<TmdbMovie.Slim, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbMovie.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-combined-credits)
@@ -96,7 +96,7 @@ interface PersonService {
     suspend fun combinedCast(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<Pair<MediaTypeItem, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<MediaTypeItem, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-combined-credits)
@@ -106,7 +106,7 @@ interface PersonService {
     suspend fun combinedCrew(
         @Path("person_id") personId: Int,
         @Query("language") language: String? = null
-    ): NetworkResponse<List<Pair<MediaTypeItem, TmdbPerson.RoleJob>>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<MediaTypeItem, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-popular-people)

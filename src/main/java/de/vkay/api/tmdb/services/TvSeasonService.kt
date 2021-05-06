@@ -2,6 +2,7 @@ package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
+import de.vkay.api.tmdb.internals.annotations.CharJobPerson
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.models.*
 import retrofit2.http.GET
@@ -44,41 +45,41 @@ interface TvSeasonService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/credits")
-    @ResultsList("crew")
+    @CharJobPerson("crew")
     suspend fun crew(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<List<TmdbPerson.Crew>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/credits")
-    @ResultsList("cast")
+    @CharJobPerson("cast")
     suspend fun cast(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<List<TmdbPerson.Cast>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-aggregate-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/aggregate_credits")
-    @ResultsList("crew")
+    @CharJobPerson("crew")
     suspend fun aggregateCrew(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<List<TmdbPerson.Crew>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-aggregate-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/aggregate_credits")
-    @ResultsList("cast")
+    @CharJobPerson("cast")
     suspend fun aggregateCast(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-    ): NetworkResponse<List<TmdbPerson.Cast>, TmdbError.DefaultError>
+    ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-translations)

@@ -230,4 +230,41 @@ internal class ErrorAnnotationAdapter {
     }
 
     //endregion
+
+    //region CharJobPerson
+
+    @CharJobPerson
+    @FromJson
+    fun normmrffalR(input: String?): TmdbError? {
+        return null
+    }
+
+    @ToJson
+    fun normffrmalR(@CharJobPerson input: TmdbError): String {
+        throw UnsupportedOperationException()
+    }
+
+    @CharJobPerson
+    @FromJson
+    fun defffeaumltR(input: String?): TmdbError.DefaultError? {
+        return null
+    }
+
+    @ToJson
+    fun defmafgrultR(@CharJobPerson input: TmdbError.DefaultError): String {
+        throw UnsupportedOperationException()
+    }
+
+    @CharJobPerson
+    @FromJson
+    fun posbfgtmR(input: String?): TmdbError.PostError? {
+        return null
+    }
+
+    @ToJson
+    fun posffrmtR(@CharJobPerson input: TmdbError.PostError): String {
+        throw UnsupportedOperationException()
+    }
+
+    //endregion
 }

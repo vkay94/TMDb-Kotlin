@@ -6,7 +6,6 @@ import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.internals.annotations.Rated
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
-import de.vkay.api.tmdb.internals.models.TmdbCredits
 
 @JsonClass(generateAdapter = true)
 data class TmdbEpisode internal constructor(
@@ -32,8 +31,6 @@ data class TmdbEpisode internal constructor(
     @Json(name = "images")
     @ResultsList("stills")
     internal val _stills: List<TmdbImage>?,
-    @Json(name = "credits")
-    internal val _credits: TmdbCredits?,
     @Json(name = "videos")
     @ResultsList
     internal val _videos: List<TmdbVideo>?
@@ -42,10 +39,6 @@ data class TmdbEpisode internal constructor(
 
     val stills: List<TmdbImage> = _stills ?: emptyList()
     val videos: List<TmdbVideo> = _videos ?: emptyList()
-
-    val crew: List<TmdbPerson.Crew> = _credits?.crew ?: emptyList()
-    val cast: List<TmdbPerson.Cast> = _credits?.cast ?: emptyList()
-    val guestStars: List<TmdbPerson.Guest> = _credits?.guest_stars ?: emptyList()
 
     @JsonClass(generateAdapter = true)
     data class Slim internal constructor(

@@ -42,6 +42,8 @@ class SearchServiceTest : BaseServiceTest() {
 
         val firstResult = searchPage.results.first()
         assertEquals(MediaType.PERSON, firstResult.mediaType)
+        assertEquals("Acting", firstResult.knownForDepartment)
+        assertNull(firstResult.originalName)
     }
 
     @Test

@@ -8,7 +8,6 @@ import de.vkay.api.tmdb.enumerations.ShowType
 import de.vkay.api.tmdb.internals.annotations.Rated
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
-import de.vkay.api.tmdb.internals.models.TmdbCredits
 import de.vkay.api.tmdb.internals.models.TmdbImages
 
 @JsonClass(generateAdapter = true)
@@ -72,8 +71,6 @@ class TmdbShow internal constructor(
     @ResultsList
     @Json(name = "videos")
     internal val _videos: List<TmdbVideo>?,
-    @Json(name = "credits")
-    internal val _credits: TmdbCredits?,
     @Json(name = "keywords")
     @ResultsList
     internal val _keywords: List<TmdbKeyword>?
@@ -86,8 +83,6 @@ class TmdbShow internal constructor(
     val recommendations: List<Slim> = _recommendations?.results ?: emptyList()
     val similar: List<Slim> = _similar?.results ?: emptyList()
 
-    val cast: List<TmdbPerson.Cast> = _credits?.cast ?: emptyList()
-    val crew: List<TmdbPerson.Crew> = _credits?.crew ?: emptyList()
     val keywords: List<TmdbKeyword> = _keywords ?: emptyList()
 
     val runtime: Int = episodeRuntimes.firstOrNull() ?: 0

@@ -31,13 +31,10 @@ class TvEpisodeServiceTest : BaseServiceTest() {
     fun `Get additional data`() = runBlocking {
         val season = 1
         val episode = 1
-        val appendToResponse = AppendToResponse(AppendToResponse.Item.IMAGES, AppendToResponse.Item.CREDITS)
+        val appendToResponse = AppendToResponse(AppendToResponse.Item.IMAGES)
 
         val details = TMDb.episodeService.details(SHOW_ID_MHA, season, episode, appendToResponse = appendToResponse).invoke()!!
-
         assertFalse(details.stills.isEmpty())
-        assertTrue(details.crew.isEmpty())
-        assertTrue(details.cast.isNotEmpty())
     }
 
     @Test
