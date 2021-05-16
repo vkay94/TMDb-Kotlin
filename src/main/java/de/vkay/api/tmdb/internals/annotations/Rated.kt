@@ -4,9 +4,6 @@ import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonQualifier
 import com.squareup.moshi.ToJson
 
-/**
- * Used for everything else (?)
- */
 @Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FUNCTION, AnnotationTarget.TYPE, AnnotationTarget.FIELD)
 @Retention(AnnotationRetention.RUNTIME)
 @JsonQualifier

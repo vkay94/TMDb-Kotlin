@@ -9,43 +9,6 @@ import de.vkay.api.tmdb.models.TmdbError
  */
 internal class ErrorAnnotationAdapter {
 
-    //region StatusMessage
-
-    @StatusMessage
-    @FromJson
-    fun normalStatus(input: String?): TmdbError? {
-        return null
-    }
-
-    @ToJson
-    fun normalStatus(@StatusMessage input: TmdbError): String {
-        throw UnsupportedOperationException()
-    }
-
-    @StatusMessage
-    @FromJson
-    fun defaultNormal(input: String?): TmdbError.DefaultError? {
-        return null
-    }
-
-    @ToJson
-    fun defaultStatus(@StatusMessage input: TmdbError.DefaultError): String {
-        throw UnsupportedOperationException()
-    }
-
-    @StatusMessage
-    @FromJson
-    fun postStatus(input: String?): TmdbError.PostError? {
-        return null
-    }
-
-    @ToJson
-    fun postStatus(@StatusMessage input: TmdbError.PostError): String {
-        throw UnsupportedOperationException()
-    }
-
-    //endregion
-
     //region OtherCases
 
     @OtherCases
@@ -157,44 +120,7 @@ internal class ErrorAnnotationAdapter {
 
     //endregion
 
-    //region Rated
-
-    @Rated
-    @FromJson
-    fun normmafrsglR(input: String?): TmdbError? {
-        return null
-    }
-
-    @ToJson
-    fun normmgrggalR(@Rated input: TmdbError): String {
-        throw UnsupportedOperationException()
-    }
-
-    @Rated
-    @FromJson
-    fun defagrumltR(input: String?): TmdbError.DefaultError? {
-        return null
-    }
-
-    @ToJson
-    fun defgrgmaultR(@Rated input: TmdbError.DefaultError): String {
-        throw UnsupportedOperationException()
-    }
-
-    @Rated
-    @FromJson
-    fun posargtmR(input: String?): TmdbError.PostError? {
-        return null
-    }
-
-    @ToJson
-    fun pogrgsmtR(@Rated input: TmdbError.PostError): String {
-        throw UnsupportedOperationException()
-    }
-
-    //endregion
-
-    //region RoleJob
+    //region CharJob
 
     @CharJob
     @FromJson
