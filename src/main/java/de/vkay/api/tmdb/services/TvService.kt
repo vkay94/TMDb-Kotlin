@@ -3,7 +3,8 @@ package de.vkay.api.tmdb.services
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.ImageLanguages
-import de.vkay.api.tmdb.internals.annotations.CharJobPerson
+import de.vkay.api.tmdb.enumerations.MediaType
+import de.vkay.api.tmdb.internals.annotations.CharJob
 import de.vkay.api.tmdb.internals.annotations.OtherCases
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.models.*
@@ -122,7 +123,7 @@ interface TvService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-credits)
      */
     @GET("tv/{tv_id}/credits")
-    @CharJobPerson("cast")
+    @CharJob(fieldName = "cast", mediaType = MediaType.PERSON)
     suspend fun cast(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
@@ -131,7 +132,7 @@ interface TvService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-aggregate-credits)
      */
     @GET("tv/{tv_id}/aggregate_credits")
-    @CharJobPerson("crew")
+    @CharJob(fieldName = "crew", mediaType = MediaType.PERSON)
     suspend fun aggregateCrew(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
@@ -140,7 +141,7 @@ interface TvService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-aggregate-credits)
      */
     @GET("tv/{tv_id}/aggregate_credits")
-    @CharJobPerson("cast")
+    @CharJob(fieldName = "cast", mediaType = MediaType.PERSON)
     suspend fun aggregateCast(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
@@ -149,7 +150,7 @@ interface TvService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-credits)
      */
     @GET("tv/{tv_id}/credits")
-    @CharJobPerson(fieldName = "crew")
+    @CharJob(fieldName = "crew", mediaType = MediaType.PERSON)
     suspend fun crew(
         @Path("tv_id") tvShowId: Int
     ): NetworkResponse<List<Pair<TmdbPerson.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>

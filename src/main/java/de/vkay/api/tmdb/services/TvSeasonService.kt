@@ -2,7 +2,8 @@ package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
-import de.vkay.api.tmdb.internals.annotations.CharJobPerson
+import de.vkay.api.tmdb.enumerations.MediaType
+import de.vkay.api.tmdb.internals.annotations.CharJob
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.models.*
 import retrofit2.http.GET
@@ -45,7 +46,7 @@ interface TvSeasonService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/credits")
-    @CharJobPerson("crew")
+    @CharJob(fieldName = "crew", mediaType = MediaType.PERSON)
     suspend fun crew(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
@@ -55,7 +56,7 @@ interface TvSeasonService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/credits")
-    @CharJobPerson("cast")
+    @CharJob(fieldName = "cast", mediaType = MediaType.PERSON)
     suspend fun cast(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
@@ -65,7 +66,7 @@ interface TvSeasonService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-aggregate-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/aggregate_credits")
-    @CharJobPerson("crew")
+    @CharJob(fieldName = "crew", mediaType = MediaType.PERSON)
     suspend fun aggregateCrew(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
@@ -75,7 +76,7 @@ interface TvSeasonService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-seasons/get-tv-season-aggregate-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/aggregate_credits")
-    @CharJobPerson("cast")
+    @CharJob(fieldName = "cast", mediaType = MediaType.PERSON)
     suspend fun aggregateCast(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,

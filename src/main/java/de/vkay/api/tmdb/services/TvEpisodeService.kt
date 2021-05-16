@@ -3,7 +3,8 @@ package de.vkay.api.tmdb.services
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.ImageLanguages
-import de.vkay.api.tmdb.internals.annotations.CharJobPerson
+import de.vkay.api.tmdb.enumerations.MediaType
+import de.vkay.api.tmdb.internals.annotations.CharJob
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.models.*
 import retrofit2.http.GET
@@ -29,7 +30,7 @@ interface TvEpisodeService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-episodes/get-tv-episode-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/credits")
-    @CharJobPerson("cast")
+    @CharJob(fieldName = "cast", mediaType = MediaType.PERSON)
     suspend fun cast(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
@@ -40,7 +41,7 @@ interface TvEpisodeService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-episodes/get-tv-episode-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/credits")
-    @CharJobPerson("crew")
+    @CharJob(fieldName = "crew", mediaType = MediaType.PERSON)
     suspend fun crew(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
@@ -51,7 +52,7 @@ interface TvEpisodeService {
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv-episodes/get-tv-episode-credits)
      */
     @GET("tv/{tv_id}/season/{season_number}/episode/{episode_number}/credits")
-    @CharJobPerson("guest_stars")
+    @CharJob(fieldName = "guest_stars", mediaType = MediaType.PERSON)
     suspend fun guestStars(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,

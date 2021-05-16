@@ -133,7 +133,6 @@ object TMDb {
             .add(TMDbImageAdapter.INSTANCE)
             .add(RatedJsonAdapter())
             .add(CharJobAdapter.INSTANCE)
-            .add(CharJobPersonAdapter.INSTANCE)
             .build()
     }
 

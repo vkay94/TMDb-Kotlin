@@ -15,17 +15,12 @@ internal class CharJobAdapter(
     private val mediaType: MediaType
 ) : JsonAdapter<Any>() {
 
+    private val personJsonAdapter = moshi.adapter(TmdbPerson.Slim::class.java)
     private val movieJsonAdapter = moshi.adapter(TmdbMovie.Slim::class.java)
     private val showJsonAdapter = moshi.adapter(TmdbShow.Slim::class.java)
     private val mediaItemJsonAdapter = moshi.adapter(MediaTypeItem::class.java)
 
     private val options: JsonReader.Options = JsonReader.Options.of(fieldName)
-    private val creditOptions: JsonReader.Options = JsonReader.Options.of(
-        "credit_id",
-        "character",
-        "job",
-        "episode_count"
-    )
 
     companion object {
         val INSTANCE = RoleJobFactory()
@@ -43,10 +38,6 @@ internal class CharJobAdapter(
                     reader.skipValue()
                 }
                 else -> {
-                    var tmpCreditId = "INVALID"
-                    var tmpJob: String? = null
-                    var tmpCharacter: String? = null
-                    var tmpEpCount: Int? = null
 
                     reader.beginArray()
                     // Iterate over all items
@@ -62,6 +53,11 @@ internal class CharJobAdapter(
                             }
                             MediaType.MOVIE -> {
                                 movieJsonAdapter.fromJson(reader)?.let {
+                                    result.add(Pair(it, cr))
+                                }
+                            }
+                            MediaType.PERSON -> {
+                                personJsonAdapter.fromJson(reader)?.let {
                                     result.add(Pair(it, cr))
                                 }
                             }
@@ -89,6 +85,8 @@ internal class CharJobAdapter(
             "episode_count",    // 3
             "order",            // 4
             "department",       // 5
+            "roles",            // 6    => credit_id, character, episode_count
+            "jobs"              // 7
         )
 
         var creditId = "INVALID"
@@ -111,6 +109,44 @@ internal class CharJobAdapter(
                 3 -> episodeCount = reader.nextInt()
                 4 -> order = reader.nextInt()
                 5 -> department = reader.nextString()
+                6 -> {
+                    // Roles
+                    reader.beginArray()
+                    while (reader.hasNext()) {
+                        reader.beginObject()
+                        while (reader.hasNext()) {
+                            when (reader.selectName(options)) {
+                                -1 -> {
+                                    reader.skipName()
+                                    reader.skipValue()
+                                }
+                                0 -> creditId = reader.nextString()
+                                1 -> character = reader.nextString()
+                                3 -> episodeCount = reader.nextInt()
+                            }
+                        }
+                        reader.endObject()
+                    }
+                    reader.endArray()
+                }
+                7 -> {
+                    // Jobs
+                    reader.beginArray()
+                    while (reader.hasNext()) {
+                        reader.beginObject()
+                        when (reader.selectName(options)) {
+                            -1 -> {
+                                reader.skipName()
+                                reader.skipValue()
+                            }
+                            0 -> creditId = reader.nextString()
+                            2 -> job = reader.nextString()
+                            3 -> episodeCount = reader.nextInt()
+                        }
+                        reader.endObject()
+                    }
+                    reader.endArray()
+                }
             }
         }
         reader.endObject()
