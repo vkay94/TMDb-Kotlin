@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://github.com/vkay94/TMDb-Kotlin/recipes/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.9299cb39.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.bde7dde4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
@@ -455,6 +455,7 @@
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
+      
         
       
       
@@ -469,6 +470,7 @@
       
         
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -574,6 +576,7 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
     
   
   
@@ -618,32 +621,32 @@ library.</p>
 resource over and over. You can set the cache time interval and the condition for being connected to
 the network:</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// Setting condition or passing null to disable caching (default: null)</span>
-<span class="n">TMDb</span><span class="p">.</span><span class="n">onlineCondition</span> <span class="p">{</span> 
-    <span class="k">return</span> <span class="n">InternetUtility</span><span class="p">.</span><span class="n">isConnectedToNetwork</span><span class="p">()</span>
+<span class="n">TMDb</span><span class="p">.</span><span class="na">onlineCondition</span> <span class="p">{</span> 
+    <span class="k">return</span> <span class="n">InternetUtility</span><span class="p">.</span><span class="na">isConnectedToNetwork</span><span class="p">()</span>
 <span class="p">}</span>
 
 <span class="c1">// Duration to use cached data if connected to network (default: 2 hours)</span>
-<span class="n">TMDb</span><span class="p">.</span><span class="n">onlineCache</span><span class="p">(</span><span class="cm">/* duration */</span> <span class="m">2</span><span class="p">,</span> <span class="cm">/* unit */</span> <span class="n">TimeUnit</span><span class="p">.</span><span class="n">HOURS</span><span class="p">)</span>
+<span class="n">TMDb</span><span class="p">.</span><span class="na">onlineCache</span><span class="p">(</span><span class="cm">/* duration */</span> <span class="m">2</span><span class="p">,</span> <span class="cm">/* unit */</span> <span class="n">TimeUnit</span><span class="p">.</span><span class="na">HOURS</span><span class="p">)</span>
 
 <span class="c1">// Duration to use cached data if disconnected from network (default: 2 days)</span>
-<span class="n">TMDb</span><span class="p">.</span><span class="n">offlineCache</span><span class="p">(</span><span class="cm">/* duration */</span> <span class="m">1</span><span class="p">,</span> <span class="cm">/* unit */</span> <span class="n">TimeUnit</span><span class="p">.</span><span class="n">DAYS</span><span class="p">)</span>
+<span class="n">TMDb</span><span class="p">.</span><span class="na">offlineCache</span><span class="p">(</span><span class="cm">/* duration */</span> <span class="m">1</span><span class="p">,</span> <span class="cm">/* unit */</span> <span class="n">TimeUnit</span><span class="p">.</span><span class="na">DAYS</span><span class="p">)</span>
 </code></pre></div>
 <p>This setting modifies the cache control header of the requests made by <code>OkHttp3Client</code> / <code>Retrofit2</code>.
 You may also set the <code>OkHttp3</code>&lsquo;s <code>Cache</code> to the client:</p>
-<div class="highlight"><pre><span></span><code><span class="k">fun</span> <span class="nf">setupTMDb</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span> <span class="nf">setupTMDb</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// TODO</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="modify-requests-before-calling">Modify requests before calling<a class="headerlink" href="#modify-requests-before-calling" title="Permanent link">&para;</a></h2>
 <p>By default, requests support caching, but you can add your own modifications by using
 <code>TMDbInterceptor</code> if you&rsquo;d like:</p>
-<div class="highlight"><pre><span></span><code><span class="k">fun</span> <span class="nf">setupTMDb</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">val</span> <span class="py">customInterceptor</span> <span class="p">=</span> <span class="n">TMDbInterceptor</span><span class="p">(</span><span class="s">&quot;YOUR_KEY&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="n">requestBuilder</span> <span class="p">-&gt;</span>
-        <span class="n">requestBuilder</span><span class="p">.</span><span class="n">addHeader</span><span class="p">(</span><span class="s">&quot;headerName&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">)</span> <span class="c1">// or a custom offline handling</span>
+<div class="highlight"><pre><span></span><code><span class="kd">fun</span> <span class="nf">setupTMDb</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="nv">customInterceptor</span> <span class="o">=</span> <span class="n">TMDbInterceptor</span><span class="p">(</span><span class="s">&quot;YOUR_KEY&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="n">requestBuilder</span> <span class="o">-&gt;</span>
+        <span class="n">requestBuilder</span><span class="p">.</span><span class="na">addHeader</span><span class="p">(</span><span class="s">&quot;headerName&quot;</span><span class="p">,</span> <span class="s">&quot;value&quot;</span><span class="p">)</span> <span class="c1">// or a custom offline handling</span>
     <span class="p">}</span>
 
-    <span class="n">TMDb</span><span class="p">.</span><span class="n">tmdbInterceptor</span> <span class="p">=</span> <span class="n">customInterceptor</span>
-    <span class="n">TMDb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="s">&quot;YOUR_KEY&quot;</span><span class="p">)</span>
+    <span class="n">TMDb</span><span class="p">.</span><span class="na">tmdbInterceptor</span> <span class="o">=</span> <span class="n">customInterceptor</span>
+    <span class="n">TMDb</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="s">&quot;YOUR_KEY&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
                 
@@ -718,10 +721,10 @@ You may also set the <code>OkHttp3</code>&lsquo;s <code>Cache</code> to the clie
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.7353b375.min.js"></script>
+      <script src="../assets/javascripts/bundle.a1609d9a.min.js"></script>
       
     
   </body>

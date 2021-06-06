@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://github.com/vkay94/TMDb-Kotlin/recipes/auth/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bde7dde4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
@@ -479,6 +479,7 @@
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
+      
         
       
       
@@ -493,6 +494,7 @@
       
         
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
   
   
     
@@ -621,6 +623,7 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
     
   
   
@@ -706,58 +709,66 @@
                 
                 <h1 id="authentification">Authentification<a class="headerlink" href="#authentification" title="Permanent link">&para;</a></h1>
 <h2 id="get-request-token">Get Request Token<a class="headerlink" href="#get-request-token" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">TMDb</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="n">YOUR_API_KEY</span><span class="p">,</span> <span class="n">V4_AUTH_KEY</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">TMDb</span><span class="p">.</span><span class="na">init</span><span class="p">(</span><span class="n">YOUR_API_KEY</span><span class="p">,</span> <span class="n">V4_AUTH_KEY</span><span class="p">)</span>
 
-<span class="n">suspend</span> <span class="k">fun</span> <span class="nf">getRequestToken</span><span class="p">():</span> <span class="n">String</span><span class="p">?</span> <span class="p">{</span>
-    <span class="k">val</span> <span class="py">response</span><span class="p">:</span> <span class="n">TmdbMessage</span><span class="p">.</span><span class="n">RequestToken</span> <span class="p">=</span> 
-        <span class="n">TMDb</span><span class="p">.</span><span class="n">authService</span><span class="p">.</span><span class="n">requestToken</span><span class="p">().</span><span class="n">invoke</span><span class="p">()</span>
+<span class="kd">suspend</span> <span class="kd">fun</span> <span class="nf">getRequestToken</span><span class="p">():</span> <span class="kt">String?</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="nv">response</span><span class="p">:</span> <span class="n">TmdbMessage</span><span class="p">.</span><span class="na">RequestToken</span> <span class="o">=</span> 
+        <span class="n">TMDb</span><span class="p">.</span><span class="na">authService</span><span class="p">.</span><span class="na">requestToken</span><span class="p">().</span><span class="na">invoke</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">response</span><span class="p">.</span><span class="n">success</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="n">requestToken</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">response</span><span class="p">.</span><span class="na">success</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="na">requestToken</span>
 
-    <span class="k">return</span> <span class="k">null</span>
+    <span class="k">return</span> <span class="kc">null</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Afterwards, you have to validate this request token (giving permission) by redirecting the user
 to the auth url <code>TMDb.authLink(requestToken)</code>.</p>
 <h2 id="get-access-token">Get Access Token<a class="headerlink" href="#get-access-token" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">suspend</span> <span class="k">fun</span> <span class="nf">setAccessToken</span><span class="p">(</span><span class="n">requestToken</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">Boolean</span> <span class="p">{</span>
-    <span class="k">val</span> <span class="py">response</span><span class="p">:</span> <span class="n">TmdbMessage</span><span class="p">.</span><span class="n">AccessToken</span> <span class="p">=</span>
-        <span class="n">TMDb</span><span class="p">.</span><span class="n">accessToken</span><span class="p">(</span><span class="n">requestToken</span><span class="p">).</span><span class="n">invoke</span><span class="p">()</span>
+<p>To access the user&rsquo;s private lists or modify them a setted access token is required. You should set 
+the access token alongside the setup at start (in Android in the App&rsquo;s <code>onCreate</code> implementation).</p>
+<div class="highlight"><pre><span></span><code><span class="kd">suspend</span> <span class="kd">fun</span> <span class="nf">setAccessToken</span><span class="p">(</span><span class="n">requestToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">):</span> <span class="kt">Boolean</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="nv">response</span><span class="p">:</span> <span class="n">TmdbMessage</span><span class="p">.</span><span class="na">AccessToken</span> <span class="o">=</span>
+        <span class="n">TMDb</span><span class="p">.</span><span class="na">accessToken</span><span class="p">(</span><span class="n">requestToken</span><span class="p">).</span><span class="na">invoke</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">response</span><span class="p">.</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">response</span><span class="p">.</span><span class="na">success</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Save the access token to the TMDb instance</span>
-        <span class="n">TMDb</span><span class="p">.</span><span class="n">accessToken</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">accessToken</span>
+        <span class="n">TMDb</span><span class="p">.</span><span class="na">accessToken</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="na">accessToken</span>
     <span class="p">}</span>
 
-    <span class="k">return</span> <span class="n">response</span><span class="o">?.</span><span class="n">success</span> <span class="o">?:</span> <span class="k">false</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">?.</span><span class="na">success</span> <span class="o">?:</span> <span class="kc">false</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>To keep the user logged in on app start, you should set the access token alongside the setup at start
 (in Android in the App&rsquo;s <code>onCreate</code> implementation).</p>
 <h2 id="get-session-id">Get Session ID<a class="headerlink" href="#get-session-id" title="Permanent link">&para;</a></h2>
-<p>For retrieving the user&rsquo;s account data (general info, favorite lists etc) &hellip;
-It can be easily generated using the access token which is previously fetched.</p>
-<div class="highlight"><pre><span></span><code><span class="n">suspend</span> <span class="k">fun</span> <span class="nf">setSessionId</span><span class="p">(</span><span class="n">accessToken</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span> <span class="n">String</span><span class="p">?</span> <span class="p">{</span>
-    <span class="c1">// TODO</span>
-    <span class="k">val</span> <span class="py">response</span><span class="p">:</span> <span class="n">TmdbMessage</span><span class="p">.</span><span class="n">AccessToken</span> <span class="p">=</span>
-        <span class="n">TMDb</span><span class="p">.</span><span class="n">accountService</span><span class="p">.</span><span class="n">accessTokenToSessionID</span><span class="p">(</span><span class="n">accessToken</span><span class="p">).</span><span class="n">invoke</span><span class="p">()</span>
+<p>Similar to the access token for lists for retrieving the user&rsquo;s account data (general info, favorite lists etc)
+a session id is required. It can be easily generated using the access token which is previously fetched.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">suspend</span> <span class="kd">fun</span> <span class="nf">setSessionId</span><span class="p">(</span><span class="n">accessToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">):</span> <span class="kt">String?</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="nv">response</span><span class="p">:</span> <span class="n">TmdbMessage</span><span class="p">.</span><span class="na">SessionId</span> <span class="o">=</span>
+        <span class="n">TMDb</span><span class="p">.</span><span class="na">accountService</span><span class="p">.</span><span class="na">accessTokenToSessionID</span><span class="p">(</span><span class="n">accessToken</span><span class="p">).</span><span class="na">invoke</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">response</span><span class="p">.</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">response</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">response</span><span class="p">.</span><span class="na">success</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Save the access token to the TMDb instance</span>
-        <span class="n">TMDb</span><span class="p">.</span><span class="n">sessionId</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">sessionId</span>
+        <span class="n">TMDb</span><span class="p">.</span><span class="na">sessionId</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="na">sessionId</span>
     <span class="p">}</span>
 
-    <span class="k">return</span> <span class="n">response</span><span class="o">?.</span><span class="n">sessionId</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">?.</span><span class="na">sessionId</span>
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="account">Account<a class="headerlink" href="#account" title="Permanent link">&para;</a></h2>
 <h3 id="get-account-info">Get account info<a class="headerlink" href="#get-account-info" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">suspend</span> <span class="kd">fun</span> <span class="nf">getAccount</span><span class="p">():</span> <span class="n">TmdbAccount? </span><span class="p">{</span>
+    <span class="c1">// Make sure that the session id is set in the TMDb instance before the call</span>
+    <span class="kd">val</span> <span class="nv">account</span><span class="p">:</span> <span class="n">TmdbAccount</span> <span class="o">=</span> <span class="n">TMDb</span><span class="p">.</span><span class="na">accountService</span><span class="p">.</span><span class="na">details</span><span class="p">().</span><span class="na">invoke</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">account</span>
+<span class="p">}</span>
+</code></pre></div>
 <h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
 <h4 id="fetch-favorite-tv-shows">Fetch favorite TV shows<a class="headerlink" href="#fetch-favorite-tv-shows" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="n">suspend</span> <span class="k">fun</span> <span class="nf">getShowPage</span><span class="p">(</span><span class="n">accountId</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="n">Int</span> <span class="p">=</span> <span class="m">1</span><span class="p">):</span> <span class="n">TmdbPage</span><span class="p">&lt;</span><span class="n">TmdbShow</span><span class="p">.</span><span class="n">Slim</span><span class="p">&gt;?</span> <span class="p">{</span>
-    <span class="c1">// Make sure that the session id is set in the TMDb instance</span>
-    <span class="k">return</span> <span class="n">TMDb</span><span class="p">.</span><span class="n">favoriteTv</span><span class="p">(</span><span class="n">account</span><span class="p">.</span><span class="n">accountId</span><span class="p">).</span><span class="n">invoke</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="kd">suspend</span> <span class="kd">fun</span> <span class="nf">getShowPage</span><span class="p">(</span><span class="n">accountId</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">page</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="m">1</span><span class="p">):</span> <span class="n">TmdbPage</span><span class="o">&lt;</span><span class="n">TmdbShow</span><span class="p">.</span><span class="na">Slim</span><span class="o">&gt;?</span> <span class="p">{</span>
+    <span class="c1">// Make sure that the session id is set in the TMDb instance before the call</span>
+    <span class="kd">val</span> <span class="nv">page</span><span class="p">:</span> <span class="n">TmdbPage</span><span class="o">&lt;</span><span class="n">TmdbShow</span><span class="p">.</span><span class="na">Slim</span><span class="o">&gt;</span><span class="p">:</span> <span class="o">=</span>  <span class="n">TMDb</span><span class="p">.</span><span class="na">favoriteShows</span><span class="p">(</span><span class="n">accountId</span><span class="p">,</span> <span class="n">page</span> <span class="o">=</span> <span class="n">page</span><span class="p">).</span><span class="na">invoke</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">page</span>
 <span class="p">}</span>
 </code></pre></div>
 <!-- 
@@ -838,10 +849,10 @@ val favoriteShowsPage: TmdbPage<TmdbShow.Slim> = TMDb.favoriteTv(account.account
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "navigation.tabs"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a1609d9a.min.js"></script>
       
     
   </body>
