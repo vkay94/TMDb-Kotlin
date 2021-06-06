@@ -28,6 +28,12 @@ class PersonServiceTest : BaseServiceTest() {
     }
 
     @Test
+    fun `Get tagged images`() = runBlocking {
+        val page = TMDb.personService.taggedImages(PERSON_ID_WILL_SMITH).invoke()!!
+        assertTrue(page.results.isNotEmpty())
+    }
+
+    @Test
     fun `Get movie credits`() = runBlocking {
         val movieCast = TMDb.personService.movieCast(PERSON_ID_WILL_SMITH).invoke()!!
         assertTrue(movieCast.isNotEmpty())

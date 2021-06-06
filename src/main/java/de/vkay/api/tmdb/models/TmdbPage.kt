@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class TmdbPage<T>(
+data class TmdbPage<T> internal constructor(
     val page: Int,
     @Json(name = "total_results")
     val totalResults: Int,

@@ -5,6 +5,7 @@ import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.internals.annotations.CharJob
 import de.vkay.api.tmdb.internals.annotations.ResultsList
+import de.vkay.api.tmdb.internals.annotations.TaggedImages
 import de.vkay.api.tmdb.models.*
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -39,6 +40,16 @@ interface PersonService {
     suspend fun profiles(
         @Path("person_id") personId: Int
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
+
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-tagged-images)
+     */
+    @GET("person/{person_id}/tagged_images")
+    @TaggedImages
+    suspend fun taggedImages(
+        @Path("person_id") personId: Int
+    ): NetworkResponse<TmdbPage<Pair<TmdbImage, MediaTypeItem>>, TmdbError.DefaultError>
 
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/people/get-person-external-ids)
