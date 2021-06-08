@@ -73,24 +73,20 @@ class SearchServiceTest : BaseServiceTest() {
         val searchResult = TMDb.searchService.company(QUERY_COMPANY_DISNEY, 1).invoke()!!
 
         assertEquals(1, searchResult.page)
-        assertEquals(3, searchResult.totalPages)
-        assertEquals(41, searchResult.totalResults)
         assertEquals(20, searchResult.results.size)
+        assertTrue(searchResult.totalPages > 2)
+        assertTrue(searchResult.totalResults > 40)
         assertTrue(searchResult.hasNextPage)
     }
 
     @Test
     fun `Search collections`() = runBlocking {
-        val searchResult = TMDb.searchService.collection("Disney").invoke()!!
-        assertEquals(2, searchResult.totalResults)
-        assertEquals(91657, searchResult.results.find { it.name == "Disney Buddies Collection" }?.collectionId)
-    }
+        val searchResult = TMDb.searchService.collection("Kizumono").invoke()!!
+        val collection = searchResult.results.first()
+        assertEquals(1, searchResult.totalResults)
 
-    @Test
-    fun `Search for networks (locally)`() = runBlocking {
-        val searchResult = TMDb.searchNetworks("Netflix")
-        val searchResult2 = TMDb.searchNetworks("crun")
-        assertEquals(213, searchResult["Netflix"])
-        assertEquals(1112, searchResult2["Crunchyroll"])
+        assertEquals(374202, collection.collectionId)
+        assertEquals("Kizumonogatari", collection.name)
+        assertTrue(!collection.overview.isNullOrBlank())
     }
 }

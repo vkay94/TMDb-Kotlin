@@ -38,5 +38,7 @@ data class TmdbCollection internal constructor(
         @Json(name = "poster_path")
         @TMDbImage
         val poster: TmdbImage?,
+        // In search results
+        val overview: String?
     )
 }
