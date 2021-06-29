@@ -469,7 +469,7 @@
 {"id":571,"name":"SRF 1"}
 {"id":572,"name":"ANT1"}
 {"id":574,"name":"CKVU-DT"}
-{"id":576,"name":"Mētele"}
+{"id":576,"name":"Nagoya TV"}
 {"id":577,"name":"NDR Fernsehen"}
 {"id":578,"name":"ASN"}
 {"id":579,"name":"KOMO-TV"}
@@ -772,7 +772,6 @@
 {"id":974,"name":"TV6"}
 {"id":975,"name":"TV2"}
 {"id":976,"name":"MTV Denmark"}
-{"id":979,"name":"Cine5"}
 {"id":980,"name":"Turkmax"}
 {"id":981,"name":"Kanaltürk"}
 {"id":983,"name":"Asian Food Channel"}
@@ -823,7 +822,7 @@
 {"id":1036,"name":"SFB"}
 {"id":1037,"name":"SKY PerfecTV!"}
 {"id":1038,"name":"VGTV"}
-{"id":1039,"name":"VIER"}
+{"id":1039,"name":"Play4"}
 {"id":1041,"name":"Kuwait TV"}
 {"id":1043,"name":"Nat Geo Wild"}
 {"id":1044,"name":"Al Jazeera America"}
@@ -1029,14 +1028,13 @@
 {"id":1509,"name":"Minimax"}
 {"id":1514,"name":"AXN Asia"}
 {"id":1518,"name":"SABC 2"}
-{"id":1521,"name":"AbemaTV"}
+{"id":1521,"name":"Abema"}
 {"id":1522,"name":"Infinity"}
 {"id":1523,"name":"SeeSo"}
 {"id":1524,"name":"EPIC"}
 {"id":1528,"name":"RTL Télé"}
 {"id":1529,"name":"Televisión Pública Argentina"}
 {"id":1530,"name":"TNT Latin America"}
-{"id":1532,"name":"Anime One"}
 {"id":1533,"name":"TV5 Québec Canada"}
 {"id":1534,"name":"Discovery World"}
 {"id":1535,"name":"Encuentro"}
@@ -1130,7 +1128,7 @@
 {"id":1768,"name":"Manhattan Neighborhood Network"}
 {"id":1769,"name":"Fusion"}
 {"id":1771,"name":"Crime & Investigation Network"}
-{"id":1772,"name":"Hulu Japan"}
+{"id":1772,"name":"Hulu"}
 {"id":1773,"name":"ICI ARTV"}
 {"id":1775,"name":"VRV"}
 {"id":1784,"name":"ONE 31"}
@@ -1274,7 +1272,7 @@
 {"id":2156,"name":"TV Gelderland"}
 {"id":2159,"name":"Space"}
 {"id":2161,"name":"BNNVARA"}
-{"id":2165,"name":"Télévision Tunisienne 1"}
+{"id":2165,"name":"التلفزة التونسية"}
 {"id":2167,"name":"TLC Go"}
 {"id":2169,"name":"WPIX"}
 {"id":2170,"name":"Télétoon+"}
@@ -1428,7 +1426,7 @@
 {"id":2472,"name":"Ecuavisa"}
 {"id":2473,"name":"ETB 1"}
 {"id":2474,"name":"ERT1"}
-{"id":2475,"name":"Mega TV (SP)"}
+{"id":2475,"name":"Mega TV"}
 {"id":2476,"name":"MEGA"}
 {"id":2477,"name":"DD Metro"}
 {"id":2478,"name":"Tochigi TV"}
@@ -1445,7 +1443,7 @@
 {"id":2489,"name":"FIST Production"}
 {"id":2490,"name":"Canal Q"}
 {"id":2492,"name":"Kapatid TV5"}
-{"id":2493,"name":"Start"}
+{"id":2493,"name":"START"}
 {"id":2495,"name":"TS1"}
 {"id":2497,"name":"3net"}
 {"id":2498,"name":"Tooniverse"}
@@ -1474,7 +1472,6 @@
 {"id":2534,"name":"Disney Channel"}
 {"id":2536,"name":"Saint Thomas Productions"}
 {"id":2538,"name":"FOXTELECOLOMBIA"}
-{"id":2539,"name":"MUNDOFOX"}
 {"id":2540,"name":"ESPN"}
 {"id":2541,"name":"Locomotion TV"}
 {"id":2543,"name":"Russian detective"}
@@ -1485,7 +1482,6 @@
 {"id":2548,"name":"CBC"}
 {"id":2550,"name":"Alsumaria"}
 {"id":2552,"name":"Apple TV+"}
-{"id":2553,"name":"MBC Drama+"}
 {"id":2554,"name":"MBC + Drama"}
 {"id":2555,"name":"OSN Ya Hala First"}
 {"id":2556,"name":"MBC 4"}
@@ -1539,10 +1535,9 @@
 {"id":2626,"name":"VT4"}
 {"id":2627,"name":"Q2"}
 {"id":2629,"name":"Crypt TV"}
-{"id":2630,"name":"Discovery Kids (BR)"}
+{"id":2630,"name":"Discovery Kids"}
 {"id":2631,"name":"StyleHaul Network"}
 {"id":2633,"name":"Студия за телевизионни филми „ЕКРАН“"}
-{"id":2635,"name":"Anime Talko US"}
 {"id":2636,"name":"OMNI"}
 {"id":2637,"name":"Joodse Omroep"}
 {"id":2638,"name":"Gulli"}
@@ -1554,7 +1549,6 @@
 {"id":2646,"name":"Sony Liv"}
 {"id":2647,"name":"IB3"}
 {"id":2648,"name":"Fox Action Movies"}
-{"id":2649,"name":"Tokyo 12"}
 {"id":2651,"name":"OLM"}
 {"id":2653,"name":"Jewelry Television"}
 {"id":2656,"name":"Fight Network"}
@@ -1569,15 +1563,12 @@
 {"id":2667,"name":"Sky Atlantic "}
 {"id":2668,"name":"Bibel TV"}
 {"id":2669,"name":"Hello Sunshine"}
-{"id":2671,"name":"TLC (DE)"}
 {"id":2672,"name":"Contar"}
-{"id":2673,"name":"NESSMA TV"}
 {"id":2674,"name":"Canal 22"}
 {"id":2677,"name":"OnDirectTV"}
 {"id":2678,"name":"Canal FOX"}
 {"id":2679,"name":"DTV"}
 {"id":2680,"name":"FILM.UA"}
-{"id":2681,"name":"OUTtvGo"}
 {"id":2684,"name":"Polynésie 1ère"}
 {"id":2686,"name":"Fox Kids"}
 {"id":2687,"name":"Foxtel Arts"}
@@ -1676,7 +1667,6 @@
 {"id":2846,"name":"TV Finland"}
 {"id":2847,"name":"Kanal 6"}
 {"id":2848,"name":"JunkTV"}
-{"id":2850,"name":"AnimeCable"}
 {"id":2851,"name":"YellTV"}
 {"id":2852,"name":"SoupNet"}
 {"id":2853,"name":"Hallmark Movies Now"}
@@ -1732,7 +1722,6 @@
 {"id":2927,"name":"RÚV"}
 {"id":2928,"name":"Algemene Vereniging Radio Omroep (AVRO)"}
 {"id":2931,"name":"CQTV"}
-{"id":2932,"name":"TGRT"}
 {"id":2934,"name":"TeleUV"}
 {"id":2935,"name":"Korean Central Television"}
 {"id":2936,"name":"NOW 26"}
@@ -1763,12 +1752,12 @@
 {"id":2969,"name":"Bon Appétit"}
 {"id":2970,"name":"Kan 11"}
 {"id":2971,"name":"mtmad"}
-{"id":2972,"name":"MTV (ES)"}
+{"id":2972,"name":"MTV "}
 {"id":2974,"name":"Lifetime"}
 {"id":2975,"name":"Animax Korea"}
 {"id":2976,"name":"Aniplus"}
 {"id":2977,"name":"TV6"}
-{"id":2978,"name":"ThaiCh8"}
+{"id":2978,"name":"Channel 8"}
 {"id":2979,"name":"СПАС"}
 {"id":2980,"name":"Viu"}
 {"id":2981,"name":"CBC Gem"}
@@ -1839,7 +1828,6 @@
 {"id":3074,"name":"Television Latvian SSR"}
 {"id":3076,"name":"广东巨星影业"}
 {"id":3077,"name":"海南菲尔姆影业"}
-{"id":3078,"name":"OCS"}
 {"id":3080,"name":"MAXStream"}
 {"id":3081,"name":"VidAngel"}
 {"id":3082,"name":"Comedy Central"}
@@ -1904,10 +1892,9 @@
 {"id":3158,"name":"Hum Sitaray"}
 {"id":3159,"name":"Zee News"}
 {"id":3160,"name":"India TV"}
-{"id":3162,"name":"Kayden James Media"}
 {"id":3163,"name":"WWOR-TV"}
 {"id":3164,"name":"Hum Europe"}
-{"id":3165,"name":"Channel News Asia (CNA)"}
+{"id":3165,"name":"Channel News Asia"}
 {"id":3168,"name":"Westwood One"}
 {"id":3169,"name":"Cosmote TV"}
 {"id":3170,"name":"ZDFkultur"}
@@ -1957,7 +1944,6 @@
 {"id":3232,"name":"ATV"}
 {"id":3233,"name":"Warner Media, LLC"}
 {"id":3234,"name":"Tudou"}
-{"id":3235,"name":"Newgrounds"}
 {"id":3236,"name":"Azul Televisión"}
 {"id":3238,"name":"Attessia TV"}
 {"id":3240,"name":"SNS"}
@@ -2017,7 +2003,7 @@
 {"id":3303,"name":"Astro Ceria"}
 {"id":3304,"name":"tva.ca"}
 {"id":3305,"name":"a2"}
-{"id":3306,"name":"凤凰卫视"}
+{"id":3306,"name":"Phoenix Television"}
 {"id":3307,"name":"Play Entertainment"}
 {"id":3308,"name":"HBO"}
 {"id":3312,"name":"Metro One"}
@@ -2033,7 +2019,7 @@
 {"id":3336,"name":"Planète Juniors"}
 {"id":3337,"name":"Vudu"}
 {"id":3339,"name":"Original Productions"}
-{"id":3340,"name":"DDR1 (Dup)"}
+{"id":3340,"name":"DDR1"}
 {"id":3341,"name":"Toonami"}
 {"id":3342,"name":"Pritish Nandy Communications"}
 {"id":3343,"name":"BET+"}
@@ -2046,7 +2032,6 @@
 {"id":3355,"name":"National Geographic"}
 {"id":3357,"name":"wavve"}
 {"id":3358,"name":"PTS Taigi"}
-{"id":3360,"name":"now.de"}
 {"id":3362,"name":"stuff.co.nz"}
 {"id":3370,"name":"STN"}
 {"id":3372,"name":"IRIB Tamasha"}
@@ -2061,7 +2046,7 @@
 {"id":3393,"name":"Hakka TV"}
 {"id":3398,"name":"FR3"}
 {"id":3401,"name":"НЛО.TV"}
-{"id":3402,"name":"MTV-Hindi"}
+{"id":3402,"name":"MTV India"}
 {"id":3407,"name":"Prima ZOOM"}
 {"id":3408,"name":"Disney Channel"}
 {"id":3412,"name":"Universal TV"}
@@ -2075,18 +2060,15 @@
 {"id":3424,"name":"Prima LOVE"}
 {"id":3425,"name":"Ivoox"}
 {"id":3426,"name":"VIVA Network"}
-{"id":3430,"name":"Çufo (AL)"}
 {"id":3431,"name":"הופ!"}
 {"id":3434,"name":"2BE"}
 {"id":3435,"name":"GameTap"}
 {"id":3436,"name":"First channel"}
-{"id":3437,"name":"腾讯视频"}
 {"id":3438,"name":"Hallmark Drama"}
 {"id":3440,"name":"WebserieChoco"}
 {"id":3441,"name":"Shout! Factory"}
 {"id":3442,"name":"TFO"}
 {"id":3443,"name":"Super Canal"}
-{"id":3444,"name":"الشرقية"}
 {"id":3445,"name":"Television in Syria"}
 {"id":3447,"name":"Rai Storia"}
 {"id":3448,"name":"BayaM"}
@@ -2109,14 +2091,11 @@
 {"id":3477,"name":"Dumpert"}
 {"id":3480,"name":"rtm1"}
 {"id":3483,"name":"FoxPlay"}
-{"id":3485,"name":"Warner Home Video"}
 {"id":3489,"name":"AIS PLAY"}
 {"id":3490,"name":"Junior TV"}
 {"id":3491,"name":"RDS"}
 {"id":3492,"name":"FORTA"}
-{"id":3499,"name":"TMS ( JP )"}
 {"id":3501,"name":"TNT España"}
-{"id":3503,"name":"Звезда"}
 {"id":3504,"name":"Viaplay"}
 {"id":3505,"name":"Latvijas Televizija"}
 {"id":3507,"name":"Radiotelevizija Beograd"}
@@ -2145,7 +2124,6 @@
 {"id":3544,"name":"Okoo"}
 {"id":3546,"name":"BBC Television"}
 {"id":3547,"name":"viu malaysia"}
-{"id":3548,"name":"ANIME & SMOKE"}
 {"id":3549,"name":"2STV"}
 {"id":3550,"name":"SEN TV"}
 {"id":3551,"name":"Wido"}
@@ -2174,7 +2152,6 @@
 {"id":3589,"name":"Astro GO"}
 {"id":3590,"name":"BBC Knowledge"}
 {"id":3591,"name":"Discovery Science"}
-{"id":3594,"name":"Looke"}
 {"id":3595,"name":"KBC"}
 {"id":3596,"name":"BFBS"}
 {"id":3597,"name":"SABC2"}
@@ -2190,9 +2167,7 @@
 {"id":3613,"name":"IDF1"}
 {"id":3615,"name":"First Baltic"}
 {"id":3616,"name":"TVNZ Duke"}
-{"id":3617,"name":"Net TV"}
 {"id":3618,"name":"HBO Brasil"}
-{"id":3619,"name":"Jetix (PL)"}
 {"id":3620,"name":"Kids Nick Polska"}
 {"id":3623,"name":"absolut MEDIEN"}
 {"id":3626,"name":"Shahid"}
@@ -2201,10 +2176,8 @@
 {"id":3630,"name":"tvN Movies"}
 {"id":3631,"name":"2x2"}
 {"id":3634,"name":"Radio-Québec"}
-{"id":3635,"name":"Nagoya TV"}
 {"id":3637,"name":"HIDIVE"}
 {"id":3639,"name":"Comedy TV"}
-{"id":3640,"name":"东阳正午阳光影视有限公司"}
 {"id":3641,"name":"Puls 4"}
 {"id":3644,"name":"FCT"}
 {"id":3646,"name":"GameTV"}
@@ -2224,7 +2197,6 @@
 {"id":3668,"name":"UOL. Doc"}
 {"id":3673,"name":"APTN"}
 {"id":3674,"name":"RMC Story"}
-{"id":3677,"name":"バンダイチャンネル"}
 {"id":3682,"name":"Telfaz11"}
 {"id":3683,"name":"Universal Television"}
 {"id":3684,"name":"Movies4Men"}
@@ -2244,7 +2216,6 @@
 {"id":3707,"name":"Jyp Entertainment"}
 {"id":3710,"name":"Dplay"}
 {"id":3712,"name":"ALTER"}
-{"id":3713,"name":"Australian Broadcast Corporation"}
 {"id":3716,"name":"Singapore Broadcasting Corporation"}
 {"id":3717,"name":"Tyne Tees"}
 {"id":3719,"name":"TVE"}
@@ -2257,10 +2228,7 @@
 {"id":3727,"name":"Saint-Pierre-et-Miquelon 1"}
 {"id":3728,"name":"TSR1"}
 {"id":3729,"name":"RFO"}
-{"id":3730,"name":"Wytwórnia Filmów Dokumentalnych i Fabularnych (PL)"}
-{"id":3731,"name":"studio filmowe OKO"}
 {"id":3732,"name":"WeTV"}
-{"id":3738,"name":"Television Nishinippon Corporation"}
 {"id":3740,"name":"Blaze"}
 {"id":3741,"name":"Kitanihon Broadcasting"}
 {"id":3742,"name":"TPS Star"}
@@ -2274,7 +2242,6 @@
 {"id":3752,"name":"Warner Vision France"}
 {"id":3753,"name":"Omroep Max"}
 {"id":3754,"name":"GoPlay"}
-{"id":3755,"name":"국방TV"}
 {"id":3756,"name":"Nagasaki Culture Telecasting Corporation"}
 {"id":3757,"name":"Planeta Junior"}
 {"id":3758,"name":"aha"}
@@ -2283,14 +2250,12 @@
 {"id":3767,"name":"Trinkflix.com"}
 {"id":3768,"name":"Sveriges Radio & TV"}
 {"id":3769,"name":"TechD.Plays"}
-{"id":3770,"name":"土豆"}
 {"id":3772,"name":"Matkanalen"}
 {"id":3773,"name":"Godare"}
 {"id":3774,"name":"J Tele"}
 {"id":3776,"name":"Mystère"}
 {"id":3777,"name":"RTL-TVI"}
 {"id":3778,"name":"KBS N SPORTS"}
-{"id":3779,"name":"ΣΚΑΪ"}
 {"id":3780,"name":"Rede Aparecida"}
 {"id":3781,"name":"JETFLIX ESPAÑA"}
 {"id":3782,"name":"RTL9"}
@@ -2302,14 +2267,11 @@
 {"id":3788,"name":"Dynamic Television"}
 {"id":3789,"name":"Yleisradio"}
 {"id":3790,"name":"Artémis Productions"}
-{"id":3793,"name":"TPA"}
-{"id":3794,"name":"愛奇藝(台灣)"}
 {"id":3796,"name":"ComicFesta"}
 {"id":3797,"name":"DIC Animation City"}
-{"id":3798,"name":"WDR"}
 {"id":3799,"name":"FEM"}
 {"id":3801,"name":"myVideo"}
-{"id":3802,"name":"VIJF"}
+{"id":3802,"name":"Play5"}
 {"id":3803,"name":"Deutsche Welle"}
 {"id":3804,"name":"P.T.L. Cable Network"}
 {"id":3805,"name":"GTV"}
@@ -2317,7 +2279,7 @@
 {"id":3807,"name":"9"}
 {"id":3809,"name":"Ideapod"}
 {"id":3810,"name":"The Huffington Post"}
-{"id":3812,"name":"Distrito Comedia (MX)"}
+{"id":3812,"name":"Distrito Comedia"}
 {"id":3815,"name":"GDTV"}
 {"id":3817,"name":"Alsharqia TV"}
 {"id":3818,"name":"J-One"}
@@ -2330,7 +2292,6 @@
 {"id":3829,"name":"Canal+ (Telenor)"}
 {"id":3830,"name":"Raj TV"}
 {"id":3831,"name":"Vasanth TV"}
-{"id":3833,"name":"Planète CI"}
 {"id":3834,"name":"Canadian Broadcast Company"}
 {"id":3835,"name":"Téva"}
 {"id":3842,"name":"Voltage TV"}
@@ -2345,12 +2306,10 @@
 {"id":3856,"name":"France.tv"}
 {"id":3857,"name":"La Biscotte"}
 {"id":3860,"name":"Phoenix"}
-{"id":3861,"name":"MDR"}
 {"id":3862,"name":"another planet"}
 {"id":3863,"name":"Filimo"}
 {"id":3864,"name":"El Terrat tv"}
 {"id":3865,"name":"ひかりTV"}
-{"id":3866,"name":"MBS動画イズム"}
 {"id":3867,"name":"TVer"}
 {"id":3869,"name":"U-NEXT"}
 {"id":3870,"name":"Soul Mate Tv"}
@@ -2365,11 +2324,9 @@
 {"id":3881,"name":"Channel 6"}
 {"id":3882,"name":"more.tv"}
 {"id":3884,"name":"El Sótano"}
-{"id":3886,"name":"Canal 10 (AR)"}
+{"id":3886,"name":"Canal 10"}
 {"id":3887,"name":"ČT3"}
 {"id":3888,"name":"Imagine Thailand"}
-{"id":3889,"name":"historia (Fr)"}
-{"id":3890,"name":"Historia (Fr)"}
 {"id":3891,"name":"One HD 31"}
 {"id":3892,"name":"mbc 5"}
 {"id":3893,"name":"The IdeaFirst Company"}
@@ -2377,24 +2334,20 @@
 {"id":3897,"name":"TVING"}
 {"id":3898,"name":"watcha"}
 {"id":3899,"name":"Laugh Out Loud"}
-{"id":3900,"name":"Discovery (BR)"}
+{"id":3900,"name":"Discovery"}
 {"id":3902,"name":"YUGONECH"}
 {"id":3904,"name":"France.tv Slash"}
-{"id":3905,"name":"إتحاد الإذاعة والتلفزيون المصري"}
 {"id":3906,"name":"Astro Mustika HD"}
 {"id":3907,"name":"MKVT"}
 {"id":3908,"name":"LG U+"}
 {"id":3909,"name":"U+ IDOL LIVE"}
-{"id":3910,"name":"Nippon Television"}
 {"id":3912,"name":"6play"}
 {"id":3913,"name":"Citizen TV"}
-{"id":3914,"name":"TV Saitama"}
 {"id":3916,"name":"Boing"}
-{"id":3917,"name":"Cartoon Network (TW)"}
+{"id":3917,"name":"Cartoon Network"}
 {"id":3918,"name":"KD2A"}
 {"id":3919,"name":"Disney+ Hotstar"}
 {"id":3920,"name":"Kapamilya Channel"}
-{"id":3921,"name":"RBB"}
 {"id":3923,"name":"ivi"}
 {"id":3924,"name":"TVNZ Kidzone"}
 {"id":3925,"name":"TVNZ6"}
@@ -2404,10 +2357,8 @@
 {"id":3931,"name":"NRK"}
 {"id":3932,"name":"Kids' WB"}
 {"id":3933,"name":"vossevents.com"}
-{"id":3934,"name":"History"}
 {"id":3936,"name":"DDR-F1"}
 {"id":3937,"name":"DDR-F2"}
-{"id":3938,"name":"AB STUDIO"}
 {"id":3940,"name":"iFilm"}
 {"id":3941,"name":"Nouvelle Calédonie 1ère"}
 {"id":3942,"name":"Nouvelle-Calédonie La Première"}
@@ -2419,12 +2370,11 @@
 {"id":3953,"name":"Discovery"}
 {"id":3954,"name":"Frissons TV"}
 {"id":3955,"name":"8tv"}
-{"id":3959,"name":"friDay影音"}
+{"id":3959,"name":"friDay Video"}
 {"id":3961,"name":"MG TV"}
 {"id":3962,"name":"Nara Television"}
 {"id":3964,"name":"Roddenberry Entertainment"}
 {"id":3965,"name":"Secret Hideout"}
-{"id":3967,"name":"Гостелерадио"}
 {"id":3968,"name":"Channel 20"}
 {"id":3969,"name":"i-Television"}
 {"id":3970,"name":"Shizuoka Broadcasting System"}
@@ -2440,7 +2390,6 @@
 {"id":3980,"name":"mitele"}
 {"id":3981,"name":"Wakayama Telecasting"}
 {"id":3983,"name":"Zoom Studios"}
-{"id":3985,"name":"Global Set Spain"}
 {"id":3986,"name":"Arre"}
 {"id":3988,"name":"Girliyapa"}
 {"id":3990,"name":"Sport 1"}
@@ -2449,7 +2398,6 @@
 {"id":3993,"name":"Bindass"}
 {"id":3994,"name":"YFilms"}
 {"id":3996,"name":"Orange TV"}
-{"id":3997,"name":"NDR"}
 {"id":3998,"name":"acfun"}
 {"id":3999,"name":"AcFun"}
 {"id":4000,"name":"M2"}
@@ -2463,7 +2411,7 @@
 {"id":4014,"name":"Universal Channel"}
 {"id":4015,"name":"Nickelodeon"}
 {"id":4021,"name":"Mind Trio"}
-{"id":4023,"name":"Prime Flix"}
+{"id":4023,"name":"Primeflix"}
 {"id":4025,"name":"BritBox"}
 {"id":4028,"name":"SilverbirdTV"}
 {"id":4029,"name":"SHANT TV"}
@@ -2485,7 +2433,6 @@
 {"id":4073,"name":"Tchelet TV"}
 {"id":4074,"name":"Canal 44 UDGTV"}
 {"id":4075,"name":"L8"}
-{"id":4076,"name":"beIN"}
 {"id":4077,"name":"beIN Connect"}
 {"id":4079,"name":"Q"}
 {"id":4080,"name":"Hero TV"}
@@ -2493,7 +2440,7 @@
 {"id":4082,"name":"RTK"}
 {"id":4083,"name":"T HD"}
 {"id":4084,"name":"Klan Kosova"}
-{"id":4085,"name":"MTS TV"}
+{"id":4085,"name":"KION (MTS Live)"}
 {"id":4086,"name":"Vizion Plus"}
 {"id":4087,"name":"Jolly HD"}
 {"id":4088,"name":"Smile"}
@@ -2504,9 +2451,7 @@
 {"id":4094,"name":"NJPW World"}
 {"id":4096,"name":"TVA Sports"}
 {"id":4097,"name":"VoyageVoyage.ca"}
-{"id":4098,"name":"RCN"}
 {"id":4099,"name":"Super Channel"}
-{"id":4101,"name":"MGTV"}
 {"id":4103,"name":"CTC Media"}
 {"id":4105,"name":"Life tv"}
 {"id":4106,"name":"Histoire TV"}
@@ -2516,14 +2461,12 @@
 {"id":4124,"name":"La Fabrique Culturelle"}
 {"id":4126,"name":"Xbox Live"}
 {"id":4127,"name":"Super"}
-{"id":4131,"name":"Disney.com"}
 {"id":4132,"name":"ESPN+"}
 {"id":4134,"name":"SDTV-1"}
 {"id":4135,"name":"NUMERO 23"}
 {"id":4136,"name":"Megogo"}
 {"id":4137,"name":"WGCT-CA"}
 {"id":4138,"name":"Court TV"}
-{"id":4139,"name":"Clan TVE"}
 {"id":4141,"name":"Rengoni"}
 {"id":4146,"name":"gotv"}
 {"id":4148,"name":"Sky Documentaries"}
@@ -2544,7 +2487,6 @@
 {"id":4188,"name":"Radiodiffusion Télévision Française RTF"}
 {"id":4189,"name":"A+"}
 {"id":4198,"name":"Astro AEC"}
-{"id":4204,"name":"TV Kanagawa"}
 {"id":4205,"name":"COACH-KIN"}
 {"id":4208,"name":"Star Plus"}
 {"id":4211,"name":"Sigma TV"}
@@ -2607,7 +2549,7 @@
 {"id":4395,"name":"Elisa Elamus"}
 {"id":4402,"name":"Star Jalsha"}
 {"id":4404,"name":"National Geographic India"}
-{"id":4405,"name":"EXXEN"}
+{"id":4405,"name":"Exxen"}
 {"id":4407,"name":"Quenel+"}
 {"id":4409,"name":"GAİN"}
 {"id":4410,"name":"Canal+ Afrique"}
@@ -2617,7 +2559,6 @@
 {"id":4422,"name":"Flipkart Video"}
 {"id":4423,"name":"Wolo Tv"}
 {"id":4426,"name":"Disney Channel"}
-{"id":4431,"name":"MTV"}
 {"id":4437,"name":"America TV"}
 {"id":4438,"name":"yes VOD KIDS"}
 {"id":4439,"name":"Sky Nature"}
@@ -2638,11 +2579,8 @@
 {"id":4474,"name":"Abanteflix"}
 {"id":4476,"name":"Nat Geo Kids"}
 {"id":4490,"name":"Canal Panda"}
-{"id":4491,"name":"Play4"}
 {"id":4495,"name":"Radio Bremen Fernsehen"}
 {"id":4496,"name":"Streamz"}
-{"id":4497,"name":"Topic"}
-{"id":4498,"name":"Playlist Global"}
 {"id":4500,"name":"Shaw TV"}
 {"id":4501,"name":"Rogers TV"}
 {"id":4502,"name":"K2"}
@@ -2651,14 +2589,12 @@
 {"id":4519,"name":"Magnolia Network"}
 {"id":4522,"name":"Fox Kids"}
 {"id":4524,"name":"IRIB Nasim"}
-{"id":4526,"name":"Canal de las Estrellas"}
 {"id":4528,"name":"Hungama TV"}
 {"id":4533,"name":"O2 TV Sport"}
 {"id":4534,"name":"KZTV"}
 {"id":4535,"name":"Comedy Central"}
 {"id":4536,"name":"ТЕТ"}
 {"id":4537,"name":"Arig Us"}
-{"id":4542,"name":"TV Azteca"}
 {"id":4546,"name":"Crea TV"}
 {"id":4547,"name":"Opto"}
 {"id":4551,"name":"Dropout"}
@@ -2682,7 +2618,6 @@
 {"id":4589,"name":"Fact TV UK"}
 {"id":4590,"name":"TVA+"}
 {"id":4593,"name":"LRT Televizija"}
-{"id":4596,"name":"Brasil Paralelo"}
 {"id":4597,"name":"Viu"}
 {"id":4598,"name":"DUST"}
 {"id":4599,"name":"Look du jour"}
@@ -2705,47 +2640,262 @@
 {"id":4658,"name":"LCP - Assemblée nationale"}
 {"id":4659,"name":"set tv"}
 {"id":4661,"name":"AMC+"}
-{"id":4662,"name":"BBCAM"}
-{"id":4663,"name":"Channel 3"}
-{"id":4665,"name":"Sky Deutschland"}
-{"id":4666,"name":"at-x"}
-{"id":4667,"name":"youtube"}
 {"id":4668,"name":"UrduFlix"}
-{"id":4669,"name":"Gama TV"}
 {"id":4670,"name":"EBS"}
-{"id":4671,"name":"MasterClass"}
-{"id":4672,"name":"Baluba"}
 {"id":4673,"name":"ONE TV"}
-{"id":4674,"name":"Plaj Productions"}
 {"id":4675,"name":"140 Journos"}
-{"id":4676,"name":"tvnow"}
-{"id":4677,"name":"YUPPTV"}
 {"id":4679,"name":"Nanjing Broadcasting System"}
-{"id":4680,"name":"3 sat"}
 {"id":4681,"name":"Ebu-Uer"}
 {"id":4682,"name":"Klikk"}
-{"id":4683,"name":"KindiBox"}
 {"id":4684,"name":"PiliFlix"}
-{"id":4685,"name":"四川电视台公共频道"}
-{"id":4686,"name":"Movistar+"}
 {"id":4687,"name":"YuppTV"}
 {"id":4688,"name":"Scoop"}
-{"id":4689,"name":"O2 Production"}
-{"id":4690,"name":"M4 Sport"}
-{"id":4691,"name":"BBC Sport"}
 {"id":4692,"name":"The Roku Channel"}
-{"id":4693,"name":"www.youku.com"}
-{"id":4695,"name":"Star Image Digital Networ"}
-{"id":4696,"name":"Lynda"}
 {"id":4697,"name":"STAR+"}
-{"id":4698,"name":"GMM ONE"}
 {"id":4699,"name":"DR Minisjang"}
-{"id":4700,"name":"Cartoon Network (CA)"}
 {"id":4701,"name":"SETTV"}
-{"id":4702,"name":"Abema TV"}
-{"id":4703,"name":"GMM 25"}
-{"id":4704,"name":"Oishi Drink Station Facebook"}
-{"id":4705,"name":"Play5"}
-{"id":4706,"name":"Play5(BE)"}
-{"id":4707,"name":"搜狐视频"}
-{"id":4708,"name":"Team Beachbody"}
+{"id":4710,"name":"Moya Planeta"}
+{"id":4715,"name":"Ishara TV"}
+{"id":4716,"name":"i-CABLE"}
+{"id":4721,"name":"PapTV"}
+{"id":4722,"name":"Kanal 11"}
+{"id":4723,"name":"Kanal 9"}
+{"id":4724,"name":"Nile Comedy"}
+{"id":4727,"name":"G4"}
+{"id":4728,"name":"Nordic Entertainment Group"}
+{"id":4730,"name":"vtm"}
+{"id":4732,"name":"TO DELETE 1"}
+{"id":4733,"name":"Hasya Katta Official"}
+{"id":4734,"name":"TeenNick (il)"}
+{"id":4738,"name":"Boom Movies"}
+{"id":4739,"name":"MYX TV"}
+{"id":4740,"name":"CNEWS"}
+{"id":4741,"name":"Discovery+"}
+{"id":4743,"name":"Channel 9"}
+{"id":4744,"name":"TV Centre (DUPLICATE - TO DELETE)"}
+{"id":4745,"name":"乐视网"}
+{"id":4746,"name":"广东卫视"}
+{"id":4748,"name":"RKB"}
+{"id":4749,"name":"Paris Première"}
+{"id":4750,"name":"National Geographic Latinoamerica"}
+{"id":4751,"name":"GMM One"}
+{"id":4752,"name":"France Télévisions Jeunesse"}
+{"id":4753,"name":"Filmin"}
+{"id":4754,"name":"VTV1 HD"}
+{"id":4755,"name":"VTV1"}
+{"id":4756,"name":"VTV2"}
+{"id":4757,"name":"VTV2 HD"}
+{"id":4758,"name":"VTV3"}
+{"id":4759,"name":"VTV3 HD"}
+{"id":4760,"name":"VTV4 HD"}
+{"id":4761,"name":"Toonami"}
+{"id":4762,"name":"SIC Notícias"}
+{"id":4763,"name":"Dargaud Média"}
+{"id":4764,"name":"MadLab Animations"}
+{"id":4766,"name":"FilminLatino"}
+{"id":4767,"name":"Diaphana Films"}
+{"id":4769,"name":"CMTV"}
+{"id":4771,"name":"Cartoon Network Europe"}
+{"id":4772,"name":"RKB"}
+{"id":4773,"name":"ТВц"}
+{"id":4774,"name":"fox.com"}
+{"id":4775,"name":"El Trece"}
+{"id":4776,"name":"宁夏电视台"}
+{"id":4777,"name":"Kartoon Channel!"}
+{"id":4778,"name":"STRO"}
+{"id":4779,"name":"腾讯视频"}
+{"id":4781,"name":"NOW Claro"}
+{"id":4782,"name":"SHARQIYA GROUP"}
+{"id":4783,"name":"BTV4U"}
+{"id":4784,"name":"discovery+"}
+{"id":4785,"name":"ČTV"}
+{"id":4786,"name":"Watchit"}
+{"id":4788,"name":"Fukushima Central Television"}
+{"id":4789,"name":"J:COM channel"}
+{"id":4790,"name":"Yamanashi Broadcasting System"}
+{"id":4791,"name":"Television Kanazawa Corporation"}
+{"id":4792,"name":"TV KOCHI BROADCASTING"}
+{"id":4793,"name":"Gifu Broadcasting System"}
+{"id":4794,"name":"Oita Asahi Broadcasting"}
+{"id":4795,"name":"Television Niigata Network"}
+{"id":4796,"name":"Biwako Broadcasting"}
+{"id":4797,"name":"NIHONKAI TELECASTING"}
+{"id":4798,"name":"Asahi Broadcasting Aomori"}
+{"id":4799,"name":"Iwate Menkoi Television"}
+{"id":4800,"name":"Nagano Broadcasting Systems"}
+{"id":4801,"name":"Akita Television"}
+{"id":4802,"name":"Nankai Broadcasting"}
+{"id":4803,"name":"HIGASHI NIPPON BROADCASTING"}
+{"id":4804,"name":"Television Yamaguchi Broadcasting Systems"}
+{"id":4805,"name":"Shizuoka Asahi Television"}
+{"id":4806,"name":"Hiroshima Home Television"}
+{"id":4807,"name":"RCC Broadcasting"}
+{"id":4808,"name":"Miyazaki Broadcasting"}
+{"id":4809,"name":"TELASA"}
+{"id":4810,"name":"ALLBLK"}
+{"id":4813,"name":"CETV"}
+{"id":4814,"name":"Dara Film"}
+{"id":4815,"name":"RAB Aomori Broadcasting Corporation"}
+{"id":4816,"name":"Television Iwate Corporation"}
+{"id":4817,"name":"Miyagi Television Broadcasting"}
+{"id":4818,"name":"Akita Broadcasting System"}
+{"id":4819,"name":"Yamagata Broadcasting"}
+{"id":4820,"name":"Fukui Broadcasting Corporation"}
+{"id":4821,"name":"Yamaguchi Broadcasting"}
+{"id":4822,"name":"Shikoku Broadcasting"}
+{"id":4823,"name":"Kochi Broadcasting"}
+{"id":4824,"name":"Fukuoka Broadcasting System Corporation"}
+{"id":4825,"name":"Television Oita System"}
+{"id":4826,"name":"Minaminihon Broadcasting"}
+{"id":4827,"name":"Shizuoka Telecasting"}
+{"id":4828,"name":"Kagoshima Television Station"}
+{"id":4829,"name":"Sendai Television Incorporated"}
+{"id":4830,"name":"Ehime Broadcasting"}
+{"id":4831,"name":"Aomori Television Broadcasting"}
+{"id":4832,"name":"Kumamoto Kenmin Televisions"}
+{"id":4833,"name":"NOTTV"}
+{"id":4834,"name":"Channel J"}
+{"id":4835,"name":"VideoLand (TW)"}
+{"id":4836,"name":"DaAi (TW)"}
+{"id":4837,"name":"Gaora"}
+{"id":4839,"name":"Saga Television Station"}
+{"id":4840,"name":"Fukui Television Broadcasting"}
+{"id":4841,"name":"Ishikawa Television Broadcasting"}
+{"id":4842,"name":"Toyama Television Broadcasting"}
+{"id":4843,"name":"Fukushima Television Broadcasting"}
+{"id":4849,"name":"CHOCO TV (TW)"}
+{"id":4850,"name":"Television Nishinippon Corporation"}
+{"id":4851,"name":"OHK"}
+{"id":4852,"name":"TeleNext Media"}
+{"id":4853,"name":"Television Nishinippon Corporation"}
+{"id":4854,"name":"San-in Chuo Television Broadcasting"}
+{"id":4855,"name":"Kochi Sun Sun Broadcasting"}
+{"id":4857,"name":"Pickx+"}
+{"id":4859,"name":"Ryukyu Broadcasting"}
+{"id":4860,"name":"Nagasaki Broadcasting Company"}
+{"id":4861,"name":"Первый канал"}
+{"id":4862,"name":"Smithsonian Channel (UK)"}
+{"id":4864,"name":"翡翠台"}
+{"id":4865,"name":"ТНТ"}
+{"id":4866,"name":"KBS World"}
+{"id":4867,"name":"beIN SPORTS 1"}
+{"id":4868,"name":"ndtv"}
+{"id":4870,"name":"doxx-tv"}
+{"id":4871,"name":"doxx-tv (DE)"}
+{"id":4872,"name":"TBS-CHANNEL1"}
+{"id":4873,"name":"TBS-CHANNEL2"}
+{"id":4875,"name":"TV2 Play"}
+{"id":4876,"name":"BrutX"}
+{"id":4877,"name":"Samurai! TV"}
+{"id":4878,"name":"KRO-NCRV"}
+{"id":4880,"name":"CTV Life Channel"}
+{"id":4881,"name":"tve"}
+{"id":4883,"name":"discovery+ - Discovery+ (UK)"}
+{"id":4884,"name":"Flow"}
+{"id":4885,"name":"佳乐台"}
+{"id":4886,"name":"Mediacorp Channel U"}
+{"id":4889,"name":"山东三冠影视实业公司"}
+{"id":4891,"name":"Oho Gujarati"}
+{"id":4892,"name":"TV Noe"}
+{"id":4893,"name":"MBC IRAQ"}
+{"id":4896,"name":"Histoire"}
+{"id":4897,"name":"NTV-Belorus"}
+{"id":4898,"name":"Vladyk Cartoons"}
+{"id":4899,"name":"Alsharqiya TV"}
+{"id":4900,"name":"Shemaroo"}
+{"id":4901,"name":"Newgrounds"}
+{"id":4902,"name":"Pakapaka"}
+{"id":4903,"name":"Karya Yapım"}
+{"id":4904,"name":"ici.radio-canada.ca"}
+{"id":4905,"name":"Telemedellín"}
+{"id":4906,"name":"Starz! Network"}
+{"id":4908,"name":"FOXlife (IN)"}
+{"id":4909,"name":"Sky Ticket"}
+{"id":4910,"name":"Dubai One"}
+{"id":4911,"name":"铁齿铜牙纪晓岚2"}
+{"id":4912,"name":"Tantrum Network"}
+{"id":4913,"name":"Nippon TV"}
+{"id":4914,"name":"MUSIC ON! TV"}
+{"id":4915,"name":"Piwi"}
+{"id":4916,"name":"La Cie Cinéma"}
+{"id":4917,"name":"Panache Productions"}
+{"id":4918,"name":"Les Films Fauves"}
+{"id":4919,"name":"Proximus"}
+{"id":4920,"name":"Big Movie Zoo"}
+{"id":4921,"name":"Pulse Prime"}
+{"id":4922,"name":"TikTok"}
+{"id":4923,"name":"Россия-1"}
+{"id":4924,"name":"Alpha Cyprus"}
+{"id":4925,"name":"凤凰卫视"}
+{"id":4926,"name":"DW-TV"}
+{"id":4928,"name":"サンテレビ"}
+{"id":4929,"name":"v.qq.com"}
+{"id":4930,"name":"http://www.dunbine.net/"}
+{"id":4931,"name":"Mondo Media"}
+{"id":4932,"name":"24 horas"}
+{"id":4933,"name":"SNRT"}
+{"id":4934,"name":"Tamazight"}
+{"id":4935,"name":"PassoLig"}
+{"id":4937,"name":"arte"}
+{"id":4938,"name":"Salam TV"}
+{"id":4939,"name":"JG Shows"}
+{"id":4940,"name":"B•A•S•I Produktion"}
+{"id":4942,"name":"Darian Cartoon"}
+{"id":4943,"name":"vive!"}
+{"id":4945,"name":"Cartoon Nework (IN)"}
+{"id":4946,"name":"Red+"}
+{"id":4947,"name":"Abs cbn"}
+{"id":4948,"name":"爱奇艺"}
+{"id":4952,"name":"Kawaiian TV"}
+{"id":4956,"name":"MGM Brasil"}
+{"id":4959,"name":"Mill Creek Entertainment"}
+{"id":4960,"name":"Reel Media International"}
+{"id":4961,"name":"CTV"}
+{"id":4964,"name":"TGRT"}
+{"id":4966,"name":"Instagram"}
+{"id":4967,"name":"Zona Latina"}
+{"id":4968,"name":"novelastv"}
+{"id":4969,"name":"YNN"}
+{"id":4970,"name":"TSS"}
+{"id":4971,"name":"Anime Central"}
+{"id":4972,"name":"Anime Central (GB)"}
+{"id":4973,"name":"Ordu Altaş TV"}
+{"id":4976,"name":"TV Saitama"}
+{"id":4977,"name":"https://www.imdb.com/find?s=all&q=Adventures+of+Erri+The+pervert"}
+{"id":4978,"name":"https://www.youtube.com/watch?v=VRBfS8c4oBs&ab_channel=FilmConfectFilmConfect"}
+{"id":4979,"name":"https://www.youtube.com/watch?v=VRBfS8c4oBs&ab_channel=FilmConfectFilmConfeht"}
+{"id":4980,"name":"Theater Mania"}
+{"id":4981,"name":"WQED Multimedia"}
+{"id":4982,"name":"Smithsonian Channel"}
+{"id":4983,"name":"Discovery+ (IN)"}
+{"id":4985,"name":"Geniall Studio"}
+{"id":4986,"name":"GTV"}
+{"id":4987,"name":"Discovery en Español"}
+{"id":4990,"name":"Discovery Communications"}
+{"id":4991,"name":"BBC One Wales"}
+{"id":4994,"name":"Kayo Pops Channel"}
+{"id":4995,"name":"TB Entertainment"}
+{"id":4996,"name":"Tokyo 12 Channel"}
+{"id":4997,"name":"TV 2"}
+{"id":4998,"name":"Cronic.tv"}
+{"id":4999,"name":"EQ Media Group"}
+{"id":5000,"name":"Smotrim"}
+{"id":5001,"name":"CS Mystery"}
+{"id":5002,"name":"CATCHPLAY+"}
+{"id":5003,"name":"https://www.themoviedb.org/network/504"}
+{"id":5004,"name":"https://www.tvn.pl/seriale/chylka,55,pc"}
+{"id":5009,"name":"왓챠"}
+{"id":5010,"name":"stream.theatre"}
+{"id":5011,"name":"Sony Interactive Entertainment"}
+{"id":5012,"name":"TBS"}
+{"id":5013,"name":"France 2"}
+{"id":5014,"name":"CBeebie"}
+{"id":5015,"name":"武则天秘史"}
+{"id":5016,"name":"Warner TV"}
+{"id":5023,"name":"DD Chandana"}
+{"id":5024,"name":"barrandov.tv"}
+{"id":5025,"name":"C More"}
+{"id":5026,"name":"HBO MAX"}
+{"id":5028,"name":"Fox Classics"}
+{"id":5029,"name":"STARZPLAY"}
+{"id":5030,"name":"Instany"}
