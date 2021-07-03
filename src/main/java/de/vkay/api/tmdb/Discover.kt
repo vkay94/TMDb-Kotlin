@@ -28,6 +28,7 @@ class Discover {
         fun withKeywords(keywordIds: List<Int>?) = apply { clearPut("with_keywords", keywordIds?.joinToString(separator = ",")) }
         fun withWatchProviders(watchProviderIds: List<Int>?) = apply { clearPut("with_watch_providers", watchProviderIds?.joinToString(separator = ",")) }
         fun watchRegion(region: String?) = apply { clearPut("watch_region", region) }
+        fun withTextQuery(query: String?) = apply { clearPut("with_text_query", query) }
 
         private fun clearPut(key: String, value: String?) {
             remove(key)
@@ -59,12 +60,12 @@ class Discover {
         fun withoutGenres(genreIds: List<Int>?) = apply { clearPut("without_genres", genreIds?.joinToString(separator = ",")) }
         fun withKeywords(keywordIds: List<Int>?) = apply { clearPut("with_keywords", keywordIds?.joinToString(separator = ",")) }
         fun withoutKeywords(keywordIds: List<Int>?) = apply { clearPut("without_keywords", keywordIds?.joinToString(separator = ",")) }
-
         fun withRuntimeGreaterEqual(runtime: Int?) = apply { clearPut("with_runtime.gte", runtime.toString()) }
         fun withRuntimeLessEqual(runtime: Int?) = apply { clearPut("with_runtime.lte", runtime.toString()) }
         fun withOriginalLanguage(langCode: String?) = apply { clearPut("with_original_language", langCode) }
         fun withWatchProviders(watchProviderIds: List<Int>?) = apply { clearPut("with_watch_providers", watchProviderIds?.joinToString(separator = ",")) }
         fun watchRegion(region: String?) = apply { clearPut("watch_region", region) }
+        fun withTextQuery(query: String?) = apply { clearPut("with_text_query", query) }
 
         private fun clearPut(key: String, value: String?) {
             remove(key)
