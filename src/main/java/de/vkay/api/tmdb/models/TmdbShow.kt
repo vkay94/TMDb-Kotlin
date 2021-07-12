@@ -5,6 +5,7 @@ import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
 import de.vkay.api.tmdb.enumerations.ShowType
+import de.vkay.api.tmdb.internals.annotations.OtherCases
 import de.vkay.api.tmdb.internals.annotations.Rated
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
@@ -73,7 +74,10 @@ class TmdbShow internal constructor(
     internal val _videos: List<TmdbVideo>?,
     @Json(name = "keywords")
     @ResultsList
-    internal val _keywords: List<TmdbKeyword>?
+    internal val _keywords: List<TmdbKeyword>?,
+    @Json(name = "watch/providers")
+    @OtherCases
+    val watchProviders: Map<String, TmdbWatchProviderListObject>?
 ) : MediaTypeItem(MediaType.TV) {
 
     val videos: List<TmdbVideo> = _videos ?: emptyList()
