@@ -68,7 +68,7 @@ interface AccountService {
     /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/account/get-tv-show-watchlist)
      */
-    @GET("account/{account_id}/favorite/tv")
+    @GET("account/{account_id}/watchlist/tv")
     suspend fun watchlistShows(
         @Path("account_id") accountId: Int,
         @Query("language") language: String? = null,
