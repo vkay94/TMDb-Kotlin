@@ -1,9 +1,9 @@
 import de.vkay.api.tmdb.models.TmdbDate
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import org.threeten.bp.LocalDate
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.format.FormatStyle
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.FormatStyle
 import java.util.*
 
 class DateTest {

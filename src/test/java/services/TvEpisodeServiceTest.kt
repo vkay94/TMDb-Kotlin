@@ -7,7 +7,7 @@ import de.vkay.api.tmdb.models.TmdbTranslation
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import org.threeten.bp.LocalDate
+import java.time.LocalDate
 
 class TvEpisodeServiceTest : BaseServiceTest() {
 

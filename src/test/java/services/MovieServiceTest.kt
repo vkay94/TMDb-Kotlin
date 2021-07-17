@@ -9,7 +9,7 @@ import de.vkay.api.tmdb.enumerations.ReleaseType
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import org.threeten.bp.LocalDate
+import java.time.LocalDate
 import java.util.*
 
 class MovieServiceTest : BaseServiceTest() {
@@ -145,7 +145,7 @@ class MovieServiceTest : BaseServiceTest() {
         assertEquals("https://www.themoviedb.org/movie/299534-avengers-endgame/watch?locale=DE", german.link)
         assertFalse(german.flatrate!!.isEmpty())
         assertFalse(german.buy!!.isEmpty())
-        assertNull(german.rent)
+        assertNotNull(german.rent)
 
         assertEquals("Disney Plus", german.flatrate!!.first().name)
         assertEquals(337, german.flatrate!!.first().id)

@@ -2,11 +2,11 @@ package de.vkay.api.tmdb.models
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.ToJson
-import org.threeten.bp.LocalDate
-import org.threeten.bp.LocalDateTime
-import org.threeten.bp.format.DateTimeFormatter
-import org.threeten.bp.format.DateTimeParseException
-import org.threeten.bp.format.FormatStyle
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
+import java.time.format.FormatStyle
 import java.util.*
 
 /**

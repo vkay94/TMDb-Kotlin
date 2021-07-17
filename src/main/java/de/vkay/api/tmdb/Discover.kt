@@ -1,6 +1,7 @@
 package de.vkay.api.tmdb
 
-import org.threeten.bp.LocalDate
+import java.time.LocalDate
+
 
 class Discover {
 

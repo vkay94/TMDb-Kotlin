@@ -8,7 +8,7 @@ import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import org.threeten.bp.LocalDate
+import java.time.LocalDate
 
 class PersonServiceTest : BaseServiceTest() {
 
