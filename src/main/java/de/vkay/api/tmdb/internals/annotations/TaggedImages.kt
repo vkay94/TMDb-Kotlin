@@ -21,6 +21,7 @@ internal class TaggedImagesAdapter(
     private val imageJsonAdapter = moshi.adapter(TmdbImage::class.java)
     private val movieJsonAdapter = moshi.adapter(TmdbMovie.Slim::class.java)
     private val showJsonAdapter = moshi.adapter(TmdbShow.Slim::class.java)
+    private val episodeJsonAdapter = moshi.adapter(TmdbEpisode.Slim::class.java)
 
     private val pageOptions: JsonReader.Options = JsonReader.Options.of(
         "page", "total_results", "total_pages", "results"
@@ -91,8 +92,13 @@ internal class TaggedImagesAdapter(
                         "movie" -> {
                             movieJsonAdapter.fromJson(reader)
                         }
+                        "episode" -> {
+                            episodeJsonAdapter.fromJson(reader)
+                        }
                         else -> {
-                            throw JsonDataException("Provided media (tagged image) is malformed, requires movie or tv")
+                            throw JsonDataException(
+                                "TaggedImages: Found media type not handled: $mediaType"
+                            )
                         }
                     }
                 }
