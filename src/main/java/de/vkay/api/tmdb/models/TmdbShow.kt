@@ -28,9 +28,9 @@ class TmdbShow internal constructor(
     @Json(name = "last_air_date")
     val latestAirDate: TmdbDate?,
     @Json(name = "last_episode_to_air")
-    val latestEpisode: TmdbEpisode?,
+    val latestEpisode: TmdbEpisode.Slim?,
     @Json(name = "next_episode_to_air")
-    val nextEpisode: TmdbEpisode?,
+    val nextEpisode: TmdbEpisode.Slim?,
     @Json(name = "number_of_seasons")
     val numberOfSeasons: Int,
     @Json(name = "number_of_episodes")
@@ -99,9 +99,16 @@ class TmdbShow internal constructor(
     val numberOfAiredEpisodes: Int
         get() {
             if (latestEpisode == null) return 0
-            return latestEpisode.episodeNumber +
-                    seasons.filter { it.seasonNumber in 1 until latestEpisode.seasonNumber }
-                        .map { it.episodeCount }.sum()
+            val latestSeasonEpisodeCount = seasons
+                .first { it.seasonNumber == latestEpisode.seasonNumber }
+                .episodeCount
+
+            return if (latestEpisode.episodeNumber <= latestSeasonEpisodeCount)
+                // The latest season starts at 1
+                (numberOfEpisodes - latestSeasonEpisodeCount) + latestEpisode.episodeNumber
+            else
+                // The episode numbers don't reset for every season
+                latestEpisode.episodeNumber
         }
 
     @JsonClass(generateAdapter = true)
