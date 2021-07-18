@@ -2,6 +2,7 @@ package de.vkay.api.tmdb.models
 
 import com.squareup.moshi.JsonClass
 
+@Suppress("SpellCheckingInspection")
 @JsonClass(generateAdapter = true)
 data class TmdbWatchProviderListObject internal constructor(
     val link: String,

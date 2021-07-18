@@ -21,8 +21,8 @@ import java.util.concurrent.TimeUnit
 
 
 object TMDb {
-    const val BASE_URL = "https://api.themoviedb.org/3/"
-    const val BASE_URL_4 = "https://api.themoviedb.org/4/"
+    private const val BASE_URL = "https://api.themoviedb.org/3/"
+    private const val BASE_URL_4 = "https://api.themoviedb.org/4/"
 
     private const val DEFAULT_LANGUAGE = "en-US"
 

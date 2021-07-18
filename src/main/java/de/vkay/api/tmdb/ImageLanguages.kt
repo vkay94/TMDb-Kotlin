@@ -16,11 +16,11 @@
  */
 package de.vkay.api.tmdb
 
-import java.util.*
+import java.util.Locale
 
 class ImageLanguages(private vararg val languageCodes: String) {
     override fun toString(): String =
-        languageCodes.joinToString(separator = ",") { it.toLowerCase(Locale.ROOT) }
+        languageCodes.joinToString(separator = ",") { it.lowercase(Locale.ROOT) }
 
     companion object {
         private val DEFAULT = arrayOf("null", "en")

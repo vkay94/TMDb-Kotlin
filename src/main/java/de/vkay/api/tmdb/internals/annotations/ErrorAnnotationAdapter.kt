@@ -1,3 +1,5 @@
+@file:Suppress("SpellCheckingInspection")
+
 package de.vkay.api.tmdb.internals.annotations
 
 import com.squareup.moshi.FromJson

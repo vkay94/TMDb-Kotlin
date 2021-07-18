@@ -16,6 +16,8 @@
  */
 package de.vkay.api.tmdb
 
+import java.util.Locale
+
 class AppendToResponse(private vararg val appendItems: Item = arrayOf()) {
     private val seasons = mutableListOf<Int>()
 
@@ -34,17 +36,6 @@ class AppendToResponse(private vararg val appendItems: Item = arrayOf()) {
         RECOMMENDATIONS(""), SIMILAR(""), KEYWORDS(""),
         WATCH_PROVIDERS("watch/providers");
 
-        override fun toString(): String = key.ifBlank { name.toLowerCase() }
+        override fun toString(): String = key.ifBlank { name.lowercase(Locale.ROOT) }
     }
-
-    /*
-
-    Can't be done currently since the keys ("season/1", "season/2", ...) aren't fetched inside an
-    object which could be mapped like WatchProviders.
-
-    fun addSeason(vararg seasons: Int) = apply {
-        seasons.forEach { this.seasons.add(it) }
-    }
-
-     */
 }

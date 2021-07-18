@@ -180,11 +180,11 @@ internal class CharJobAdapter(
                     throw IllegalArgumentException("Only lists may be annotated with @ResultsList. Found: $type")
             }
 
-            val resListAnno = annotations.stream().filter { it is CharJob }.toList().firstOrNull()
+            val resListAnnotation = annotations.stream().filter { it is CharJob }.toList().firstOrNull()
                 ?: throw IllegalArgumentException("List has no valid fieldName: $type")
 
-            val fieldName = (resListAnno as CharJob).fieldName
-            val mediaType = resListAnno.mediaType
+            val fieldName = (resListAnnotation as CharJob).fieldName
+            val mediaType = resListAnnotation.mediaType
 
             return CharJobAdapter(moshi, fieldName, mediaType)
         }

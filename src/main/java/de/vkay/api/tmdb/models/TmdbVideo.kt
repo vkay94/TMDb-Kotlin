@@ -61,6 +61,7 @@ data class TmdbVideo internal constructor(
         UNDEFINED
     }
 
+    @Suppress("SpellCheckingInspection")
     enum class YtResolution(val key: String) {
 
         /**
@@ -77,6 +78,7 @@ data class TmdbVideo internal constructor(
          * Size: 480 x 360
          */
         HQ("hqdefault"),
+
         MAX("maxresdefault");
 
         override fun toString(): String = key

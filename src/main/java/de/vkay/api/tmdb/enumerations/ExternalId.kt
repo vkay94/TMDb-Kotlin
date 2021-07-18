@@ -1,5 +1,6 @@
 package de.vkay.api.tmdb.enumerations
 
+@Suppress("SpellCheckingInspection")
 enum class ExternalId {
     IMDB,
     TVDB,

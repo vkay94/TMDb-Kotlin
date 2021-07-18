@@ -44,13 +44,10 @@ internal class MapListAdapter(val fieldName: String): JsonAdapter<Map<String, Li
                     0 -> {
                         tmpResults = listResultsAdapter.fromJson(reader)!!
                     }
-                    -1 -> {
+                    else -> {
                         // Unknown name, skip it.
                         reader.skipName()
                         reader.skipValue()
-                    }
-                    else -> {
-                        println("-")
                     }
                 }
             }
@@ -70,10 +67,10 @@ internal class MapListAdapter(val fieldName: String): JsonAdapter<Map<String, Li
         override fun create(type: Type, annotations: Set<Annotation>, moshi: Moshi): JsonAdapter<Map<String, List<Any>>>? {
             val delegateAnnotations = Types.nextAnnotations(annotations, MapList::class.java) ?: return null
 
-            val resListAnno = annotations.stream().filter { it is MapList }.toList().firstOrNull()
+            val resListAnnotation = annotations.stream().filter { it is MapList }.toList().firstOrNull()
                 ?: throw IllegalArgumentException("List has no valid fieldName: $type")
 
-            val fieldName = (resListAnno as MapList).fieldName
+            val fieldName = (resListAnnotation as MapList).fieldName
 
             return MapListAdapter(fieldName)
         }

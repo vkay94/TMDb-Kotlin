@@ -60,7 +60,7 @@ internal class TaggedImagesAdapter(
                 3 -> {
                     reader.beginArray()
                     while (reader.hasNext()) {
-                        getPair(reader)?.let { results.add(it) }
+                        getPair(reader).let { results.add(it) }
                     }
                     reader.endArray()
                 }
@@ -71,7 +71,7 @@ internal class TaggedImagesAdapter(
         return TmdbPage(page, totalResults, totalPages, results)
     }
 
-    private fun getPair(reader: JsonReader): Pair<TmdbImage, MediaTypeItem>? {
+    private fun getPair(reader: JsonReader): Pair<TmdbImage, MediaTypeItem> {
         val image = imageJsonAdapter.fromJson(reader.peekJson())
         var media: MediaTypeItem? = MediaTypeItem(MediaType.MOVIE)
 

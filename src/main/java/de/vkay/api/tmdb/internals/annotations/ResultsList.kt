@@ -55,10 +55,10 @@ internal class ResultsListAdapter(
                     throw IllegalArgumentException("Only lists may be annotated with @ResultsList. Found: $type")
             }
 
-            val resListAnno = annotations.stream().filter { it is ResultsList }.toList().firstOrNull()
+            val resListAnnotation = annotations.stream().filter { it is ResultsList }.toList().firstOrNull()
                 ?: throw IllegalArgumentException("List has no valid fieldName: $type")
 
-            val fieldName = (resListAnno as ResultsList).fieldName
+            val fieldName = (resListAnnotation as ResultsList).fieldName
 
             val delegateAdapter: JsonAdapter<List<Any>> = moshi.adapter(type, delegateAnnotations)
             return ResultsListAdapter(delegateAdapter, fieldName)

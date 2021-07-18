@@ -17,7 +17,7 @@ internal class TmdbTranslationDataJsonAdapter : JsonAdapter<TmdbTranslation.Data
     private val stringAdapter: JsonAdapter<String> = moshi.adapter(String::class.java, emptySet(),
         "name")
 
-    override fun fromJson(reader: JsonReader): TmdbTranslation.Data? {
+    override fun fromJson(reader: JsonReader): TmdbTranslation.Data {
         var overview: String? = null
         var title: String? = null
         var biography: String? = null

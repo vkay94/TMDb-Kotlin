@@ -6,6 +6,7 @@ import de.vkay.api.tmdb.enumerations.ListSortBy
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
+@Suppress("SpellCheckingInspection")
 @JsonClass(generateAdapter = true)
 data class TmdbList internal constructor(
     @Json(name = "average_rating")
