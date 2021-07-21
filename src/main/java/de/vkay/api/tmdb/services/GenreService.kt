@@ -15,7 +15,7 @@ interface GenreService {
     @GET("genre/tv/list")
     @ResultsList("genres")
     suspend fun tv(
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<TmdbGenre>, TmdbError.DefaultError>
 
     /**
@@ -24,6 +24,6 @@ interface GenreService {
     @GET("genre/movie/list")
     @ResultsList("genres")
     suspend fun movie(
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<TmdbGenre>, TmdbError.DefaultError>
 }

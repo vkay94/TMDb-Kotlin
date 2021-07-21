@@ -19,7 +19,7 @@ interface TvSeasonService {
     suspend fun details(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("append_to_response") append: AppendToResponse? = null
     ): NetworkResponse<TmdbSeason, TmdbError.DefaultError>
 

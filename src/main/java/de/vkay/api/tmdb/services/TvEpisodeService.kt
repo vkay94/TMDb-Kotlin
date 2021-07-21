@@ -21,7 +21,7 @@ interface TvEpisodeService {
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
         @Path("episode_number") tvShowEpisodeNumber: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("append_to_response") appendToResponse: AppendToResponse? = null,
         @Query("include_image_language") imageLanguages: ImageLanguages? = null
     ): NetworkResponse<TmdbEpisode, TmdbError.DefaultError>

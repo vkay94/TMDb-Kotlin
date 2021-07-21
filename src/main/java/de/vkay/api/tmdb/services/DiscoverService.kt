@@ -18,7 +18,7 @@ interface DiscoverService {
     @GET("discover/tv")
     suspend fun tv(
         @QueryMap options: Discover.ShowBuilder,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int = 1
     ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
@@ -28,7 +28,7 @@ interface DiscoverService {
     @GET("discover/movie")
     suspend fun movie(
         @QueryMap options: Discover.MovieBuilder,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int = 1
     ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
 }

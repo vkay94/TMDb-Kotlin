@@ -19,7 +19,7 @@ interface PersonService {
     @GET("person/{person_id}")
     suspend fun details(
         @Path("person_id") personId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("append_to_response") append: AppendToResponse? = null
     ): NetworkResponse<TmdbPerson, TmdbError.DefaultError>
 
@@ -66,7 +66,7 @@ interface PersonService {
     @CharJob(fieldName = "cast", mediaType = MediaType.TV)
     suspend fun tvCast(
         @Path("person_id") personId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<Pair<TmdbShow.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
@@ -76,7 +76,7 @@ interface PersonService {
     @CharJob(fieldName = "crew", mediaType = MediaType.TV)
     suspend fun tvCrew(
         @Path("person_id") personId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<Pair<TmdbShow.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
@@ -86,7 +86,7 @@ interface PersonService {
     @CharJob(fieldName = "cast", mediaType = MediaType.MOVIE)
     suspend fun movieCast(
         @Path("person_id") personId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<Pair<TmdbMovie.Slim, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
@@ -96,7 +96,7 @@ interface PersonService {
     @CharJob(fieldName = "crew", mediaType = MediaType.MOVIE)
     suspend fun movieCrew(
         @Path("person_id") personId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<Pair<TmdbMovie.Slim, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
@@ -106,7 +106,7 @@ interface PersonService {
     @CharJob(fieldName = "cast")
     suspend fun combinedCast(
         @Path("person_id") personId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<Pair<MediaTypeItem, TmdbPerson.CastRole>>, TmdbError.DefaultError>
 
     /**
@@ -116,7 +116,7 @@ interface PersonService {
     @CharJob("crew")
     suspend fun combinedCrew(
         @Path("person_id") personId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<Pair<MediaTypeItem, TmdbPerson.CrewJob>>, TmdbError.DefaultError>
 
     /**
@@ -124,7 +124,7 @@ interface PersonService {
      */
     @GET("person/popular")
     suspend fun popular(
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
     ): NetworkResponse<TmdbPage<TmdbPerson.Slim>, TmdbError.DefaultError>
 
     /**
@@ -132,6 +132,6 @@ interface PersonService {
      */
     @GET("person/latest")
     suspend fun latest(
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<TmdbPerson, TmdbError.DefaultError>
 }

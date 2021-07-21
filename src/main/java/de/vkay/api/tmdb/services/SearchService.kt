@@ -13,7 +13,7 @@ interface SearchService {
     @GET("search/tv")
     suspend fun tv(
         @Query("query") query: String?,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("first_air_date_year") firstAirDateYear: Int? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
@@ -24,7 +24,7 @@ interface SearchService {
     @GET("search/movie")
     suspend fun movie(
         @Query("query") query: String,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("year") year: Int? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
@@ -35,7 +35,7 @@ interface SearchService {
     @GET("search/person")
     suspend fun person(
         @Query("query") query: String,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbPerson.Slim>, TmdbError.DefaultError>
 
@@ -45,7 +45,7 @@ interface SearchService {
     @GET("search/multi")
     suspend fun multi(
         @Query("query") query: String,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<MediaTypeItem>, TmdbError.DefaultError>
 
@@ -73,7 +73,7 @@ interface SearchService {
     @GET("search/collection")
     suspend fun collection(
         @Query("query") query: String,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbCollection.Slim>, TmdbError.DefaultError>
 }

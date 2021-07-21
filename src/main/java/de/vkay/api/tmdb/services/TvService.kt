@@ -20,7 +20,7 @@ interface TvService {
     @GET("tv/{tv_id}")
     suspend fun details(
         @Path("tv_id") tvShowId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("append_to_response") append: AppendToResponse? = null,
         @Query("include_image_language") imageLanguages: ImageLanguages? = null
     ): NetworkResponse<TmdbShow, TmdbError.DefaultError>
@@ -31,7 +31,7 @@ interface TvService {
     @GET("tv/{tv_id}/recommendations")
     suspend fun recommendations(
         @Path("tv_id") tvShowId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
@@ -41,7 +41,7 @@ interface TvService {
     @GET("tv/{tv_id}/similar")
     suspend fun similar(
         @Path("tv_id") tvShowId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
@@ -52,7 +52,7 @@ interface TvService {
     @ResultsList("posters")
     suspend fun posters(
         @Path("tv_id") tvShowId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     /**
@@ -62,7 +62,7 @@ interface TvService {
     @ResultsList("backdrops")
     suspend fun backdrops(
         @Path("tv_id") tvShowId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     /**
@@ -72,7 +72,7 @@ interface TvService {
     @ResultsList
     suspend fun videos(
         @Path("tv_id") tvShowId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<TmdbVideo>, TmdbError.DefaultError>
 
     /**
@@ -171,7 +171,7 @@ interface TvService {
      */
     @GET("tv/latest")
     suspend fun latest(
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
     ): NetworkResponse<TmdbShow, TmdbError.DefaultError>
 
     /**
@@ -179,7 +179,7 @@ interface TvService {
      */
     @GET("tv/airing_today")
     suspend fun airingToday(
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
@@ -188,7 +188,7 @@ interface TvService {
      */
     @GET("tv/on_the_air")
     suspend fun onTheAir(
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
@@ -197,7 +197,7 @@ interface TvService {
      */
     @GET("tv/popular")
     suspend fun popular(
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
@@ -206,7 +206,7 @@ interface TvService {
      */
     @GET("tv/top_rated")
     suspend fun topRated(
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
 
@@ -225,7 +225,7 @@ interface TvService {
     @GET("tv/episode_group/{id}")
     suspend fun episodeGroupDetails(
         @Path("id") groupId: String,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
     ): NetworkResponse<TmdbEpisodeGroupListObject, TmdbError.DefaultError>
 
     /**

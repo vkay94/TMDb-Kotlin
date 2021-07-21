@@ -21,7 +21,7 @@ interface MovieService {
     @GET("movie/{movie_id}")
     suspend fun details(
         @Path("movie_id") movieId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("append_to_response") append: AppendToResponse? = null,
         @Query("include_image_language") imageLanguages: ImageLanguages? = null
     ): NetworkResponse<TmdbMovie, TmdbError.DefaultError>
@@ -68,7 +68,7 @@ interface MovieService {
     @ResultsList("posters")
     suspend fun posters(
         @Path("movie_id") movieId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     /**
@@ -78,7 +78,7 @@ interface MovieService {
     @ResultsList("backdrops")
     suspend fun backdrops(
         @Path("movie_id") movieId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     /**
@@ -87,7 +87,7 @@ interface MovieService {
     @GET("movie/{movie_id}/recommendations")
     suspend fun recommendations(
         @Path("movie_id") movieId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
 
@@ -97,7 +97,7 @@ interface MovieService {
     @GET("movie/{movie_id}/similar")
     suspend fun similar(
         @Path("movie_id") movieId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
 
@@ -108,7 +108,7 @@ interface MovieService {
     @ResultsList
     suspend fun videos(
         @Path("movie_id") movieId: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<TmdbVideo>, TmdbError.DefaultError>
 
     /**
@@ -170,7 +170,7 @@ interface MovieService {
      */
     @GET("movie/now_playing")
     suspend fun nowPlaying(
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("region") languageCode: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
@@ -180,7 +180,7 @@ interface MovieService {
      */
     @GET("movie/popular")
     suspend fun popular(
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("region") languageCode: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
@@ -190,7 +190,7 @@ interface MovieService {
      */
     @GET("movie/top_rated")
     suspend fun topRated(
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("region") languageCode: String?,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
@@ -200,7 +200,7 @@ interface MovieService {
      */
     @GET("movie/upcoming")
     suspend fun upcoming(
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("region") languageCode: String? = null,
         @Query("page") page: Int? = null
     ): NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>

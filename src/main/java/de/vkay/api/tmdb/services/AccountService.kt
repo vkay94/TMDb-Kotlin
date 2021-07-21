@@ -28,7 +28,7 @@ interface AccountService {
     @GET("account/{account_id}/lists")
     suspend fun createdLists(
         @Path("account_id") accountId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
     ) : NetworkResponse<TmdbPage<TmdbList.Slim>, TmdbError.DefaultError>
 
@@ -38,7 +38,7 @@ interface AccountService {
     @GET("account/{account_id}/favorite/movies")
     suspend fun favoriteMovies(
         @Path("account_id") accountId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
     ) : NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
@@ -49,7 +49,7 @@ interface AccountService {
     @GET("account/{account_id}/favorite/tv")
     suspend fun favoriteShows(
         @Path("account_id") accountId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
     ) : NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
@@ -60,7 +60,7 @@ interface AccountService {
     @GET("account/{account_id}/watchlist/movies")
     suspend fun watchlistMovies(
         @Path("account_id") accountId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
     ) : NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
@@ -71,7 +71,7 @@ interface AccountService {
     @GET("account/{account_id}/watchlist/tv")
     suspend fun watchlistShows(
         @Path("account_id") accountId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
     ) : NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
@@ -82,7 +82,7 @@ interface AccountService {
     @GET("account/{account_id}/rated/movies")
     suspend fun ratedMovies(
         @Path("account_id") accountId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
     ) : NetworkResponse<TmdbPage<TmdbMovie.Slim>, TmdbError.DefaultError>
@@ -93,7 +93,7 @@ interface AccountService {
     @GET("account/{account_id}/rated/tv")
     suspend fun ratedShows(
         @Path("account_id") accountId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
     ) : NetworkResponse<TmdbPage<TmdbShow.Slim>, TmdbError.DefaultError>
@@ -104,7 +104,7 @@ interface AccountService {
     @GET("account/{account_id}/rated/tv/episodes")
     suspend fun ratedEpisodes(
         @Path("account_id") accountId: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null
         // TODO: SortBy (created_at.asc, created_at.desc)
     ) : NetworkResponse<TmdbPage<TmdbEpisode.Slim>, TmdbError.DefaultError>

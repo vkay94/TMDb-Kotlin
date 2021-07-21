@@ -17,7 +17,7 @@ interface ListService {
     @GET("list/{list_id}")
     suspend fun details(
         @Path("list_id") id: Int,
-        @Query("language") language: String? = null,
+        @Query("language") languageTag: String? = null,
         @Query("page") page: Int? = null,
         @Query("sort_by") sortBy: ListSortBy? = null
     ): NetworkResponse<TmdbList, TmdbError.DefaultError>

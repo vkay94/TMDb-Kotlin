@@ -18,7 +18,7 @@ interface CollectionService {
     @GET("collection/{collection_id}")
     suspend fun details(
         @Path("collection_id") id: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<TmdbCollection, TmdbError.DefaultError>
 
     /**
@@ -28,7 +28,7 @@ interface CollectionService {
     @ResultsList("posters")
     suspend fun posters(
         @Path("collection_id") id: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     /**
@@ -38,7 +38,7 @@ interface CollectionService {
     @ResultsList("backdrops")
     suspend fun backdrops(
         @Path("collection_id") id: Int,
-        @Query("language") language: String? = null
+        @Query("language") languageTag: String? = null
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     /**
