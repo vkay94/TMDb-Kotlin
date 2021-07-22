@@ -10,7 +10,7 @@ import de.vkay.api.tmdb.internals.annotations.TMDbImage
 @JsonClass(generateAdapter = true)
 data class TmdbEpisode internal constructor(
     @Json(name = "air_date")
-    val releaseDate: TmdbDate?,
+    val airDate: TmdbDate?,
     @Json(name = "episode_number")
     val episodeNumber: Int,
     val id: Int,
@@ -43,7 +43,7 @@ data class TmdbEpisode internal constructor(
     @JsonClass(generateAdapter = true)
     data class Slim internal constructor(
         @Json(name = "air_date")
-        val releaseDate: TmdbDate?,
+        val airDate: TmdbDate?,
         @Json(name = "episode_number")
         val episodeNumber: Int,
         val id: Int,

@@ -17,7 +17,7 @@ class TmdbShow internal constructor(
     @Json(name = "name")
     val title: String,
     @Json(name = "first_air_date")
-    val releaseDate: TmdbDate?,
+    val firstAirDate: TmdbDate?,
     @Json(name = "episode_run_time")
     val episodeRuntimes: List<Int>,
     val genres: List<TmdbGenre>,
@@ -91,7 +91,7 @@ class TmdbShow internal constructor(
 
     val runtime: Int = episodeRuntimes.firstOrNull() ?: 0
     val hasSpecials: Boolean = seasons.any { it.seasonNumber == 0 }
-    val nextAirDate: TmdbDate? = nextEpisode?.releaseDate
+    val nextAirDate: TmdbDate? = nextEpisode?.airDate
 
     /**
      * Returns the total number of episodes until now depending on the seasons excluding [nextAirDate]
@@ -117,7 +117,7 @@ class TmdbShow internal constructor(
         @Json(name = "name")
         val title: String,
         @Json(name = "first_air_date")
-        val releaseDate: TmdbDate?,
+        val firstAirDate: TmdbDate?,
         @Json(name = "backdrop_path")
         @TMDbImage
         val backdrop: TmdbImage?,

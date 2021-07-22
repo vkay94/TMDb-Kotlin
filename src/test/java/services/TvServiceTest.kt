@@ -28,7 +28,7 @@ class TvServiceTest : BaseServiceTest() {
 
         assertEquals("My Hero Academia", details.title)
         assertEquals(SHOW_ID_MHA, details.id)
-        assertEquals(LocalDate.of(2016, 4, 3), details.releaseDate?.date)
+        assertEquals(LocalDate.of(2016, 4, 3), details.firstAirDate?.date)
         assertEquals("ja", details.originalLanguage)
         assertEquals(listOf("JP"), details.originalCountries)
         assertTrue(details.overview.isNotBlank())

@@ -15,7 +15,7 @@ class TvSeasonServiceTest : BaseServiceTest() {
         val season = 1
         val details = TMDb.seasonService.details(SHOW_ID_HORIMIYA, season).invoke()!!
 
-        assertEquals(LocalDate.of(2021, 1, 10), details.premierDate!!.date)
+        assertEquals(LocalDate.of(2021, 1, 10), details.airDate!!.date)
         assertEquals(1, details.seasonNumber)
         assertTrue(details.episodes.size > 4)
         assertNotNull(details.poster)

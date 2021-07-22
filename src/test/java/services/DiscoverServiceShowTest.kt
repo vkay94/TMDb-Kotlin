@@ -30,8 +30,8 @@ class DiscoverServiceShowTest : BaseServiceTest() {
 
         val results = TMDb.discoverService.tv(builder).invoke()!!.results
         results.forEach {
-            assertTrue(it.releaseDate!!.date!!.isAfter(lower.minusDays(1))
-                    && it.releaseDate!!.date!!.isBefore(upper.plusDays(1)))
+            assertTrue(it.firstAirDate!!.date!!.isAfter(lower.minusDays(1))
+                    && it.firstAirDate!!.date!!.isBefore(upper.plusDays(1)))
         }
     }
 

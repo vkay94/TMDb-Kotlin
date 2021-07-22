@@ -16,7 +16,7 @@ data class TmdbSeason internal constructor(
     @TMDbImage
     val poster: TmdbImage?,
     @Json(name = "air_date")
-    val premierDate: TmdbDate?,
+    val airDate: TmdbDate?,
     val episodes: List<TmdbEpisode.Slim>,
     @Json(name = "name")
     val title: String,
@@ -40,7 +40,7 @@ data class TmdbSeason internal constructor(
     @JsonClass(generateAdapter = true)
     data class Slim internal constructor(
         @Json(name = "air_date")
-        val premierDate: TmdbDate?,
+        val airDate: TmdbDate?,
         @Json(name = "episode_count")
         val episodeCount: Int,
         @Json(name = "id")

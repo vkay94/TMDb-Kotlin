@@ -24,7 +24,7 @@ class TvEpisodeServiceTest : BaseServiceTest() {
         assertEquals(episode, details.episodeNumber)
         assertTrue(details.overview.isNotBlank())
         assertNotNull(details.still)
-        assertEquals(LocalDate.of(2016, 4, 3), details.releaseDate?.date)
+        assertEquals(LocalDate.of(2016, 4, 3), details.airDate?.date)
     }
 
     @Test
