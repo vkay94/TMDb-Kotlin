@@ -59,6 +59,10 @@ class TmdbShow internal constructor(
     @Json(name = "poster_path")
     @TMDbImage
     val poster: TmdbImage?,
+    @Json(name = "production_companies")
+    val productionCompanies: List<TmdbCompany>,
+    @Json(name = "production_countries")
+    val productionCountries: List<TmdbCountry>,
 
     // Append
     @Json(name = "images")

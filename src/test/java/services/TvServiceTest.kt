@@ -7,6 +7,7 @@ import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.EpisodeGroupType
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
+import de.vkay.api.tmdb.models.TmdbCountry
 import de.vkay.api.tmdb.models.TmdbShow
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
@@ -33,6 +34,8 @@ class TvServiceTest : BaseServiceTest() {
         assertEquals(listOf("JP"), details.originalCountries)
         assertTrue(details.overview.isNotBlank())
         assertEquals(MediaType.TV, details.mediaType)
+        assertTrue(details.productionCompanies.any { it.id == 2849 })
+        assertTrue(details.productionCountries.contains(TmdbCountry("JP", "Japan")))
 
         assertEquals(ProductionStatus.RETURNING, details.currentStatus)
     }

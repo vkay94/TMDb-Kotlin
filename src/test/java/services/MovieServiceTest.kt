@@ -2,6 +2,7 @@ package services
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.haroldadmin.cnradapter.invoke
+import de.vkay.api.tmdb.AppendToResponse
 import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.enumerations.ProductionStatus
@@ -53,12 +54,31 @@ class MovieServiceTest : BaseServiceTest() {
 
     @Test
     fun `Get added fields data`() = runBlocking {
-        // TODO
+        val details = TMDb.movieService.details(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+
+        assertTrue(details.videos.isEmpty())
+        assertTrue(details.posters.isEmpty())
+        assertTrue(details.backdrops.isEmpty())
+        assertTrue(details.recommendations.isEmpty())
     }
 
     @Test
     fun `Get appended info`(): Unit = runBlocking {
-        // TODO
+        val append = AppendToResponse(
+            AppendToResponse.Item.IMAGES, AppendToResponse.Item.VIDEOS, AppendToResponse.Item.KEYWORDS,
+            AppendToResponse.Item.SIMILAR, AppendToResponse.Item.RECOMMENDATIONS,
+            AppendToResponse.Item.EXTERNAL_IDS
+        )
+
+        val details = TMDb.movieService.details(MOVIE_ID_AVENGERS_ENDGAME, append = append).invoke()!!
+        assertTrue(details.posters.isNotEmpty())
+        assertTrue(details.backdrops.isNotEmpty())
+        assertTrue(details.videos.isNotEmpty())
+        assertTrue(details.keywords.isNotEmpty())
+        assertTrue(details.recommendations.isNotEmpty())
+        assertTrue(details.similar.isNotEmpty())
+
+        assertEquals(details.imdbId, details.externalIds?.imdb)
     }
 
     @Test
