@@ -66,6 +66,16 @@ interface TvService {
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-images)
+     */
+    @GET("tv/{tv_id}/images")
+    @ResultsList("logos")
+    suspend fun logos(
+        @Path("tv_id") tvShowId: Int,
+        @Query("language") languageTag: String? = null
+    ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
+
+    /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/tv/get-tv-videos)
      */
     @GET("tv/{tv_id}/videos")

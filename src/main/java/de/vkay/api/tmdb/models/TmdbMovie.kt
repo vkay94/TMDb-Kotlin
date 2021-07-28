@@ -75,6 +75,7 @@ data class TmdbMovie internal constructor(
     val videos: List<TmdbVideo> = _videos ?: emptyList()
     val backdrops: List<TmdbImage> = _images?.backdrops ?: emptyList()
     val posters: List<TmdbImage> = _images?.posters ?: emptyList()
+    val logos: List<TmdbImage> = _images?.logos ?: emptyList()
 
     val recommendations: List<Slim> = _recommendations?.results ?: emptyList()
     val similar: List<Slim> = _similar?.results ?: emptyList()

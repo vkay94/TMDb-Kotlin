@@ -63,6 +63,7 @@ class TvServiceTest : BaseServiceTest() {
         val details = TMDb.showService.details(SHOW_ID_MHA, append = append).invoke()!!
         assertTrue(details.posters.isNotEmpty())
         assertTrue(details.backdrops.isNotEmpty())
+        assertTrue(details.logos.isNotEmpty())
         assertTrue(details.videos.isNotEmpty())
         assertTrue(details.keywords.isNotEmpty())
 
@@ -80,6 +81,12 @@ class TvServiceTest : BaseServiceTest() {
     fun `Get backdrops`(): Unit = runBlocking {
         val backdrops = TMDb.showService.backdrops(SHOW_ID_MHA).invoke()!!
         assertTrue(backdrops.isNotEmpty())
+    }
+
+    @Test
+    fun `Get logos`(): Unit = runBlocking {
+        val logos = TMDb.showService.logos(SHOW_ID_MHA).invoke()!!
+        assertTrue(logos.isNotEmpty())
     }
 
     @Test

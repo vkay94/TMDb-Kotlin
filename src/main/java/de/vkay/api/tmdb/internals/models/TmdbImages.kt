@@ -6,5 +6,6 @@ import de.vkay.api.tmdb.models.TmdbImage
 @JsonClass(generateAdapter = true)
 internal class TmdbImages internal constructor(
     val posters: List<TmdbImage>?,
-    val backdrops: List<TmdbImage>?
+    val backdrops: List<TmdbImage>?,
+    val logos: List<TmdbImage>?
 )

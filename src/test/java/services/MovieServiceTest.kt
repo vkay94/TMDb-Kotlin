@@ -73,6 +73,7 @@ class MovieServiceTest : BaseServiceTest() {
         val details = TMDb.movieService.details(MOVIE_ID_AVENGERS_ENDGAME, append = append).invoke()!!
         assertTrue(details.posters.isNotEmpty())
         assertTrue(details.backdrops.isNotEmpty())
+        assertTrue(details.logos.isNotEmpty())
         assertTrue(details.videos.isNotEmpty())
         assertTrue(details.keywords.isNotEmpty())
         assertTrue(details.recommendations.isNotEmpty())
@@ -91,6 +92,12 @@ class MovieServiceTest : BaseServiceTest() {
     fun `Get backdrops`(): Unit = runBlocking {
         val backdrops = TMDb.movieService.backdrops(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
         assertTrue(backdrops.isNotEmpty())
+    }
+
+    @Test
+    fun `Get logos`(): Unit = runBlocking {
+        val logos = TMDb.movieService.backdrops(MOVIE_ID_AVENGERS_ENDGAME).invoke()!!
+        assertTrue(logos.isNotEmpty())
     }
 
     @Test

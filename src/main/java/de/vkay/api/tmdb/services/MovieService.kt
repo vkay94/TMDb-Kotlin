@@ -82,6 +82,16 @@ interface MovieService {
     ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
 
     /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/movies/get-movie-images)
+     */
+    @GET("movie/{movie_id}/images")
+    @ResultsList("logos")
+    suspend fun logos(
+        @Path("movie_id") movieId: Int,
+        @Query("language") languageTag: String? = null
+    ): NetworkResponse<List<TmdbImage>, TmdbError.DefaultError>
+
+    /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/3/movies/get-movie-recommendations)
      */
     @GET("movie/{movie_id}/recommendations")
