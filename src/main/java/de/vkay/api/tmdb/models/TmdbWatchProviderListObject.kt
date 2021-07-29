@@ -9,5 +9,6 @@ data class TmdbWatchProviderListObject internal constructor(
     val flatrate: List<TmdbWatchProvider>?,
     val buy: List<TmdbWatchProvider>?,
     val ads: List<TmdbWatchProvider>?,
+    val free: List<TmdbWatchProvider>?,
     val rent: List<TmdbWatchProvider>?
 )

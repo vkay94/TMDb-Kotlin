@@ -12,5 +12,7 @@ data class TmdbWatchProvider internal constructor(
     @Json(name = "provider_name")
     val name: String,
     @Json(name = "provider_id")
-    val id: Int
+    val id: Int,
+    @Json(name = "display_priority")
+    val displayPriority: Int
 )
