@@ -3,6 +3,7 @@ package services
 import com.haroldadmin.cnradapter.NetworkResponse
 import com.haroldadmin.cnradapter.invoke
 import de.vkay.api.tmdb.AppendToResponse
+import de.vkay.api.tmdb.IncludeLanguages
 import de.vkay.api.tmdb.TMDb
 import de.vkay.api.tmdb.enumerations.EpisodeGroupType
 import de.vkay.api.tmdb.enumerations.MediaType
@@ -107,9 +108,11 @@ class TvServiceTest : BaseServiceTest() {
     fun `Get videos`(): Unit = runBlocking {
         val videos = TMDb.showService.videos(SHOW_ID_MHA).invoke()!!
         assertTrue(videos.isNotEmpty())
+        assertFalse(videos.any { it.languageCode == "de" })
 
-        val videosGerman = TMDb.showService.videos(SHOW_ID_MHA, "de-DE").invoke()!!
-        assertTrue(videosGerman.isNotEmpty())
+        val includeVideoLanguages = TMDb.showService.videos(SHOW_ID_MHA,
+            includeLanguages = IncludeLanguages("de")).invoke()!!
+        assertTrue(includeVideoLanguages.any { it.languageCode == "de" })
     }
 
     @Test

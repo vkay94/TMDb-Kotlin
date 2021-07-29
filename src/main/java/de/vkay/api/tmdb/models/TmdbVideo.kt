@@ -6,6 +6,8 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class TmdbVideo internal constructor(
     val key: String,
+    @Json(name = "name")
+    val title: String,
     val site: Site, // YouTube
     val type: Type, // Trailer
 
@@ -14,7 +16,10 @@ data class TmdbVideo internal constructor(
     @Json(name = "iso_3166_1")
     val countryCode: String, // "DE, US, ...
     @Json(name = "size")
-    val resolution: Int
+    val resolution: Int,
+    @Json(name = "published_at")
+    val publishedAt: TmdbDate,
+    val official: Boolean
 ) {
 
     /**

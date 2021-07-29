@@ -1,4 +1,4 @@
-import de.vkay.api.tmdb.ImageLanguages
+import de.vkay.api.tmdb.IncludeLanguages
 import de.vkay.api.tmdb.models.TmdbImage
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -8,13 +8,13 @@ class ImageTest {
     @Test
     fun `Test ImageLanguages toString`() {
         val languageCodesArray = arrayOf("en", "de", "fr")
-        val imageLanguageArray = ImageLanguages(*languageCodesArray)
-        val imageLanguageVararg = ImageLanguages("en", "de", "fr")
+        val imageLanguageArray = IncludeLanguages(*languageCodesArray)
+        val imageLanguageVararg = IncludeLanguages("en", "de", "fr")
 
         val expected = "en,de,fr"
         assertEquals(expected, imageLanguageArray.toString())
         assertEquals(expected, imageLanguageVararg.toString())
-        assertEquals("null,en", ImageLanguages.defaults.toString())
+        assertEquals("null,en", IncludeLanguages.defaults.toString())
     }
 
     @Test

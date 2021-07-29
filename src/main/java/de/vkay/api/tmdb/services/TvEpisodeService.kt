@@ -2,7 +2,7 @@ package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
 import de.vkay.api.tmdb.AppendToResponse
-import de.vkay.api.tmdb.ImageLanguages
+import de.vkay.api.tmdb.IncludeLanguages
 import de.vkay.api.tmdb.enumerations.MediaType
 import de.vkay.api.tmdb.internals.annotations.CharJob
 import de.vkay.api.tmdb.internals.annotations.ResultsList
@@ -23,7 +23,8 @@ interface TvEpisodeService {
         @Path("episode_number") tvShowEpisodeNumber: Int,
         @Query("language") languageTag: String? = null,
         @Query("append_to_response") appendToResponse: AppendToResponse? = null,
-        @Query("include_image_language") imageLanguages: ImageLanguages? = null
+        @Query("include_image_language") imageLanguages: IncludeLanguages? = null,
+        @Query("include_video_language") videoLanguages: IncludeLanguages? = null
     ): NetworkResponse<TmdbEpisode, TmdbError.DefaultError>
 
     /**
@@ -98,7 +99,8 @@ interface TvEpisodeService {
     suspend fun videos(
         @Path("tv_id") tvShowId: Int,
         @Path("season_number") tvShowSeasonNumber: Int,
-        @Path("episode_number") tvShowEpisodeNumber: Int
+        @Path("episode_number") tvShowEpisodeNumber: Int,
+        @Query("include_video_language") includeLanguages: IncludeLanguages? = null
     ): NetworkResponse<List<TmdbVideo>, TmdbError.DefaultError>
 
     /**
