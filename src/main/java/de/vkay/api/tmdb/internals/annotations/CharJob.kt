@@ -142,14 +142,16 @@ internal class CharJobAdapter(
                     reader.beginArray()
                     while (reader.hasNext()) {
                         reader.beginObject()
-                        when (reader.selectName(options)) {
-                            -1 -> {
-                                reader.skipName()
-                                reader.skipValue()
+                        while (reader.hasNext()) {
+                            when (reader.selectName(options)) {
+                                -1 -> {
+                                    reader.skipName()
+                                    reader.skipValue()
+                                }
+                                0 -> creditId = reader.nextString()
+                                2 -> job = reader.nextString()
+                                3 -> episodeCount = reader.nextInt()
                             }
-                            0 -> creditId = reader.nextString()
-                            2 -> job = reader.nextString()
-                            3 -> episodeCount = reader.nextInt()
                         }
                         reader.endObject()
                     }
@@ -170,18 +172,23 @@ internal class CharJobAdapter(
         throw UnsupportedOperationException("ResultsListAdapter is only used to deserialize objects")
 
     class RoleJobFactory : Factory {
-        override fun create(type: Type, annotations: Set<Annotation>, moshi: Moshi): JsonAdapter<Any>? {
+        override fun create(
+            type: Type,
+            annotations: Set<Annotation>,
+            moshi: Moshi
+        ): JsonAdapter<Any>? {
             Types.nextAnnotations(annotations, CharJob::class.java) ?: return null
 
             val rawType = Types.getRawType(type)
 
             if (!TmdbError.isAnyError(rawType)) {
-                if (Types.getRawType(type) != List::class.java )
+                if (Types.getRawType(type) != List::class.java)
                     throw IllegalArgumentException("Only lists may be annotated with @ResultsList. Found: $type")
             }
 
-            val resListAnnotation = annotations.stream().filter { it is CharJob }.toList().firstOrNull()
-                ?: throw IllegalArgumentException("List has no valid fieldName: $type")
+            val resListAnnotation =
+                annotations.stream().filter { it is CharJob }.toList().firstOrNull()
+                    ?: throw IllegalArgumentException("List has no valid fieldName: $type")
 
             val fieldName = (resListAnnotation as CharJob).fieldName
             val mediaType = resListAnnotation.mediaType
