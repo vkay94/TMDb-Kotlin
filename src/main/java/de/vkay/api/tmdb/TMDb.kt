@@ -135,6 +135,7 @@ object TMDb {
             .add(RatedJsonAdapter())
             .add(CharJobAdapter.INSTANCE)
             .add(TaggedImagesAdapter.INSTANCE)
+            .add(ListCommentsAdapter.INSTANCE)
             .build()
     }
 

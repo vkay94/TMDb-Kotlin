@@ -17,7 +17,7 @@ import java.util.*
 class ListServiceTest : BaseServiceTest() {
 
     @Test
-    fun `Get list details (public)`() = runBlocking {
+    fun `Get list details, public`() = runBlocking {
         val details = TMDb.listService.details(LIST_ID_ANIME).invoke()!!
 
         assertEquals("Animes", details.name)
@@ -28,7 +28,7 @@ class ListServiceTest : BaseServiceTest() {
     }
 
     @Test
-    fun `Get list with sort_by (public)`() = runBlocking {
+    fun `Get list with sort_by, public`() = runBlocking {
         // Release dates is not supported for TV shows
         val votes = TMDb.listService.details(LIST_ID_ANIME, sortBy = ListSortBy.VOTE_AVERAGE_DESC).invoke()!!
             .results.map { if (it is TmdbShow.Slim) it.voteAverage else 0.0 }

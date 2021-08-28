@@ -4,6 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import de.vkay.api.tmdb.enumerations.ListSortBy
 import de.vkay.api.tmdb.enumerations.MediaType
+import de.vkay.api.tmdb.internals.annotations.ListComments
 import de.vkay.api.tmdb.internals.annotations.TMDbImage
 
 @Suppress("SpellCheckingInspection")
@@ -34,8 +35,21 @@ data class TmdbList internal constructor(
     @Json(name = "total_pages")
     val totalPages: Int,
     @Json(name = "total_results")
-    val totalResults: Int
+    val totalResults: Int,
+    @ListComments
+    val comments: List<Triple<MediaType, Int, String?>> // <Movie, TV>, ID, Comment
 ) {
+
+    fun getCommentFor(mediaItem: MediaTypeItem): String? =
+        when (mediaItem) {
+            is TmdbShow.Slim -> {
+                comments.first { mediaItem.mediaType == it.first && mediaItem.id == it.second }.third
+            }
+            is TmdbMovie.Slim -> {
+                comments.first { mediaItem.mediaType == it.first && mediaItem.id == it.second }.third
+            }
+            else -> null
+        }
 
     @JsonClass(generateAdapter = true)
     data class Slim internal constructor(
