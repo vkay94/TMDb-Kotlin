@@ -135,6 +135,8 @@ class TmdbShow internal constructor(
         val genreIds: List<Int>,
         @Json(name = "vote_average")
         val voteAverage: Double,
+        @Json(name = "vote_count")
+        val voteCount: Int,
         val popularity: Double,
 
         // Optional when getting rated shows (AccountService)
