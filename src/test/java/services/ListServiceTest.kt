@@ -113,8 +113,38 @@ class ListServiceTest : BaseServiceTest() {
         val details2 = TMDb.listService.details(listId).invoke()!!
         assertEquals(2, details2.totalResults)
 
-        val del = TMDb.listService.delete(listId)
-        assertTrue(del.invoke()!!.success!!)
+        assertTrue(TMDb.listService.delete(listId).invoke()!!.success!!)
+    }
+
+    @Test
+    fun `Update items of list`() = runBlocking {
+        TMDb.accessToken = ACCESS_TOKEN
+
+        val createListBody = TmdbBody.CreateList("My Sample List", "de")
+        val listId = TMDb.listService.create(createListBody).invoke()!!.listId
+
+        val addBuilder = TmdbBody.MediaItem.Builder()
+            .addItem(MediaType.TV, SHOW_ID_MHA)
+            .addItem(MediaType.TV, SHOW_ID_BLACK_CLOVER)
+
+        val addedItemsResponseList = TMDb.listService.addItems(listId, addBuilder).invoke()!!
+        assertEquals(2, addedItemsResponseList.count())
+        assertTrue(addedItemsResponseList.all { it.success == true })
+
+        val details1 = TMDb.listService.details(listId).invoke()!!
+        assertEquals(null, details1.getCommentFor(details1.results.first()))
+
+        val updateBuilder = TmdbBody.MediaItem.Builder()
+            .addItem(MediaType.TV, SHOW_ID_MHA, "New comment")
+
+        val updateItemsResponseList = TMDb.listService.updateItems(listId, updateBuilder).invoke()!!
+        assertEquals(1, updateItemsResponseList.count())
+        assertTrue(updateItemsResponseList.first().success!!)
+
+        val details2 = TMDb.listService.details(listId).invoke()!!
+        assertEquals("New comment", details2.getCommentFor(details2.results.first()))
+
+        assertTrue(TMDb.listService.delete(listId).invoke()!!.success!!)
     }
 
     @Test
@@ -142,7 +172,6 @@ class ListServiceTest : BaseServiceTest() {
         val details2 = TMDb.listService.details(listId).invoke()!!
         assertEquals(1, details2.totalResults)
 
-        val del = TMDb.listService.delete(listId)
-        assertTrue(del.invoke()!!.success!!)
+        assertTrue(TMDb.listService.delete(listId).invoke()!!.success!!)
     }
 }

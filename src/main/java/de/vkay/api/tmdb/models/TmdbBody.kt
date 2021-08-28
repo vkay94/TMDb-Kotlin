@@ -72,9 +72,11 @@ class TmdbBody {
         val mediaType: MediaType,
         @Json(name = "media_id")
         val mediaId: Int,
-        val success: Boolean?
+        val success: Boolean?,
+        val comment: String?
     ) {
-        constructor(mediaType: MediaType, mediaId: Int) : this(mediaType, mediaId, null)
+        constructor(mediaType: MediaType, mediaId: Int) : this(mediaType, mediaId, null, null)
+        constructor(mediaType: MediaType, mediaId: Int, comment: String?) : this(mediaType, mediaId, null, comment)
 
         @JsonClass(generateAdapter = true)
         data class Builder internal constructor(
@@ -82,9 +84,9 @@ class TmdbBody {
         ){
             constructor() : this(mutableListOf())
 
-            fun addItem(mediaType: MediaType, mediaId: Int) = apply {
+            fun addItem(mediaType: MediaType, mediaId: Int, comment: String? = null) = apply {
                 if (!items.contains(MediaItem(mediaType, mediaId)))
-                    items.add(MediaItem(mediaType, mediaId))
+                    items.add(MediaItem(mediaType, mediaId, comment))
             }
 
             fun removeItem(mediaType: MediaType, mediaId: Int) = apply {

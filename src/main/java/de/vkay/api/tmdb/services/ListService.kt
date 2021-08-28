@@ -53,6 +53,17 @@ interface ListService {
     ): NetworkResponse<List<TmdbBody.MediaItem>, TmdbError>
 
     /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/4/list/update-items)
+     */
+    @Headers("Content-Type: application/json;charset=utf-8")
+    @HTTP(method = "PUT", path = "list/{list_id}/items", hasBody = true)
+    @ResultsList
+    suspend fun updateItems(
+        @Path("list_id") id: Int,
+        @Body body: TmdbBody.MediaItem.Builder
+    ): NetworkResponse<List<TmdbBody.MediaItem>, TmdbError>
+
+    /**
      * Reference: [The Movie Database API](https://developers.themoviedb.org/4/list/remove-items)
      */
     @Headers("Content-Type: application/json;charset=utf-8")
