@@ -18,6 +18,14 @@ internal class ListCommentsAdapter: JsonAdapter<List<Triple<MediaType, Int, Stri
     override fun fromJson(reader: JsonReader): List<Triple<MediaType, Int, String?>> {
         val result = mutableListOf<Triple<MediaType, Int, String?>>()
 
+        // If the results list is empty (for this page) then the value is an array instead of an object
+        if (reader.peek() == JsonReader.Token.BEGIN_ARRAY) {
+            reader.beginArray()
+            reader.endArray()
+
+            return emptyList()
+        }
+
         reader.beginObject()
         while (reader.hasNext()) {
             val typeId = reader.nextName().split(":")
