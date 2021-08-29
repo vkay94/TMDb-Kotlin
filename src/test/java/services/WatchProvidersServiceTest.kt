@@ -5,8 +5,19 @@ import de.vkay.api.tmdb.TMDb
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import java.util.*
 
 class WatchProvidersServiceTest : BaseServiceTest() {
+
+    @Test
+    fun `Get available regions`() = runBlocking {
+        val regionsInGerman = TMDb.watchProvidersService.regions(Locale.GERMANY.toLanguageTag()).invoke()!!
+        assertTrue(regionsInGerman.isNotEmpty())
+
+        val germany = regionsInGerman.find { it.countryCode == Locale.GERMANY.country }!!
+        assertEquals(germany.englishName, "Germany")
+        assertEquals(germany.nativeName, "Deutschland")
+    }
 
     @Test
     fun `Get TV providers`() = runBlocking {
