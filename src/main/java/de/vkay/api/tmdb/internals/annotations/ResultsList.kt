@@ -25,6 +25,11 @@ internal class ResultsListAdapter(
     }
 
     override fun fromJson(reader: JsonReader): Any {
+
+        // In case the response is an array
+        if (reader.peek() == JsonReader.Token.BEGIN_ARRAY)
+            return delegateAdapter.fromJson(reader) ?: emptyList<Any>()
+
         var results: List<Any> = emptyList()
         reader.beginObject()
         while (reader.hasNext()) {
