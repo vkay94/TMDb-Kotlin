@@ -1,9 +1,6 @@
 package de.vkay.api.tmdb.internals.annotations
 
 import com.squareup.moshi.*
-import de.vkay.api.tmdb.enumerations.ReleaseType
-import de.vkay.api.tmdb.internals.EnumValueJsonAdapter
-import de.vkay.api.tmdb.models.TmdbDate
 import de.vkay.api.tmdb.models.TmdbReleaseDate
 import java.lang.reflect.Type
 import kotlin.streams.toList
@@ -16,25 +13,23 @@ internal annotation class MapList(val fieldName: String = "results")
 /**
  * Reference: [Stackoverflow](https://stackoverflow.com/questions/53344033/moshi-parse-single-object-or-list-of-objects-kotlin)
  */
-internal class MapListAdapter(val fieldName: String): JsonAdapter<Map<String, List<Any>>>() {
-
-    private val options: JsonReader.Options = JsonReader.Options.of("results")
-    private val optionsCertification: JsonReader.Options = JsonReader.Options.of("certifications")
+internal class MapListAdapter(val moshi: Moshi, val fieldName: String): JsonAdapter<Map<String, List<Any>>>() {
 
     private val listResultsType = Types.newParameterizedType(List::class.java, ReleaseDatesMapHelper::class.java)
-    private val listResultsAdapter = Moshi.Builder()
-        .add(TmdbDate.ADAPTER)
-        .add(
-            ReleaseType::class.java, EnumValueJsonAdapter.create(ReleaseType::class.java)
-                .withUnknownFallback(ReleaseType.UNKNOWN))
-        .build().adapter<List<ReleaseDatesMapHelper>>(listResultsType)
+    private val listStringType = Types.newParameterizedType(List::class.java, String::class.java)
+
+    private val listResultsAdapter = moshi.adapter<List<ReleaseDatesMapHelper>>(listResultsType)
+    private val listStringAdapter = moshi.adapter<List<String>>(listStringType)
 
     companion object {
         val INSTANCE = MapListFactory()
     }
 
     override fun fromJson(reader: JsonReader): Map<String, List<Any>> {
-        if (fieldName == "results") {
+        // Movie: Release dates
+        if (fieldName == "release_dates") {
+            val options: JsonReader.Options = JsonReader.Options.of("results")
+
             val results: HashMap<String, List<TmdbReleaseDate>> = HashMap()
             var tmpResults: List<ReleaseDatesMapHelper> = emptyList()
 
@@ -57,6 +52,79 @@ internal class MapListAdapter(val fieldName: String): JsonAdapter<Map<String, Li
             }
             return results
         }
+
+        // Configuration: Jobs
+        if (fieldName == "jobs") {
+            val options: JsonReader.Options = JsonReader.Options.of("department", "jobs")
+            val results: HashMap<String, List<String>> = HashMap()
+
+            var tmpDepartment = ""
+            var tmpJobs: List<String> = emptyList()
+
+            reader.beginArray()
+            while (reader.hasNext()) {
+                reader.beginObject()
+                while (reader.hasNext()) {
+                    when (reader.selectName(options)) {
+                        0 -> {
+                            tmpDepartment = reader.nextString()
+                        }
+                        1 -> {
+                            tmpJobs = listStringAdapter.fromJson(reader) ?: emptyList()
+                        }
+                        else -> {
+                            // Unknown name, skip it.
+                            reader.skipName()
+                            reader.skipValue()
+                        }
+                    }
+                }
+                reader.endObject()
+                results[tmpDepartment] = tmpJobs
+                tmpDepartment = ""
+                tmpJobs = emptyList()
+            }
+            reader.endArray()
+
+            return results
+        }
+
+        // Configuration: Timezones
+        if (fieldName == "timezones") {
+            val options: JsonReader.Options = JsonReader.Options.of("iso_3166_1", "zones")
+            val results: HashMap<String, List<String>> = HashMap()
+
+            var tmpIso = ""
+            var tmpZones: List<String> = emptyList()
+
+            reader.beginArray()
+            while (reader.hasNext()) {
+                reader.beginObject()
+                while (reader.hasNext()) {
+                    when (reader.selectName(options)) {
+                        0 -> {
+                            tmpIso = reader.nextString()
+                        }
+                        1 -> {
+                            tmpZones = listStringAdapter.fromJson(reader) ?: emptyList()
+                        }
+                        else -> {
+                            // Unknown name, skip it.
+                            reader.skipName()
+                            reader.skipValue()
+                        }
+                    }
+                }
+                reader.endObject()
+                results[tmpIso] = tmpZones
+                tmpIso = ""
+                tmpZones = emptyList()
+            }
+            reader.endArray()
+
+            return results
+        }
+
         return emptyMap()
     }
 
@@ -72,7 +140,7 @@ internal class MapListAdapter(val fieldName: String): JsonAdapter<Map<String, Li
 
             val fieldName = (resListAnnotation as MapList).fieldName
 
-            return MapListAdapter(fieldName)
+            return MapListAdapter(moshi, fieldName)
         }
     }
 }

@@ -1,6 +1,7 @@
 package de.vkay.api.tmdb.services
 
 import com.haroldadmin.cnradapter.NetworkResponse
+import de.vkay.api.tmdb.internals.annotations.MapList
 import de.vkay.api.tmdb.internals.annotations.ResultsList
 import de.vkay.api.tmdb.models.TmdbError
 import de.vkay.api.tmdb.models.TmdbLanguage
@@ -32,4 +33,18 @@ interface ConfigurationService {
     @GET("configuration/primary_translations")
     @ResultsList
     suspend fun primaryTranslations(): NetworkResponse<List<String>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/configuration/get-jobs)
+     */
+    @GET("configuration/jobs")
+    @MapList("jobs")
+    suspend fun jobs(): NetworkResponse<Map<String, List<String>>, TmdbError.DefaultError>
+
+    /**
+     * Reference: [The Movie Database API](https://developers.themoviedb.org/3/configuration/get-timezones)
+     */
+    @GET("configuration/timezones")
+    @MapList("timezones")
+    suspend fun timezones(): NetworkResponse<Map<String, List<String>>, TmdbError.DefaultError>
 }

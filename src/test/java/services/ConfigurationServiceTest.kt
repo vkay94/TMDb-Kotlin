@@ -58,4 +58,16 @@ class ConfigurationServiceTest : BaseServiceTest() {
         val english = translations.filter { it.contains("en") }.map { it.split("-")[1] }
         assertTrue(english.containsAll(listOf("AU", "CA", "GB", "US")))
     }
+
+    @Test
+    fun `Get jobs`() = runBlocking {
+        val jobsMap = TMDb.configurationService.jobs().invoke()!!
+        assertTrue(jobsMap.isNotEmpty())
+    }
+
+    @Test
+    fun `Get timezones`() = runBlocking {
+        val timezones = TMDb.configurationService.timezones().invoke()!!
+        assertTrue(timezones.isNotEmpty())
+    }
 }

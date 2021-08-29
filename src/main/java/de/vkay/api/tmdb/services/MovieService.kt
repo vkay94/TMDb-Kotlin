@@ -166,7 +166,7 @@ interface MovieService {
      * **Map key**: Country code, for example: DE, US, FR
      */
     @GET("movie/{movie_id}/release_dates")
-    @MapList
+    @MapList("release_dates")
     suspend fun releaseDates(
         @Path("movie_id") movieId: Int
     ): NetworkResponse<Map<String, List<TmdbReleaseDate>>, TmdbError.DefaultError>
